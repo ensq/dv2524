@@ -1,0 +1,62 @@
+% proposalresearchquestions.tex
+
+\chapter{Research~Questions}
+\label{cha:researchquestions}
+Pursuant to the aim and objectives specified in \dvcmdrefcha{cha:aimandobjectives}, proposed study pertain to the concepts described in this \termcha .
+Accordingly, the key investigatory attributes and explicit research question formulations, sutiable for proposed study, are presented below.
+
+\newcommand*\researchquestionitem[2]{\item[#1:] \textit{#2}}
+\begin{multicols}{2}
+\begin{itemize*}
+	\researchquestionitem{1}{What are the benefits and disadvantages of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{2}{What are the prerequisites of \termdetexe\  of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{3}{What are the prerequisites of \termcheckpointing\ of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{4}{What are the prerequisites of \termrevexe\ of paravirtualized graphics in virtual platforms?}
+\end{itemize*}
+\end{multicols}
+
+\section{Paravirtualization}
+\label{sec:researchquestions_paravirtualization}
+The primary investigatory survey proposed in this document concerns the analysis, and subsequent implementation, of a paravirtualized solution for \termopengles ~$2.0$ acceleration in a virtual platform. Such implementation stress the importance of subsequent investigation into effective techniques to overcome the barriers in-between \termtarget - and \termhost\ systems. As such, proposed study concerns inquiry into adaption and optimization of such a solution into the \termsimics\ full-system simulator.
+
+Additionally, in regards to the particular simulator this case study employs, a distinct set of characteristic attributes need be analyzed. Said attributes are described in the remainder of this chapter.
+
+\section{Deterministic~Execution}
+\label{sec:researchquestions_deterministicexecution}
+'Deterministic~Execution' commonly refers to the execution of \termdetalg s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (\dvcmdrefsee{\dvpcmdcitebib{journals:cohen:1979}} for an overview on deterministic- and non-deterministic algorithms).
+Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behaviour caused by concurrent software\dvpcmdcitebib[p.~3-5]{journals:lee:2006}\dvpcmdcitebib[p.~92]{journals:holzmann:1997}.
+Some even go as far as to argue that determinism is a prerequisite for effective debugging and testing\dvpcmdcitebib[p.~3,~4]{dissertation:devietti:2012}\dvpcmdcitebib[p.~51,~59]{inproceedings:yu:2012}.
+As such, deterministic behaviour may be seen as a valuable attribute in a virtual platform (\dvcmdrefsee{\dvpcmdcitebib[p.~1,~2]{papers:bergan:2011}} for an overview on the value of determinism in software~development).
+
+In \termsimics , '\termdetexe ' denotes the entire \termtarget\ system as a \termdetalg , wherein all instructions are executed in a deterministic manner on the simulated hardware\dvpcmdcitebib[p.~20,~21]{journals:aarno:2013}.
+This means that the simulated system (i.e., an \termos ), presuming the same input, will allocate the same memory space in virtual memories, receive the same number of interrupts in sequence, and even inhabit the same registers in virtual \termcpu s\dvpcmdcitebib[p.~19,~20]{journals:aarno:2013} (\dvcmdrefsee{\dvpcmdciteref{web:engblom:2012:determinism}} for a brief rundown of \termdetexe\ in \termsimics ).
+As such, given an arbitrary number of instructions, the simulation state may be recreated indiscriminately down to the level of the instruction set and corresponding cycles.
+Throughout the remainder of this document, \termdetexe\ will refer to the deterministic state transition of the \termtarget\ system; as described in this paragraph.
+
+Due to the established importance of determinism for the purposes of testing \& debugging, and in line with the philosophy of repeatability in \termsimics \dvpcmdcitebib[p.~20,~21]{journals:aarno:2013}, \termdetexe\ is considered an important investigatory attribute for the purpose of proposed study.
+Hence, as a secondary objective with implementation as a stretch goal (\dvcmdrefsee{\dvcmdrefcha{cha:aimandobjectives}}), we propose investigation into the feasability of future \termdetexe\ in naïve paravirtualized graphics acceleration for system simulators.
+
+\section{Checkpointing}
+\label{sec:researchquestions_checkpointing}
+The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvpcmdcitebib[p.~103]{publications:harris:2007}.
+It may be benificial to store such states in a '\termcheckpointrestart ' scheme, as suggested by \dvcmdrefetal{Jiang}\ in regards to \termcuda\ kernels\dvpcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}. 
+In this way, developers may save- and restore the state of a system which can reduce overhead of restarting computationally heavy applications from scratch\dvpcmdcitebib[p.~19,~20]{journals:aarno:2013}.
+
+In \termsimics , '\termcheckpointing ' refers to the functionality to save the complete state of a simulation into a portable format.
+When applied, this format is known as a \termcheckpoint .
+This ability not only  saves time in terms of program initialization and debugging\dvpcmdcitebib[p.~54]{journals:magnusson:2002}, but may also ease testing and collaboration in-between developers as \termcheckpoint s may be shared\dvpcmdcitebib[p.~20,~21]{journals:aarno:2013} (\dvcmdrefsee{\dvpcmdciteref{web:engblom:2013:collaboratingusingsimics}} for an overview on \termcheckpointing\ in \termsimics ).
+For the remainder of this document, \termcheckpointing\ will denote said functionality.
+
+In regards to \termsimics\ being intricately designed to support this kind of functionality\dvpcmdcitebib[p.~19,~20]{journals:aarno:2013}, it may be of significance further supporting this design in the contributions of proposed study.
+Thus, as a secondary objective with implementation as a stretch goal (\dvcmdrefsee{\dvcmdrefcha{cha:aimandobjectives}}), we propose an analysis of the practicality of similar \termcheckpointing\ in a paravirtualized solution for graphics acceleration.
+
+\section{Reverse~Execution}
+\label{sec:researchquestions_reverseexecution}
+'Reverse~execution' provides software~developers with the ability to return, often from portable \termcheckpoint s, to previous states of execution\dvpcmdcitebib[p.~2,~3]{journals:akgul:2004}.
+This may be useful when debugging, profiling, or testing as difficult-to-reach system states may be stored and returned to, effectively bypassing program initialization and other hindrances\dvpcmdcitebib[p.~54]{journals:magnusson:2002}.
+
+In \termsimics , '\termrevexe ' denotes said ability - covering the entirety of the simulated system\dvpcmdcitebib[p.~30,~31]{publications:leupers:2010}.
+As such, simulated systems may be run in reverse; including virtualized hardware device states, disk contents and \termcpu\ registers\dvpcmdcitebib[p.~20,~21]{journals:aarno:2013} (\dvcmdrefsee{\dvpcmdciteref{web:engblom:2013:backtorevexe}} for an overview on \termrevexe\ in \termsimics ).
+
+Considering \termsimics\ being designed 'from the bottom-up' to be a 'repeatable, deterministic simulator'\dvpcmdcitebib[p.~20,~21]{journals:aarno:2013}, it may be worthwhile to investigate similar functionality in regards to paravirtualized graphics acceleration.
+Hence, as a secondary objective with implementation as a stretch goal (\dvcmdrefsee{\dvcmdrefcha{cha:aimandobjectives}}), we propose inquiry into the possibility of similar functionality for paravirtualized graphics drivers in virtual platforms.

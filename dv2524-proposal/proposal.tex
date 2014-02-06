@@ -1,0 +1,73 @@
+% proposal.tex
+
+% Build settings & preferences:
+\documentclass[a4paper,oneside]{bth}
+\usepackage{etoolbox} % Toggle Conditionals.
+\newtoggle{releasebuild}
+\toggletrue{releasebuild} % Enable for Release build.
+%\togglefalse{releasebuild} % Enable for Editorial build.
+
+\input{../dv2524commands} % User-defined commands.
+\input{../dv2524terms} % 'Terms'-glossary.
+\input{../dv2524packages} % Necessary packages.
+\input{../dv2524build} % Build configuration and conditional packages.
+
+\input{proposalbib} % Document bibliography.
+\input{proposalcommands}
+
+\DeclareGraphicsExtensions{.pdf}
+
+\newtheorem{post}{Postulate}[chapter]
+\newtheorem{lem}{\textsc{Lemma}}[chapter]
+\newtheorem{ex}{\textbf{Example}}[chapter]
+\newtheorem{thm}{\textsc{Theorem}}[chapter]
+\newtheorem{qu}{\textbf{Question}}[chapter]
+\newtheorem{corr}{\textsc{Corollary}}[chapter]
+\newtheorem{defs}{\textsc{Definition}}[chapter]
+\newtheorem{cons}{\textsc{Constraint}}[chapter]
+\newtheorem{prop}{\textsc{Proposition}}[chapter] % Originally in template. Safe to remove?
+
+\begin{document}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% Chapter (-) - Front page(s)
+\input{proposalfront}
+
+% Chapter 0 - Introduction
+\include{proposalintroduction}
+
+% Chapter 1 - Aim & Objectives
+\include{proposalaimandobjectives}
+
+% Chapter 2 - Expected Outcomes
+\include{proposalexpectedoutcomes}
+
+% Chapter 3 - Research Questions
+\include{proposalresearchquestions}
+
+% Chapter 4 - Research Methodology
+\include{proposalresearchmethodology}
+
+% Chapter 5 - Risks & Concerns
+\include{proposalrisksandconcerns}
+
+% Chapter 6 - Time- & Activity Plan
+\include{proposaltimeandactivityplan}
+
+% Chapter 7 - Bibliography
+\include{proposalbibliography}
+
+% Chapter 8 - References
+\include{proposalreferences}
+
+% Chapter 9 - Appendix A
+\include{proposalappendixa}
+
+% Chapter 10 - Appendix B
+\include{proposalappendixb}
+
+% Chapter (+) - Back page(s)
+\input{proposalback}
+
+\end{document}

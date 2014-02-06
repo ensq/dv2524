@@ -1,0 +1,60 @@
+% proposalrisksandconcerns.tex
+
+\chapter{Risks~\&~Liabilities}
+\label{cha:risksandliabilities}
+Predicted risks and liabilities are presented below.
+At the end of the chapter, following described risks, a summarizing Risk~Assessment is presented.
+
+\section{Target-Host~\termrw}
+\label{sec:risksandliabilities_targethostrw}
+The \termrefsolu\ uses \termunix -sockets or \termwinthirtytwo -pipes to transfer a byte~stream containing arbitrary data in-between  \termtarget - and \termhost\ systems.
+Since such a bytestream need be encapsulated in networking communication packets (\termtcp /\termip /\termmac\ etc.), introducing computational overhead, the simulator may use specialized functionality in \termqemu\ to transmit data from \termtarget\ to \termhost , and vice-versa, through the simulator itself; circumventing the need of networking protocols.
+Such functionality is a prerequisite for proposed paravirtualization.
+Depending on existing similar functionality in \termsimics , such a solution may prove more- or less time-consuming to implement.
+Without fast communication in-between \termhost\ and \termtarget , the performance of accelerated \termopengles\ may be impaired due to textures and other large data used throughout simulation.
+
+\section{Target~\termos }
+\label{sec:risksandliabilities_targetos}
+The \termrefsolu\ run an assortment of \termandroid\ variations on a number of simulated \termarm - and \termxeightysix\ systems.
+As such, considering that the experiment outlined in \dvcmdrefcha{cha:researchmethodology} denotes performance comparison to the \termrefsolu , it would be accurate if the paravirtualized solution in \termsimics\ was likewize implemented on the \termandroid\ platform.
+Although there is no current \termandroid\ configuration in \termsimics , systems employing \termandroid\ have been simulated prior to proposed study.
+
+As such, depending on the state of ready-made configurations of \termandroid\ systems for the \termsimics\ platform, the required time to establish such an environment is uncertain.
+
+%However, due to limitations in the user interface of mobile systems it may be beneficial, for the purpose of proposed study, to run a desktop \termlinux\ distribution in \termsimics .
+%Yet, some authors have expressed concern in regard to driver development in-between the two systems due to dependencies to \termgoogle 's \termandroid\ kernel tree\cite{SEE}.\todo{Propose target OS.}\\
+
+\section{Simics Software Rasterizer}
+\label{sec:risksandliabilities_simicssoftwarerasterizer}
+During experimentation, the paravirtualized acceleration of a graphics \termapi\ is to be compared to a pre-existing software~rasterizer in \termsimics .
+At the time of writing, it is unclear as to what extent said software~rasterizer supports \termopengles ~$2.0$.
+If the \termsimics\ software~rasterizer features unsufficient support, the benchmark developed for the purpose of this study might be subject to change, which may affect the credibility of subsequent results.
+
+%Due to the scope of the study, focusing primarily on implementation methodology and performance analysis, it may be wise to limit graphics acceleration to that of an embedded system, such as \termopengles~$2.0$, in line with the \termrefsolu .
+%In this manner, since \termopengles\ has less functionality than its \termopengl\ parent library, proposed study may emphasize implementation methodology and performance analysis.
+
+%\section{Virtual~Time}
+%\label{sec:risksandliabilities_virtualtime}
+%\ldots
+% Mention timing www.e.vtech/documentation/simics_docs/4.8/understanding-simics-timing/
+
+\section{Corporate~Confidentiality}
+\label{sec:risksandliabilities_corporateconfidentiality}
+Depending on the state of in-place Non-disclosure Agreements (NDA [CA, CDA, PIA, SA, etc.]) surrounding \termsimics\ and its implementation, there may be confidentiality issues with experimental design and data collected throughout the course of this study.
+Therefore, due to possible secrecy surrounding these areas, it is important to ensure that no confidential material is accidentally included in neither \termproposal\ nor \termthesis .
+Additionally, throughout collaboration it may be critical to regularily affirm that a sufficient amount of non-classified research, for the study to be considered a contribution to the field, may be confided to the public in the final dissertation.
+
+\section{Risk~Assessment}
+\label{sec:risksandliabilities_riskassessment}
+\begin{sidewaystable}[h]
+\begin{tabular*}{0.75\textwidth}{p{2.8cm}|p{2.8cm}|p{2.8cm}|p{2.8cm}|p{2.8cm}|p{2.2cm}|p{2.2cm}} % Eww.
+	\textbf{at Risk}				& \textbf{Summary}														& \textbf{Scenario}                   																		& \textbf{Mitigation}        												& \textbf{Hazard}												& \textbf{Probability}	& \textbf{Impact}	\\ \hline
+	Target-\termhost\ R/W			& Uncertainty surrounding extent of implementation. 					& No, or insufficient, solutions for quick data-transfer in-between \termhost - and \termtarget\ systems.	& Establish existing functionality early to mitigate impact on planning.	& Unscheduled resources spent to implement functionality.		& L 					& M					\\ \hline
+	Virtual machine configuration	& Uncertain time required to set up the \termandroid\ virtual machine. 	& Time required to set up configuration affects rest of planning.											& Construct early to alleviate influence on planning.						& Inconsistensies in planning.									& M 					& M					\\ \hline
+	Corporate Confidentiality		& Some information may not be disclosed.								& Sensitive information leaked.																				& Validate sensitive data with corporate supervisor.						& NDA violated. 												& L 					& H					\\ \hline
+	Implementation time				& Implementation of paravirtualization takes longer than expected.		& Less time may be spent subsequent phases of proposed study.																& Conduct detailed work breakdown structure.								& Succeeding functionality canceled.	& \textbf{M}			& H					\\ \hline
+	\termsimics\ environment		& Inexperience with the \termsimics\ environment.						& Inexperience with \termsimics\ environment constitutes an obstacle to proposed study.						& Seek guidance and support from other empoyees at the \termintel\ offices. & Elongated development whilst working with \termsimics .		& M						& M					
+\end{tabular*}
+\label{tab:risks}
+\caption{Risk assessment summary.}
+\end{sidewaystable}

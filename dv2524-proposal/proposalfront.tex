@@ -1,0 +1,116 @@
+% Front matter
+
+\newcommand{\intellogo}[1]{%
+   \includegraphics[width=#1]{../dv2524-encl/Intel-logo.pdf}%
+}
+
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%   
+{\small
+\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+\textit{Thesis~Proposal}&\multirow{4}{*}{\bthcsnotextlogo{3cm}}\\
+\textit{Master's~Thesis~in~Computer~Science}\\
+\textit{\today}
+\end{tabular}}
+
+\begin{center}
+
+\par\vspace {7cm} % HACK
+
+{\Huge\textbf{Master's~Thesis~Proposal}}   
+
+\par\vspace {0.5cm} % HACK
+
+{\Large\textbf{Paravirtualization~of~\termopengles~in~\termsimics }}                   
+
+\par\vspace {3cm} % HACK
+
+{\Large\textbf{Eric~Nilsson}}
+\par\vspace {7cm} % HACK
+
+\end{center}
+
+\noindent%
+{\small
+\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+\termbthdept&\multirow{4}{*}{\intellogo{3cm}}\\
+\termbth\\
+SE--371 79 Karlskrona, Sweden
+\end{tabular}}
+
+\clearpage
+}
+
+% Original:
+%\noindent%
+%{\small \termbthdept \\
+%\termbth \\
+%SE--371 79 Karlskrona, Sweden}
+%
+%\clearpage
+%}
+
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+\begin{tabular}{p{\textwidth}}
+{\small This proposal is submitted to the \termbthdept\ at \termbth\ in partial fulfillment of the requirements for the degree of Master~of~Science~in~Engineering.}
+\end{tabular}
+
+\par\vspace {1cm} % HACK
+
+% eww.
+\begin{center}
+\begin{tabular}{|l|l|p{8cm}|}
+	\hline
+	\multirow{2}{*}{Thesis} & Tentative title 		& Paravirtualization~of~\termopengles~in~\termsimics \\\cline{2-3}
+							& Classification$^*$ 	& E.1.1 [Software infrastructure]: Virtual machines; K.6.4 [Graphics systems and interfaces]: Graphics processors;	N.1.0 [Companies]: Intel Corporation;	\\\hline
+	\multirow{3}{*}{Student} 	& Name and title		& \termeric			\\ %\cline{2-3}
+								& Social security nr.  	& 19901215-xxxx		\\ %\cline{2-3}
+								& e-Mail				& \termericemail	\\ \hline 
+	\multirow{3}{*}{Head Supervisor} 	& Name and title	& \termhakan 	\\ %\cline{2-3}
+										& Department        & \termhakandept 						\\ %\cline{2-3} 
+										& e-Mail			& \termhakanemail						\\ \hline   
+	\multirow{3}{*}{Corporate Supervisor$^{\dagger}$}	& Name and title	& \termerik			\\ %\cline{2-3}
+														& Company/HEI		& \termerikdept		\\ %\cline{2-3}
+														& e-Mail    		& \termerikemail	\\ \hline
+	\multirow{3}{*}{Commissioning Body} 	& Name and title	& \termdaniel		\\ %\cline{2-3}
+											& Company        	& \termdanieldept	\\ %\cline{2-3}
+											& e-Mail			& \termdanielemail	\\ \hline
+\end{tabular}
+\end{center}
+$^*$\textit{2012 ACM Computing Classification System: \url{www.acm.org/about/class/2012}}\\
+\noindent $^{\dagger}$\textit{Co-advisor from industry or a higher education institution (HEI).}
+
+\par\vspace {1cm} % HACK
+
+\noindent%
+\begin{tabular}{p{0.5\textwidth}lcl}
+\textbf{Contact Information:}\\
+Author(s):\\
+\termeric\\
+E-mail: \termericemail\\ 
+\par\vspace {1cm} % HACK
+University advisor:\\
+\termhakan\\
+\termhakandept
+\par\vspace {1cm} % HACK
+\noindent%
+ \\
+Dept. Computer Science \& Engineering & Internet & : & www.bth.se/didd\\
+Blekinge Institute of Technology & Phone	& : & +46 455 38 50 00 \\
+SE--371 79 Karlskrona, Sweden & Fax & : & +46 455 38 50 57 \\
+\end{tabular}
+\clearpage
+} % Back to \pagestyle{plain}
+
+%\include{acknowledgments} %OPTIONAL
+%\listoffigures %in case you have them
+%\listoftables %in case you have them
+%\listofalgorithms %in case you have them
+\tableofcontents 
+
+\cleardoublepage
+\pagestyle{headings}
+\pagenumbering{arabic}

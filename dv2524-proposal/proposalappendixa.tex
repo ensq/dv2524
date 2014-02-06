@@ -1,0 +1,92 @@
+% proposalappendixa.tex
+
+\chapter*{Appendix~A}
+\label{cha:appendixa}
+\addcontentsline{toc}{chapter}{Appendix~A}
+
+\section*{Target~System~Libraries}
+\label{sec:appendixa_guestsystemlibraries}
+\addcontentsline{toc}{section}{Target~System~Libraries}
+
+In addition to the \termopengles ~$2.0$ \termapi , an implementation of paravirtualized graphics in \termsimics\ must also accelerate the \termegl\ interface, that is; the windowing system of the \termopengl\ \termapi s.
+In order to forward any \termapi\ function calls from the \termopengles - or \termegl-libraries\ to the \termhost, these must be intercepted by a collection of system libraries in the \termtarget\ system.
+These libraries, implementing the corresponding \termabi s (\termopengles\ \& \termegl), collect a sequence of \termapi\ calls which is subsequently packed in a valid data format and sent through the \termsimicspipe\ (see~\termsec ~\dvcmdrefname{sec:appendixa_simicspipe}).
+
+As such, a driver implementing the \termopengl - and \termegl\ \termabi s is to be implemented on the \termtarget\ system.
+
+\section*{Host~Rasterization~Process}
+\label{sec:appendixa_hostrastterizationprocess}
+\addcontentsline{toc}{section}{Host~Rasterization~Process}
+
+The sequence of \termapi -calls are retrieved, or otherwise sent to, by- and through the communications channel (described under \termsec ~\dvcmdrefname{sec:appendixa_simicspipe}) and decoded by a rendering component on the \termhost\ system that interprets said sequence.
+This component utilizes the \termhosttranslatorlibraries\ - described under \termsec ~\dvcmdrefname{sec:appendixa_hostsystemtranslatorlibraries} - to convert the interpreted sequence into the correct format, as expected by the corresponding, underlying, \termhost\ system \termabi s.
+This process may be seperate from \termsimics\ or implemented as a \termsimics ~component.
+
+%Alternatively, the rasterizer\todo{Is really 'rasterizer' the correct terminology to use?}\ could be run as a process separate from \termsimics .
+%This may carry over some benefits, as stated in the \termandroid ~\termsdk\ technical documents\cite{SEE}.\todo{What benefits?}
+
+\section*{Host~Translator~Libraries}
+\label{sec:appendixa_hostsystemtranslatorlibraries}
+\addcontentsline{toc}{section}{Host~Translator~Libraries}
+
+Since \termopengles\ is developed primarily for embedded systems, driver support is not necessarily provided in terms of desktop graphics \termgpu s, with the exception of some recent \termgpu s by \termnvidia\ (such as GeForce GTX 580) and \termintel\ (such as HD Graphics 4000 "Ivybridge")\dvpcmdciteref{technicaldocs:khronos:2014}.
+Hence, \termapi\ method invocations may require translation to the parent \termapi\ \termopengl\ before being dispatched on the \termhost\ machine.
+Likewise, due to the \termegl\ \termabi s depending on the operating system running on the \termhost\ machine, \termegl\ calls must similarly be translated to match the corresponding \termabi\ (\termxgl\ [\termlinux ], \termagl\ [\termosx ], or \termwgl\ [\termwindows ] etc.).
+
+As such, the \termhosttranslatorlibraries\ converts the given sequence of \termopengles - \& \termegl -calls into desktop \termopengl\ and the appropriate windowing library, respectively, and invokes the corresponding system libraries for said command stream.
+Hence, the \termhosttranslatorlibraries\ simply decode and forward the given stream to the default \termopengl - and \termegl\ drivers on the \termhost\ system.
+
+\section*{\termsimics ~Pipe}
+\label{sec:appendixa_simicspipe}
+\addcontentsline{toc}{section}{\termsimics ~Pipe}
+
+In order to support acceleration of certain invocations from within the \termtarget\ system, these calls need to be transferred to the \termhost\ system whereupon given results must be sent back to the \termtarget\ system.
+This can be achieved in a number of ways.
+The command sequence could be sent via a socket, as if to another machine entirely, keeping the simulated system naïve of its status.
+However, this may induce some computational overhead due to the stream's subsequent encapsulation in networking protocols.
+Alternatively, the sequence could be transferred using specialized functionality in the simulator, effectively circumventing redundant protocols.
+On the other hand, this will make the \termtarget\ system 'aware' of being simulated, as the \termtarget\ system is consequently invoking \termsimics\ in some way\footnote{It is to be noted that the suggested paravirtualized solution entail this still, as a result of the implementation of specialized \termopengles\ drivers.}.
+Due to the objectives of this study being primarily focused on performance analysis and profiling, this proposal suggests the latter methodology for implementation of the \termsimicspipe , which is a communications channel used to forward \termapi\ calls to the \termhost\ system.
+
+In regards to circumventing the simulation via the simulator program; there is a number of possible strategies.
+'\termmagicinstr ' is a concept used to denote a \dvcmdcodeinline{nop}-type instruction, meaning an instruction that would have no effect if run on the \termtarget\ system (such as \dvcmdcodeinline{xchg ebx, ebx}\footnote{'Swap contents in registers \dvcmdcodeinline{ebx} and \dvcmdcodeinline{ebx}'.} on the \termxeightysix -architecture), which - when executed on the simulated hardware in a virtual platform - invokes a certain \termcallback -method\dvpcmdcitebib[p.~32]{publications:leupers:2010}. In effect, this requires replacing one- or more instructions in the \termtarget\ instruction set; thereby making the \termmagicinstr\ platform-dependent.
+Such methodology may be utilized by users to, inter~alia, initiate a memory transaction in-between \termtarget - and \termhost -systems, thus circumventing the simulation.
+% However, it should be possible to transfer an entire page of data\todo{Mention that most common architectures have a page size of 4-8KB.}\ at a time.\todo{Speculation.}\\
+
+Another technique for moving data in and out of the \termsimics\ virtual~platform is \termfs \footnote{'\termsimics ~File~System'.}.
+\termfs\ is a kernel driver, currently available for \termsimics\ distributions on \termlinux - and \termsolaris -operating~systems, offering a bridge in-between the file systems of \termtarget - and \termhost -systems.
+The driver communicates with \termsimics\ through a virtual device, which is mapped into the memory space of the simulated system\todo{Read up on this.}.
+Regrettably, what \termfs\ makes up in agility, it loses in performance as the system transfers but $4$ byte words - individually - using registers (although it ought to be possible to modify \termfs\ to transfer an entire page of data at a time).
+
+At the time of writing, it is unclear what technique is most suitable for the purpose of proposed study.
+
+\section*{\termsimics ~Pipe~Protocol}
+\label{sec:appendixa_simicspipeprotocol}
+\addcontentsline{toc}{section}{\termsimics ~Pipe~Protocol}
+
+In order to effectively interpret the command sequence in the \termhost\ system, the assortment of \termapi\ calls ought to be encapsulated in a protocol describing the supported \termapi\ invocations (such as \termopengles\ and \termegl ).
+Hence, the given command stream must be encoded in the \termguestsystemlibraries\ before being sent through the \termsimicspipe\ and similarly decoded by the \termhostrasterizationprocess .
+A feasible way of implementing such a protocol would be to generate descriptory classes from a defined set of rules; the results of which is then used to encode, and subsequently decode, the command stream.
+These rules may entail describing the data types, method signatures, and other needed information for each recognized \termapi\ invocation, as implemented by the \termrefsolu .
+
+\section*{Determinism in \termopengles }
+\label{sec:appendixa_determinisminopengles}
+\addcontentsline{toc}{section}{Determinism in \termopengles }
+
+Following an \termapi\ specification such as \termopengles , it naturally follows that there may be implementational differences in-between vendor drivers.
+Such variations are commonly insignificant and, although present, do not affect the end-user.
+Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \termsimics\ full-system simulator whilst simulating \termopengles .\\
+
+\noindent
+In line with driver inconsistencies, there may be cause to belive that rounding of pixel values may vary dependent on \termhost\ driver vendor.
+Typically, such variations are far from noticable and would not offset simulation timing.
+Neither would this inconsequential execution affect the local deterministic trait during simulation, as the driver in itself is coherent in its execution.
+
+In \termsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independant on the \termhost\ system.
+For example, one may pose the scenario of \termsimics\ users, using different driver vendors on their respective \termhost\ machines, wishing to share \termcheckpoint s in which an application utilizing \termopengles\ is being executed.
+In this manner, posing that the execution paths of said application treads on functionality that is not intricately defined by the \termopengles\ specification, the output may differ.
+Note that, presuming the output (usually a buffer to-be presented on-screen) is not calculated upon, this does not affect the \termtiming\ of the users' simulations.
+As such, this scenario maintains the determinism and repeatability traits of \termsimics .
+
+However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot) the \termtiming\ of simulation is influenced which may propogate - effectively causing a state-change in the simulated \termcpu .
+In this manner, the deterministic trait of \termsimics\ would be broken, as certain instructions no longer correspond to their previously \termtiming -accurate cycles.

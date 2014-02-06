@@ -1,0 +1,41 @@
+% dv2524build.tex
+% Defines Editorial- and Release build configurations. releasebuild toggle is defined in proposal.tex.
+
+% Conditional build:
+\iftoggle{releasebuild}{
+	% RELEASE BUILD:
+	\typeout{ Building \jobname with Release preferences. }
+	
+	% Disable Editorial notes:
+	\usepackage[disable]{todonotes} % http://www.tex.ac.uk/ctan/macros/latex/contrib/todonotes/todonotes.pdf	
+	% Enable internal hyperlinks without borders:
+	\usepackage[hidelinks]{hyperref}
+	
+	\newcommand{\buildconfig}{Release~Configuration}
+}{
+	% EDITORIAL BUILD:
+	\typeout{ Building \jobname with Editorial preferences. }
+	
+	% Enable Editorial notes:
+	\usepackage{todonotes} % http://www.tex.ac.uk/ctan/macros/latex/contrib/todonotes/todonotes.pdf
+	% Enable internal hyperlinks with borders:
+	\usepackage{hyperref}
+	
+	\newcommand{\buildconfig}{Editorial~Configuration}
+}
+
+% This segment interacts with [multibib]-package, causing .tex to not compile.
+	% Disable 'Citation needed'-command:
+	%\let\oldcite=\cite
+	%\renewcommand\cite[1]{\ifthenelse{\equal{#1}{NEEDED}}{\ensuremath{}}{\oldcite{#1}}}
+	% Disable 'Referral needed'-command:
+	%\let\oldcite=\cite
+	%\renewcommand\cite[1]{\ifthenelse{\equal{#1}{SEE}}{\ensuremath{}}{\oldcite{#1}}}
+
+% This segment interacts with [multibib]-package, causing .tex to not compile.
+	% Enable 'Citation needed'-command:
+	%\let\oldcite=\cite
+	%\renewcommand\cite[1]{\ifthenelse{\equal{#1}{NEEDED}}{\ensuremath{^\texttt{[\textcolor{blue}{Citation~needed!}]}}}{\oldcite{#1}}}
+	% Enable 'Referral needed'-command:
+	%\let\oldcite=\cite
+	%\renewcommand\cite[1]{\ifthenelse{\equal{#1}{SEE}}{\ensuremath{^\texttt{[\textcolor{red}{Referral~needed!}]}}}{\oldcite{#1}}}

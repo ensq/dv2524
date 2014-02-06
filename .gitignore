@@ -1,3 +1,4 @@
+# Added by github:
 *.acn
 *.acr
 *.alg
@@ -30,3 +31,8 @@
 *.vrb
 *.xdy
 *.tdo
+*.pdf
+
+# Added by author:
+*~
+*.gin

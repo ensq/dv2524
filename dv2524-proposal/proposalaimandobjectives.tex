@@ -1,0 +1,64 @@
+% proposalaimandobjectives.tex
+
+\chapter{Aim~\&~Objectives}
+\label{cha:aimandobjectives}
+The scope of the study proposed in this document consist of implementing paravirtualization of a graphics \termapi\ (being \termopengles ~2.0) in the \termsimics\ full system simulator developed by \termintel\ and sold through \termintel 's subsidiary \termwindriver\ 
+Said implementation adheres to a certain \termrefimpl\ (\dvcmdrefsee{\dvcmdrefsec{sec:researchmethodology_referencesolution}}), which is expanded upon in the latter parts of this document.
+As such, the aim concerns investigating the performance, and the feasability of extended benefits \& advanced functionality, of paravirtualized graphics acceleration in a virtual platform. Said integration entails investigating, analyzing, and developing methods \& techniques for efficient communication and execution in the \termsimics\ run-time environment, in addition to identifying liabilities of the paravirtualized solution in regards to \termsimics\ philosophy (being high-performance and \termtiming -accurate determinism and repeatability\dvpcmdcitebib{journals:aarno:2013}). As such, proposed study does not exclusively concern \termsimics\ integration, but an investigation into paravirtualized drivers in virtual platforms.
+The key aspects of such integration are as follows:
+\begin{enumerate*}
+	\item \label{itm:enum_aspects_performance} Performance characteristics.
+	Comparing the performance of a paravirtualized solution to that of a software renderer (\termsimics\ vs. \termsimics ).
+	Comparing the \termsimics\ solution to the \termrefsolu\ to see if the implementation carried over the same benefits (\termsimics\ vs. \termrefsolu ).
+	\item \label{itm:enum_aspects_advancedanalyze} A naïve porting of the \termrefimpl 's \termopengles\ acceleration into \termsimics\ would not support advanced features such as \termdetexe , \termcheckpointing , or \termrevexe .
+	Therefore, it would be beneficial to analyze the solution in terms of what it would take to support these features.
+	\item \label{itm:enum_aspects_advancedimplement} Extend the \termopengles\ acceleration to support \termcheckpointing\ and \termrevexe .
+\end{enumerate*}
+The proposed scope for said study is thus considered to investigate (\ref{itm:enum_aspects_performance}) and (\ref{itm:enum_aspects_advancedanalyze}) with (\ref{itm:enum_aspects_performance}) being the focal point of the study and (\ref{itm:enum_aspects_advancedimplement}), or part of (\ref{itm:enum_aspects_advancedimplement}), being the stretch goal.
+As such, the objectives that follow from the stated aim may be summarized as follows (\dvcmdrefsee{\dvcmdrefcha{cha:researchmethodology}} for more implementational details):
+
+\newcommand*\objective[1]{\item}%\item[\alph]
+\begin{multicols}{2}
+\begin{enumerate}[(a)]
+	\objective{1} Establish performance-wize sound communications between \termhost\ and \termtarget .
+	\objective{2} Be able to send, recieve, and callback, data in-between \termhost\ and \termtarget .
+	\objective{3} Translate given methods into desktop \termapi\ calls and invoke translated methods on the \termhost\ system.
+	\objective{4} Display results in \termtarget\ system.
+	\objective{5} Analyze performance variations of paravirtualized solution in regard to existing software~rasterizer in \termsimics , as described in (\ref{itm:enum_aspects_performance}).
+	\objective{6} Investigate feasability of advanced functionality described in (\ref{itm:enum_aspects_advancedanalyze}).
+\end{enumerate}
+\end{multicols}
+
+\section{Industrial~Collaboration}
+\label{sec:aimandobjectives_industrialcollaboration}
+Proposed study is performed at \termbth , for the \termbthdept , in collaboration with \termintel .
+In this manner, access to the source code of \termsimics\ along with documentation and other resources surrounding the \termsimics\ environment will be available during proposed study.
+During this time, the author will be employed at \termintel\ and will execute and compile the thesis at the \termintel\ offices in Stockholm.
+
+\section{Related~Work}
+\label{sec:aimandobjectives_relatedwork}
+System simulators are abundant and exist in corporate\dvpcmdcitebib{magazines:bohrer:2004}, academic\dvpcmdcitebib{journals:rosenblum:1995}, and open-source variations\dvpcmdciteref{magazines:bartholomew:2006}.
+These platforms, such as \termsimics , have been used for a variety of purposes including, but not limited to, thermal control strategies in multicores\dvpcmdcitebib{inproceedings:bartolini:2010}, networking timing analysis\dvpcmdcitebib{journals:ortiz:2009}, web server performance evaluation\dvpcmdcitebib{journals:villa:2005}, and to simulate costly hardware financially unfeasible to researchers\dvpcmdcitebib{journals:alameldeen:2003}.
+A wide array of corporations employ \termsimics , including \termibm \dvpcmdcitebib[p.~12:1,~12:6]{journals:koerner:2009}, \termintel \dvpcmdcitebib[p.~100]{journals:veselyi:2013}, and \termnasa \dvpcmdciteref{web:windriver:2014}\dvpcmdciteref{web:nasa:2014}.
+Additionally, the simulator has been known to operate in over $300$ universities throughout the world\dvpcmdcitebib[p.~252]{journals:villa:2005}.\\
+
+\noindent
+\termqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvpcmdcitebib[p.~1]{inproceedings:bellard:2005} (\dvcmdrefsee{\dvpcmdciteref[p.~69]{magazines:bartholomew:2006}} for an overview of \termqemu ) and a high-speed functional simulator\dvpcmdcitebib[p.~1]{inproceedings:shen:2010}.
+\termqemu\ supports simulation of several common system architectures and hardware devices and can, like \termsimics , save and restore the state of a simulation\dvpcmdcitebib[p.~1]{inproceedings:bellard:2005}.
+\termqemu\ is an extensively used virtual platform, and is the simulator used in the \termrefsolu\ (\dvcmdrefsee{\dvcmdrefsec{sec:researchmethodology_referencesolution}}).\\
+
+\noindent
+The concepts of advanced simulatory features are not new to \termgpu\ virtualization, as there have been previous attempts to implement the \termcheckpointrestart -model in a \termgpu\ context\dvpcmdcitebib{inproceedings:guo:2013}.
+Similar works include modeling \termgpu\ devices in \termqemu\ with software \termopengles\ rasterization support\dvpcmdcitebib{inproceedings:shen:2010}.
+
+% Stuff to look up:
+% * Any more available info on Virgil3D?
+% * Previous work on GPU Reverse Execution.
+% * Previous work on Determinism in GPU technologies.
+% * Previous work on GPU simulation, in general.
+
+% Unsupported claims:
+%Albeit supporting \termgpu\ virtualization, at version $1.7$ \termqemu\ still, in and of its own, lack support for hardware accelerated rasterization\cite{NEEDED}.
+%However, as early as 2006 there were experimental attempts at accelerating \termopengl\ in \termqemu \cite{SEE}.
+%The \termqemu\ platform has since been the focal point of several attempts at achieving such acceleration, possibly due to its open-source licensing.
+%Such an attempt is the \termvirgilthreed\ virtual \termgpu-project\cite{SEE}, that strives to create an abstract \termtarget\ \termgpu\ which may utilize the \termhost\ device.

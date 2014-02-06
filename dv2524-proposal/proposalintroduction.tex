@@ -1,0 +1,52 @@
+% proposalintroduction.tex
+
+\chapter*{Introduction}
+\label{cha:introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+Virtual platforms are becoming a critical tool in the software industry in order to provide cost-effective \termtimetomarket ~(\termttm) gains and meet the ever-shortening product life-cycles\dvpcmdcitebib[p.~50,~52]{journals:magnusson:2002}\dvpcmdcitebib[p.~268]{journals:yi:2006} (\dvcmdrefsee{\dvpcmdcitebib{magazines:magnusson:2004}} for an overview of the benefits of full-system simulation).
+Virtual platforms may deliver these \termttm -benefits in two major ways.
+Firstly, virtual platforms enables pre-silicon development, that is; software development can begin prior to next-generation hardware being available\dvpcmdcitebib[p.~52]{journals:magnusson:2002}.
+Secondly, virtual platforms may provide additional development tools compared to working with actual hardware.
+For example, some virtual platforms allow simulated systems to be stopped synchronously without affecting \termtiming\ or states of the \termtarget\ software\dvpcmdcitebib[p.~61]{inproceedings:yu:2012}, and allow investigation into race conditions and other parallel programming issues\dvpcmdcitebib[p.~1]{inproceedings:schumacher:2010}\dvpcmdcitebib[p.~7]{publications:leupers:2010}.
+Additionally, such platforms may allow intricate inspection of simulated hardware, such as memory, caches, and registers\dvpcmdcitebib[p.~54]{journals:magnusson:2002}.
+Some virtual platforms provide advanced features such as \termrevexe \dvpcmdcitebib[p.~30,~31]{publications:leupers:2010} (the ability to run a simulation backwards) and \termcheckpointing \dvpcmdcitebib[p.~28,~29]{publications:leupers:2010} (functionality to save- and restore the state of a simulation). 
+These features are useful for debugging and testing a diverse range of software; from firmware to end-user applications\dvpcmdcitebib[p.~25]{publications:leupers:2010}.
+
+Several techniques exist to provide fast functional virtual platforms that are running \termcpu -bound workloads. Typical methods include Interpreters\dvpcmdcitebib[p.~35]{journals:smith:2005} (slowest), techniques utilizing Just-in-Time~Compilation\dvpcmdcitebib[p.~24,~25]{journals:aarno:2013}, and Direct~Virtualization\dvpcmdcitebib[p.~24,~25]{journals:aarno:2013} (fastest)\dvpcmdcitebib[p.~38,~39]{publications:leupers:2010}.
+Virtual platforms using these techniques can typically achieve a simulation performance in the range of $10$-$1000$ \termmillioninstructionspersecond\ (\termmips ) \dvpcmdcitebib[p.~24,~25]{journals:aarno:2013}, but there is recorded performance of up to $5000$ \termmips \dvpcmdcitebib[p.~38,~39]{publications:leupers:2010}.\\
+% Originally, we cited the original Simics article here. Considering Simics has not yet been mentioned, this was removed. Refer to this somewhere else. (\dvcmdrefsee{\cite[p.~57]{journals:magnusson:2002}} for an, albeit dated, overview of performance in \termsimics )
+
+\noindent
+Graphics~Processing~Units (\termgpu s) have become a vital part in delivering good user experience on many types of devices ranging from wearable, handheld, and portable units to desktop computers\todo{Citation needed!}.
+In contrast to \termcpu -bound workloads, when developing \termgpu\ kernels, seemingly insignificant additions to code may cause significant changes in performance due to massively parallelized instruction sets (see Performance~Considerations by Kirk~\&~Hwu\dvpcmdcitebib[ch.~6]{publications:kirk:2010} for an analysis on the volatility of \termgpu\ performance).
+Since \termgpu s operate significantly different from traditional Central~Processing~Units (\termcpu s), they pose unique challenges to designers and developers (see Parallel~Programming~and~Computational~Thinking by Kirk~\&~Hwu\dvpcmdcitebib[ch.~13]{publications:kirk:2010} for an elaboration on \termgpgpu\ methodology).
+The increased utilization of \termgpu s for general purpose workloads has extended the need for virtualization of such hardware in situations when hardware is busy, unavailable, not sufficient, or for the purposes of debugging \& profiling\footnote{An example of modern technology developed for said purposes is \termmicrosoft ~\termwarp\ - \termmicrosoft s latest addition to the \termdirectx\ framework. (\dvcmdrefsee{\dvpcmdciteref{web:microsoft:2013:warp}})}.
+Yet seemingly few virtual platforms support virtualization of \termgpu s, despite their influence on modern computing.\\
+
+\noindent
+For the purposes of simulation, different solutions follow varying use-cases. For example, developers interested in benchmarking or driver development for next generation \termgpu - or \termcpu s may need detailed simulators that provide insight into execution engines and pipelines\dvpcmdcitebib[p.~1]{inproceedings:schumacher:2010}.
+Albeit useful in certain use-cases and capable of running 'toy' applications, such platforms are often orders of magnitude too slow to run commercial workloads\dvpcmdcitebib[p.~50]{journals:magnusson:2002}.
+Application developers, on the other hand, do not necessarily care for the internal workings of hardware as they typically work at a higher abstraction level, for example; utilizing graphics \termapi s (such as \termopengl ) that, in turn, communicate with the device driver.
+As such, application developers may be more interested in achieving decent simulation performance rather than a timing-accurate processor model (\dvcmdrefsee{\dvpcmdcitebib[p.~30]{publications:leupers:2010}} for an analysis of compromises in system simulation).
+However, due to large differences in-between \termcpu - and \termgpu -architecture, simply delegating commonly \termgpu -bound workloads to the \termhost\ \termcpu\ is rarely feasible in terms of performance.
+
+Common approaches to achieve better simulation performance includes creating a functionally accurate model of the \termgpu\ (inducing the advantage of being able to utilize the same software [drivers, libraries, etc.] as the \termhost\ platform), where internal details may be simplified, or using Software~Rasterization without involving the \termgpu\ model.
+However, these methodologies traditionally incur heavy performance losses in comparison to \termgpu\ hardware acceleration.
+In order to achieve better performance, one may offload such kernels to the \termgpu\ of the simulation \termhost .
+There are a number of way to achieve such acceleration, such as relying on \termpci ~passthrough and similar technologies to grant access to the underlying \termhost\ hardware from within the virtual platform\dvpcmdcitebib[p.~415,~416]{inproceedings:regola:2010} (\dvcmdrefsee{\dvpcmdciteref{web:jones:2009}} for an overview on \termpci ~passthrough), or introducing a concept commonly referred to as '\termparavirtualization ' at a higher level of abstraction (e.g., the \termopengl\ library).
+
+%Although some sources argue that \termgpu\ workloads may reach feasible performance when simulated on \termcpu s\cite{NEEDED}\todo{Consider citing your own article.}, 
+
+Paravirtualization is a relatively new term\todo{Point out that the concept is older.}\ originally defined as selectively modifying the virtual architecture to enhance scalability, performance, and simplicity\dvpcmdcitebib[p.~165-166]{magazines:bartholomew:2006}.
+Effectively, this means modifying the virtual machine to be similar, but not identical, to the simulated hardware\dvpcmdcitebib[p.~165]{journals:barham:2003}.
+As such, one may simplify the virtualization process by neglecting some hardware compatibility\dvpcmdcitebib[p.~1]{inproceedings:youseff:2006}.
+Implementing \termgpu\ simulation by the means of paravirtualization provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
+For example, it may be challenging to support advanced features such as \termdetexe , \termcheckpointing , and \termrevexe .
+Additionally, paravirtualization entail erronous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.  
+Yet, aforementioned technique is the preferred method of \termgoogle\ in the \termandroid ~\termsdk\ when utilizing the \termqemu\ virtual platform in order to simulate \termopengles.\\
+
+\noindent
+This proposal suggests - pursuant to  modern-day influence of \termgpu\ technologies and the increasing need for extended virtual platforms - investigation into \termparavirtualization\ of \termopengles\ in the \termsimics\ virtual platform, in accordance to the methodology used by \termgoogle\ in the \termandroid ~\termsdk .
+
+As such, in accordance to The~2012~\termacm ~Computing~Classification~System, proposed study concerns the fields of virtual~machines, graphics systems and interfaces,  and graphics~processors, respectively. Additionally, proposed study concerns, likewize in accordance to The~2012~\termacm ~Computing~Classification~System, \termintel . The remainder of this document presents the objectives-, question~formulations thereof-, suggested procedure, predicted risks, and the time~plan of proposed study.
+Implementational details and a breakdown structure is presented under \dvcmdrefname{cha:appendixa}.
