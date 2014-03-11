@@ -1,0 +1,169 @@
+\documentclass[a4paper,oneside]{bth}
+
+\usepackage{amsmath}
+\usepackage{mathenv}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{xtab}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf}
+
+\newtheorem{lem}{\textsc{Lemma}}[chapter]
+\newtheorem{thm}{\textsc{Theorem}}[chapter]
+\newtheorem{prop}{\textsc{Proposition}}[chapter]
+\newtheorem{post}{Postulate}[chapter]
+\newtheorem{corr}{\textsc{Corollary}}[chapter]
+\newtheorem{defs}{\textsc{Definition}}[chapter]
+\newtheorem{cons}{\textsc{Constraint}}[chapter]
+\newtheorem{ex}{\textbf{Example}}[chapter]
+\newtheorem{qu}{\textbf{Question}}[chapter]
+
+\begin{document}
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% Front matter
+
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%   
+{\small
+\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+\textit{Master Thesis}&\multirow{4}{*}{\bthcsnotextlogo{3cm}}\\
+\textit{Computer Science}\\
+\textit{Thesis no: MCS-20YY-NN}\\
+\textit{MM YYYY}\\
+\end{tabular}}
+
+\begin{center}
+
+\par\vspace {7cm}
+
+{\Huge\textbf{Centered Title Times Font\\*[0.25cm] Size 24 Bold}}   
+
+\par\vspace {0.5cm}
+
+{\Large\textbf{Centered Subtitle Times Font Size 16 Bold}}                   
+
+\par\vspace {3cm}
+
+{\Large\textbf{Firstname Lastname}}
+\par\vspace {7cm}
+
+\end{center}
+
+\noindent%
+{\small Dept. Computer Science \& Engineering \\
+Blekinge Institute of Technology\\
+SE--371 79 Karlskrona, Sweden}
+
+\clearpage
+}
+
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+\begin{tabular}{p{\textwidth}}
+{\small This thesis is submitted to the Department of Computer Science \& Engineering at Blekinge
+Institute of Technology in partial fulfillment of the requirements for the degree of Master
+of Science in Computer Science. The thesis is equivalent to XX weeks of
+full-time studies.}
+\end{tabular}
+
+\par\vspace {12cm}
+
+\noindent%
+\begin{tabular}{p{0.5\textwidth}lcl}
+\textbf{Contact Information:}\\
+Author(s):\\
+Firstname Lastname\\
+E-mail: acroyy@student.bth.se\\
+\par\vspace {5cm}
+University advisor:\\
+Prof.\ Firstname Lastname\\
+Dept. Computer Science \& Engineering
+\par\vspace {1cm}
+\noindent%
+ \\
+Dept. Computer Science \& Engineering & Internet & : & www.bth.se/didd\\
+Blekinge Institute of Technology & Phone	& : & +46 455 38 50 00 \\
+SE--371 79 Karlskrona, Sweden & Fax & : & +46 455 38 50 57 \\
+\end{tabular}
+\clearpage
+} % Back to \pagestyle{plain}
+
+\setcounter{page}{1}
+
+% ABSTRACT
+
+\abstract
+\begin{changemargin}{+1cm}{+1cm}
+\noindent
+\textbf{Context}. Strategic release planning (sometimes referred to as
+road-mapping) is an important phase of the requirements engineering process
+performed at product level. It is concerned with selection and assignment of
+requirements in sequences of releases such that important technical and resource
+constraints are fulfilled.\newline
+\textbf{Objectives}. In this study we investigate which strategic release
+planning models have been proposed, their degree of empirical validation, their
+factors for requirements selection, and whether they are intended for a bespoke
+or market-driven requirements engineering context.\newline
+\textbf{Methods}. In this systematic review a number of article sources are used,
+including Compendex, Inspec, IEEE Xplore, ACM Digital Library, and Springer Link.
+Studies are selected after reading titles and abstracts to decide whether the
+articles are peer reviewed, and relevant to the subject.\newline
+\textbf{Results}. 24 strategic release planning models are found and mapped in
+relation to each other, and a taxonomy of requirements selection factors is
+constructed.\newline
+\textbf{Conclusions}. We conclude that many models are related to each other and
+use similar techniques to address the release planning problem. We also conclude
+that several requirement selection factors are covered in the different models,
+but that many methods fail to address factors such as stakeholder value or
+internal value. Moreover, we conclude that there is a need for further empirical
+validation of the models in full scale industry trials.
+
+\par\vspace {1cm}
+% 3-4 keywords, maximum 2 of these from the title, starts 1 line below the
+% abstract.
+\noindent
+\textbf{Keywords:} 3-4 keywords, maximum 2 of these from the title, starts 1 line
+below the abstract.
+
+\end{changemargin}
+
+%\include{acknowledgments} %OPTIONAL
+%\listoffigures %in case you have them
+%\listoftables %in case you have them
+%\listofalgorithms %in case you have them
+\tableofcontents 
+
+\cleardoublepage
+\pagestyle{headings}
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+
+\chapter{Related Work}
+
+\chapter{Method}
+
+\chapter{Results}
+
+\chapter{Analysis}
+
+\chapter{Conclusions and Future Work}
+
+\chapter*{References}
+
+\end{document}
