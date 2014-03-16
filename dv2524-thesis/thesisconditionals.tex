@@ -1,0 +1,26 @@
+% thesisconditionals.tex
+% Describes build settings for document.
+
+% Typesetting dependant on target reader:
+\iftoggle{bthformatting}{ % If formatting is intended for the institution, we assume that the author of the original template has included the correct (Times New Roman) font in the packages-section.
+	\usepackage{textcomp} % This package, originally included in the template, conflicts with kpfonts. Hence, we include this in the conditional.
+	
+	\togglefalse{backpage}
+	\togglefalse{intellogo}
+}{
+	\usepackage{kpfonts} % If formatting is not intended for the institution, we may use whatever typesetting we wish:
+	
+	\toggletrue{backpage}
+	\toggletrue{intellogo}
+}
+
+% Typesetting dependant on editorial-/release build:
+\iftoggle{releasebuild}{
+	\usepackage[hidelinks]{hyperref} % Force hide hyperlink borders. Consider removing this, as such settings ought to be up to .pdf-reader.
+
+	\newcommand{\releasebuildtostring}{Release configuration}
+}{
+	\usepackage{hyperref}
+	
+	\newcommand{\releasebuildtostring}{Editorial configuration}
+}

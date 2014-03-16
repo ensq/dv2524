@@ -1,0 +1,28 @@
+% thesisback.tex
+% Describes back page(s) of document.
+
+\newcommand{\commitlink}{https://github.com/CaterHatterPillar/dv2524/commit/}
+\expandafter\def\expandafter\commitlink\expandafter{\commitlink \gitAbbrevHash}
+
+\yyyymmdddate
+\renewcommand{\dateseparator}{-} % To print date in same format as gitinfo-package.
+
+% Compile information:
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+\begin{tabular}{p{\textwidth}}
+{\small This document was compiled in \releasebuildtostring\ \gitReferences\ \today\ and last edited by \gitAuthorName\ \gitAuthorDate . This document is Version.\gitVtagn , and can be identified using revision- and commit hash \href{\commitlink}{\gitAbbrevHash}}.
+\end{tabular}
+
+\par\vspace {22cm} % HACK %\vfill
+
+% Institutional information:
+\noindent%
+\begin{tabular}{p{0.5\textwidth}lcl}
+Dept. Computer Science \& Engineering & Internet & : & \url{www.bth.se/didd}\\
+Blekinge Institute of Technology & Phone	& : & +46 455 38 50 00 \\
+SE--371 79 Karlskrona, Sweden & Fax & : & +46 455 38 50 57 \\
+\end{tabular}
+\clearpage
+} % Back to \pagestyle{plain}

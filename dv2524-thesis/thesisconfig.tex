@@ -1,0 +1,17 @@
+% thesisconfig.tex
+% Describes settings for building the document.
+
+\usepackage{etoolbox} % Conditionals
+
+% Primary expressions:
+% Modify these to change build.
+\newtoggle{bthformatting}
+\newtoggle{releasebuild}
+
+\togglefalse{bthformatting}
+\toggletrue{releasebuild}
+
+% Secondary expressions:
+% These variables are toggled by the primary expressions and are defined here for brevity's sake.
+\newtoggle{intellogo}
+\newtoggle{backpage}

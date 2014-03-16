@@ -1,0 +1,93 @@
+% thesisfront.tex
+% Describes front pages of document.
+
+\newcommand{\intellogo}[1]{%
+   \includegraphics[width=#1]{../dv2524-encl/Intel-logo.pdf}%
+}
+
+% ---
+% Front page
+% ---
+
+% Thesis info and institutional logo:
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%   
+{\small
+\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+\textit{Master Thesis}&\multirow{4}{*}{\bthcsnotextlogo{3cm}}\\
+\textit{Computer Science}\\
+\textit{Thesis no: MCS-20YY-NN}\\
+\textit{MM YYYY}\\
+\end{tabular}}
+
+% Title:
+\begin{center}
+\par\vspace {7cm}
+{\Huge\textbf{Centered Title Times Font\\*[0.25cm] Size 24 Bold}}   
+\par\vspace {0.5cm}
+{\Large\textbf{Centered Subtitle Times Font Size 16 Bold}}                   
+\par\vspace {3cm}
+{\Large\textbf{Firstname Lastname}}
+\par\vspace {7cm}
+\end{center}
+
+% Institutional info and Intel logo (if enabled in build settings):
+\noindent%
+\iftoggle{intellogo}{
+	{\small
+	\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+	Dept. Computer Science \& Engineering&\multirow{4}{*}{\intellogo{3cm}}\\
+	Blekinge Institute of Technology\\
+	SE--371 79 Karlskrona, Sweden
+	\end{tabular}}
+}{
+	{\small Dept. Computer Science \& Engineering \\
+	Blekinge Institute of Technology\\
+	SE--371 79 Karlskrona, Sweden}
+}
+\clearpage
+}
+
+% ---
+% Additional details page
+% ---
+
+% Thesis details:
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+\begin{tabular}{p{\textwidth}}
+{\small This thesis is submitted to the Department of Computer Science \& Engineering at Blekinge
+Institute of Technology in partial fulfillment of the requirements for the degree of Master
+of Science in Computer Science. The thesis is equivalent to XX weeks of
+full-time studies.}
+\end{tabular}
+
+\par\vspace {12cm}
+
+% Author and supervisor contact information:
+\noindent%
+\begin{tabular}{p{0.5\textwidth}lcl}
+\textbf{Contact Information:}\\
+Author(s):\\
+Firstname Lastname\\
+E-mail: acroyy@student.bth.se\\
+\par\vspace {5cm}
+University advisor:\\
+Prof.\ Firstname Lastname\\
+Dept. Computer Science \& Engineering
+
+\par\vspace {1cm}
+
+% Institutional contact information:
+\noindent%
+ \\
+Dept. Computer Science \& Engineering & Internet & : & www.bth.se/didd\\
+Blekinge Institute of Technology & Phone	& : & +46 455 38 50 00 \\
+SE--371 79 Karlskrona, Sweden & Fax & : & +46 455 38 50 57 \\
+\end{tabular}
+\clearpage
+} % Back to \pagestyle{plain}
+
+\setcounter{page}{1}
