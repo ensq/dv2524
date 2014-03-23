@@ -8,10 +8,17 @@
 \newtoggle{bthformatting}
 \newtoggle{releasebuild}
 
+% BTH Strict build:
 \togglefalse{bthformatting}
 \toggletrue{releasebuild}
+
+% Release build (BTH slack build):
+%\toggletrue{bthformatting}
+%\togglefalse{releasebuild} % What were you thinking here? Wouldn't a single boolean value suffice?
 
 % Secondary expressions:
 % These variables are toggled by the primary expressions and are defined here for brevity's sake.
 \newtoggle{intellogo}
 \newtoggle{backpage}
+\newtoggle{acmclassification}
+\newtoggle{generalterms}

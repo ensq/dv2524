@@ -2,8 +2,9 @@
 % Describes front pages of document.
 
 \newcommand{\intellogo}[1]{%
-   \includegraphics[width=#1]{../dv2524-encl/Intel-logo.pdf}%
+	\includegraphics[width=#1]{../dv2524-encl/Intel-logo.pdf}%
 }
+\newcommand{\logossize}{3cm}
 
 % ---
 % Front page
@@ -15,20 +16,20 @@
 \noindent%   
 {\small
 \begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
-\textit{Master Thesis}&\multirow{4}{*}{\bthcsnotextlogo{3cm}}\\
+\textit{Master Thesis}&\multirow{4}{*}{\includegraphics[trim = 3mm 0mm 3mm 4.7cm, clip, width=\logossize]{../dv2524-encl/bthnotext}}\\ % Hack, but at least it's less of a hack than the previous solution of a misplaced, hard-coded, logo.
 \textit{Computer Science}\\
-\textit{Thesis no: MCS-20YY-NN}\\
-\textit{MM YYYY}\\
+\textit{Thesis no: MCS-20YY-NN}\\ % TODO: Complement.
+\textit{MM YYYY}\\ % TODO: Complement.
 \end{tabular}}
 
 % Title:
 \begin{center}
 \par\vspace {7cm}
-{\Huge\textbf{Centered Title Times Font\\*[0.25cm] Size 24 Bold}}   
+{\Huge\textbf{Paravirtualization of OpenGL ES in Simics}} % Centered Title Times Font\\*[0.25cm] Size 24 Bold
 \par\vspace {0.5cm}
-{\Large\textbf{Centered Subtitle Times Font Size 16 Bold}}                   
+{\Large\textbf{}} % Centered Subtitle Times Font Size 16 Bold
 \par\vspace {3cm}
-{\Large\textbf{Firstname Lastname}}
+{\Large\textbf{Eric Nilsson}}
 \par\vspace {7cm}
 \end{center}
 
@@ -37,7 +38,7 @@
 \iftoggle{intellogo}{
 	{\small
 	\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
-	Dept. Computer Science \& Engineering&\multirow{4}{*}{\intellogo{3cm}}\\
+	Dept. Computer Science \& Engineering&\multirow{4}{*}{\intellogo{\logossize}}\\
 	Blekinge Institute of Technology\\
 	SE--371 79 Karlskrona, Sweden
 	\end{tabular}}
@@ -61,7 +62,7 @@
 {\small This thesis is submitted to the Department of Computer Science \& Engineering at Blekinge
 Institute of Technology in partial fulfillment of the requirements for the degree of Master
 of Science in Computer Science. The thesis is equivalent to XX weeks of
-full-time studies.}
+full-time studies.} % TODO: Complement.
 \end{tabular}
 
 \par\vspace {12cm}
@@ -71,11 +72,11 @@ full-time studies.}
 \begin{tabular}{p{0.5\textwidth}lcl}
 \textbf{Contact Information:}\\
 Author(s):\\
-Firstname Lastname\\
-E-mail: acroyy@student.bth.se\\
+Eric Nilsson\\
+E-mail: erne09@student.bth.se\\ % Consider adding additional e-mail adress.
 \par\vspace {5cm}
 University advisor:\\
-Prof.\ Firstname Lastname\\
+Prof.\ Håkan Grahn, Research Dean of Faculty\\
 Dept. Computer Science \& Engineering
 
 \par\vspace {1cm}
