@@ -11,3 +11,5 @@ cp ../dv2524-packages/gitinfo/gitsetinfo.sty gitsetinfo.sty
 
 pdflatex thesis
 pdflatex thesis
+
+# evince thesis.pdf
