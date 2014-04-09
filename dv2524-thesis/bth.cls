@@ -227,10 +227,35 @@
    \if@restonecol\twocolumn\fi
 }
 
+%\renewenvironment{thebibliography}[1]{%
+%   \chapter*{References
+%      \@mkboth{References}{References}}%            Headings not uppercased
+%   \addcontentsline{toc}{chapter}{References}%    Add to table-of-contents
+%   \list{\@biblabel{\arabic{enumiv}}}{%
+%      \settowidth\labelwidth{\@biblabel{#1}}%
+%      \leftmargin\labelwidth
+%      \advance\leftmargin\labelsep
+%      \@openbib@code
+%      \usecounter{enumiv}%
+%      \let\p@enumiv\@empty
+%      \renewcommand{\theenumiv}{\arabic{enumiv}}%
+%   }%
+%   \sloppy\clubpenalty4000\widowpenalty4000%
+%   \sfcode`\.=\@m
+%}{%
+%   \def\@noitemerr{%
+%      \@latex@warning{Empty `thebibliography' environment}%
+%   }%
+%   \endlist
+%}
+
+% ---
+% Non-hardcoded version of the above. As such, control is handed over to the user concerning whatever name he/she wants for his/her bibliography.
+% Also edited bibliographies to be considered as sections rather than chapters. Furthermore, bibliographies aren't added to TOC. This has to be done manually.
+% Author: Eric Nilsson
 \renewenvironment{thebibliography}[1]{%
-   \chapter*{References
-      \@mkboth{References}{References}}%            Headings not uppercased
-   \addcontentsline{toc}{chapter}{References}%    Add to table-of-contents
+   \section*{\bibname
+      \@mkboth{\bibname}{\bibname}}%            Headings not uppercased
    \list{\@biblabel{\arabic{enumiv}}}{%
       \settowidth\labelwidth{\@biblabel{#1}}%
       \leftmargin\labelwidth
@@ -248,6 +273,7 @@
    }%
    \endlist
 }
+% ---
 
 \renewenvironment{theindex}{%
    \cleardoublepage%                               Start on a right-hand page

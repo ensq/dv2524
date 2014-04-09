@@ -1,12 +1,20 @@
 % thesis.tex
-% Thesis document
+% ---
+% | Paravirtualisation of OpenGL ES in Simics
+% | Master's Thesis in Computer Science
+% | Eric Nilsson
+% | Blekinge Institute of Technology, Intel
+% ---
 
 \documentclass[a4paper,oneside]{bth}
 \DeclareGraphicsExtensions{.pdf}
 
-\input{thesisconfig} % Build settings
-\input{thesispackages} % Common includes
-\input{thesisconditionals} % Conditional includes
+\input{thesisconfig} % Build settings.
+\input{thesispackages} % Common includes.
+
+\input{thesisbib} % Bibliography configuration.
+\input{thesiscommands} % User commands.
+\input{thesisconditionals} % Conditional includes.
 
 % Stuff not being used:
 \newtheorem{lem}{\textsc{Lemma}}[chapter] % Try to get rid of this unecessary stuff somehow.
@@ -24,10 +32,10 @@
 \pagestyle{plain}
 \pagenumbering{roman}
 
-% Chapter (-) - Front page(s)
+% Chapter (-) - Front page(s):
 \include{thesisfront}
 
-% Chapter (0) - Abstract
+% Chapter (0) - Abstract:
 \include{thesisabstract}
 
 % Table of Contents
@@ -41,15 +49,22 @@
 \pagestyle{headings}
 \pagenumbering{arabic}
 
-\chapter{Introduction}
+% Chapter (1) - Introduction:
+\include{thesisintroduction}
+
 \chapter{Related Work}
 \chapter{Method}
 \chapter{Results}
 \chapter{Analysis}
 \chapter{Conclusions and Future Work}
-\chapter*{References}
 
-% Chapter (+) - Back page(s)
+% Chapter (?) - Bibliography:
+\include{thesisbibliography}
+
+% Chapter (?) - Web References:
+\include{thesiswebreferences}
+
+% Chapter (+) - Back page(s):
 \iftoggle{backpage}{ % If back page is enabled.
 	\include{thesisback}
 }
