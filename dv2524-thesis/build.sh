@@ -35,6 +35,13 @@ cp ../dv2524-packages/gitinfo/gitinfo.sty gitinfo.sty
 cp ../dv2524-packages/gitinfo/gitsetinfo.sty gitsetinfo.sty
 
 printf "Building LaTeX-document with pdflatex...\n"
+# Build intermediate .aux-files and symbol tree:
+pdflatex thesis
+
+# Build [multibib] bibliography:
+bibtex bib.aux
+bibtex ref.aux
+
 pdflatex thesis
 pdflatex thesis
 

@@ -3,3 +3,25 @@
 
 \newcommand{\dvtcmdcitebib}[2][]{\citebib{#2}} % Use these commands to cite, in case page numbers and/or additional details are to be added at a later stage.
 \newcommand{\dvtcmdciteref}[2][]{\citeref{#2}}
+
+% Capitalize once command:
+\newcommand{\dvtcmdcaponce}[1]{%
+	\provideboolean{#1}%
+	\ifthenelse{\boolean{#1}}{%
+		\MakeLowercase{#1}%
+	}{%
+		\setboolean{#1}{true}%
+		\capitalisewords{#1}%
+	}%
+}
+
+% Abbreviation command; outputs a phrase along with its abbreviation unless it has been written in full before, in which case it outputs its abbreviation exclusively:
+\newcommand{\dvtcmdabbrev}[2]{%
+	\provideboolean{#2}%
+	\ifthenelse{\boolean{#2}}{%
+		#2
+	}{%
+		\setboolean{#2}{true}%
+		#1 (#2)
+	}%
+}
