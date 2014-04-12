@@ -5,16 +5,11 @@
 
 % Primary expressions:
 % Modify these to change build.
-\newtoggle{bthformatting}
-\newtoggle{releasebuild}
+\newtoggle{bthformatting} % 'Is strict BTH formatting.'
+\newtoggle{releasebuild} % 'Is not editorial build.'
 
-% BTH Strict build:
-\togglefalse{bthformatting}
-\toggletrue{releasebuild}
-
-% Release build (BTH slack build):
-%\toggletrue{bthformatting}
-%\togglefalse{releasebuild} % What were you thinking here? Wouldn't a single boolean value suffice?
+\togglefalse{bthformatting} % Don't use BTH formatting.
+\togglefalse{releasebuild} % Editorial build.
 
 % Secondary expressions:
 % These variables are toggled by the primary expressions and are defined here for brevity's sake.

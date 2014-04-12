@@ -2,31 +2,64 @@
 % Defines commonly used phrases to save time on common formatting.
 
 % A
+\newcommand{\dvttermapi}{\dvtcmdabbrev{Application Programming Interface}{API}} % Application Programming Interface
+\newcommand{\dvttermabi}{\dvtcmdabbrev{Application Binary Interface}{ABI}} % Application Binary Interface
+\newcommand{\dvttermandroid}{Android} % Android
+\newcommand{\dvttermandroidsdk}{\dvttermandroid\ SDK} % Android SDK
+\newcommand{\dvttermacm}{ACM}
 % B
 % C
+\newcommand{\dvttermcheckpointing}{\dvtcmdcaponce{Checkpointing}} % Checkpointing
+\newcommand{\dvttermcpu}{\dvtcmdabbrev{Central Processing Unit}{CPU}} % Central Processing Unit
 % D
+\newcommand{\dvttermdirectvirtualization}{\dvtcmdcaponce{Direct Virtualization}} % Direct Virtualization
+\newcommand{\dvttermdirectx}{DirectX} % DirectX
+\newcommand{\termdeterministicexecution}{\dvtcmdcaponce{Deterministic Execution}} % Deterministic Execution
 % E
 % F
 % G
+\newcommand{\dvttermgpu}{\dvtcmdabbrev{Graphics Processing Unit}{GPU}} % Graphics Processing Unit
+\newcommand{\dvttermgpgpu}{\dvtcmdabbrev{General Purpose computing on Graphics Processing Units}{GPGPU}} % General Purpose computing on Graphics Processing Units
+\newcommand{\dvttermgoogle}{Google} % Google
 % H
+\newcommand{\dvttermhost}{\dvtcmdcaponce{Host}}
 % I
+\newcommand{\dvtterminterpreter}{\dvtcmdcaponce{Interpreter}} % Interpreter
+\newcommand{\dvttermintel}{Intel~Corporation} % Intel Corporation
+% J
+\newcommand{\dvttermjit}{\dvtcmdabbrev{Just-in-Time}{JIT}} % Just-in-Time
 % K
 % L
 % M
+\newcommand{\dvttermmipsecond}{\dvtcmdabbrev{Million Instructions Per Second}{MIPS}} % Million Instructions Per Second
+\newcommand{\dvttermmicrosoft}{Microsoft} % Microsoft
 % N
 % O
+\newcommand{\dvttermopengl}{OpenGL}
+\newcommand{\dvttermopengles}{\dvttermopengl ~ES}
 % P
+\newcommand{\dvttermpci}{\dvtcmdabbrev{Peripheral Component Interconnect}{PCI}} % Peripheral Component Interconnect
+\newcommand{\dvttermpcipassthrough}{\dvttermpci\ passthrough} % PCI Passthrough
+\newcommand{\dvttermparavirtualization}{\dvtcmdcaponce{Paravirtualization}} % Paravirtualization
 % Q
+\newcommand{\dvttermqemu}{QEMU} % QEMU. QEMU is an abbreviation, but is not formatted as such since it is also a product name.
 % R
+\newcommand{\dvttermreverseexecution}{\dvtcmdcaponce{Reverse Execution}} % Reverse Execution
 % S
+\newcommand{\dvttermsoftwarerendering}{\dvtcmdcaponce{Software Rendering}} % Software Rendering
+\newcommand{\dvttermsimics}{Simics}
 % T
-\newcommand{\termttm}{\dvtcmdabbrev{Time-to-Market}{TTM}} % Time-to-Market
+\newcommand{\dvttermttm}{\dvtcmdabbrev{Time-to-Market}{TTM}} % Time-to-Market
+\newcommand{\dvttermtiming}{\dvtcmdcaponce{Timing}} % Timing
+\newcommand{\dvttermtarget}{\dvtcmdcaponce{Target}} % Target
 % V
+% W
+\newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{Windows Advanced Rasterization Platform}{WARP}} % Microsoft WARP
 % X
 % Y
 % Z
 
-% Terms defines in proposalterms.tex; try to adhere to these:
+% Terms yet to be defines:
 %% Document & Grammar:
 %\newcommand{\termsec}{Section}
 %\newcommand{\termcha}{Chapter}
@@ -37,11 +70,6 @@
 %\newcommand{\termos}{OS}
 %\newcommand{\termttm}{TTM} % Time-to-Market
 %\newcommand{\termsdk}{SDK} % Software Development Kit
-%\newcommand{\termapi}{API} % Application Programming Interface
-%\newcommand{\termabi}{ABI} % Application Binary Interface
-%\newcommand{\termcpu}{CPU} % Central Processing Unit
-%\newcommand{\termgpu}{GPU} % Graphics Processing Unit
-%\newcommand{\termgpgpu}{GPGPU} % General Purpose computing on Graphics Processing Units
 %\newcommand{\termcallback}{Callback}
 %\newcommand{\termcompsci}{Computer~Science}
 %\newcommand{\termmips}{MIPS}
@@ -53,8 +81,6 @@
 %\newcommand{\termxgl}{XGL}
 %\newcommand{\termagl}{AGL}
 %\newcommand{\termwgl}{WGL}
-%\newcommand{\termopengl}{OpenGL}
-%\newcommand{\termopengles}{\termopengl ~ES}
 %\newcommand{\termunix}{UNIX}
 %\newcommand{\termwinthirtytwo}{Win32}
 %\newcommand{\termip}{IP}
@@ -63,34 +89,26 @@
 %\newcommand{\termarm}{ARM}
 %\newcommand{\termxeightysix}{x86}
 %% Organizations:
-%\newcommand{\termintel}{Intel~Corporation}
 %\newcommand{\termnvidia}{Nvidia}
-%\newcommand{\termgoogle}{Google}
 %\newcommand{\termwindriver}{Wind~River~Systems,~Inc.}
 %\newcommand{\termbth}{Blekinge~Institute~of~Technology}
 %\newcommand{\termbthdept}{Dept.~\termcompsci ~\&~Engineering}
-%\newcommand{\termmicrosoft}{Microsoft}
 %\newcommand{\termibm}{IBM}
-%\newcommand{\termacm}{ACM}
 %\newcommand{\termnasa}{NASA}
 %\newcommand{\termlinaro}{Linaro}
 %% Operating Systems, Technologies & Products:
 %\newcommand{\termosx}{OS~X}
 %\newcommand{\termlinux}{Linux}
 %\newcommand{\termsolaris}{Solaris}
-%\newcommand{\termandroid}{Android}
 %\newcommand{\termwindows}{\termmicrosoft ~Windows}
-%\newcommand{\termqemu}{QEMU}
 %\newcommand{\termandroidemu}{\termandroid ~Emulator}
 %\newcommand{\termvirgilthreed}{Virgil3D}
 %\newcommand{\termcuda}{CUDA}
-%\newcommand{\termdirectx}{Direct~X}
 %\newcommand{\termwarp}{WARP}
 %\newcommand{\termpci}{PCI}
 %\newcommand{\termxeleven}{X11}
 %\newcommand{\termglmarktwo}{glmark2}
 %% Simics:
-%\newcommand{\termsimics}{Simics}
 %\newcommand{\termfs}{\termsimics ~FS}
 %% Code-names:
 %\newcommand{\termrefimpl}{Reference~Implementation}
@@ -98,18 +116,10 @@
 %% Concepts:
 %\newcommand{\termtimetomarket}{\dvcmdcaponce{Time-to-Market}}
 %\newcommand{\termframespersecond}{\dvcmdcaponce{Frames Per Second}}
-%\newcommand{\termdetexe}{\dvcmdcaponce{Deterministic Execution}}
 %\newcommand{\termdetalg}{\dvcmdcaponce{Deterministic Algorithm}}
-%\newcommand{\termcheckpoint}{\dvcmdcaponce{Checkpoint}}
 %\newcommand{\termcheckpointrestart}{\dvcmdcaponce{Checkpoint / Restart}}
 %\newcommand{\termcheckpointing}{\dvcmdcaponce{Checkpointing}}
-%\newcommand{\termrevexe}{\dvcmdcaponce{Reverse Execution}}
-%\newcommand{\termtiming}{\dvcmdcaponce{Timing}}
-%\newcommand{\termhost}{\dvcmdcaponce{Host}}
-%\newcommand{\termtarget}{\dvcmdcaponce{Target}}
 %\newcommand{\termmagicinstr}{\dvcmdcaponce{Magic Instruction}}
-%\newcommand{\termparavirtualization}{\dvcmdcaponce{Paravirtualization}}
-%\newcommand{\termmillioninstructionspersecond}{\dvcmdcaponce{Million Instructions Per Second}}
 %% Persons involved in the project (in case titles are to be added):
 %\newcommand{\termhakan}{Prof. Håkan Grahn, Research Dean of Faculty}
 %\newcommand{\termhakandept}{Dept.~Computer~Science~\&~Engineering}
