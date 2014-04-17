@@ -11,7 +11,7 @@ printf "---\n\n"
 
 # Clean:
 printf "Cleaning...\n"
-for file in *.aux *.bbl *.blg *.log *.out *.bib ; do
+for file in *.aux *.bbl *.blg *.log *.out *.bib; do
 	rm $file
 done
 
