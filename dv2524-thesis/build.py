@@ -36,11 +36,11 @@ with zipfile.ZipFile("../dv2524-encl/dv2524-encl.zip", 'r') as zip:
 
 # Create original bib-files containing desired entries:
 # Said entries are copied into files with an additional '.bib' appended to the filename (in case the user is building on my Windows-machine using MiKTeX).
-bibfiles = ["../dv2524-bib/papers.bib", \
-  "../dv2524-bib/magazines.bib", \
-  "../dv2524-bib/dissertations.bib", \
-  "../dv2524-bib/inproceedings.bib", \
-  "../dv2524-bib/journals.bib", \
+bibfiles = ["../dv2524-bib/papers.bib",  \
+  "../dv2524-bib/magazines.bib",         \
+  "../dv2524-bib/dissertations.bib",     \
+  "../dv2524-bib/inproceedings.bib",     \
+  "../dv2524-bib/journals.bib",          \
   "../dv2524-bib/publications.bib"]
 with open("thesisbibliography.bib", 'w') as ofile:
     for filename in bibfiles:

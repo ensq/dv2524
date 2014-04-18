@@ -6,14 +6,14 @@
 
 Virtual platforms are becoming a critical tool in the software industry in order to provide cost-effective \dvttermttm\ gains and meet the ever-shortening product life-cycles\dvtcmdcitebib[p.~50,~52]{journals:magnusson:2002}\dvtcmdcitebib[p.~268]{journals:yi:2006} (see \dvtcmdcitebib{magazines:magnusson:2004} for an overview of the benefits of full-system simulation).
 Virtual platforms may deliver these \dvttermttm -benefits in two major ways.
-Firstly, virtual platforms enables pre-silicon development, that is; software development can begin prior to next-generation hardware being available\dvtcmdcitebib[p.~52]{journals:magnusson:2002}.
+Firstly, virtual platforms enable pre-silicon development, that is; software development can begin prior to next-generation hardware being available\dvtcmdcitebib[p.~52]{journals:magnusson:2002}.
 Secondly, virtual platforms may provide additional development tools compared to working with actual hardware.
 For example, some virtual platforms allow simulated systems to be stopped synchronously without affecting \dvttermtiming\ or states of the \dvttermtarget\ software\dvtcmdcitebib[p.~61]{inproceedings:yu:2012}, and allow investigation into race conditions and other parallel programming issues\dvtcmdcitebib[p.~1]{inproceedings:schumacher:2010}\dvtcmdcitebib[p.~7]{publications:leupers:2010}.
 Additionally, such platforms may allow intricate inspection of simulated hardware, such as memory, caches, and registers\dvtcmdcitebib[p.~54]{journals:magnusson:2002}.
-Some virtual platforms provide advanced features such as \dvttermreverseexecution \dvtcmdcitebib[p.~30,~31]{publications:leupers:2010} (the ability to run a simulation backwards) and \dvttermcheckpointing \dvtcmdcitebib[p.~28,~29]{publications:leupers:2010} (functionality to save- and restore the state of a simulation). 
+Some virtual platforms provide advanced features such as \dvttermreverseexecution \dvtcmdcitebib[p.~30,~31]{publications:leupers:2010} (the ability to run a simulation backwards) and \dvttermcheckpointing \dvtcmdcitebib[p.~28,~29]{publications:leupers:2010} (functionality to save- and restore the state of a simulation).
 These features are useful for debugging and testing a diverse range of software; from firmware to end-user applications\dvtcmdcitebib[p.~25]{publications:leupers:2010}.
 
-Several techniques exist to provide fast functional virtual platforms that are running \dvttermcpu -bound workloads. Typical methods include \dvtterminterpreter s\dvtcmdcitebib[p.~35]{journals:smith:2005} (slowest), techniques utilizing \dvttermjit\ compilation\dvtcmdcitebib[p.~24,~25]{journals:aarno:2013}, and \dvttermdirectvirtualization \dvtcmdcitebib[p.~24,~25]{journals:aarno:2013} (fastest)\dvtcmdcitebib[p.~38,~39]{publications:leupers:2010}.
+There are several techniques to provide fast functional virtual platforms that are running \dvttermcpu -bound workloads. Typical methodologies include \dvtterminterpretation \dvtcmdcitebib[p.~35]{journals:smith:2005} (slowest), \dvttermjit\ compilation\dvtcmdcitebib[p.~24,~25]{journals:aarno:2013}, and \dvttermdirectvirtualization \dvtcmdcitebib[p.~24,~25]{journals:aarno:2013} (fastest)\dvtcmdcitebib[p.~38,~39]{publications:leupers:2010}.
 Virtual platforms using these techniques can typically achieve a simulation performance in the range of \dvtcmdnum{10}-\dvtcmdnum{1000} \dvttermmipsecond\ \dvtcmdcitebib[p.~24,~25]{journals:aarno:2013}, but there is recorded performance of up to \dvtcmdnum{5000} \dvttermmipsecond \dvtcmdcitebib[p.~38,~39]{publications:leupers:2010}.\\
 
 \noindent
@@ -26,7 +26,7 @@ Yet seemingly few virtual platforms support virtualization of \dvttermgpu s, des
 \noindent
 For the purposes of simulation, different solutions follow varying use-cases. For example, developers interested in benchmarking or driver development for next generation \dvttermgpu - or \dvttermcpu s may need detailed simulators that provide insight into execution engines and pipelines\dvtcmdcitebib[p.~1]{inproceedings:schumacher:2010}.
 Albeit useful in certain use-cases and capable of running 'toy' applications, such platforms are often orders of magnitude too slow to run commercial workloads\dvtcmdcitebib[p.~50]{journals:magnusson:2002}.
-Application developers, on the other hand, do not necessarily care for the internal workings of hardware as they typically work at a higher abstraction level, for example; utilizing a graphics \dvttermapi (such as \dvttermopengl ) that, in turn, communicate with the device driver.
+Application developers, on the other hand, do not necessarily care for the internal workings of hardware as they typically work at a higher abstraction level, for example; utilizing a graphics \dvttermapi\ (such as \dvttermopengl ) that, in turn, communicate with the device driver.
 As such, application developers may be more interested in achieving decent simulation performance rather than a timing-accurate processor model (see \dvtcmdcitebib[p.~30]{publications:leupers:2010} for an analysis of compromises in system simulation).
 However, due to large differences in-between \dvttermcpu - and \dvttermgpu -architecture, simply delegating commonly \dvttermgpu -bound workloads to the \dvttermhost\ \dvttermcpu\ is rarely feasible in terms of performance.\todo{Refer to dv2549?}
 
@@ -40,7 +40,7 @@ Effectively, this means modifying the virtual machine to be similar, but not ide
 As such, one may simplify the virtualization process by neglecting some hardware compatibility\dvtcmdcitebib[p.~1]{inproceedings:youseff:2006}.
 Implementing \dvttermgpu\ simulation by the means of \dvttermparavirtualization\ provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
 For example, it may be challenging to support advanced features such as \termdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
-Additionally, paravirtualization entail erronous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.  
+Additionally, paravirtualization entail erronous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .\\
 
 \noindent
