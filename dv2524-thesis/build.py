@@ -10,13 +10,14 @@ import shutil
 import zipfile
 import subprocess
 
-def Clean(p_except):
-  cleanendings = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
-  print("Cleaning " + str(cleanendings) + " from build directory...")
-  for file in os.listdir('.'):
-      for cleanending in cleanendings:
-          if file!=p_except and file.endswith(cleanending):
-              os.remove(file)
+def Clean():
+    types = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
+    for ftype in types:
+        filesoftype = [f for f in os.listdir(".") if f.endswith(ftype)]
+        print("Deleting " + str(len(filesoftype)) + " instances of filetype " + ftype + " from build directory...")
+        for f in filesoftype:
+            if f!="thesis.pdf": # Wouldn't wanna get rid of this.
+                os.remove(f)
 
 def unzipToDir(p_filename, p_dirname):
     print("Unzipping " + p_filename + " to " + p_dirname + "...")
@@ -27,7 +28,7 @@ print("dv2524-thesis/build.py")
 print("---\n")
 
 # Clean build directory:
-Clean(None)
+Clean()
 
 # Uncompress resources used throughout build:
 unzipToDir("../dv2524-packages/gitinfo.zip", "../dv2524-packages")
@@ -88,6 +89,6 @@ subprocess.call(["pdflatex", "thesis"])
 subprocess.call(["pdflatex", "thesis"])
 
 # Clean again:
-Clean("thesis.pdf")
+Clean()
 
 # evince thesis.pdf
