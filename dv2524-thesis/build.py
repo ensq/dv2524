@@ -75,6 +75,9 @@ print("Building LaTeX-document with pdflatex...")
 # Build intermediate .aux-files and symbol tree:
 subprocess.call(["pdflatex", "thesis"])
 
+# Build [glossaries] nomenclature:
+subprocess.call(["makeglossaries", "thesis"])
+
 # Build [multibib] bibliography:
 subprocess.call(["bibtex", "bib.aux"])
 subprocess.call(["bibtex", "ref.aux"])
