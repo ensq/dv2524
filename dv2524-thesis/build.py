@@ -3,7 +3,6 @@
 # ---
 # Note that build.py treats some files as temporary ones (deleted prior to- and after each build) that may not be considered such by the user.
 # Such a file is .bib, which is compiled by the script from an assortment of .bib-files in the dv2524-bib/ directory.
-# The exception for this rule is gitHeadInfo.gin, which is updated with information when any git hook (commit, checkout or merge) is run. As such, we do not wish to remove this in-between builds. Neither ought it be tracked by Git.
 # ---
 
 import os
@@ -12,7 +11,7 @@ import zipfile
 import subprocess
 
 def Clean(p_except):
-  cleanendings = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf"]
+  cleanendings = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
   print("Cleaning " + str(cleanendings) + " from build directory...")
   for file in os.listdir('.'):
       for cleanending in cleanendings:
@@ -27,15 +26,27 @@ def unzipToDir(p_filename, p_dirname):
 print("dv2524-thesis/build.py")
 print("---\n")
 
-# Clean:
+# Clean build directory:
 Clean(None)
 
-# Unzip packages
-print("Uncompressing...")
+# Uncompress resources used throughout build:
 unzipToDir("../dv2524-packages/gitinfo.zip", "../dv2524-packages")
 unzipToDir("../dv2524-encl/dv2524-encl.zip", "../dv2524-encl")
 unzipToDir("../dv2524-bst/IEEEtranBST2.zip", "../dv2524-bst/IEEEtranBST2")
 unzipToDir("../dv2524-sty/dv2524-sty-thesis.zip", "../dv2524-sty")
+unzipToDir("../dv2524-git/hooks.zip", "../.git/hooks")
+
+# Copy files into build directory:
+print("Copying files into build directory...")
+shutil.copyfile("../dv2524-packages/gitinfo/gitinfo.sty", "gitinfo.sty")
+shutil.copyfile("../dv2524-packages/gitinfo/gitsetinfo.sty", "gitsetinfo.sty")
+shutil.copyfile("../dv2524-bst/IEEEtranBST2/IEEEtranS.bst", "IEEEtranS.bst")
+shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bth.cls", "bth.cls")
+shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/changepage.sty", "changepage.sty")
+shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bth.pdf", "bth.pdf")
+shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bthnotext.pdf", "bthnotext.pdf")
+shutil.copyfile("../dv2524-encl/Intel-logo.pdf", "Intel-logo.pdf")
+# Use distutils.dir_util.copy_tree() to copy entire directories recursively later on.
 
 # Create original bib-files containing desired entries:
 # Said entries are copied into files with an additional '.bib' appended to the filename (in case the user is building on my Windows-machine using MiKTeX).
@@ -59,17 +70,8 @@ with open("thesiswebreferences.bib", 'w') as ofile:
       ofile.write(ifile.read())
 shutil.copyfile("thesiswebreferences.bib", "thesiswebreferences.bib.bib")
 
-# Copy files into build directory:
-print("Copying files into build directory...")
-shutil.copyfile("../dv2524-packages/gitinfo/gitinfo.sty", "gitinfo.sty")
-shutil.copyfile("../dv2524-packages/gitinfo/gitsetinfo.sty", "gitsetinfo.sty")
-shutil.copyfile("../dv2524-bst/IEEEtranBST2/IEEEtranS.bst", "IEEEtranS.bst")
-shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bth.cls", "bth.cls")
-shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/changepage.sty", "changepage.sty")
-shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bth.pdf", "bth.pdf")
-shutil.copyfile("../dv2524-sty/dv2524-sty-thesis/bthnotext.pdf", "bthnotext.pdf")
-shutil.copyfile("../dv2524-encl/Intel-logo.pdf", "Intel-logo.pdf")
-# Use distutils.dir_util.copy_tree() to copy entire directories recursively later on.
+# Update git head, invoking [gitinfo] post-checkout hook:
+subprocess.call(["git", "checkout"])
 
 print("Building LaTeX-document with pdflatex...")
 # Build intermediate .aux-files and symbol tree:
