@@ -1,0 +1,31 @@
+% thesisrelatedwork.tex
+% Chapter Related Work.
+
+\chapter{Related Work}
+\label{cha:relatedwork}
+System simulators are abundant and exist in corporate\dvtcmdcitebib{magazines:bohrer:2004}, academic\dvtcmdcitebib{journals:rosenblum:1995}, and open-source variations\dvtcmdciteref{magazines:bartholomew:2006}.
+Such platforms, like \dvttermsimics , have been used for a variety of purposes including, but not limited to, thermal control strategies in multicores\dvtcmdcitebib{inproceedings:bartolini:2010}, networking timing analysis\dvtcmdcitebib{journals:ortiz:2009}, web server performance evaluation\dvtcmdcitebib{journals:villa:2005}, and to simulate costly hardware financially unfeasible to researchers\dvtcmdcitebib{journals:alameldeen:2003}.
+A wide array of corporations employ \dvttermsimics , including \dvttermibm \dvtcmdcitebib[p.~12:1,~12:6]{journals:koerner:2009}, \dvttermintel \dvtcmdcitebib[p.~100]{journals:veselyi:2013}, and \dvttermnasa \dvtcmdciteref{web:windriver:2014}\dvtcmdciteref{web:nasa:2014}.
+Additionally, the simulator has been known to operate in over \dvtcmdnum{300} universities throughout the world\dvtcmdcitebib[p.~252]{journals:villa:2005}.\\
+
+\noindent
+\dvttermqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005} (see \dvtcmdciteref[p.~69]{magazines:bartholomew:2006} for an overview of \dvttermqemu ) and a high-speed functional simulator\dvtcmdcitebib[p.~1]{inproceedings:shen:2010}.
+Its virtual platform supports simulation of several common system architectures and hardware devices and can, like \dvttermsimics , save and restore the state of a simulation\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005}.
+\dvttermqemu\ is an extensively used virtual platform, and is the simulator used in the \dvttermreferencesolution .\todo{TODO: Refer to the section in which the reference solution is described.}\\
+% TODO: Refer to the section in which the reference solution is described. (\dvcmdrefsee{\dvcmdrefsec{sec:researchmethodology_referencesolution}}).
+
+\noindent
+The concepts of advanced simulatory features are not new to \dvttermgpu\ virtualization, as there have been previous attempts to implement the \dvttermcheckpointrestart -model in a \dvttermgpu\ context\dvtcmdcitebib{inproceedings:guo:2013}.
+Similar works include modeling \dvttermgpu\ devices in \dvttermqemu\ with software \dvttermopengles\ rasterization support\dvtcmdcitebib{inproceedings:shen:2010}.
+
+% Stuff to look up:
+% * Any more available info on Virgil3D?
+% * Previous work on GPU Reverse Execution.
+% * Previous work on Determinism in GPU technologies.
+% * Previous work on GPU simulation, in general.
+
+% Unsupported claims:
+%Albeit supporting \termgpu\ virtualization, at version $1.7$ \termqemu\ still, in and of its own, lack support for hardware accelerated rasterization\cite{NEEDED}.
+%However, as early as 2006 there were experimental attempts at accelerating \termopengl\ in \termqemu \cite{SEE}.
+%The \termqemu\ platform has since been the focal point of several attempts at achieving such acceleration, possibly due to its open-source licensing.
+%Such an attempt is the \termvirgilthreed\ virtual \termgpu-project\cite{SEE}, that strives to create an abstract \termtarget\ \termgpu\ which may utilize the \termhost\ device.
