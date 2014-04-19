@@ -39,7 +39,7 @@ Paravirtualization is a relatively new term originally defined as selectively mo
 Effectively, this means modifying the virtual machine to be similar, but not identical, to the simulated hardware\dvtcmdcitebib[p.~165]{journals:barham:2003}.
 As such, one may simplify the virtualization process by neglecting some hardware compatibility\dvtcmdcitebib[p.~1]{inproceedings:youseff:2006}.
 Implementing \dvttermgpu\ simulation by the means of \dvttermparavirtualization\ provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
-For example, it may be challenging to support advanced features such as \termdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
+For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
 Additionally, paravirtualization entail erronous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .\\
 

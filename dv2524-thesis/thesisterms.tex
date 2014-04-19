@@ -49,6 +49,7 @@
   description={Description of Checkpoint / Restart.}
 }
 \newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponcegloss{dvtglosscheckpointrestart}{Checkpoint / Restart}}
+\newcommand{\dvttermcuda}{CUDA}
 
 % D
 % Direct Virtualization
@@ -66,7 +67,14 @@
   name=Deterministic Execution,
   description={Description of Deterministic Execution.}
 }
-\newcommand{\termdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
+\newcommand{\dvttermdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
+
+\newglossaryentry{dvtglossdeterministicalgorithm}
+{
+  name=Deterministic Algorithm,
+  description={Description of what constitute a Deterministic Algorithm.}
+}
+\newcommand{\dvttermdeterministicalgorithm}{\dvtcmdcaponcegloss{dvtglossdeterministicalgorithm}{Deterministic Algorithm}}
 
 % E
 % ...
@@ -128,6 +136,9 @@
 \newcommand{\dvttermopengles}{\dvttermopengl ~ES}
 % OpenGL ES 2.0
 \newcommand{\dvttermopenglestwopointo}{\dvttermopengles ~\dvtcmdnum{2.0}}
+% Operating System
+\newacronym{dvtglossos}{OS}{Operating System}
+\newcommand{\dvttermos}{\dvtcmdabbrev{dvtglossos}}
 
 % P
 % Peripheral Component Interconnect
@@ -253,9 +264,6 @@
 %\newcommand{\termwindows}{\termmicrosoft ~Windows}
 %\newcommand{\termandroidemu}{\termandroid ~Emulator}
 %\newcommand{\termvirgilthreed}{Virgil3D}
-%\newcommand{\termcuda}{CUDA}
-%\newcommand{\termwarp}{WARP}
-%\newcommand{\termpci}{PCI}
 %\newcommand{\termxeleven}{X11}
 %\newcommand{\termglmarktwo}{glmark2}
 %% Simics:
@@ -263,7 +271,6 @@
 %% Concepts:
 %\newcommand{\termtimetomarket}{\dvcmdcaponce{Time-to-Market}}
 %\newcommand{\termframespersecond}{\dvcmdcaponce{Frames Per Second}}
-%\newcommand{\termdetalg}{\dvcmdcaponce{Deterministic Algorithm}}
 %\newcommand{\termmagicinstr}{\dvcmdcaponce{Magic Instruction}}
 %% Persons involved in the project (in case titles are to be added):
 %\newcommand{\termhakan}{Prof. Håkan Grahn, Research Dean of Faculty}
