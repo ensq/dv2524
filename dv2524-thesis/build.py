@@ -11,22 +11,23 @@ import zipfile
 import subprocess
 
 # Settings:
-bibfiles = [                               \
-    "../dv2524-bib/papers.bib",            \
-    "../dv2524-bib/magazines.bib",         \
-    "../dv2524-bib/dissertations.bib",     \
-    "../dv2524-bib/inproceedings.bib",     \
-    "../dv2524-bib/journals.bib",          \
+g_bibfiles = [\
+    "../dv2524-bib/papers.bib",\
+    "../dv2524-bib/magazines.bib",\
+    "../dv2524-bib/dissertations.bib",\
+    "../dv2524-bib/inproceedings.bib",\
+    "../dv2524-bib/journals.bib",\
     "../dv2524-bib/publications.bib"]
 
-reffiles = [                            \
-    "../dv2524-bib/technicaldocs.bib",  \
+g_reffiles = [\
+    "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
 
+g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
+
 # Methods:
-def Clean():
-    types = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
-    for ftype in types:
+def clean():
+    for ftype in g_cleanfiletypes:
         filesoftype = [f for f in os.listdir(".") if f.endswith(ftype)]
         print("Deleting " + str(len(filesoftype)) + " instances of filetype " + ftype + " from build directory...")
         for f in filesoftype:
@@ -50,7 +51,7 @@ print("dv2524-thesis/build.py")
 print("---\n")
 
 # Clean build directory:
-Clean()
+clean()
 
 # Uncompress resources used throughout build:
 unzipToDir("../dv2524-packages/gitinfo.zip", "../dv2524-packages")
@@ -73,10 +74,10 @@ shutil.copyfile("../dv2524-encl/Intel-logo.pdf", "Intel-logo.pdf")
 
 # Create original bib-files containing desired entries:
 # Said entries are copied into files with an additional '.bib' appended to the filename (in case the user is building on my Windows-machine using MiKTeX).
-concatenate(bibfiles, "thesisbibliography.bib")
+concatenate(g_bibfiles, "thesisbibliography.bib")
 shutil.copyfile("thesisbibliography.bib", "thesisbibliography.bib.bib")
 
-concatenate(reffiles, "thesiswebreferences.bib")
+concatenate(g_reffiles, "thesiswebreferences.bib")
 shutil.copyfile("thesiswebreferences.bib", "thesiswebreferences.bib.bib")
 
 # Update git head, invoking [gitinfo] post-checkout hook:
@@ -96,6 +97,6 @@ subprocess.call(["pdflatex", "thesis"])
 subprocess.call(["pdflatex", "thesis"])
 
 # Clean again:
-Clean()
+clean()
 
 print("Done.")
