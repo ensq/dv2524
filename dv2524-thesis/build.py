@@ -18,12 +18,12 @@ g_bibfiles = [\
     "../dv2524-bib/inproceedings.bib",\
     "../dv2524-bib/journals.bib",\
     "../dv2524-bib/publications.bib"]
-
 g_reffiles = [\
     "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
 
-g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist"]
+g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx"]
+g_cleanexcept = ["thesis.pdf", "thesisindexstyle.ist"]
 
 # Methods:
 def clean():
@@ -31,7 +31,7 @@ def clean():
         filesoftype = [f for f in os.listdir(".") if f.endswith(ftype)]
         print("Deleting " + str(len(filesoftype)) + " instances of filetype " + ftype + " from build directory...")
         for f in filesoftype:
-            if f!="thesis.pdf": # Wouldn't wanna get rid of this.
+            if str(f) not in g_cleanexcept:
                 os.remove(f)
 
 def unzipToDir(p_filename, p_dirname):
@@ -94,6 +94,8 @@ subprocess.call(["bibtex", "ref.aux"])
 
 # Build [glossaries] nomenclature:
 subprocess.call(["makeglossaries", "thesis"])
+
+subprocess.call("makeindex -s thesisindexstyle.ist thesis", shell=True)
 
 # Construct final thesis document - twice:
 subprocess.call(["pdflatex", "thesis"])
