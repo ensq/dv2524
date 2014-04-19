@@ -38,11 +38,11 @@
 \input{thesisconfig} % Build settings.
 \input{thesispackages} % Common includes.
 
-\input{thesisglossaries} % Sets up [glossaries] package. Must be included after [hyperref] package.
+\input{thesisglossaries} % Sets up [glossaries] package. Must be included after [hyperref] package and before inclusion of thesisterms.tex.
 \input{thesisbib} % Bibliography configuration.
 \input{thesistoc} % Table of Contents configuration.
 \input{thesiscommands} % User commands.
-\input{thesisterms} % Defined phrases. Has dependency to glossaries.
+\input{thesisterms} % Defined phrases. Must be included after thesisglossaries.tex.
 \input{thesisconditionals} % Conditional includes.
 
 \begin{document}

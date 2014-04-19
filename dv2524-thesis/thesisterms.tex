@@ -21,6 +21,7 @@
 \newcommand{\dvttermacm}{ACM}
 
 % B
+% ...
 
 % C
 % Checkpoint
@@ -42,70 +43,173 @@
 \newacronym{dvtglosscpu}{CPU}{Central Processing Unit}
 \newcommand{\dvttermcpu}{\dvtcmdabbrev{dvtglosscpu}}
 % Checkpoint / Restart
-\newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponce{Checkpoint / Restart}}
+\newglossaryentry{dvtglosscheckpointrestart}
+{
+  name=Checkpoint / Restart,
+  description={Description of Checkpoint / Restart.}
+}
+\newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponcegloss{dvtglosscheckpointrestart}{Checkpoint / Restart}}
 
 % D
 % Direct Virtualization
-\newcommand{\dvttermdirectvirtualization}{\dvtcmdcaponce{Direct Virtualization}}
+\newglossaryentry{dvtglossdirectvirtualization}
+{
+  name=Direct Virtualization,
+  description={Description of Direct Virtualization.}
+}
+\newcommand{\dvttermdirectvirtualization}{\dvtcmdcaponcegloss{dvtglossdirectvirtualization}{Direct Virtualization}}
 % DirectX
 \newcommand{\dvttermdirectx}{DirectX}
 % Deterministic Execution
-\newcommand{\termdeterministicexecution}{\dvtcmdcaponce{Deterministic Execution}}
+\newglossaryentry{dvtglossdeterministicexecution}
+{
+  name=Deterministic Execution,
+  description={Description of Deterministic Execution.}
+}
+\newcommand{\termdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
 
 % E
+% ...
 % F
+% ...
+
 % G
+% Graphics Processing Unit
 \newacronym{dvtglossgpu}{GPU}{Graphics Processing Unit}
-\newcommand{\dvttermgpu}{\dvtcmdabbrev{dvtglossgpu}} % Graphics Processing Unit
+\newcommand{\dvttermgpu}{\dvtcmdabbrev{dvtglossgpu}}
+% General Purpose computing on Graphics Processing Units
 \newacronym{dvtglossgpgpu}{GPGPU}{General Purpose computing on Graphics Processing Units}
-\newcommand{\dvttermgpgpu}{\dvtcmdabbrev{dvtglossgpgpu}} % General Purpose computing on Graphics Processing Units
-\newcommand{\dvttermgoogle}{Google} % Google
+\newcommand{\dvttermgpgpu}{\dvtcmdabbrev{dvtglossgpgpu}}
+% Google
+\newcommand{\dvttermgoogle}{Google}
+
 % H
-\newcommand{\dvttermhost}{\dvtcmdcaponce{Host}}
+% Host
+\newglossaryentry{dvtglosshost}
+{
+  name=Simulation Host,
+  description={Description of a Simulation Host.}
+}
+\newcommand{\dvttermhost}{\dvtcmdcaponcegloss{dvtglosshost}{Host}}
+
 % I
-\newcommand{\dvtterminterpretation}{\dvtcmdcaponce{Interpretation}} % Interpretation
-\newcommand{\dvttermintel}{Intel~Corporation} % Intel Corporation
-\newcommand{\dvttermibm}{IBM} % IBM
+% Interpretation
+\newcommand{\dvtterminterpretation}{\dvtcmdcaponce{Interpretation}}
+% Intel Corporation
+\newcommand{\dvttermintel}{Intel~Corporation}
+% IBM
+\newcommand{\dvttermibm}{IBM}
+
 % J
+% Just-in-Time
 \newacronym{dvtglossjit}{JIT}{Just-in-Time}
-\newcommand{\dvttermjit}{\dvtcmdabbrev{dvtglossjit}} % Just-in-Time
+\newcommand{\dvttermjit}{\dvtcmdabbrev{dvtglossjit}}
+
 % K
+% ...
 % L
+% ...
+
 % M
+% Million Instructions Per Second
 \newacronym{dvtglossmipssecond}{MIPS}{Million Instructions Per Second}
-\newcommand{\dvttermmipsecond}{\dvtcmdabbrev{dvtglossmipssecond}} % Million Instructions Per Second
-\newcommand{\dvttermmicrosoft}{Microsoft} % Microsoft
+\newcommand{\dvttermmipsecond}{\dvtcmdabbrev{dvtglossmipssecond}}
+% Microsoft
+\newcommand{\dvttermmicrosoft}{Microsoft}
+
 % N
-\newcommand{\dvttermnasa}{NASA} % NASA
+% NASA
+\newcommand{\dvttermnasa}{NASA}
+
 % O
+% OpenGL
 \newcommand{\dvttermopengl}{OpenGL}
+% OpenGL ES
 \newcommand{\dvttermopengles}{\dvttermopengl ~ES}
+% OpenGL ES 2.0
+\newcommand{\dvttermopenglestwopointo}{\dvttermopengles ~\dvtcmdnum{2.0}}
+
 % P
+% Peripheral Component Interconnect
 \newacronym{dvtglosspci}{PCI}{Peripheral Component Interconnect}
-\newcommand{\dvttermpci}{\dvtcmdabbrev{dvtglosspci}} % Peripheral Component Interconnect
-\newcommand{\dvttermpcipassthrough}{\dvttermpci\ passthrough} % PCI Passthrough
-\newcommand{\dvttermparavirtualization}{\dvtcmdcaponce{Paravirtualization}} % Paravirtualization
+\newcommand{\dvttermpci}{\dvtcmdabbrev{dvtglosspci}}
+% PCI Passthrough
+\newcommand{\dvttermpcipassthrough}{\dvttermpci\ passthrough}
+% Paravirtualization
+\newglossaryentry{dvtglossparavirtualization}
+{
+  name=Paravirtualization,
+  description={Description of Paravirtualization.}
+}
+\newcommand{\dvttermparavirtualization}{\dvtcmdcaponcegloss{dvtglossparavirtualization}{Paravirtualization}}
+
 % Q
-\newcommand{\dvttermqemu}{QEMU} % QEMU. QEMU is an abbreviation, but is not formatted as such since it is also a product name.
+% QEMU
+\newglossaryentry{dvtglossqemu}
+{
+  name=QEMU,
+  description={Description of QEMU.}
+}
+\newcommand{\dvttermqemu}{\gls{dvtglossqemu}} % QEMU is an abbreviation, but is not formatted as such since it is also a product name.
+
 % R
-\newcommand{\dvttermreverseexecution}{\dvtcmdcaponce{Reverse Execution}} % Reverse Execution
-\newcommand{\dvttermreferenceimplementation}{Reference Implementation} % Reference Implementation. Consider caponce.
-\newcommand{\dvttermreferencesolution}{Reference Solution} % Reference Solution. Consider caponce.
+% Reverse Execution
+\newglossaryentry{dvtglossreverseexecution}
+{
+  name=Reverse Execution,
+  description={Description of Reverse Execution.}
+}
+\newcommand{\dvttermreverseexecution}{\dvtcmdcaponcegloss{dvtglossreverseexecution}{Reverse Execution}}
+% Reference Implementation
+\newcommand{\dvttermreferenceimplementation}{Reference Implementation} % Consider caponce.
+% Reference Solution
+\newcommand{\dvttermreferencesolution}{Reference Solution} % Consider caponce.
+
 % S
-\newcommand{\dvttermsoftwarerendering}{\dvtcmdcaponce{Software Rendering}} % Software Rendering
-\newcommand{\dvttermsimics}{Simics}
+% Software Rendering
+\newcommand{\dvttermsoftwarerendering}{\dvtcmdcaponce{Software Rendering}}
+% Simics
+\newglossaryentry{dvtglosssimics}
+{
+  name=Simics,
+  description={Description of Simics.}
+}
+\newcommand{\dvttermsimics}{\gls{dvtglosssimics}}
+
 % T
+% Time-to-Market
 \newacronym{dvtglossttm}{TTM}{Time-to-Market}
-\newcommand{\dvttermttm}{\dvtcmdabbrev{dvtglossttm}} % Time-to-Market
-\newcommand{\dvttermtiming}{\dvtcmdcaponce{Timing}} % Timing
-\newcommand{\dvttermtarget}{\dvtcmdcaponce{Target}} % Target
+\newcommand{\dvttermttm}{\dvtcmdabbrev{dvtglossttm}}
+% Timing
+\newglossaryentry{dvtglosstiming}
+{
+  name=Simulation Timing,
+  description={Description of Timing.}
+}
+\newcommand{\dvttermtiming}{\dvtcmdcaponcegloss{dvtglosstiming}{Timing}}
+% Target
+\newglossaryentry{dvtglosstarget}
+{
+  name=Simulation Target,
+  description={Description of Target.}
+}
+\newcommand{\dvttermtarget}{\dvtcmdcaponcegloss{dvtglosstarget}{Target}}
+
 % V
+% ...
+
 % W
+% WARP
 \newacronym{dvtglosswarp}{WARP}{Windows Advanced Rasterization Platform}
-\newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{dvtglosswarp}} % Microsoft WARP
+% Microsoft WARP
+\newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{dvtglosswarp}}
+
 % X
+% ...
 % Y
+% ...
 % Z
+% ...
 
 % Terms yet to be defines:
 %% Document & Grammar:
