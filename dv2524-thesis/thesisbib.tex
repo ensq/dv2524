@@ -1,6 +1,22 @@
 % thesisbib.tex
 % Configures two seperate bibliographies (Bibliography & Web References) using the [multibib]-package.
 
+% Compact bibliography using [natbib] package. Must be done before inclusion of [multibib] package.
+\usepackage[square,sort,comma,numbers]{natbib} % http://tex.stackexchange.com/questions/54480/package-natbib-error-bibliography-not-compatible-with-author-year-citations
+\setlength{\bibsep}{0.0pt}
+\makeatletter
+\renewcommand\bibsection%
+{
+  %\section*{\refname
+  %  \@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}
+	%	\addcontentsline{toc}{chapter}{\refname}
+} % Chapter / Section is not necessarily a chapter or section. Therefore, we handle this manually for each bibliography.
+\makeatother % Make sure that natbib uses sections for bibliographies, rather than chapters with page breaks.
+
+
+% Multiple bibliographies using [multibib] package. Must be done after inclusion of [natbib] package.
+\usepackage{multibib}
+
 \newcites{bib}{Bibliography}
 \bibliographystylebib{IEEEtranS}
 

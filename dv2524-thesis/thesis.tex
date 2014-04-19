@@ -6,6 +6,32 @@
 % | Blekinge Institute of Technology, Intel Corporation
 % ---
 
+% Matter Front
+% | Title page
+% | Colophon
+% | Contents
+% | Foreword
+% | Preface
+% | Acknowledgment
+% | Introduction
+% | Dedication
+% | Prologue
+% Matter Body
+% | ...
+% Matter Back
+% | Epilogue
+% | Outro
+% | Afterword
+% | Conclusion
+% | Postscript
+% | Appendix
+% | Glossary
+% | Bibliography
+% | Index
+% | Colophon
+% ---
+% https://en.wikipedia.org/wiki/Book_design
+
 \documentclass[a4paper,oneside]{bth}
 \DeclareGraphicsExtensions{.pdf}
 
@@ -14,18 +40,18 @@
 
 \input{thesisglossaries} % Sets up [glossaries] package. Must be included after [hyperref] package.
 \input{thesisbib} % Bibliography configuration.
+\input{thesistoc} % Table of Contents configuration.
 \input{thesiscommands} % User commands.
 \input{thesisterms} % Defined phrases. Has dependency to glossaries.
 \input{thesisconditionals} % Conditional includes.
 
-% User document:
 \begin{document}
 \pagestyle{plain}
 \pagenumbering{roman}
 
+% FRONT MATTER:
 % Chapter (-) - Front page(s):
 \include{thesisfront}
-
 % Chapter (0) - Abstract:
 \include{thesisabstract}
 
@@ -35,7 +61,6 @@
 %\listoftables %in case you have them
 %\listofalgorithms %in case you have them
 \tableofcontents
-
 \cleardoublepage
 \pagestyle{headings}
 \pagenumbering{arabic}
@@ -43,25 +68,35 @@
 % Chapter (1) - Introduction:
 \include{thesisintroduction}
 
+% BODY MATTER:
 % Chapter (2) - Related Work:
 \include{thesisrelatedwork}
+% Chapter (3) - Methodology:
+\include{thesismethodology}
+% Chapter (4) - Results:
+\include{thesisresults}
+% Chapter (5) - Analysis:
+\include{thesisanalysis}
+% Chapter (6) - Conclusion:
+\include{thesisconclusion}
+% Chapter (7) - Future Work:
+\include{thesisfuturework}
 
-\chapter{Method}
-\chapter{Results}
-\chapter{Analysis}
-\chapter{Conclusions and Future Work}
-
-% Chapter (?) - Bibliography:
-\include{thesisbibliography}
-
-% Chapter (?) - Web References:
-\include{thesiswebreferences}
+% BACK MATTER:
+% Chapter (?) - Appendix A
+\include{thesisappendixa}
+% Chapter (?) - Appendix B
+\include{thesisappendixb}
 
 % Chapter (?) - Glossary
 \include{thesisglossarynomenclature}
-
 % Chapter (?) - Acronyms
 \include{thesisglossaryacronyms}
+
+% Chapter (?) - Bibliography:
+\include{thesisbibliography}
+% Chapter (?) - Web References:
+\include{thesiswebreferences}
 
 % Chapter (+) - Back page(s):
 \iftoggle{backpage}{ % If back page is enabled.
