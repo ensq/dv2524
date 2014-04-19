@@ -1,26 +1,64 @@
 % thesisterms.tex
 % Defines commonly used phrases to save time on common formatting.
+% ---
+% | Alphabetical
+% | Plain text term (grep magic)
+% | Glossary entry / Acronym entry
+% | Command definition
 
 % A
-\newcommand{\dvttermapi}{\dvtcmdabbrev{Application Programming Interface}{API}} % Application Programming Interface
-\newcommand{\dvttermabi}{\dvtcmdabbrev{Application Binary Interface}{ABI}} % Application Binary Interface
-\newcommand{\dvttermandroid}{Android} % Android
-\newcommand{\dvttermandroidsdk}{\dvttermandroid\ SDK} % Android SDK
+% Application Programming Interface
+\newacronym{dvtglossapi}{API}{Application Programming Interface}
+\newcommand{\dvttermapi}{\dvtcmdabbrev{dvtglossapi}}
+% Application Binary Interface
+\newacronym{dvtglossabi}{ABI}{Application Binary Interface}
+\newcommand{\dvttermabi}{\dvtcmdabbrev{dvtglossabi}}
+% Android
+\newcommand{\dvttermandroid}{Android}
+% Android SDK
+\newcommand{\dvttermandroidsdk}{\dvttermandroid\ SDK}
+% ACM
 \newcommand{\dvttermacm}{ACM}
+
 % B
+
 % C
-\newcommand{\dvttermcheckpointing}{\dvtcmdcaponce{Checkpointing}} % Checkpointing
-\newcommand{\dvttermcpu}{\dvtcmdabbrev{Central Processing Unit}{CPU}} % Central Processing Unit
+% Checkpoint
+\newglossaryentry{dvtglosscheckpoint}
+{
+  name=Checkpoint,
+  description={is a saved state of things. See also \dvttermcheckpointing .},
+  plural=Checkpoints
+}
+\newcommand{\dvttermcheckpoint}{\dvtcmdcaponce{Checkpoint}}
+% Checkpointing
+\newglossaryentry{dvtglosscheckpointing}
+{
+  name=Checkpointing,
+  description={is a technique including... See also \dvttermcheckpoint .}
+}
+\newcommand{\dvttermcheckpointing}{\dvtcmdcaponcegloss{dvtglosscheckpointing}{Checkpointing}}
+% Central Processing Unit
+\newacronym{dvtglosscpu}{CPU}{Central Processing Unit}
+\newcommand{\dvttermcpu}{\dvtcmdabbrev{dvtglosscpu}}
+% Checkpoint / Restart
 \newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponce{Checkpoint / Restart}}
+
 % D
-\newcommand{\dvttermdirectvirtualization}{\dvtcmdcaponce{Direct Virtualization}} % Direct Virtualization
-\newcommand{\dvttermdirectx}{DirectX} % DirectX
-\newcommand{\termdeterministicexecution}{\dvtcmdcaponce{Deterministic Execution}} % Deterministic Execution
+% Direct Virtualization
+\newcommand{\dvttermdirectvirtualization}{\dvtcmdcaponce{Direct Virtualization}}
+% DirectX
+\newcommand{\dvttermdirectx}{DirectX}
+% Deterministic Execution
+\newcommand{\termdeterministicexecution}{\dvtcmdcaponce{Deterministic Execution}}
+
 % E
 % F
 % G
-\newcommand{\dvttermgpu}{\dvtcmdabbrev{Graphics Processing Unit}{GPU}} % Graphics Processing Unit
-\newcommand{\dvttermgpgpu}{\dvtcmdabbrev{General Purpose computing on Graphics Processing Units}{GPGPU}} % General Purpose computing on Graphics Processing Units
+\newacronym{dvtglossgpu}{GPU}{Graphics Processing Unit}
+\newcommand{\dvttermgpu}{\dvtcmdabbrev{dvtglossgpu}} % Graphics Processing Unit
+\newacronym{dvtglossgpgpu}{GPGPU}{General Purpose computing on Graphics Processing Units}
+\newcommand{\dvttermgpgpu}{\dvtcmdabbrev{dvtglossgpgpu}} % General Purpose computing on Graphics Processing Units
 \newcommand{\dvttermgoogle}{Google} % Google
 % H
 \newcommand{\dvttermhost}{\dvtcmdcaponce{Host}}
@@ -29,11 +67,13 @@
 \newcommand{\dvttermintel}{Intel~Corporation} % Intel Corporation
 \newcommand{\dvttermibm}{IBM} % IBM
 % J
-\newcommand{\dvttermjit}{\dvtcmdabbrev{Just-in-Time}{JIT}} % Just-in-Time
+\newacronym{dvtglossjit}{JIT}{Just-in-Time}
+\newcommand{\dvttermjit}{\dvtcmdabbrev{dvtglossjit}} % Just-in-Time
 % K
 % L
 % M
-\newcommand{\dvttermmipsecond}{\dvtcmdabbrev{Million Instructions Per Second}{MIPS}} % Million Instructions Per Second
+\newacronym{dvtglossmipssecond}{MIPS}{Million Instructions Per Second}
+\newcommand{\dvttermmipsecond}{\dvtcmdabbrev{dvtglossmipssecond}} % Million Instructions Per Second
 \newcommand{\dvttermmicrosoft}{Microsoft} % Microsoft
 % N
 \newcommand{\dvttermnasa}{NASA} % NASA
@@ -41,7 +81,8 @@
 \newcommand{\dvttermopengl}{OpenGL}
 \newcommand{\dvttermopengles}{\dvttermopengl ~ES}
 % P
-\newcommand{\dvttermpci}{\dvtcmdabbrev{Peripheral Component Interconnect}{PCI}} % Peripheral Component Interconnect
+\newacronym{dvtglosspci}{PCI}{Peripheral Component Interconnect}
+\newcommand{\dvttermpci}{\dvtcmdabbrev{dvtglosspci}} % Peripheral Component Interconnect
 \newcommand{\dvttermpcipassthrough}{\dvttermpci\ passthrough} % PCI Passthrough
 \newcommand{\dvttermparavirtualization}{\dvtcmdcaponce{Paravirtualization}} % Paravirtualization
 % Q
@@ -54,12 +95,14 @@
 \newcommand{\dvttermsoftwarerendering}{\dvtcmdcaponce{Software Rendering}} % Software Rendering
 \newcommand{\dvttermsimics}{Simics}
 % T
-\newcommand{\dvttermttm}{\dvtcmdabbrev{Time-to-Market}{TTM}} % Time-to-Market
+\newacronym{dvtglossttm}{TTM}{Time-to-Market}
+\newcommand{\dvttermttm}{\dvtcmdabbrev{dvtglossttm}} % Time-to-Market
 \newcommand{\dvttermtiming}{\dvtcmdcaponce{Timing}} % Timing
 \newcommand{\dvttermtarget}{\dvtcmdcaponce{Target}} % Target
 % V
 % W
-\newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{Windows Advanced Rasterization Platform}{WARP}} % Microsoft WARP
+\newacronym{dvtglosswarp}{WARP}{Windows Advanced Rasterization Platform}
+\newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{dvtglosswarp}} % Microsoft WARP
 % X
 % Y
 % Z

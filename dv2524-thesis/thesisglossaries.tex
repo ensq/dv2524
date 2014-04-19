@@ -1,0 +1,22 @@
+% thesisglossaries.tex
+% Sets up utilization of [glossaries] package.
+% Mustn't be included before [hyperref] package.
+
+% Package options:
+% nosuper - prevent the glossaries package from automatically loading the glossary-long or glossary-super packages. Prevents us from using any of the glossary styles defined in those packages. Used to avoid unresolved compilation error shown below:
+% | ! LaTeX Error: Command \tablehead already defined.
+% |               Or name \end... illegal, see p.192 of the manual.
+% | See http://www.dickimaw-books.com/cgi-bin/faq.cgi?action=view&categorylabel=glossaries#nostyles for more information.
+% nonumberlist - don't display the pages in which the term is used after definition in glossary. Put in place because page numbers were erronous.
+% acronym - Seperate acronym list.
+% toc - Include in table of contents.
+
+% Glossary styles:
+% See http://en.wikibooks.org/wiki/LaTeX/Glossary
+% altlist - inserts newline after term and indents description
+% altlistgroup or listgroup - group adds grouping based on the first letters of the terms
+% altlisthypergroup or listhypergroup - hyper adds an hyperlinked 'index' at the top of each glossary to jump to a group
+
+\usepackage[nosuper, nonumberlist, acronym, toc]{glossaries}
+\glossarystyle{listgroup} % use listhypergroup if there are many entries.
+\makeglossaries

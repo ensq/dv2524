@@ -23,7 +23,7 @@ g_reffiles = [\
     "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
 
-g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo"]
+g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist"]
 
 # Methods:
 def clean():
@@ -91,6 +91,9 @@ subprocess.call(["pdflatex", "thesis"])
 # Build [multibib] bibliography:
 subprocess.call(["bibtex", "bib.aux"])
 subprocess.call(["bibtex", "ref.aux"])
+
+# Build [glossaries] nomenclature:
+subprocess.call(["makeglossaries", "thesis"])
 
 # Construct final thesis document - twice:
 subprocess.call(["pdflatex", "thesis"])

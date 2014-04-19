@@ -18,17 +18,39 @@
 		\capitalisewords{#1}%
 	}%
 }
-
-% Abbreviation command; outputs a phrase along with its abbreviation unless it has been written in full before, in which case it outputs its abbreviation exclusively:
-\newcommand{\dvtcmdabbrev}[2]{%
-	\provideboolean{#2}%
-	\ifthenelse{\boolean{#2}}{%
-		#2%
+% Capitalize once glossary command:
+% Like \dvtcmdcaponce, but links with [glossaries] package entries. Implemented as an entirely seperate commands since there may be terms well-established enough to not require glossary definitions.
+\newcommand{\dvtcmdcaponcegloss}[2]{%
+	\provideboolean{#1}%
+	\ifthenelse{\boolean{#1}}{%
+		\glslink{#1}{\MakeLowercase{#2}}%
 	}{%
-		\setboolean{#2}{true}%
-		#1 (#2)%
+		\setboolean{#1}{true}%
+		\glslink{#1}{\capitalisewords{#2}}%
+	}%
+}
+
+% Abbreviation command; outputs a phrase along with its abbreviation unless it has been written in full before, in which case it outputs its abbreviation exclusively. Abbreviations are linked to the abbreviation glossary. Assumes all abbreviations have glossary definitions (if so is not the case, there ought be two commands for this - one for use with [glossaries] package and another one in plain text).
+\newcommand{\dvtcmdabbrev}[1]{%
+	\provideboolean{#1}%
+	\ifthenelse{\boolean{#1}}{%
+		\acrshort{#1}%
+	}{%
+		\setboolean{#1}{true}%
+		\acrfull{#1}%
 	}%
 }
 
 % Formatting number command; at the moment simply outputs the number in math environment:
 \newcommand{\dvtcmdnum}[1]{$#1$}
+
+% Old abbreviation command. Doesn't make use of [glossaries]. Saved in case not all abbreviations are to have [glossaries] entries.
+%\newcommand{\dvtcmdabbrev}[2]{%
+%	\provideboolean{#2}%
+%	\ifthenelse{\boolean{#2}}{%
+%		#2%
+%	}{%
+%		\setboolean{#2}{true}%
+%		#1 (#2)%
+%	}%
+%}
