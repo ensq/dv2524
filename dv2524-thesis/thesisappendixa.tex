@@ -7,8 +7,10 @@
 \addcontentsline{toc}{chapter}{Appendix A}
 
 % Checkpointing
-\section{Checkpointing}
+\section*{Checkpointing}
 \label{sec:appendixa_checkpointing}
+\addcontentsline{toc}{section}{Checkpointing}
+
 \index{Checkpointing}
 The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvtcmdcitebib[p.~103]{publications:harris:2007}.
 It may be benificial to store such states in a '\dvttermcheckpointrestart ' scheme, as suggested by Jiang et al. in regards to \dvttermcuda\ kernels\dvtcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}.
@@ -20,8 +22,10 @@ This ability not only  saves time in terms of program initialization and debuggi
 As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes said functionality.
 
 % Deterministic Execution
-\section{Deterministic Execution}
+\section*{Deterministic Execution}
 \label{sec:appendixa_deterministicexecution}
+\addcontentsline{toc}{section}{Deterministic Execution}
+
 \index{Deterministic Execution}
 \glslink{dvtglossdeterministicexecution}{'Deterministic execution'} commonly refers to the execution of \dvttermdeterministicalgorithm s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (see \dvtcmdcitebib{journals:cohen:1979} for an overview on \glslink{dvtglossdeterministicalgorithm}{deterministic- and non-deterministic algorithms}).
 Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behaviour caused by concurrent software\dvtcmdcitebib[p.~3-5]{journals:lee:2006}\dvtcmdcitebib[p.~92]{journals:holzmann:1997}.
@@ -34,8 +38,10 @@ As such, given an arbitrary number of instructions, the simulation state may be 
 Thus, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermdeterministicexecution\ refers to the deterministic state transition of a \dvttermtarget\ system; as described in this paragraph.
 
 % Reverse Execution
-\section{Reverse Execution}
+\section*{Reverse Execution}
 \label{sec:appendixa_reverseexecution}
+\addcontentsline{toc}{section}{Reverse Execution}
+
 \index{Reverse Execution}
 \glslink{dvtglossreverseexecution}{'Reverse execution'} provides software developers with the ability to return, often from portable \dvttermcheckpoint s, to previous states of execution\dvtcmdcitebib[p.~2,~3]{journals:akgul:2004}.
 This may be useful when debugging, profiling, or testing as difficult-to-reach system states may be stored and returned to, effectively bypassing program initialization and other hindrances\dvtcmdcitebib[p.~54]{journals:magnusson:2002}.
