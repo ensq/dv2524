@@ -9,7 +9,22 @@
 % Experiment Methodology:
 \section{Experiment Methodology}
 \label{sec:methodology_experimentmethodology}
-Throughout the course of the pilot study performed for the purpose of this study, no suitable... See \dvtcmdcitefur{dissertation:nilsson:2014} for a demo on Further Reading sections.
+Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
+As such, a benchmark has been devised for the purposes of stress-testing the solution developed for the purpose of this study.
+The benchmark consists of three seperate tests; each intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
+The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a similar \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilizes \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
+
+\subsection{Benchmark Chess}
+\label{sec:methodology_experimentmethodology_benchmarkchess}
+\ldots
+
+\subsection{Benchmark Julia}
+\label{sec:methodology_experimentmethodology_benchmarkjulia}
+\ldots
+
+\subsection{Benchmark Phong}
+\label{sec:methodology_experimentmethodology_benchmarkphong}
+\ldots
 
 % Suggested structure:
 % * Solution:
@@ -24,11 +39,6 @@ Throughout the course of the pilot study performed for the purpose of this study
 % | Experiment methodology:
 % | * Measurement timing and reliability on the different systems.
 % | Explenation of solution and it's components.
-
-% Segment on benchmarking in Proposal:
-%Throughout the course of the pilot study performed for the purpose of proposed study, no suitable \termopengles ~$2.0$ benchmark - with cross-platform support for both \termandroid\ and \termxeleven ~\termlinux\ - has been found.
-%The best pre-existing solution\footnote{Being \termglmarktwo\ developed by \termlinaro .} encountered segmentation faults when run in a \termsimics\ \termlinux\ environment and similar problems when run in the \termandroidemu\ utilizing \termqemu.
-%What caused these problems is unclear but since considerable time was spent attempting to solve this issue, the decision was made to develop a benchmark specifically for the purposes of stress-testing proposed solution.
 
 %The developed benchmark ought to execute on the studied platforms; being paravirtualized \termsimics , software~rasterized \termsimics , and the \termrefsolu , respectively.
 %It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.

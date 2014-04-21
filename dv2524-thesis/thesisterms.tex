@@ -50,6 +50,9 @@
 }
 \newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponcegloss{dvtglosscheckpointrestart}{Checkpoint / Restart}}
 \newcommand{\dvttermcuda}{CUDA}
+% The C Programming Language
+\newcommand{\dvttermc}{\texttt{C}}
+
 
 % D
 % Direct Virtualization
@@ -79,7 +82,13 @@
 % E
 % ...
 % F
-% ...
+\newglossaryentry{dvtglossfedora}
+{
+    name={\href{http://en.wikipedia.org/wiki/Fedora_(operating_system)}{Fedora (operating system)}},
+    description={An operating system based on the Linux kernel, developed by the community-supported Fedora Project and owned by Red Hat},
+    sort={Fedora},
+}
+\newcommand{\dvttermfedora}{\glslink{dvtglossfedora}{Fedora 19}}
 
 % G
 % Graphics Processing Unit
@@ -112,11 +121,14 @@
 % Just-in-Time
 \newacronym{dvtglossjit}{JIT}{Just-in-Time}
 \newcommand{\dvttermjit}{\dvtcmdabbrev{dvtglossjit}}
+% Java Native Interface
+\newacronym{dvtglossjni}{JNI}{\href{http://en.wikipedia.org/wiki/Java_Native_Interface}{Java Native Interface}}
+\newcommand{\dvttermjni}{\dvtcmdabbrev{dvtglossjni}}
 
 % K
 % ...
 % L
-% ...
+\newcommand{\dvttermlinux}{Linux}
 
 % M
 % Million Instructions Per Second
@@ -216,7 +228,15 @@
 \newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{dvtglosswarp}}
 
 % X
-% ...
+% X11
+\newglossaryentry{dvtglossxeleven}
+{
+  name=\href{http://en.wikipedia.org/wiki/X_Window_System}{X Window System},
+  description={A windowing system for bitmap displays, common on UNIX-like operating systems},
+  sort={X Window System}, % Must add sorting attribute, since sort will otherwize erronously sort by href-command.
+}
+\newcommand{\dvttermxeleven}{\glslink{dvtglossxeleven}{X11}}
+
 % Y
 % ...
 % Z
@@ -259,12 +279,10 @@
 %\newcommand{\termlinaro}{Linaro}
 %% Operating Systems, Technologies & Products:
 %\newcommand{\termosx}{OS~X}
-%\newcommand{\termlinux}{Linux}
 %\newcommand{\termsolaris}{Solaris}
 %\newcommand{\termwindows}{\termmicrosoft ~Windows}
 %\newcommand{\termandroidemu}{\termandroid ~Emulator}
 %\newcommand{\termvirgilthreed}{Virgil3D}
-%\newcommand{\termxeleven}{X11}
 %\newcommand{\termglmarktwo}{glmark2}
 %% Simics:
 %\newcommand{\termfs}{\termsimics ~FS}
