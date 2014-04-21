@@ -21,6 +21,7 @@ g_bibfiles = [\
 g_reffiles = [\
     "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
+g_furfiles = ["../dv2524-bib/dissertations.bib",]
 
 g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx"]
 g_cleanexcept = ["thesis.pdf", "thesisindexstyle.ist"]
@@ -76,9 +77,10 @@ shutil.copyfile("../dv2524-encl/Intel-logo.pdf", "Intel-logo.pdf")
 # Said entries are copied into files with an additional '.bib' appended to the filename (in case the user is building on my Windows-machine using MiKTeX).
 concatenate(g_bibfiles, "thesisbibliography.bib")
 shutil.copyfile("thesisbibliography.bib", "thesisbibliography.bib.bib")
-
 concatenate(g_reffiles, "thesiswebreferences.bib")
 shutil.copyfile("thesiswebreferences.bib", "thesiswebreferences.bib.bib")
+concatenate(g_furfiles, "thesisfurtherreading.bib")
+shutil.copyfile("thesisfurtherreading.bib", "thesisfurtherreading.bib.bib")
 
 # Update git head, invoking [gitinfo] post-checkout hook:
 print("Calling git checkout; invoking post-checkout git hook...")
@@ -91,6 +93,7 @@ subprocess.call(["pdflatex", "thesis"])
 # Build [multibib] bibliography:
 subprocess.call(["bibtex", "bib.aux"])
 subprocess.call(["bibtex", "ref.aux"])
+subprocess.call(["bibtex", "fur.aux"])
 
 # Build [glossaries] nomenclature:
 subprocess.call(["makeglossaries", "thesis"])
