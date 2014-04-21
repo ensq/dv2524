@@ -10,8 +10,8 @@
 \section*{Checkpointing}
 \label{sec:appendixa_checkpointing}
 \addcontentsline{toc}{section}{Checkpointing}
-
 \index{Checkpointing}
+
 The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvtcmdcitebib[p.~103]{publications:harris:2007}.
 It may be benificial to store such states in a '\dvttermcheckpointrestart ' scheme, as suggested by Jiang et al. in regards to \dvttermcuda\ kernels\dvtcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}.
 In this way, developers may save- and restore the state of a system which can reduce overhead of restarting computationally heavy applications from scratch\dvtcmdcitebib[p.~19,~20]{journals:aarno:2013}.
@@ -25,8 +25,8 @@ As such, throughout this document and in relation to the \dvttermsimics\ full-sy
 \section*{Deterministic Execution}
 \label{sec:appendixa_deterministicexecution}
 \addcontentsline{toc}{section}{Deterministic Execution}
-
 \index{Deterministic Execution}
+
 \glslink{dvtglossdeterministicexecution}{'Deterministic execution'} commonly refers to the execution of \dvttermdeterministicalgorithm s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (see \dvtcmdcitebib{journals:cohen:1979} for an overview on \glslink{dvtglossdeterministicalgorithm}{deterministic- and non-deterministic algorithms}).
 Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behaviour caused by concurrent software\dvtcmdcitebib[p.~3-5]{journals:lee:2006}\dvtcmdcitebib[p.~92]{journals:holzmann:1997}.
 Some even go as far as to argue that determinism is a prerequisite for effective debugging and testing\dvtcmdcitebib[p.~3,~4]{dissertation:devietti:2012}\dvtcmdcitebib[p.~51,~59]{inproceedings:yu:2012}.
@@ -41,11 +41,26 @@ Thus, throughout this document and in relation to the \dvttermsimics\ full-syste
 \section*{Reverse Execution}
 \label{sec:appendixa_reverseexecution}
 \addcontentsline{toc}{section}{Reverse Execution}
-
 \index{Reverse Execution}
+
 \glslink{dvtglossreverseexecution}{'Reverse execution'} provides software developers with the ability to return, often from portable \dvttermcheckpoint s, to previous states of execution\dvtcmdcitebib[p.~2,~3]{journals:akgul:2004}.
 This may be useful when debugging, profiling, or testing as difficult-to-reach system states may be stored and returned to, effectively bypassing program initialization and other hindrances\dvtcmdcitebib[p.~54]{journals:magnusson:2002}.
 
 In \dvttermsimics , '\dvttermreverseexecution ' denotes said ability - covering the entirety of the simulated system\dvtcmdcitebib[p.~30,~31]{publications:leupers:2010}.
 As such, simulated systems may be run in reverse; including virtualized hardware device states, disk contents and \dvttermcpu\ registers\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:backtorevexe} for an overview on \dvttermreverseexecution\ in \dvttermsimics ); whilst still maintaining determinism in the simulated system.
 As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermreverseexecution referse to the functionality described in this section.
+
+% Reference Solution
+\section*{Reference Solution}
+\label{sec:appendixa_referencesolution}
+\addcontentsline{toc}{section}{Reference Solution}
+\index{Reference Solution}
+\index{Reference Implementation}
+
+The \dvttermandroidemulator\ is described as a virtual mobile device emulator\dvtcmdciteref{web:google:2013:usingtheemulator}. Included in the \dvttermandroidsdk , it supports virtualization of an assortment of mobile hardware permutations.
+In the presence of thet \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing performance of \dvttermcpu -bound workloads\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
+In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} \& \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ framework\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
+\dvttermgoogle 's solution, the design documents of which are attached in \dvtcmdcitefur{dissertation:nilsson:2014}, consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system directly via the simulator program.
+
+As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix\ devices aiding those wishing to develop software for mobile units.
+The \dvttermandroidemulator\ implementation and solution are referred to as the \dvttermreferenceimplementation\ and the \dvttermreferencesolution , respectively, throughout this document.

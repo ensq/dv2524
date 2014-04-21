@@ -17,8 +17,12 @@
 \newcommand{\dvttermandroid}{Android}
 % Android SDK
 \newcommand{\dvttermandroidsdk}{\dvttermandroid\ SDK}
+% Android Emulator
+\newcommand{\dvttermandroidemulator}{\dvttermandroid\ emulator}
 % ACM
 \newcommand{\dvttermacm}{ACM}
+% ARM
+\newcommand{\dvttermarm}{ARM}
 
 % B
 % ...
@@ -36,7 +40,7 @@
 \newglossaryentry{dvtglosscheckpointing}
 {
   name=Checkpointing,
-  description={is a technique including... See also \dvttermcheckpoint .}
+  description={See section \nameref{sec:appendixa_checkpointing}}
 }
 \newcommand{\dvttermcheckpointing}{\dvtcmdcaponcegloss{dvtglosscheckpointing}{Checkpointing}}
 % Central Processing Unit
@@ -68,14 +72,15 @@
 \newglossaryentry{dvtglossdeterministicexecution}
 {
   name=Deterministic Execution,
-  description={Description of Deterministic Execution.}
+  description={See section \nameref{sec:appendixa_deterministicexecution}}
 }
 \newcommand{\dvttermdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
 
 \newglossaryentry{dvtglossdeterministicalgorithm}
 {
-  name=Deterministic Algorithm,
-  description={Description of what constitute a Deterministic Algorithm.}
+  name=\href{http://en.wikipedia.org/wiki/Deterministic_algorithm}{Deterministic Algorithm},
+  description={An algorithm which, given a particular input, will always produce the same output, with the underlying machine always passing through the same sequence of states},
+  sort={Deterministic Algorithm},
 }
 \newcommand{\dvttermdeterministicalgorithm}{\dvtcmdcaponcegloss{dvtglossdeterministicalgorithm}{Deterministic Algorithm}}
 
@@ -161,8 +166,9 @@
 % Paravirtualization
 \newglossaryentry{dvtglossparavirtualization}
 {
-  name=Paravirtualization,
-  description={Description of Paravirtualization.}
+  name=\href{http://en.wikipedia.org/wiki/Paravirtualization}{Paravirtualization},
+  description={A virtualization technique that presents a software interface to virtual machines that is similar, but not identical to that of the underlying hardware},
+  sort={Paravirtualization},
 }
 \newcommand{\dvttermparavirtualization}{\dvtcmdcaponcegloss{dvtglossparavirtualization}{Paravirtualization}}
 
@@ -170,23 +176,34 @@
 % QEMU
 \newglossaryentry{dvtglossqemu}
 {
-  name=QEMU,
-  description={Description of QEMU.}
+  name=\href{http://en.wikipedia.org/wiki/QEMU}{QEMU},
+  description={A free and open-source hosted hypervisor that performs hardware virtualization},
+  sort={QEMU},
 }
-\newcommand{\dvttermqemu}{\gls{dvtglossqemu}} % QEMU is an abbreviation, but is not formatted as such since it is also a product name.
+\newcommand{\dvttermqemu}{\glslink{dvtglossqemu}{QEMU}} % QEMU is an abbreviation, but is not formatted as such since it is also a product name.
 
 % R
 % Reverse Execution
 \newglossaryentry{dvtglossreverseexecution}
 {
   name=Reverse Execution,
-  description={Description of Reverse Execution.}
+  description={See section \nameref{sec:appendixa_reverseexecution}}
 }
 \newcommand{\dvttermreverseexecution}{\dvtcmdcaponcegloss{dvtglossreverseexecution}{Reverse Execution}}
 % Reference Implementation
-\newcommand{\dvttermreferenceimplementation}{Reference Implementation} % Consider caponce.
+\newglossaryentry{dvtglossreferenceimplementation}
+{
+  name=Reference Implementation,
+  description={See \gls{dvtglossreferencesolution}}
+}
+\newcommand{\dvttermreferenceimplementation}{\dvtcmdcaponcegloss{dvtglossreferenceimplementation}{Reference Implementation}}
 % Reference Solution
-\newcommand{\dvttermreferencesolution}{Reference Solution} % Consider caponce.
+\newglossaryentry{dvtglossreferencesolution}
+{
+  name=Reference Solution,
+  description={See section \nameref{sec:appendixa_referencesolution}}
+}
+\newcommand{\dvttermreferencesolution}{\dvtcmdcaponcegloss{dvtglossreferencesolution}{Reference Solution}}
 
 % S
 % Software Rendering
@@ -236,6 +253,8 @@
   sort={X Window System}, % Must add sorting attribute, since sort will otherwize erronously sort by href-command.
 }
 \newcommand{\dvttermxeleven}{\glslink{dvtglossxeleven}{X11}}
+% x86
+\newcommand{\dvttermxeightysix}{x86}
 
 % Y
 % ...
