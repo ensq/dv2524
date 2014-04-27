@@ -1,6 +1,7 @@
 # .gitignore
 
 .DS_Store
+__MACOSX/
 
 *~
 
@@ -38,3 +39,6 @@
 *.tdo
 *.pdf
 *.gin
+
+thesis.pdf
+proposal.pdf
