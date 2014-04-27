@@ -10,7 +10,6 @@ import shutil
 import zipfile
 import subprocess
 
-# Settings:
 g_bibfiles = [\
     "../dv2524-bib/papers.bib",\
     "../dv2524-bib/magazines.bib",\
@@ -21,12 +20,15 @@ g_bibfiles = [\
 g_reffiles = [\
     "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
-g_furfiles = ["../dv2524-bib/dissertations.bib",]
+g_furfiles = [\
+    "../dv2524-bib/dissertations.bib",\
+    "../dv2524-bib/technicaldocs.bib"]
 
+# Will delete all of the following filetypes before and after build:
 g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx"]
+# Except these files:
 g_cleanexcept = ["thesis.pdf", "thesisindexstyle.ist"]
 
-# Methods:
 def clean():
     for ftype in g_cleanfiletypes:
         filesoftype = [f for f in os.listdir(".") if f.endswith(ftype)]

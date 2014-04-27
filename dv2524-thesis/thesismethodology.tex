@@ -4,8 +4,11 @@
 % Methodology:
 \chapter{Methodology}
 \label{cha:methodology}
+The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see \dvtcmdcitefur{technicaldocs:google:2014}).
 
-% Describe acceleration pipeline
+%In accordance to said \dvttermreferenceimplementation , this dissertation suggests achieving acceleration of \dvttermopenglestwopointo\ by implementing an acceleration pipeline consisting of three stages that are, in turn, supported by a specialized communications channel in \dvttermsimics .
+%Moreover, said communications channel, or '\termsimicspipe ', utilizes a specially devised protocol to describe an assortment of \termopengles\ and \termegl\ function calls when sent in-between the \termhost - and \termtarget\ systems (\dvcmdrefappa{sec:appendixa_simicspipeprotocol}).
 
 % Experiment Methodology:
 \section{Experiment Methodology}
@@ -14,9 +17,7 @@ Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\
 As such, a benchmark has been devised for the purposes of stress-testing the solution developed for the purpose of this study.
 The benchmark consists of three seperate tests; each intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
 The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a similar \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilizes \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
-
-
-
+The benchmarks are presented below:
 
 % These shouldn't be third-level subsections:
 \subsection{Benchmark Chess}
@@ -29,6 +30,10 @@ The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\
 
 \subsection{Benchmark Phong}
 \label{sec:methodology_experimentmethodology_benchmarkphong}
+\ldots
+
+\subsection{Platform Time Profiling}
+\label{sec:methodology_experimentmethodology_platoformtimeprofiling}
 \ldots
 
 % Suggested structure:
@@ -44,6 +49,8 @@ The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\
 % | Experiment methodology:
 % | * Measurement timing and reliability on the different systems.
 % | Explenation of solution and it's components.
+
+% Elaborate on how the experiment ought to be performed (i.e. on software rasterized simics and in what configuration). See below:
 
 %The developed benchmark ought to execute on the studied platforms; being paravirtualized \termsimics , software~rasterized \termsimics , and the \termrefsolu , respectively.
 %It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.
