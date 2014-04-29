@@ -40,9 +40,9 @@ if len(opts)<1:
     sys.exit(2)
 
 subbuild(os.getcwd() + "/dv2524-bin")
-subbuild(os.getcwd() + "/dv2524-git")
 subbuild(os.getcwd() + "/dv2524-bst")
 subbuild(os.getcwd() + "/dv2524-pac")
+subbuild(os.getcwd() + "/dv2524-git")
 
 if target=="thesis":
     subbuild(os.getcwd() + "/dv2524-sty", "--target thesis")
