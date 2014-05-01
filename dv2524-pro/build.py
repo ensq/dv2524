@@ -1,12 +1,12 @@
 #!/bin/python
-# Script building thesis document.
+# Script building proposal document.
 
 import os
 import glob
 import shutil
 import subprocess
 
-g_iam = "dv2524-the/build.py"
+g_iam = "dv2524-pro/build.py"
 
 # Entry point:
 print(g_iam + ": Enter...")
@@ -21,32 +21,23 @@ for srcfile in srcfiles:
 os.chdir("../dv2524-bin/")
 
 # Update git head, invoking [gitinfo] post-checkout hook:
-print("Calling git checkout; invoking post-checkout git hook...")
+print(g_iam + ": Calling git checkout; invoking post-checkout git hook...")
 subprocess.call(["git", "checkout"])
 
-print("Building LaTeX-document with pdflatex...")
+print(g_iam + ": Building LaTeX-document with pdflatex...")
 # Build intermediate .aux-files and symbol tree:
-subprocess.call(["pdflatex", "thesis"])
+subprocess.call(["pdflatex", "proposal"])
 
 # Build [multibib] bibliography:
 print(g_iam + ": Building [multibib] bibliography...")
 subprocess.call(["bibtex", "bib.aux"])
 subprocess.call(["bibtex", "ref.aux"])
-subprocess.call(["bibtex", "fur.aux"])
-
-# Build [glossaries] nomenclature:
-print(g_iam + ": Building [glossaries] nomenclature...")
-subprocess.call(["makeglossaries", "thesis"])
-
-# Build [makeidx] index...
-print(g_iam + ": Building [makeidx] index...")
-subprocess.call("makeindex -s thesisindexstyle.ist thesis", shell=True)
 
 # Construct final thesis document - twice:
-subprocess.call(["pdflatex", "thesis"])
-subprocess.call(["pdflatex", "thesis"])
+subprocess.call(["pdflatex", "proposal"])
+subprocess.call(["pdflatex", "proposal"])
 
 # When build has completed, reset working directory back to original directory:
-os.chdir("../dv2524-the/")
+os.chdir("../dv2524-pro/")
 
 print(g_iam + ": Exit.")

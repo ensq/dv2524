@@ -52,9 +52,9 @@ if target=="thesis":
     distutils.dir_util.copy_tree("./dv2524-sty-thesis", "../dv2524-bin")
     clean(g_iam, "dv2524-sty-thesis")
 elif target=="proposal":
-    print(g_iam + ": Not yet implemented!")
-    usage(g_iam)
-    sys.exit(2)
+    unzipToDir(g_iam, "dv2524-sty-proposal.zip", ".")
+    distutils.dir_util.copy_tree("./dv2524-sty-proposal", "../dv2524-bin")
+    clean(g_iam, "dv2524-sty-proposal")
 else:
     usage(g_iam)
     sys.exit(2)
