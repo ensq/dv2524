@@ -22,7 +22,7 @@ g_furfiles = [\
     "../dv2524-bib/technicaldocs.bib"]
 
 def usage(p_from):
-  print(p_from + ": Usage: " + sys.argv[0] + " -p BIBLIOGRAPHY PREFIX")
+  print(p_from + ": Usage: " + sys.argv[0] + " --target [thesis, proposal]")
 
 def concatenate(p_from, p_ifilenames, p_ofilename):
     print(p_from + ": Concatenating files " + str(p_ifilenames) + " into " + p_ofilename + "...")
@@ -39,7 +39,7 @@ def copy(p_from, p_source, p_target):
 print(g_iam + ": Enter...")
 
 try:
-	opts, args = getopt.getopt( sys.argv[1:], "p:h", ["prefix=", "help="] )
+	opts, args = getopt.getopt( sys.argv[1:], "t:h", ["target=", "help="] )
 except getopt.GetoptError as e:
 	print( e )
 	sys.exit( 2 )
@@ -48,7 +48,7 @@ for opt, arg in opts:
     if opt in ('-h', '--help'):
         usage(g_iam)
         sys.exit(2)
-    elif opt in ('-p', '--prefix'):
+    elif opt in ('-t', '--target'):
         bibprefix = arg
     else:
         usage(g_iam)

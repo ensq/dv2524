@@ -47,7 +47,7 @@ subbuild(os.getcwd() + "/dv2524-git")
 if target=="thesis":
     subbuild(os.getcwd() + "/dv2524-sty", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-res", "--target thesis")
-    subbuild(os.getcwd() + "/dv2524-bib", "--prefix thesis")
+    subbuild(os.getcwd() + "/dv2524-bib", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-the")
     shutil.copyfile("dv2524-bin/thesis.pdf", "thesis.pdf")
 #elif target=="proposal":
