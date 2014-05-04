@@ -45,6 +45,11 @@
 % Formatting number command; at the moment simply outputs the number in math environment:
 \newcommand{\dvtcmdnum}[1]{$#1$}
 
+% Formatting inline code command:
+\newcommand{\dvtcmdcodeinline}[1]{
+	\colorbox{black!5}{
+			\lstinline[basicstyle=\ttfamily\color{black}]{#1}}}
+
 % Old abbreviation command. Doesn't make use of [glossaries]. Saved in case not all abbreviations are to have [glossaries] entries.
 %\newcommand{\dvtcmdabbrev}[2]{%
 %	\provideboolean{#2}%

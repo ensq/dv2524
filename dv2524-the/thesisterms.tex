@@ -40,7 +40,7 @@
 \newglossaryentry{dvtglosscheckpointing}
 {
   name=Checkpointing,
-  description={See section \nameref{sec:appendixa_checkpointing}}
+  description={See section \dvtcmdrefname{sec:appendixa_checkpointing} under chapter \dvtcmdrefname{cha:appendixa}}
 }
 \newcommand{\dvttermcheckpointing}{\dvtcmdcaponcegloss{dvtglosscheckpointing}{Checkpointing}}
 % Central Processing Unit
@@ -56,6 +56,8 @@
 \newcommand{\dvttermcuda}{CUDA}
 % The C Programming Language
 \newcommand{\dvttermc}{\texttt{C}}
+% Cisco
+\newcommand{\dvttermcisco}{Cisco Systems, Inc.}
 
 
 % D
@@ -72,10 +74,10 @@
 \newglossaryentry{dvtglossdeterministicexecution}
 {
   name=Deterministic Execution,
-  description={See section \nameref{sec:appendixa_deterministicexecution}}
+  description={See section \nameref{sec:appendixa_deterministicexecution} under chapter \nameref{cha:appendixa}}
 }
 \newcommand{\dvttermdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
-
+% Deterministic Algorithm
 \newglossaryentry{dvtglossdeterministicalgorithm}
 {
   name=\href{http://en.wikipedia.org/wiki/Deterministic_algorithm}{Deterministic Algorithm},
@@ -85,8 +87,11 @@
 \newcommand{\dvttermdeterministicalgorithm}{\dvtcmdcaponcegloss{dvtglossdeterministicalgorithm}{Deterministic Algorithm}}
 
 % E
-% ...
+% Ericsson
+\newcommand{\dvttermericsson}{Ericsson}
+
 % F
+% Fedora
 \newglossaryentry{dvtglossfedora}
 {
     name={\href{http://en.wikipedia.org/wiki/Fedora_(operating_system)}{Fedora (operating system)}},
@@ -94,6 +99,17 @@
     sort={Fedora},
 }
 \newcommand{\dvttermfedora}{\glslink{dvtglossfedora}{Fedora 19}}
+% Full-system simulation
+\newacronym{dvtglossfss}{FSS}{Full-system Simulation}
+\newglossaryentry{dvtglossfullsystemsimulation}
+{
+    name={\href{http://en.wikipedia.org/wiki/Full_system_simulator}{Full-system simulation}},
+    description={Full-system simulation denotes an architecture simulator that simulates an electronic system at such a level of detail that complete software stacks from real systems can run on the simulator without any modification},
+    sort={Full-system simulation},
+}
+\newcommand{\dvttermfullsystemsimulation}{\dvtcmdcaponcegloss{dvtglossfullsystemsimulation}{Full-system Simulation}}
+% Freescale Semiconductor
+\newcommand{\dvttermfreescalesemiconductor}{Freescale Semiconductor, Inc.}
 
 % G
 % Graphics Processing Unit
@@ -104,15 +120,36 @@
 \newcommand{\dvttermgpgpu}{\dvtcmdabbrev{dvtglossgpgpu}}
 % Google
 \newcommand{\dvttermgoogle}{Google}
+% GE Avionics
+\newcommand{\dvttermgeavionics}{GE Aviation}
 
 % H
 % Host
 \newglossaryentry{dvtglosshost}
 {
-  name=Simulation Host,
+  name={Simulation Host},
   description={Description of a Simulation Host.}
 }
 \newcommand{\dvttermhost}{\dvtcmdcaponcegloss{dvtglosshost}{Host}}
+% Hewlett-Packard
+\newcommand{\dvttermhewlettpackard}{Hewlett-Packard Company}
+% Honeywell
+\newcommand{\dvttermhoneywell}{Honeywell International, Inc.}
+% Hypervirtualization
+\newglossaryentry{dvtglosshypersimulation}
+{
+  name={Hypersimulation},
+  description={Technologies making a simulated processor skip through, what would effectively be, idle time rather than executing \dvtcmdcodeinline{nop}- type instructions cycle by cycle},
+}
+\newcommand{\dvttermhypersimulation}{\dvtcmdcaponcegloss{dvtglosshypersimulation}{Hypersimulation}}
+% Host Virtualization Extentions
+\newglossaryentry{dvtglosshostvirtualizationextensions}
+{
+  name={\href{http://en.wikipedia.org/wiki/Hardware-assisted_virtualization}{Host virtualization extensions}},
+  description={A platform virtualization approach that enables efficient full virtualization using help from hardware capabilities, primarily from the host processors. Also known as hardware-assisted virtualization},
+  sort={Host virtualization extensions},
+}
+\newcommand{\dvttermhostvirtualizationextensions}{\dvtcmdcaponcegloss{dvtglosshostvirtualizationextensions}{Host Virtualization Extensions}}
 
 % I
 % Interpretation
@@ -134,6 +171,7 @@
 % ...
 % L
 \newcommand{\dvttermlinux}{Linux}
+\newcommand{\dvttermlockheedmartin}{Lockheed Martin}
 
 % M
 % Million Instructions Per Second
@@ -145,6 +183,8 @@
 % N
 % NASA
 \newcommand{\dvttermnasa}{NASA}
+\newcommand{\dvttermnortel}{Nortel Networks Corporation}
+\newcommand{\dvttermnorthropgrumman}{Northrop Grumman Corporation}
 
 % O
 % OpenGL
@@ -187,7 +227,7 @@
 \newglossaryentry{dvtglossreverseexecution}
 {
   name=Reverse Execution,
-  description={See section \nameref{sec:appendixa_reverseexecution}}
+  description={See section \nameref{sec:appendixa_reverseexecution} under chapter \nameref{cha:appendixa}}
 }
 \newcommand{\dvttermreverseexecution}{\dvtcmdcaponcegloss{dvtglossreverseexecution}{Reverse Execution}}
 % Reference Implementation
@@ -211,10 +251,15 @@
 % Simics
 \newglossaryentry{dvtglosssimics}
 {
-  name=Simics,
-  description={Description of Simics.}
+  name=The Simics full-system simulator,
+  description={See section \dvtcmdrefname{sec:appendixa_simics} under chapter \dvtcmdrefname{cha:appendixa}}
 }
-\newcommand{\dvttermsimics}{\gls{dvtglosssimics}}
+\newcommand{\dvttermsimics}{\glslink{dvtglosssimics}{Simics}}
+% SICS
+\newacronym{dvtglosssics}{SICS}{The Swedish Institute of Computer Science}
+\newcommand{\dvttermsics}{\dvtcmdabbrev{dvtglosssics}}
+% Sun Microsystems
+\newcommand{\dvttermsunmicrosystems}{Sun Microsystems, Inc.}
 
 % T
 % Time-to-Market
@@ -236,13 +281,16 @@
 \newcommand{\dvttermtarget}{\dvtcmdcaponcegloss{dvtglosstarget}{Target}}
 
 % V
-% ...
+% Virtutech
+\newcommand{\dvttermvirtutech}{Virtutech}
 
 % W
 % WARP
 \newacronym{dvtglosswarp}{WARP}{Windows Advanced Rasterization Platform}
 % Microsoft WARP
 \newcommand{\dvttermwarp}{\dvttermmicrosoft\ \dvtcmdabbrev{dvtglosswarp}}
+% Wind River Systems, Inc.
+\newcommand{\dvttermwindriver}{Wind River Systems, Inc.}
 
 % X
 % X11
