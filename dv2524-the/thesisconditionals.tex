@@ -4,16 +4,16 @@
 % Typesetting dependant on target reader:
 \iftoggle{bthformatting}{ % If formatting is intended for the institution, we assume that the author of the original template has included the correct (Times New Roman) font in the packages-section.
 	\usepackage{textcomp} % This package, originally included in the template, conflicts with kpfonts. Hence, we include this in the conditional.
-	
+
 	\togglefalse{backpage}
 	\togglefalse{intellogo}
 	\togglefalse{acmclassification}
 	\togglefalse{generalterms}
 }{
 	\usepackage{kpfonts} % If formatting is not intended for the institution, we may use whatever typesetting we wish:
-	
+
 	\toggletrue{backpage}
-	\toggletrue{intellogo}
+	\togglefalse{intellogo}
 	\toggletrue{acmclassification}
 	\togglefalse{generalterms}
 }
@@ -27,7 +27,7 @@
 }{
 	\usepackage{hyperref}
 	\usepackage{todonotes} % Include TODO notes functionality.
-	
+
 	\renewcommand{\releasebuildtostring}{Editorial configuration}
 }
 \providecommand{\todo}[1]{}

@@ -26,6 +26,7 @@ def subbuild(p_dir, p_args = ""):
 
 def buildCommon():
     subbuild(os.getcwd() + "/dv2524-bin")
+    subbuild(os.getcwd() + "/dv2524-con")
     subbuild(os.getcwd() + "/dv2524-bst")
     subbuild(os.getcwd() + "/dv2524-pac")
     subbuild(os.getcwd() + "/dv2524-git")
