@@ -1,0 +1,63 @@
+# demo.gpt
+# Demo plot using GNUplot.
+# Requires GNUplot 4.6 or later.
+
+min(x,y) = (x < y) ? x : y
+max(x,y) = (x > y) ? x : y
+
+# Entry point:
+reset
+iam = "dv2524-gpt/demo.gpt"
+print sprintf("%s: Enter...", iam)
+
+set terminal png
+set output "demo.png"
+
+print "Julia225 stats:"
+stats "results/simicsjulia225.ms" name "Julia225"
+print "Julia450 stats:"
+stats "results/simicsjulia450.ms" name "Julia450"
+print "Julia900 stats:"
+stats "results/simicsjulia900.ms" name "Julia900"
+
+julia225Mean=Julia225_mean_y
+julia225Min=julia225Mean-Julia225_stddev_y
+julia225Max=julia225Mean+Julia225_stddev_y
+
+julia450Mean=Julia450_mean_y
+julia450Min=julia450Mean-Julia450_stddev_y
+julia450Max=julia450Mean+Julia450_stddev_y
+
+julia900Mean=Julia900_mean_y
+julia900Min=julia900Mean-Julia900_stddev_y
+julia900Max=julia900Mean+Julia900_stddev_y
+
+juliaMin = min(julia225Min, julia450Min)
+juliaMin = min(juliaMin, julia900Min)
+
+juliaMax = max(julia225Max, julia450Max)
+juliaMax = max(juliaMax, julia900Max)
+
+set yrange[juliaMin:juliaMax]
+
+plot "results/simicsjulia225.ms", "results/simicsjulia450.ms", "results/simicsjulia900.ms"
+
+print sprintf("%s: Exit.", iam)
+
+# ---
+
+# STATS Attributes:
+# STATS_min               # minimum value of in-range data points
+# STATS_max               # maximum value of in-range data points
+# STATS_index_min         # index i for which data[i] == STATS_min
+# STATS_index_max         # index i for which data[i] == STATS_max
+# STATS_lo_quartile       # value of the lower (1st) quartile boundary
+# STATS_median            # median value
+# STATS_up_quartile       # value of the upper (3rd) quartile boundary
+# STATS_mean              # mean value of in-range data points
+# STATS_stddev            # standard deviation of the in-range data points
+# STATS_sum               # sum
+# STATS_sumsq             # sum of squares
+
+# Goodie-bag:
+# Use "show variables all" if you get a bunch of undefined variable errors.
