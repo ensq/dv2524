@@ -3,7 +3,6 @@
 
 import os
 import shutil
-import zipfile
 import distutils.core
 
 g_iam = "dv2524-con/build.py"
@@ -15,6 +14,11 @@ if not os.path.isfile("Intel-logo.pdf"):
     print(g_iam + ": Warning - No Intel Logo present. Using placeholder image.")
     shutil.copyfile("pdficon_large.pdf", "Intel-logo.pdf")
 
-distutils.dir_util.copy_tree(".", "../dv2524-bin")
+srcDir = os.listdir(".")
+dstDir = "../dv2524-bin/"
+
+for files in srcDir:
+	if not files.endswith(".py"):
+		shutil.copy(files, dstDir)
 
 print(g_iam + ": Exit.")

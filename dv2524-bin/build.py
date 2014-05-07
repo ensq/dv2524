@@ -1,20 +1,25 @@
 #!/bin/python
-# Script copying the entire contents (except itself) to the dv2524-bin/ build directory.
+# Script deleting all contents (apart from itself) in dv2524-bin/ directory.
 
 import os
-import shutil
-import zipfile
-import distutils.core
 
-g_iam = "dv2524-con/build.py"
+g_iam = "dv2524-bin/build.py"
+
+g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx", ".tex", ".txt", ".svg"]
+g_cleaninadditionto = ["README",]
+g_cleanexcept = ["build.py", "README.md"]
+
+def clean(p_from):
+    for ftype in g_cleanfiletypes:
+        filesoftype = [f for f in os.listdir(".") if f.endswith(ftype) or f in g_cleaninadditionto]
+        print(p_from + ": Deleting " + str(len(filesoftype)) + " instances of filetype " + ftype + " from build directory...")
+        for f in filesoftype:
+            if str(f) not in g_cleanexcept:
+                os.remove(f)
 
 # Entry point:
 print(g_iam + ": Enter...")
 
-if not os.path.isfile("Intel-logo.pdf"):
-    print(g_iam + ": Warning - No Intel Logo present. Using placeholder image.")
-    shutil.copyfile("pdficon_large.pdf", "Intel-logo.pdf")
-
-distutils.dir_util.copy_tree(".", "../dv2524-bin")
+clean(g_iam) # Nuke from orbit.
 
 print(g_iam + ": Exit.")
