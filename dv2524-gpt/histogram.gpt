@@ -1,0 +1,61 @@
+# histogram.gpt
+# GNUplot script rendering a histogram based on a lone data file.
+# Requires GNUplot 4.6 or later.
+# ---
+# Arguments:
+# 1. Data set		: arg_data
+# 2. Output file	: arg_output
+# ---
+# Invoke accordingly:
+# gnuplot -e "arg_data='results/paraphong1448x1448.ms';arg_output='out.png'" histogram.gpt
+
+# Utility methods:
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='results/paraphong1448x1448.ms';arg_output='out.png'\" histogram.gpt", p_iam)
+press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
+
+mapToBin(p_x,p_width) = p_width * floor(p_x / p_width) + p_width / 2.0 # Map entries to corresponding bins.
+
+# Entry point:
+reset
+iam = "dv2524-gpt/histogram.gpt"
+print sprintf("%s: Enter...", iam)
+
+if(!exists("arg_output")) { # Optional arguments.
+	arg_output = "default.png"
+}
+if(!exists("arg_data")) { # Mandatory arguments.
+	print usage(iam)
+	pause -1 press(iam) # We should abort script here.
+}
+
+set terminal png # Should be customizable.
+set output arg_output
+set xlabel "Frametime (ms)"
+set ylabel "Sample frequency"
+
+print sprintf("%s stats:", arg_data)
+stats arg_data name "data"
+
+hist_numBins = 250
+hist_data_mean = data_mean_y
+hist_data_min = hist_data_mean - data_stddev_y
+hist_data_max = hist_data_mean + data_stddev_y
+hist_binWidth = (hist_data_max - hist_data_min) / hist_numBins
+
+set xrange [hist_data_min:hist_data_max]
+set yrange [0:]
+set boxwidth hist_binWidth # Avoid incorrectly rendering empty bins. (http://stackoverflow.com/questions/2471884/histogram-using-gnuplot)
+set style fill solid 0.5 # Fill bins to make them gorgous.
+set offset graph 0.05, 0.05, 0.05, 0.0 # Correct erronously rendered bins.
+
+plot arg_data u (mapToBin($1, hist_binWidth)):(1.0) smooth freq w boxes lc rgb"black" notitle
+
+print sprintf("%s: Exit.", iam)
+
+# ---
+
+# Insert to remove axis ticks on the right-/top axes:
+# set tics out nomirror
+
+# Insert to display increased precision in axes:
+#set xtics hist_data_min, (hist_data_max - hist_data_min) / 5, hist_data_max
