@@ -13,7 +13,7 @@
 usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='results/paraphong1448x1448.ms';arg_output='out.png'\" histogram.gpt", p_iam)
 press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
-mapToBin(p_x,p_width) = p_width * floor(p_x / p_width) + p_width / 2.0 # Map entries to corresponding bins.
+mapToBin(p_x, p_binWidth, p_binMin) = p_binWidth * (floor((p_x - p_binMin) / p_binWidth) + 0.5) + p_binMin # http://stackoverflow.com/a/19596160
 
 # Entry point:
 reset
@@ -41,14 +41,16 @@ hist_data_mean = data_mean_y
 hist_data_min = hist_data_mean - data_stddev_y
 hist_data_max = hist_data_mean + data_stddev_y
 hist_binWidth = (hist_data_max - hist_data_min) / hist_numBins
+hist_binMin = hist_data_min
+hist_binMax = hist_data_max
 
-set xrange [hist_data_min:hist_data_max]
+set xrange [hist_binMin:hist_binMax]
 set yrange [0:]
 set boxwidth hist_binWidth # Avoid incorrectly rendering empty bins. (http://stackoverflow.com/questions/2471884/histogram-using-gnuplot)
 set style fill solid 0.5 # Fill bins to make them gorgous.
 set offset graph 0.05, 0.05, 0.05, 0.0 # Correct erronously rendered bins.
 
-plot arg_data u (mapToBin($1, hist_binWidth)):(1.0) smooth freq w boxes lc rgb"black" notitle
+plot arg_data u (mapToBin($1, hist_binWidth, hist_binMin)):(1.0) smooth freq w boxes lc rgb"black" notitle
 
 print sprintf("%s: Exit.", iam)
 
@@ -58,4 +60,4 @@ print sprintf("%s: Exit.", iam)
 # set tics out nomirror
 
 # Insert to display increased precision in axes:
-#set xtics hist_data_min, (hist_data_max - hist_data_min) / 5, hist_data_max
+#set xtics hist_binMin, (hist_binMax - hist_binMin) / 5, hist_binMax
