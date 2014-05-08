@@ -14,23 +14,32 @@ Throughout this document, several concepts and phrases may be recognized and rel
 \section{Experiment Methodology}
 \label{sec:methodology_experimentmethodology}
 Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
-As such, a benchmark has been devised for the purposes of stress-testing the solution developed for the purpose of this study.
+As such, a benchmark has been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
 The benchmark consists of three seperate tests; each intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
-The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a similar \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilizes \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
+The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilizes \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
 The benchmarks are presented below:
 
-% These shouldn't be third-level subsections:
-\subsection{Benchmark Chess}
-\label{sec:methodology_experimentmethodology_benchmarkchess}
-\ldots
+% TODO: Preferably the benchmark images ought to be presented side-by-side, as to not take up too much space (remember, not vector graphics goodies).
+\paragraph{Benchmark: Chess}
+\label{par:methodology_experimentmethodology_benchmarkchess}
+\index{Benchmark: Chess}
+The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
+It is so named because of the chess-like tileset the graphics kernel produces (\todo{refer to figure}).
 
-\subsection{Benchmark Julia}
-\label{sec:methodology_experimentmethodology_benchmarkjulia}
-\ldots
 
-\subsection{Benchmark Phong}
-\label{sec:methodology_experimentmethodology_benchmarkphong}
-\ldots
+\missingfigure[figwidth=6cm]{Image of Chess benchmark output.} % TODO: Insert image of benchmark output.
+
+\paragraph{Benchmark: Julia}
+\label{par:methodology_experimentmethodology_benchmarkjulia}
+\index{Benchmark: Julia}
+Description of the Julia benchmark.
+\missingfigure[figwidth=6cm]{Image of Julia benchmark output.} % TODO: Insert image of benchmark output.
+
+\paragraph{Benchmark: Phong}
+\label{par:methodology_experimentmethodology_benchmarkphong}
+\index{Benchmark: Phong}
+The 'Phong' benchmark is developed for the purposes of stressing the throughput in-between \dvttermtarget - and \dvttermhost\ systems.
+\missingfigure[figwidth=6cm]{Image of Phong benchmark output.} % TODO: Insert image of benchmark output.
 
 \subsection{Platform Time Profiling}
 \label{sec:methodology_experimentmethodology_platoformtimeprofiling}
