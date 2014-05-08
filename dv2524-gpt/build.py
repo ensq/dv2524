@@ -22,7 +22,7 @@ for platform in platforms:
 		arg1 = "results/" + platform + benchmark[0]
 		arg2 = "results/" + platform + benchmark[1]
 		arg3 = "results/" + platform + benchmark[2]
-		arg4 = platform + benchmark[0] + ".png"
+		arg4 = platform + benchmark[0] + ".svg"
 
 		sp = subprocess.Popen(cmd % (arg1, arg2, arg3, arg4), shell=True)
 		sp.wait()

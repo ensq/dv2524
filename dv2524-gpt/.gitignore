@@ -1,2 +1,3 @@
 # When developing GNUplot scripts, it's quick to do it in .png and then compile .tex code whenever we'd like to build the thesis document.
 *.png
+*.svg

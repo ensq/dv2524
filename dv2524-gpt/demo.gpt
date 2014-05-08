@@ -9,7 +9,7 @@
 # 4. Output filename 		: arg_output
 # ---
 # Invoke accordingly:
-# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.png'" demo.gpt
+# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" demo.gpt
 # ---
 # TODO:
 # * Should recieve argument specifying output.
@@ -25,14 +25,14 @@ iam = "dv2524-gpt/demo.gpt"
 print sprintf("%s: Enter...", iam)
 
 if(!exists("arg_output")) { # Optional arguments.
-	arg_output = "default.png"
+	arg_output = "default.svg"
 }
 if(!exists("arg_data1") || !exists("arg_data2") || !exists("arg_data3")) { # Mandatory arguments.
 	print usage(iam)
 	pause -1 press(iam) # We should abort script here.
 }
 
-set terminal png # Should be customizable.
+set terminal svg # Should be customizable.
 set output arg_output
 
 print "Julia225 stats:"
