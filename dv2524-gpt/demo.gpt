@@ -1,24 +1,41 @@
 # demo.gpt
 # Demo plot using GNUplot.
 # Requires GNUplot 4.6 or later.
+# ---
+# Arguments:
+# 1. Data set 1 filename : arg_data1
+# 2. Data set 2 filename : arg_data2
+# 3. Data set 3 filename : arg_data3
+# ---
+# Invoke accordingly:
+# gnuplot -e "arg_data1='filename1';arg_data2='filename2';arg_data3='filename3'" demo.gpt
+# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms'" demo.gpt
 
-min(x,y) = (x < y) ? x : y
-max(x,y) = (x > y) ? x : y
+min(p_x, p_y) = (p_x<p_y) ? p_x : p_y
+max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1='filename1';arg_data2='filename2';arg_data3='filename3'\" demo.gpt", p_iam)
+press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
 # Entry point:
 reset
 iam = "dv2524-gpt/demo.gpt"
 print sprintf("%s: Enter...", iam)
 
+# Get arguments:
+if(!exists("arg_data1") || !exists("arg_data2") || !exists("arg_data3")) {
+	print usage(iam)
+	pause -1 press(iam) # We should abort script here.
+}
+
 set terminal png
 set output "demo.png"
 
 print "Julia225 stats:"
-stats "results/simicsjulia225.ms" name "Julia225"
+stats arg_data1 name "Julia225"
 print "Julia450 stats:"
-stats "results/simicsjulia450.ms" name "Julia450"
+stats arg_data2 name "Julia450"
 print "Julia900 stats:"
-stats "results/simicsjulia900.ms" name "Julia900"
+stats arg_data3 name "Julia900"
 
 julia225Mean=Julia225_mean_y
 julia225Min=julia225Mean-Julia225_stddev_y
@@ -40,7 +57,7 @@ juliaMax = max(juliaMax, julia900Max)
 
 set yrange[juliaMin:juliaMax]
 
-plot "results/simicsjulia225.ms", "results/simicsjulia450.ms", "results/simicsjulia900.ms"
+plot arg_data1, arg_data2, arg_data3
 
 print sprintf("%s: Exit.", iam)
 
