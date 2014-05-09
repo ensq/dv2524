@@ -20,26 +20,34 @@ The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\
 The benchmarks are presented below:
 
 % TODO: Preferably the benchmark images ought to be presented side-by-side, as to not take up too much space (remember, not vector graphics goodies).
+\missingfigure[figwidth=6cm]{Side-by-side image of Chess benchmark output.} % TODO: Insert image of benchmark output.
+\missingfigure[figwidth=6cm]{Side-by-side image of Chess benchmark output.} % TODO: Insert image of benchmark output.
+\missingfigure[figwidth=6cm]{Side-by-side image of Chess benchmark output.} % TODO: Insert image of benchmark output.
+
 \paragraph{Benchmark: Chess}
 \label{par:methodology_experimentmethodology_benchmarkchess}
 \index{Benchmark: Chess}
 The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
 It is so named because of the chess-like tileset the graphics kernel produces (\todo{refer to figure}).
+The benchmark is designed to perform a multitude of \dvttermopenglestwopointo\ library invocations per frame; in which each invocation is relatively lightweight in execution and carry a small amount of data argument-wize.
+In the 'Chess' benchmark, this is achieved by renderering a grid of colored (black or white, in order to adhere to the chess paradigm) rectangles where each tile is represented by four two-dimensional vertices in screen-space, in addition to six indices outlining the rectangular shape.
+Since the vertices are already transformed into screen-space, the graphics kernel need perform no additional transformation, adhering to the desired lightweight behaviour of each kernel invocation.
+Additionally, the tileset vertices and indices are pre-loaded into \dvttermopengl\ vertex- and index element buffers, so that a lone buffer identifier may be carried over in-place of the heavier vertex set load.
+Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
 
-
-\missingfigure[figwidth=6cm]{Image of Chess benchmark output.} % TODO: Insert image of benchmark output.
+Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
+The benchmark kernel in it's entirety is presented in section \dvtcmdrefname{sec:appendixb_benchmarkchesskernel} under \dvtcmdrefname{cha:appendixb}.
 
 \paragraph{Benchmark: Julia}
 \label{par:methodology_experimentmethodology_benchmarkjulia}
 \index{Benchmark: Julia}
 Description of the Julia benchmark.
-\missingfigure[figwidth=6cm]{Image of Julia benchmark output.} % TODO: Insert image of benchmark output.
+
 
 \paragraph{Benchmark: Phong}
 \label{par:methodology_experimentmethodology_benchmarkphong}
 \index{Benchmark: Phong}
 The 'Phong' benchmark is developed for the purposes of stressing the throughput in-between \dvttermtarget - and \dvttermhost\ systems.
-\missingfigure[figwidth=6cm]{Image of Phong benchmark output.} % TODO: Insert image of benchmark output.
 
 \subsection{Platform Time Profiling}
 \label{sec:methodology_experimentmethodology_platoformtimeprofiling}

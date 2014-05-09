@@ -29,7 +29,7 @@ if(!exists("arg_output")) { # Optional arguments.
 }
 if(!exists("arg_data1") || !exists("arg_data2") || !exists("arg_data3")) { # Mandatory arguments.
 	print usage(iam)
-	pause -1 press(iam) # We should abort script here.
+	pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
 set terminal svg # Should be customizable.
