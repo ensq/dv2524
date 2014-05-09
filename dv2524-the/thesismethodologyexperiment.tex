@@ -1,18 +1,13 @@
-% thesismethodology.tex
-% Chapter Methodology.
+% thesismethodologyexperiment.tex
+% Chapter Methodology, Experiment.
 
-% Methodology:
-\chapter{Methodology}
-\label{cha:methodology}
-The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
-Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see \dvtcmdcitefur{technicaldocs:google:2014}).
+% Methodology, Experiment:
+\chapter{Methodology, Experiment}
+\label{cha:methodologyexperiment}
+\ldots
 
-%In accordance to said \dvttermreferenceimplementation , this dissertation suggests achieving acceleration of \dvttermopenglestwopointo\ by implementing an acceleration pipeline consisting of three stages that are, in turn, supported by a specialized communications channel in \dvttermsimics .
-%Moreover, said communications channel, or '\termsimicspipe ', utilizes a specially devised protocol to describe an assortment of \termopengles\ and \termegl\ function calls when sent in-between the \termhost - and \termtarget\ systems (\dvcmdrefappa{sec:appendixa_simicspipeprotocol}).
-
-% Experiment Methodology:
-\section{Experiment Methodology}
-\label{sec:methodology_experimentmethodology}
+\section{Benchmarking}
+\label{sec:methodologyexperiment_benchmarking}
 Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
 As such, a benchmark has been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
 The benchmark consists of three seperate tests; each intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
@@ -28,7 +23,7 @@ The benchmarks are presented below:
 \missingfigure[figwidth=6cm]{Side-by-side image of Chess benchmark output.} % TODO: Insert image of benchmark output.
 
 \paragraph{Benchmark: Chess}
-\label{par:methodology_experimentmethodology_benchmarkchess}
+\label{par:methodologyexperiment_benchmarking_benchmarkchess}
 \index{Chess benchmark}
 The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
 It is so named because of the chess-like tileset the graphics kernel produces (\todo{refer to figure}).
@@ -44,7 +39,7 @@ The benchmark kernel in it's entirety is presented in section \dvtcmdrefname{sec
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multide of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
 
 \paragraph{Benchmark: Julia}
-\label{par:methodology_experimentmethodology_benchmarkjulia}
+\label{par:methodologyexperiment_benchmarking_benchmarkjulia}
 \index{Julia fractal benchmark}
 The 'Julia' benchmark is developed for the purposes of stressing computational intensity in software-rasterized and paravirtualized platforms.
 It is so named due to the kernel calculating the Julia fractal (\todo{refer to figure}); the texturing and frame-wize seeding of which gives the benchmark it's distinct look.
@@ -54,9 +49,9 @@ Then benchark kernel in it's entirety is presented in section
 \dvtcmdrefname{sec:appendixb_benchmarkjuliakernel} under \dvtcmdrefname{cha:appendixb}.
 
 \paragraph{Benchmark: Phong}
-\label{par:methodology_experimentmethodology_benchmarkphong}
+\label{par:methodologyexperiment_benchmarking_benchmarkphong}
 \index{Phong shading benchmark}
-The 'Phong' benchmark is developed for the purposes of stressing the throughput, or bandwidth - if adhering to the networking paradigm presented in paragraph \dvtcmdrefname{par:methodology_experimentmethodology_benchmarkchess}, in-between \dvttermtarget - and \dvttermhost\ systems.
+The 'Phong' benchmark is developed for the purposes of stressing the throughput, or bandwidth - if adhering to the networking paradigm presented in paragraph \dvtcmdrefname{par:methodologyexperiment_benchmarking_benchmarkchess}, in-between \dvttermtarget - and \dvttermhost\ systems.
 The Phong benchmark is comprised of a rotating model, being the Newell teapot\todo{point out as to why the newell teapot is a standard model}, which is textured and subsequently shaded by a single point light using the Phong shading model; thus giving the benchmark it's name (\todo{refer to figure}).
 
 The rasterization and shading of a model with a given, large, texture is representative of three-dimensional graphics commonly rendered with graphics frameworks such as \dvttermopenglestwopointo .
@@ -66,17 +61,9 @@ Vertices and indices of the model do not utilize \dvttermopengl\ vertex- and-/or
 Additionally, in order to further stress the throughput of the profiled platform, the large texture is updated every frame.
 The kernel source code, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkphongkernel} under \dvtcmdrefname{cha:appendixb}.
 
-\subsection{Platform Time Profiling}
-\label{sec:methodology_experimentmethodology_platoformtimeprofiling}
+\section{Platform Time Profiling}
+\label{sec:methodologyexperiment_platformtimeprofiling}
 \ldots
-
-% Suggested structure:
-% * Solution:
-% * * Component A
-% * * Component B
-% * Experiment Methodology:
-% * * Benchmarking
-% * * Measurement and Reliability
 
 % TODO:
 % | Benchmarks
