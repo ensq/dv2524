@@ -47,7 +47,7 @@ The repeated invocation of lesser draw calls is representative of common usage o
 \label{par:methodology_experimentmethodology_benchmarkjulia}
 \index{Julia fractal benchmark}
 The 'Julia' benchmark is developed for the purposes of stressing computational intensity in software-rasterized and paravirtualized platforms.
-It is so named due to the kernel calculating the Julia fractal (\todo{refer to figure}); the texturing of which gives the benchmark it's distinct look.
+It is so named due to the kernel calculating the Julia fractal (\todo{refer to figure}); the texturing and frame-wize seeding of which gives the benchmark it's distinct look.
 The benchmark is designed to perform a lone computationally intensive graphics kernel invocation, which will stress the computational prowess of the profiled platform.
 The case is selected for use as the computation of a fractal is trivially scalable in terms of complexity by modifying the number of iterations the fractal algorithm performs, and is thus considered suitable for profiling of computationally intensive graphics kernels.
 Then benchark kernel in it's entirety is presented in section
@@ -56,12 +56,15 @@ Then benchark kernel in it's entirety is presented in section
 \paragraph{Benchmark: Phong}
 \label{par:methodology_experimentmethodology_benchmarkphong}
 \index{Phong shading benchmark}
+The 'Phong' benchmark is developed for the purposes of stressing the throughput, or bandwidth - if adhering to the networking paradigm presented in paragraph \dvtcmdrefname{par:methodology_experimentmethodology_benchmarkchess}, in-between \dvttermtarget - and \dvttermhost\ systems.
+The Phong benchmark is comprised of a rotating model, being the Newell teapot\todo{point out as to why the newell teapot is a standard model}, which is textured and subsequently shaded by a single point light using the Phong shading model; thus giving the benchmark it's name (\todo{refer to figure}).
 
-
-%The rasterization and shading of a model with a given, large, texture is representative of graphics commonly rendered with OpenGL ES. As such, the Phong benchmark is suitable for the purposes of representing the usage of big data (models, textures, etc.). Figure out a way of easily scaling the Phong demo (rendering the teapot of various vertex resolutions, for example).
-%Vertices and indices are transferred to the host system every frame. As such, the benchmark is not making use of vertex buffers; stressing the bandwidth in-between target and host.
-Texture data also updated every frame.
-Easily scalable by modifying size of texture and/or model.
+The rasterization and shading of a model with a given, large, texture is representative of three-dimensional graphics commonly rendered with graphics frameworks such as \dvttermopenglestwopointo .
+As such, said benchmark is suitable for the purposes of representing the usage of big data (being models, textures, etc.).
+For the purposes of stressing the bandwidth of \dvttermtarget - and \dvttermhost\ communication, the Phong benchmark is easily scalable in terms of resizing the large texture in question.
+Vertices and indices of the model do not utilize \dvttermopengl\ vertex- and-/or index element buffers, thus forcing the solution to transmit the data every frame.
+Additionally, in order to further stress the throughput of the profiled platform, the large texture is updated every frame.
+The kernel source code, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkphongkernel} under \dvtcmdrefname{cha:appendixb}.
 
 \subsection{Platform Time Profiling}
 \label{sec:methodology_experimentmethodology_platoformtimeprofiling}
