@@ -17,6 +17,9 @@ Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\
 As such, a benchmark has been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
 The benchmark consists of three seperate tests; each intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
 The benchmark, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilizes \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
+Furthermore, all benchmarks have been configured to run at roughly \dvtcmdnum{16}~\milli\second\ (or roughly \dvtcmdnum{60}~\dvttermfps ) when hardware accelerated on the \dvttermhost\ system, in order to reflect the expected load of a modern real-time interactive system.
+As such, the purpose of developed benchmarks is to be representative of typical scenarios induced by modern \dvttermgui s whilst utilizing a graphics framework such as \dvttermopengl .
+
 The benchmarks are presented below:
 
 % TODO: Preferably the benchmark images ought to be presented side-by-side, as to not take up too much space (remember, not vector graphics goodies).
@@ -26,11 +29,11 @@ The benchmarks are presented below:
 
 \paragraph{Benchmark: Chess}
 \label{par:methodology_experimentmethodology_benchmarkchess}
-\index{Benchmark: Chess}
+\index{Chess benchmark}
 The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
 It is so named because of the chess-like tileset the graphics kernel produces (\todo{refer to figure}).
 The benchmark is designed to perform a multitude of \dvttermopenglestwopointo\ library invocations per frame; in which each invocation is relatively lightweight in execution and carry a small amount of data argument-wize.
-In the 'Chess' benchmark, this is achieved by renderering a grid of colored (black or white, in order to adhere to the chess paradigm) rectangles where each tile is represented by four two-dimensional vertices in screen-space, in addition to six indices outlining the rectangular shape.
+In the Chess benchmark, this is achieved by renderering a grid of colored (black or white, in order to adhere to the chess paradigm) rectangles where each tile is represented by four two-dimensional vertices in screen-space, in addition to six indices outlining the rectangular shape.
 Since the vertices are already transformed into screen-space, the graphics kernel need perform no additional transformation, adhering to the desired lightweight behaviour of each kernel invocation.
 Additionally, the tileset vertices and indices are pre-loaded into \dvttermopengl\ vertex- and index element buffers, so that a lone buffer identifier may be carried over in-place of the heavier vertex set load.
 Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
@@ -38,16 +41,27 @@ Each tile is then individually drawn to the backbuffer, rendering the chess-like
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
 The benchmark kernel in it's entirety is presented in section \dvtcmdrefname{sec:appendixb_benchmarkchesskernel} under \dvtcmdrefname{cha:appendixb}.
 
+The repeated invocation of lesser draw calls is representative of common usage of drawing a multide of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
+
 \paragraph{Benchmark: Julia}
 \label{par:methodology_experimentmethodology_benchmarkjulia}
-\index{Benchmark: Julia}
-Description of the Julia benchmark.
-
+\index{Julia fractal benchmark}
+The 'Julia' benchmark is developed for the purposes of stressing computational intensity in software-rasterized and paravirtualized platforms.
+It is so named due to the kernel calculating the Julia fractal (\todo{refer to figure}); the texturing of which gives the benchmark it's distinct look.
+The benchmark is designed to perform a lone computationally intensive graphics kernel invocation, which will stress the computational prowess of the profiled platform.
+The case is selected for use as the computation of a fractal is trivially scalable in terms of complexity by modifying the number of iterations the fractal algorithm performs, and is thus considered suitable for profiling of computationally intensive graphics kernels.
+Then benchark kernel in it's entirety is presented in section
+\dvtcmdrefname{sec:appendixb_benchmarkjuliakernel} under \dvtcmdrefname{cha:appendixb}.
 
 \paragraph{Benchmark: Phong}
 \label{par:methodology_experimentmethodology_benchmarkphong}
-\index{Benchmark: Phong}
-The 'Phong' benchmark is developed for the purposes of stressing the throughput in-between \dvttermtarget - and \dvttermhost\ systems.
+\index{Phong shading benchmark}
+
+
+%The rasterization and shading of a model with a given, large, texture is representative of graphics commonly rendered with OpenGL ES. As such, the Phong benchmark is suitable for the purposes of representing the usage of big data (models, textures, etc.). Figure out a way of easily scaling the Phong demo (rendering the teapot of various vertex resolutions, for example).
+%Vertices and indices are transferred to the host system every frame. As such, the benchmark is not making use of vertex buffers; stressing the bandwidth in-between target and host.
+Texture data also updated every frame.
+Easily scalable by modifying size of texture and/or model.
 
 \subsection{Platform Time Profiling}
 \label{sec:methodology_experimentmethodology_platoformtimeprofiling}
