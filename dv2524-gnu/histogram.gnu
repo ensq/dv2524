@@ -1,4 +1,4 @@
-# histogram.gpt
+# histogram.gnu
 # GNUplot script rendering a histogram based on a lone data file.
 # Requires GNUplot 4.6 or later.
 # ---
@@ -7,10 +7,10 @@
 # 2. Output file	: arg_output
 # ---
 # Invoke accordingly:
-# gnuplot -e "arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'" histogram.gpt
+# gnuplot -e "arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'" histogram.gnu
 
 # Utility methods:
-usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'\" histogram.gpt", p_iam)
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'\" histogram.gnu", p_iam)
 press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
 min(p_x, p_y) = (p_x<p_y) ? p_x : p_y

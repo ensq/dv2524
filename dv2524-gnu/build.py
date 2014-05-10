@@ -3,7 +3,7 @@
 
 import subprocess
 
-g_iam = "dv2524-gpt/build.py"
+g_iam = "dv2524-gnu/build.py"
 
 # Entry point:
 print(g_iam + ": Enter...")

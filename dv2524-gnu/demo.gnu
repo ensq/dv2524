@@ -1,4 +1,4 @@
-# demo.gpt
+# demo.gnu
 # Demo plot using GNUplot.
 # Requires GNUplot 4.6 or later.
 # ---
@@ -9,14 +9,14 @@
 # 4. Output filename 		: arg_output
 # ---
 # Invoke accordingly:
-# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" demo.gpt
+# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" demo.nu
 # ---
 # TODO:
 # * Should recieve argument specifying output.
 
 min(p_x, p_y) = (p_x<p_y) ? p_x : p_y
 max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
-usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1='filename1';arg_data2='filename2';arg_data3='filename3';arg_output='filename4'\" demo.gpt", p_iam)
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1='filename1';arg_data2='filename2';arg_data3='filename3';arg_output='filename4'\" demo.nu", p_iam)
 press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
 # Entry point:
