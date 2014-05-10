@@ -49,31 +49,19 @@ Such states must be kept in the target system libraries due to the asynchronous 
 Given that the target system libraries adheres to the \dvttermopengl\ headers defined in the system, the application is na\"{\i}ve in terms of it's paravirtualized status.
 The interplay with the original \dvttermopengles\ headers also results in the solution adhering to the platform-dependant type definition, flags, and constants; as originally defined by \dvttermkhronos .
 
-The target system libraries are written in \dvttermc\ and \dvttermcplusplus .\\
+The target system libraries are written in \dvttermc\ and \dvttermcplusplus .
 
 \section{Host System Libraries}
 \label{sec:methodologysolution_hostsystemlibraries}
 \index{Host System Libraries}
 In collaboration with the target system libraries (see \ref{sec:methodologysolution_targetsystemlibraries}), the host system libraries - running on the \dvttermhost\ system - subsequently decodes and interprets the recieved byte stream.
 Said decoding involves unpacking data from fixed length storage into variable-size types that the \dvttermopengl\ libraries expect.
-
+Furthermore, and again similarly to the target system libraries, due to some design decitions inherent in the \dvttermopenglestwopointo\ framework, the host system libraries need maintain some data; in particular - vertex attributes.
+Such data is buffered in the host system libraries until drawn in a later, and seperate, \dvttermopengl\ invocation\footnote{A possible optimization would be to cache said data, to avoid the need to transmit unmodified vertices multiple times, despite so being specified by the user.}.
 
 As with the the target system libraries, the recieving end of an \dvttermopengl\ method definition in the host system libraries are likewize generated to a large degree (see \ref{sec:methodologysolution_openglabigeneration}).
 
-
-% C & C++
-% Could cache data
-% Caching data (vertex buffer data)
-
-% Consider removing:
-\section{Host System Renderer}
-\label{sec:methodologysolution_hostsystemrenderer}
-\index{Host System Renderer}
-
-
-% Effectively being a part of the host system libraries (see...), it may be of importance to distinguish the...
-% Due to some of the design desicions inherent in the opengl es 2.0 framework, and in consideration to advanced simulatory attributes such as checkpointing and reverse execution, the host-side of the paravirtualized framework need to maintain a set of variables ...
-% This may need be extended... yadda yadda yadda
+The host system libraries are written in \dvttermc\ and \dvttermcplusplus .
 
 \section{Simics Pipe}
 \label{sec:methodologysolution_simicspipe}
@@ -85,10 +73,17 @@ As with the the target system libraries, the recieving end of an \dvttermopengl\
 
 \section{Windowing Systems}
 \label{sec:methodologysolution_windowingsystems}
-
-Due to variations in the creation and maintinence of windows in different platforms, incurred by said platforms utilizing different interfaces for the purpose (e.g., \dvttermfedora\ \& \dvttermandroid ), this was considered out-of-scope for this study.
+Due to variations in the creation and maintinence of windows on different platforms (e.g., \dvttermfedora\ \& \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, this was considered out-of-scope for this study.
 As such, for the purposes of this dissertation, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 
-Due to the fact that the \dvttermopengl\ command stream is being executed in it's entirety on the \dvttermhost\ system, in inter-action with a \dvttermhost\ platform window, the 
+The problem may be summarized as the dilemma of the target system libraries having to communicate with the correct window (located in the simulation \dvttermhost ), yet having the \dvttermtarget\ system window reporting sucessful initialization.
+After all, it would be problematic if the \dvttermopengl\ utilizing application would have to be modified in order to be paravirtualized.
+Effectively, this means that it would be desireble to maintain the native functionality of the target system \dvttermegl\ library.
+However, in order to swap the backbuffers to which \dvttermopengl\ renders in the window present in the \dvttermhost\ system, one must use \dvttermegl\ methods.
+In this way, the problem comprises a conflict in-between wanting to keep the functionality of the native \dvttermegl\ library, yet modify a small subset. 
+This issue is overcome by the use of symbol overriding\footnote{Utilizing \dvtcmdcodeinline{LD_PRELOAD} on the \dvttermlinux\ platform.}, which allows the target system libraries to overload a function, serialize and forward the invocation to the \dvttermhost\ system as described in \ref{sec:methodologysolution_targetsystemlibraries}, locate the next occurance of the same symbol in the symbol table (being the original native \dvttermegl\ function definition), and invoke the original function.
+As such, the target system \dvttermegl\ library does not replace the native \dvttermtarget\ \dvttermegl\ library, as with the target system \dvttermopengl\ library, but rather overloads some of it's definition.
+This gives the effect of a sucessfully created window, not having returned any errors in the window creation and maintinence - yet having the application actually communicating with an entirely different window present only in the \dvttermhost\ system.
+As such, the target system libraries is effectively performing a man-in-the-middle attack.
 
-% Pre-initialized window (could easily be extended to tune in on EGL requests)
+At the time of writing, the target system libraries simply overload the \dvtcmdcodeinline{eglSwapBuffers} function, but the methodology could easily be extended to listen in on requested window dimensions and other window attributes - effectively circumventing the need to heed any differences in-between platform windowing systems.
