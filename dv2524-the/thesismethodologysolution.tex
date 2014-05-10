@@ -10,6 +10,11 @@ Throughout this document, several concepts and phrases may be recognized and rel
 \noindent
 In accordance to the \dvttermreferenceimplementation , paravirtualized graphics acceleration is achieved by the means of three overall components; being the Target System Libraries, the Host System Libraries, and the communications channel aptly named the Simics Pipe (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the purposes of said components).
 
+% Expand on general methodology in terms of system simulation, and describe simulation layer target using descriptive figure.
+
+%Cite dv2549:
+%Something akin to: "...although there are findings indicating that CPU simulation of GPUs is getting increasingly feasible..."
+
 \ldots
 
 \missingfigure[figwidth=6cm]{Visualization of solution components.} % TODO: Insert figure visualizing structure of solution
@@ -50,6 +55,7 @@ Given that the target system libraries adheres to the \dvttermopengl\ headers de
 The interplay with the original \dvttermopengles\ headers also results in the solution adhering to the platform-dependant type definition, flags, and constants; as originally defined by \dvttermkhronos .
 
 The target system libraries are written in \dvttermc\ and \dvttermcplusplus .
+See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the target system libraries.
 
 \section{Host System Libraries}
 \label{sec:methodologysolution_hostsystemlibraries}
@@ -58,18 +64,12 @@ In collaboration with the target system libraries (see \ref{sec:methodologysolut
 Said decoding involves unpacking data from fixed length storage into variable-size types that the \dvttermopengl\ libraries expect.
 Furthermore, and again similarly to the target system libraries, due to some design decitions inherent in the \dvttermopenglestwopointo\ framework, the host system libraries need maintain some data; in particular - vertex attributes.
 Such data is buffered in the host system libraries until drawn in a later, and seperate, \dvttermopengl\ invocation\footnote{A possible optimization would be to cache said data, to avoid the need to transmit unmodified vertices multiple times, despite so being specified by the user.}.
+When the requested \dvttermopengl\ invocation has been performed, any return- or in-out values are returned to the \dvttermtarget\ system using the Simics Pipe (see \ref{sec:methodologysolution_simicspipe}).
 
 As with the the target system libraries, the recieving end of an \dvttermopengl\ method definition in the host system libraries are likewize generated to a large degree (see \ref{sec:methodologysolution_openglabigeneration}).
 
 The host system libraries are written in \dvttermc\ and \dvttermcplusplus .
-
-\section{Simics Pipe}
-\label{sec:methodologysolution_simicspipe}
-\index{Simics Pipe}
-% Extended GCC Assembly
-% Linux locked memory
-% Page traversal w. visualization
-% C
+See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the host system libraries.
 
 \section{Windowing Systems}
 \label{sec:methodologysolution_windowingsystems}
@@ -87,3 +87,20 @@ This gives the effect of a sucessfully created window, not having returned any e
 As such, the target system libraries is effectively performing a man-in-the-middle attack.
 
 At the time of writing, the target system libraries simply overload the \dvtcmdcodeinline{eglSwapBuffers} function, but the methodology could easily be extended to listen in on requested window dimensions and other window attributes - effectively circumventing the need to heed any differences in-between platform windowing systems.
+
+\section{Simics Pipe}
+\label{sec:methodologysolution_simicspipe}
+\index{Simics Pipe}
+% Extended GCC Assembly
+% Linux locked memory
+% Page traversal w. visualization
+% C
+
+
+\missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.} % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
+
+%See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
+
+%Considering magic instructions having been used for the purposes of hardware acceleration previously \dvtcitebib[p.~32]{publications:leupers:2010}...
+
+
