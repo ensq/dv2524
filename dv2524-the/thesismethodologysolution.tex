@@ -5,27 +5,90 @@
 \chapter{Methodology, Solution}
 \label{cha:methodologysolution}
 The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
-Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see \dvtcmdcitefur{technicaldocs:google:2014}).
+Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see section \dvtcmdrefname{sec:appendixa_referencesolution} under \dvtcmdrefname{cha:appendixa}).\\
+
+\noindent
+In accordance to the \dvttermreferenceimplementation , paravirtualized graphics acceleration is achieved by the means of three overall components; being the Target System Libraries, the Host System Libraries, and the communications channel aptly named the Simics Pipe (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the purposes of said components).
 
 \ldots
 
-% The codenames of which are Paratarget, Parahost, and Paragen.
-
-\section{Target System Libraries}
-\label{cha:methodologysolution_targetsystemlibraries}
-\index{Target System Libraries}
-
-\section{Host System Libraries}
-\label{cha:methodologysolution_hostsystemlibraries}
-\index{Host System Libraries}
-
-\section{Simics Pipe}
-\label{cha:methodologysolution_simicspipe}
-\index{Simics Pipe}
+\missingfigure[figwidth=6cm]{Visualization of solution components.} % TODO: Insert figure visualizing structure of solution
 
 \section{OpenGL ABI Generation}
-\label{cha:methodologysolution_openglabigeneration}
+\label{sec:methodologysolution_openglabigeneration}
 \index{OpenGL ABI Generation}
+In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were developed for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} \& \ref{sec:methodologysolution_hostsystemlibraries}).
+As such, the majority of the \dvttermopengl\ function definitions described in section \ref{sec:methodologysolution_targetsystemlibraries} are produced by this tool.
+The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc .
 
-%In accordance to said \dvttermreferenceimplementation , this dissertation suggests achieving acceleration of \dvttermopenglestwopointo\ by implementing an acceleration pipeline consisting of three stages that are, in turn, supported by a specialized communications channel in \dvttermsimics .
-%Moreover, said communications channel, or '\termsimicspipe ', utilizes a specially devised protocol to describe an assortment of \termopengles\ and \termegl\ function calls when sent in-between the \termhost - and \termtarget\ systems (\dvcmdrefappa{sec:appendixa_simicspipeprotocol}).
+% TODO:
+% Expand on the extent of methods being generated, including inout vairables, return values etc.
+% Point out what kind of methods are not being generated.
+
+\section{Target System Libraries}
+\label{sec:methodologysolution_targetsystemlibraries}
+\index{Target System Libraries}
+The target system libraries are comprised of implementations of the \dvttermegl - and \dvttermopengl\ \dvttermapi s.
+Due to the tight coupling in-between \dvttermopengl\ and the platform windowing system, the solution must also accelerate the \dvttermkhronos\ \dvttermegl\ \dvttermapi , that is the interface between \dvttermopengl\ and the underlying platform windowing system (see \ref{sec:methodologysolution_windowingsystems} for an elaboration on the full extent of \dvttermegl\ interaction).
+As may be derived from the name, the target system libraries run on the simulation \dvttermtarget\ system.
+
+As such, the target systems libraries implement the \dvttermegl - and \dvttermopenglestwopointo\ \dvttermapi s and lures whatever application it is being linked to that it is, in fact, the expected platform libraries.
+However, instead of communicating with the platform windowing system (in terms of \dvttermegl ) and the graphics device (in terms of \dvttermopengl ) - and instructing said device in coagency with the user; the target system libraries rather serialize the given command stream and forwards it to the simulation \dvttermhost .
+However, the transmission of the command stream is not necessarily performed at once, or in the designated order due to the formation of the \dvttermopenglestwopointo\ framework.
+This complex of problems involve uncertanties of the proportion of argument data, as size is not necessarily specified by the user.
+As such, certain method serialization may have to be delayed until further information surrounding the argument	dimensions have been relayed to the \dvttermopengl\ library.
+
+The serialization described in the above paragraph is thus formatted and encoded in accordance to a certain data format, which is kept as minimal as possible throughout execution.
+This encoding includes packing variable length data types, such as 8-bit characters, 16-bit fields, or 64-bit integer values into fixed length structures, so that the \dvttermhost\ system may interpret these values independently of how corresponding types are defined on that unrelated platform\footnote{It should be noted, however, that the solution assumes a little endian architecture and floating point 754 standard for floating point representation. If the \dvttermhost\ system would not conform to these prerequisites, the solution would have to be complemented with additional support.}.
+
+Furthermore, a subset of the \dvttermopengl\ state need be maintained by the target system libraries.
+These attributes are comprised by, inter alia, bound vertex- and index element buffers, in addition to properties of \dvttermopengl\ vertex attributes.
+Such states must be kept in the target system libraries due to the asynchronous nature of \dvttermopengl\ invocation serialization described in the above paragraph.\\
+
+\noindent
+Given that the target system libraries adheres to the \dvttermopengl\ headers defined in the system, the application is na\"{\i}ve in terms of it's paravirtualized status.
+The interplay with the original \dvttermopengles\ headers also results in the solution adhering to the platform-dependant type definition, flags, and constants; as originally defined by \dvttermkhronos .
+
+The target system libraries are written in \dvttermc\ and \dvttermcplusplus .\\
+
+\section{Host System Libraries}
+\label{sec:methodologysolution_hostsystemlibraries}
+\index{Host System Libraries}
+In collaboration with the target system libraries (see \ref{sec:methodologysolution_targetsystemlibraries}), the host system libraries - running on the \dvttermhost\ system - subsequently decodes and interprets the recieved byte stream.
+Said decoding involves unpacking data from fixed length storage into variable-size types that the \dvttermopengl\ libraries expect.
+
+
+As with the the target system libraries, the recieving end of an \dvttermopengl\ method definition in the host system libraries are likewize generated to a large degree (see \ref{sec:methodologysolution_openglabigeneration}).
+
+
+% C & C++
+% Could cache data
+% Caching data (vertex buffer data)
+
+% Consider removing:
+\section{Host System Renderer}
+\label{sec:methodologysolution_hostsystemrenderer}
+\index{Host System Renderer}
+
+
+% Effectively being a part of the host system libraries (see...), it may be of importance to distinguish the...
+% Due to some of the design desicions inherent in the opengl es 2.0 framework, and in consideration to advanced simulatory attributes such as checkpointing and reverse execution, the host-side of the paravirtualized framework need to maintain a set of variables ...
+% This may need be extended... yadda yadda yadda
+
+\section{Simics Pipe}
+\label{sec:methodologysolution_simicspipe}
+\index{Simics Pipe}
+% Extended GCC Assembly
+% Linux locked memory
+% Page traversal w. visualization
+% C
+
+\section{Windowing Systems}
+\label{sec:methodologysolution_windowingsystems}
+
+Due to variations in the creation and maintinence of windows in different platforms, incurred by said platforms utilizing different interfaces for the purpose (e.g., \dvttermfedora\ \& \dvttermandroid ), this was considered out-of-scope for this study.
+As such, for the purposes of this dissertation, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+
+Due to the fact that the \dvttermopengl\ command stream is being executed in it's entirety on the \dvttermhost\ system, in inter-action with a \dvttermhost\ platform window, the 
+
+% Pre-initialized window (could easily be extended to tune in on EGL requests)

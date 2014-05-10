@@ -54,8 +54,10 @@
 }
 \newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponcegloss{dvtglosscheckpointrestart}{Checkpoint / Restart}}
 \newcommand{\dvttermcuda}{CUDA}
-% The C Programming Language
+% C (Programming language)
 \newcommand{\dvttermc}{\texttt{C}}
+% C++
+\newcommand{\dvttermcplusplus}{\texttt{C++}}
 % Cisco
 \newcommand{\dvttermcisco}{Cisco Systems, Inc.}
 
@@ -89,6 +91,14 @@
 % E
 % Ericsson
 \newcommand{\dvttermericsson}{Ericsson}
+% EGL
+\newglossaryentry{dvtglossegl}
+{
+  name={\href{http://en.wikipedia.org/wiki/EGL_(API)}{EGL}},
+  description={EGL is an interface between Khronos rendering APIs (such as OpenGL, OpenGL ES or OpenVG) and the underlying native platform windowing system},
+  sort={EGL},
+}
+\newcommand{\dvttermegl}{\glslink{dvtglossegl}{EGL}}
 
 % F
 % Fedora
@@ -174,7 +184,15 @@
 \newcommand{\dvttermjni}{\dvtcmdabbrev{dvtglossjni}}
 
 % K
-% ...
+% Khronos
+\newglossaryentry{dvtglosskhronos}
+{
+  name={\href{http://en.wikipedia.org/wiki/Khronos_Group}{Khronos Group}},
+  description={The Khronos Group is a member-funded industry consortium focused on the creation of open standard \dvttermapi s on a wide variety of platforms},
+  sort={Khronos Group},
+}
+\newcommand{\dvttermkhronos}{\glslink{dvtglosskhronos}{Khronos}}
+
 % L
 \newcommand{\dvttermlinux}{Linux}
 \newcommand{\dvttermlockheedmartin}{Lockheed Martin}
@@ -217,6 +235,8 @@
   sort={Paravirtualization},
 }
 \newcommand{\dvttermparavirtualization}{\dvtcmdcaponcegloss{dvtglossparavirtualization}{Paravirtualization}}
+% Python
+\newcommand{\dvttermpython}{\texttt{Python}}
 
 % Q
 % QEMU
