@@ -46,6 +46,7 @@ def buildThesis(p_from):
     buildCommon()
 
     subbuild(os.getcwd() + "/dv2524-dat")
+    subbuild(os.getcwd() + "/dv2524-gnu")
     subbuild(os.getcwd() + "/dv2524-sty", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-res", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-bib", "--target thesis")

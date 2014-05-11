@@ -37,7 +37,7 @@ if(!exists("arg_data1")||!exists("arg_data2")||!exists("arg_data3")||!exists("ar
     pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
-set terminal arg_terminal
+set terminal arg_terminal size 20cm,15cm
 set output arg_output
 
 set multiplot layout 3,2
@@ -49,7 +49,7 @@ do for [i=1:words(files)] {
 
     stats arg_data name "data"
 
-    hist_numBins = 250
+    hist_numBins = 100
     hist_data_mean = data_mean_y
     hist_data_min = hist_data_mean - data_stddev_y
     hist_data_max = hist_data_mean + data_stddev_y
@@ -57,11 +57,12 @@ do for [i=1:words(files)] {
     hist_binMin = floor(max(hist_data_min, data_min_y)) # Currently causes bins to be rendered with differing widths, for some reason.
     hist_binMax = ceil(min(hist_data_max, data_max_y))
 
-    #tics = (hist_binMax-hist_binMin)/5
-    #set xtics hist_binMin, tics, hist_binMax
-
     set xrange [hist_binMin:hist_binMax]
     set yrange [0:]
+    #tics = floor((hist_binMax-hist_binMin)/5)
+    #set xtics tics
+    #set xtics hist_binMin, tics, hist_binMax
+
     set boxwidth hist_binWidth # Avoid incorrectly rendering empty bins. (http://stackoverflow.com/questions/2471884/histogram-using-gnuplot)
     set style fill solid 0.5 # Fill bins to make them gorgous.
     set offset graph 0.05, 0.05, 0.05, 0.0 # Correct erronously rendered bins.

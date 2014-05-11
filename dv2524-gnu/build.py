@@ -18,8 +18,8 @@ arg3 = "results/simicsjulia450.ms"
 arg4 = "results/parajulia450.ms"
 arg5 = "results/simicsjulia900.ms"
 arg6 = "results/parajulia900.ms"
-arg7 = "postscript"
-arg8 = "histograms.ps"
+arg7 = "epslatex"
+arg8 = "../dv2524-bin/histograms.tex"
 
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()

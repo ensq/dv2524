@@ -26,7 +26,7 @@ subprocess.call(["git", "checkout"])
 
 print("Building LaTeX-document with pdflatex...")
 # Build intermediate .aux-files and symbol tree:
-subprocess.call(["pdflatex", "thesis"])
+subprocess.call("pdflatex -shell-escape thesis", shell=True)
 
 # Build [multibib] bibliography:
 print(g_iam + ": Building [multibib] bibliography...")
@@ -43,8 +43,8 @@ print(g_iam + ": Building [makeidx] index...")
 subprocess.call("makeindex -s thesisindexstyle.ist thesis", shell=True)
 
 # Construct final thesis document - twice:
-subprocess.call(["pdflatex", "thesis"])
-subprocess.call(["pdflatex", "thesis"])
+subprocess.call("pdflatex -shell-escape thesis", shell=True)
+subprocess.call("pdflatex -shell-escape thesis", shell=True)
 
 # When build has completed, reset working directory back to original directory:
 os.chdir("../dv2524-the/")
