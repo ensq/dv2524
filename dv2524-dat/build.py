@@ -43,7 +43,27 @@ def correct_profiling(p_iam, p_filename, p_offset):
 
     avgAfter = avg(p_iam, p_filename)
 
-    print(g_iam + ": Offset profiling measurements in " + p_filename + " with " + str(p_offset) + ", effectively reducing the average from " + str(avgBefore) + " to " + str(avgAfter) + ".")
+    print(p_iam + ": Offset profiling measurements in " + p_filename + " with " + str(p_offset) + ", effectively reducing the average from " + str(avgBefore) + " to " + str(avgAfter) + ".")
+
+def sort_file(p_iam, p_filename):
+    mss = []
+
+    file = open(p_filename, "r+")
+    for line in file:
+        ms = float(line)
+        mss.append(ms)
+    file.truncate() # Clear file contents.
+
+    mss = sorted(mss)
+    msMax = max(mss)
+    msMin = min(mss)
+
+    file = open(p_filename, 'w')
+    for ms in mss:
+        file.write(str(ms) + '\n')
+    file.close()
+
+    print(p_iam + ": Sorted file " + p_filename + " with minimum entry " + str(msMin) + " and maximum entry " + str(msMax) + ".")
 
 # Entry point:
 print(g_iam + ": Enter...")
@@ -58,6 +78,9 @@ os.chdir(buildDirectory)
 
 # The profiling method used to measure elapsed time on the Simics platform, that is the platform used to collect results for the simics- and para- prefixes, is expected to carry with it some measurement overhead (see thesis.pdf). We compile the expected outcome of this overhead, and compile new results, from the raw results based off of this overhead.
 profiling_overhead = avg(g_iam, "profile.dat")
+
+# Sort profiling overhead analysis for the purposes of visualizing error deviations minimum and maximum:
+sort_file(g_iam, "profile.dat")
 
 files_need_correcting = glob.glob("simics*.dat")
 files_need_correcting += glob.glob("para*.dat")
