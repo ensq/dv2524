@@ -12,6 +12,17 @@ print(g_iam + ": Enter...")
 
 cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_data4='%s';arg_data5='%s';arg_data6='%s';arg_terminal='%s';arg_output='%s'\" histograms.gnu";
 
+arg1 = "results/simicschess60x60.ms"
+arg2 = "results/parachess60x60.ms"
+arg3 = "results/simicschess84x84.ms"
+arg4 = "results/parachess84x84.ms"
+arg5 = "results/simicschess118x118.ms"
+arg6 = "results/parachess118x118.ms"
+arg7 = "epslatex"
+arg8 = "../dv2524-bin/simicsparachesshistograms.tex"
+sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
+sp.wait()
+
 arg1 = "results/simicsjulia225.ms"
 arg2 = "results/parajulia225.ms"
 arg3 = "results/simicsjulia450.ms"
@@ -19,8 +30,18 @@ arg4 = "results/parajulia450.ms"
 arg5 = "results/simicsjulia900.ms"
 arg6 = "results/parajulia900.ms"
 arg7 = "epslatex"
-arg8 = "../dv2524-bin/histograms.tex"
+arg8 = "../dv2524-bin/simicsparajuliahistograms.tex"
+sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
+sp.wait()
 
+arg1 = "results/simicsphong1448x1448.ms"
+arg2 = "results/paraphong1448x1448.ms"
+arg3 = "results/simicsphong2048x2048.ms"
+arg4 = "results/paraphong2048x2048.ms"
+arg5 = "results/simicsphong2896x2896.ms"
+arg6 = "results/paraphong2896x2896.ms"
+arg7 = "epslatex"
+arg8 = "../dv2524-bin/simicsparaphonghistograms.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
