@@ -5,7 +5,7 @@ import os
 
 g_iam = "dv2524-bin/build.py"
 
-g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx", ".tex", ".txt", ".svg"]
+g_cleanfiletypes = [".aux", ".bbl", ".blg", ".log", ".out", ".bib", ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin", ".glo", ".acn", ".acr", ".alg", ".glg", ".gls", ".ist", ".ind", ".ilg", ".idx", ".tex", ".txt", ".svg", ".dat"]
 g_cleaninadditionto = ["README",]
 g_cleanexcept = ["build.py", "README.md"]
 
