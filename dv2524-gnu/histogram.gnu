@@ -19,7 +19,7 @@ mapToBin(p_x, p_binWidth, p_binMin) = p_binWidth * (floor((p_x - p_binMin) / p_b
 
 # Entry point:
 reset
-iam = "dv2524-gpt/histogram.gpt"
+iam = "dv2524-gnu/histogram.gnu"
 print sprintf("%s: Enter...", iam)
 
 if(!exists("arg_output")) { # Optional arguments.
