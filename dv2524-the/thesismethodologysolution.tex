@@ -91,8 +91,29 @@ At the time of writing, the target system libraries simply overload the \dvtcmdc
 \section{Simics Pipe}
 \label{sec:methodologysolution_simicspipe}
 \index{Simics Pipe}
-% Extended GCC Assembly
-% Linux locked memory
+The so named 'Simics Pipe' constitutes the communications channel in \dvttermsimics .
+As such, it is responsible for transferring a serialized command stream - or byte stream - to- and from the simulation \dvttermhost .
+There are a number methodologies serving such purposes, several of which are expanded upon in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}), such as utilizing UNIX sockets or other networking technologies.
+However, due to the inhererent performance demands brought on by serialization of real-time graphics invocations, the methodology of \dvttermmagicinstruction s were selected for use for the purpose of this study (see section \dvtcmdrefname{sec:appendixa_magicinstructions} under \dvtcmdrefname{cha:appendixa} for an elaboration on \dvttermmagicinstruction s).
+Magic instructions allow for fast, in the pretext of the simulation \dvttermtarget , almost instant escape from the simulation context - and may carry a limited amount of information with it from inside the simulation out into the real world.
+However, other methodologies - albeit slower - may be fast enough to accomodate for graphics paravirtualization; a methodology the \dvttermandroidemulator , in addition to \dvttermmagicinstruction s, may utilize if the user so wishes\footnote{It may be of interest to know that the \dvttermsimics\ \dvttermopengles\ paravirtualization technology, during development, was accomodated by a TCP/IP client-/server model.}.
+
+In order to perform a \dvttermmagicinstruction , the Simics Pipe uses \texttt{GCC} Extended Asm to directly inject \dvtcmdcodeinline{__volatile__}-flagged (as to prevent the compiler from reordering memory accesses during optimization) \texttt{assembly} instructions into \dvttermc\ code, which - in addition to \dvttermcplusplus\ - the Simics Pipe is written in.
+During said instruction, one may simply write an arbitrary 64-bit address to any register fit for the purpose (the number- and size of processor registers being the data-sharing bottleneck of the \dvttermmagicinstruction\ paradigm).
+
+Not being the first time \dvttermmagicinstruction s have been used for the purposes of hardware acceleration\dvtcmdcitebib[p.~32]{publications:leupers:2010}, the Simics Pipe utilizes such methodology - namely the \dvtcmdcodeinline{CPUID} \dvttermxeightysix\ instruction - to carry a lone memory address (being the serialized command stream) in the \dvttermtarget\ \dvtcmdcodeinline{rbx}\footnote{Accordingly, if the simulation \dvttermtarget\ should correspond to a 32-bit \dvttermxeightysix\ system, said register would translate to the \dvtcmdcodeinline{ebx} register.} register.
+The execution of a \dvttermmagicinstruction , in line with the \dvttermmagicinstruction\ paradigm, invokes a callback method in the host side of the Simics Pipe; having effectively escaped the simulation and paused the simulation state.
+Knowing the occurence of a \dvttermmagicinstruction\ with the corresponding leaf number, one may assume the existance of a \dvttermtarget\ memory address in the simulated \dvttermtarget\ \dvttermcpu\ register \dvtcmdcodeinline{rbx}.
+Note that, at this point, the retrieved address is in the format of a \dvttermtarget\ machine virtual address; the destination of which is unknown to the simulation \dvttermhost .
+As such, this address need be translated in order to retrieve the package contents said memory address points to.
+See \ref{sec:methodologysolution_memorypagetraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
+
+\section{Memory Page Traversal}
+\label{sec:methodologysolution_memorypagetraversal}
+\ldots
+
+% TODO:
+% Linux Locked Memory
 % Page traversal w. visualization
 % C
 
@@ -100,7 +121,5 @@ At the time of writing, the target system libraries simply overload the \dvtcmdc
 \missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.} % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
 
 %See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
-
-%Considering magic instructions having been used for the purposes of hardware acceleration previously \dvtcitebib[p.~32]{publications:leupers:2010}...
 
 
