@@ -29,6 +29,7 @@ The functionality is implemented in a set of \dvttermpython\ scripts that, from 
 % TODO:
 % Expand on the extent of methods being generated, including inout vairables, return values etc.
 % Point out what kind of methods are not being generated.
+% Number of function definitions is being generated? Could be interesting to know.
 
 \section{Target System Libraries}
 \label{sec:methodologysolution_targetsystemlibraries}
@@ -108,15 +109,23 @@ Note that, at this point, the retrieved address is in the format of a \dvttermta
 As such, this address need be translated in order to retrieve the package contents said memory address points to.
 See \ref{sec:methodologysolution_memorypagetraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
 
+% TODO:
+% Point out that the buffer includes a number indicating what method invocation has been executed, and a variable indicating size of the buffer in it's entirety.
+
 \section{Memory Page Traversal}
 \label{sec:methodologysolution_memorypagetraversal}
-\ldots
+As outlined in section \ref{sec:methodologysolution_simicspipe}, \dvttermtarget -/\dvttermhost\ memory sharing in the Simics Pipe is performed by the means of exposing a \dvttermtarget\ virtual address to the simulation \dvttermhost .
+Said virtual address is, understandably so, only valid in the simulated system and bears no relevance in the real world; outside of the fact that the data to which the virtual address refers - in the \dvttermtarget\ system - is, in turn, hidden behind layers of abstraction somewhere in the \dvttermhost\ system.
 
-% TODO:
-% Linux Locked Memory
-% Page traversal w. visualization
-% C
+Using \dvttermsimics , utilizing the \dvttermmmu\ of the \dvttermtarget\ system, one may translate a \dvttermtarget\ virtual address (or 'virtualized virtual address') to a (\dvttermtarget ) physical device address; to-/from which - again, using \dvttermsimics\ - we may read and-/or write an arbitrary number of bytes to-/from physical memory directly.
+However, due to the complexity induced by circumventing the abstraction of virtual memory, there is no guarantee that the memory page to which the exposed physical address refers has not been swapped out of primary memory.
+In order to solve this, using some \dvttermos s (e.g., \dvttermfedora \footnote{Using the \dvtcmdcodeinline{MAP_LOCKED} flag during invocation of the \dvttermlinux\ \dvtcmdcodeinline{mmap}-system call; alternatively using the specific \dvtcmdcodeinline{mlock}-system call.}), one may \glslink{dvtglossmemorypagelocking}{'lock'} pages in order to prevent them from being swapped to disk.
+This is the methodology used to ensure that the physical memory space, referred to by the virtual address sent to the simulation \dvttermhost , is still existant in \dvttermtarget\ primary memory when the simulation state has been paused\footnote{Other methods to achieve this include repeatedly 'polling' the corresponding memory pages in the \dvttermtarget\ system before inducing the simulation context switch to the \dvttermhost\ system.}.
 
+Furthermore, and again induced by the unorthodox circumvention of the virtual memory paradigm, it is probable that the multiple memory pages making out particularily large serialized command streams, such as the transmission of vertex or texture data, are not consecutively aligned in physical memory (\todo{Refer to figure.} ), although guaranteed to be continious blocks in terms of virtual memory.
+As such, the memory pages must be 'traversed' and continiously translated on a per-page basis.
+This can be done in a trivial manner by simply iterating the original virtual address with the \textit{\dvttermtarget } page size, commonly being - as during the study performed for the purpose of this dissertation - \dvtcmdnum{4096} bytes.
+Naturally, said process must be performed regardless of data being read or written to-/from the indended - physical - memory space.
 
 \missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.} % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
 
