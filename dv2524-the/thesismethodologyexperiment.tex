@@ -6,6 +6,26 @@
 \label{cha:methodologyexperiment}
 \ldots
 
+\section{Platform Configuration}
+\label{sec:methodologyexperiment_platformconfiguration}
+\ldots
+
+% Elaborate on how the experiment ought to be performed (i.e. on software rasterized simics and in what configuration). See below:
+
+%The developed benchmark ought to execute on the studied platforms; being paravirtualized \termsimics , software~rasterized \termsimics , and the \termrefsolu , respectively.
+%It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.
+%Such key points during simulation may concern a large number of relatively insignificant \termopengles\ invocations, frame-wize \termopengles\ state saving, or transferral of large chunks of data such as textures.
+%These areas may very well be bottlenecks of graphics paravirtualization and thus call for further investigation.
+%Due to the proposed study accentuating performance, and since it concerns a graphics framework often used with real-time applications, it may be viable to measure experimental data in \termframespersecond ~(\termfps ).
+%Alternatively, lone dispatch measurements could be used in coagency with \termframespersecond\ measurements.
+%Additionally, it may be favorable if, during development of said benchmark, if the software could utilize the same code-base to invoke the \termopengles -libraries - independant of platform.
+
+\section{Platform Profiling}
+\label{sec:methodologyexperiment_platformprofiling}
+\ldots
+
+% Timing methodology
+
 \section{Benchmarking}
 \label{sec:methodologyexperiment_benchmarking}
 Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
@@ -63,27 +83,3 @@ For the purposes of stressing the bandwidth of \dvttermtarget - and \dvttermhost
 Vertices and indices of the model do not utilize \dvttermopengl\ vertex- and-/or index element buffers, thus forcing the solution to transmit the data every frame.
 Additionally, in order to further stress the throughput of the profiled platform, the large texture is updated every frame.
 The kernel source code, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkphongkernel} under \dvtcmdrefname{cha:appendixb}.
-
-\section{Platform Profiling}
-\label{sec:methodologyexperiment_platformprofiling}
-\ldots
-
-\section{Platform Configuration}
-\label{sec:methodologyexperiment_platformconfiguration}
-\ldots
-
-% TODO:
-% | Benchmarks
-% | Experiment methodology:
-% | * Measurement timing and reliability on the different systems.
-% | Explenation of solution and it's components.
-
-% Elaborate on how the experiment ought to be performed (i.e. on software rasterized simics and in what configuration). See below:
-
-%The developed benchmark ought to execute on the studied platforms; being paravirtualized \termsimics , software~rasterized \termsimics , and the \termrefsolu , respectively.
-%It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.
-%Such key points during simulation may concern a large number of relatively insignificant \termopengles\ invocations, frame-wize \termopengles\ state saving, or transferral of large chunks of data such as textures.
-%These areas may very well be bottlenecks of graphics paravirtualization and thus call for further investigation.
-%Due to the proposed study accentuating performance, and since it concerns a graphics framework often used with real-time applications, it may be viable to measure experimental data in \termframespersecond ~(\termfps ).
-%Alternatively, lone dispatch measurements could be used in coagency with \termframespersecond\ measurements.
-%Additionally, it may be favorable if, during development of said benchmark, if the software could utilize the same code-base to invoke the \termopengles -libraries - independant of platform.
