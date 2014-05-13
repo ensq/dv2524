@@ -6,44 +6,6 @@
 \label{cha:methodologyexperiment}
 \ldots
 
-\section{Platform Configuration}
-\label{sec:methodologyexperiment_platformconfiguration}
-The experiment devised for the purpose of this dissertation is performed on the platforms outline in \dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
-Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
-
-The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
-
-\paragraph{Host Configuration}
-\label{par:methodologyexperiment_platformconfiguration_hostconfiguration}
-\ldots
-
-% TODO:
-% Full hardware configuration outline
-% Operating system
-
-\paragraph{Target Hardware Configuration}
-\label{par:methodologyexperiment_platformconfiguration:targethardwareconfiguration}
-\ldots
-
-% TODO:
-% x86
-% Android HAXM
-% Linux KVM
-% Simics / QEMU
-
-\paragraph{Target Software Configuration}
-\label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
-\ldots
-
-% TODO:
-% Android 4.4
-% Fedora 19
-% Software rasterizer and drivers
-
-%For the purposes of this study, the \dvttermfedora\ \dvttermlinux\ distribution has been selected for use due to \dvttermfedora\ being the 	primary platform used for development of the \dvttermsimics\ full-system simulator at the \dvttermintel\ offices in Stockholm.
-%In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform, it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
-%As such, the platform \dvttermos s used for the purpose of this study are as follows: hardware accelerated \dvttermfedora\ \dvttermhost\ system, software rasterized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, and \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system.
-
 %It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.
 %Such key points during simulation may concern a large number of relatively insignificant \termopengles\ invocations, frame-wize \termopengles\ state saving, or transferral of large chunks of data such as textures.
 %These areas may very well be bottlenecks of graphics paravirtualization and thus call for further investigation.
@@ -51,10 +13,48 @@ The following paragraphs outline the configuration of these target platforms, in
 %Alternatively, lone dispatch measurements could be used in coagency with \termframespersecond\ measurements.
 %Additionally, it may be favorable if, during development of said benchmark, if the software could utilize the same code-base to invoke the \termopengles -libraries - independant of platform.
 
+\section{Platform Configuration}
+\label{sec:methodologyexperiment_platformconfiguration}
+The experiment devised for the purpose of this dissertation is performed on the platforms outlined in \dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
+Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
+
+The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
+
+\paragraph{Host Configuration}
+\label{par:methodologyexperiment_platformconfiguration_hostconfiguration}
+The system upon which the experiment is performed is an \dvttermxeightysix -compatible \dvttermintel\ processor configured to run the \dvttermfedora\ \dvttermlinux\ distribution.
+Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary platform used for development of the \dvttermsimics\ full-system simulator at the \dvttermintel\ offices in Stockholm - at which the solution described in this document has been developed.
+
+% TODO:
+
+% Tip: Look up if there are any recommendations as to how one ought to list system configuration for experiments.
+
+% Hardware Specifications:
+% CPU: 4x Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+% RAM: ?
+
+% Software Specifications:
+% OS: Fedora 19 (Schrödinger's Cat)
+% GL: 3.0 Mesa 9.2.4
+% GPU: ?
+
+\paragraph{Target Hardware Configuration}
+\label{par:methodologyexperiment_platformconfiguration:targethardwareconfiguration}
+The \dvttermsimics\ hardware configuration utilized for the purpose of this experiment simulates an \dvttermintelcoreiseven ; the same processor series to that of the actual hardware of the simulation \dvttermhost\ system.
+Furthermore, \dvttermsimics\ execution, both the software rasterized and paravirtualized platforms, utilize \dvttermkvm\ for the simulation \dvttermtarget\ to run natively on the \dvttermhost\ hardware.
+
+In order to accomodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image, circumventing the need to interpret \dvttermarm\ instructions (see \dvtcmdciteref{technicaldocs:intel:2013:x86}).
+Furthermore, the solution utilizes \dvttermhaxm\ for similar native execution on the \dvttermhost\ hardware (see \dvtcmdciteref{technicaldocs:intel:2013:haxm}).
+
+\paragraph{Target Software Configuration}
+\label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
+In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform (see paragraph \dvtcmdrefname{par:methodologyexperiment_platformconfiguration_hostconfiguration}), it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
+As such, the platform \dvttermos s used for the purpose of this study are as follows: hardware accelerated \dvttermfedora\ \dvttermhost\ system, software rasterized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, and \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system.
+
 % TODO:
 % What software rasterizer is Simics using (Mesa)
-% Describe hardware configuration of the target machines (including android)
 
+% Platform Profiling
 \section{Platform Profiling}
 \label{sec:methodologyexperiment_platformprofiling}
 \ldots
@@ -65,6 +65,7 @@ The following paragraphs outline the configuration of these target platforms, in
 % QEMU Android
 % Simics
 
+% Benchmarking
 \section{Benchmarking}
 \label{sec:methodologyexperiment_benchmarking}
 Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
