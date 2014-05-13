@@ -63,6 +63,9 @@ do for [i=1:words(files)] {
     #set xtics tics
     #set xtics hist_binMin, tics, hist_binMax
 
+    # Remove Y tics 
+    unset ytics # Alternatively, if you want to keep the 'tick marks': set ytics format ''
+
     set boxwidth hist_binWidth # Avoid incorrectly rendering empty bins. (http://stackoverflow.com/questions/2471884/histogram-using-gnuplot)
     set style fill solid 0.5 # Fill bins to make them gorgous.
     set offset graph 0.05, 0.05, 0.05, 0.0 # Correct erronously rendered bins.
