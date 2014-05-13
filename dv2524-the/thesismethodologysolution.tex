@@ -109,6 +109,8 @@ Note that, at this point, the retrieved address is in the format of a \dvttermta
 As such, this address need be translated in order to retrieve the package contents said memory address points to.
 See \ref{sec:methodologysolution_memorypagetraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
 
+See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
+
 % TODO:
 % Point out that the buffer includes a number indicating what method invocation has been executed, and a variable indicating size of the buffer in it's entirety.
 
@@ -128,7 +130,5 @@ This can be done in a trivial manner by simply iterating the original virtual ad
 Naturally, said process must be performed regardless of data being read or written to-/from the indended - physical - memory space.
 
 \missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.} % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
-
-%See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
 
 
