@@ -15,30 +15,43 @@
 % Magic instruction profiling
 % Section for each demo? (analysis, rather?)
 
+% hosthistograms
+\begin{figure}
+\begin{center}
+	\input{hosthistograms.tex}
+
+	\label{fig:results_hosthistograms}
+	\caption{Histogram depicting benchmark elapsed frametimes and the density distribution of 1000 frames on the simulation host.}
+\end{center}
+\end{figure}
+
 % simicsparachesshistograms
 \begin{sidewaysfigure}
 \begin{center}
-    \input{simicsparachesshistograms.tex}
-    \caption{Left: Performance of the Chess benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Chess benchmark whilst paravirtualized in \dvttermsimics .}
-    \label{fig:results_simicsparachesshistograms}
+	\input{simicsparachesshistograms.tex}
+
+	\label{simicsparachesshistograms}
+	\caption{Left: Performance of the Chess benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Chess benchmark whilst paravirtualized in \dvttermsimics .}
 \end{center}
 \end{sidewaysfigure}
 
 % simicsparajuliahistograms
 \begin{sidewaysfigure}
 \begin{center}
-    \input{simicsparajuliahistograms.tex}
-    \caption{Left: Performance of the Julia benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Julia benchmark whilst paravirtualized in \dvttermsimics .}
+	\input{simicsparajuliahistograms.tex}
+
     \label{fig:results_simicsparajuliahistograms}
+    \caption{Left: Performance of the Julia benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Julia benchmark whilst paravirtualized in \dvttermsimics .}
 \end{center}
 \end{sidewaysfigure}
 
 % simicsparaphonghistograms
 \begin{sidewaysfigure}
 \begin{center}
-    \input{simicsparaphonghistograms.tex}
-    \caption{Left: Performance of the Phong benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Phong benchmark whilst paravirtualized in \dvttermsimics .}
+	\input{simicsparaphonghistograms.tex}
+
     \label{fig:results_simicsparaphonghistograms}
+    \caption{Left: Performance of the Phong benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Phong benchmark whilst paravirtualized in \dvttermsimics .}
 \end{center}
 \end{sidewaysfigure}
 

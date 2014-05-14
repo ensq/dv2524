@@ -18,7 +18,7 @@ max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
 mapToBin(p_x, p_binWidth, p_binMin) = p_binWidth * (floor((p_x - p_binMin) / p_binWidth) + 0.5) + p_binMin # http://stackoverflow.com/a/19596160
 usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1-6='data.dat';arg_terminal='type';arg_output='filename.type'\" histogram.gnu", p_iam)
 press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
-default(p_iam, p_var) = sprint("%s: Warning, using default var: %s!", p_iam, p_var)
+default(p_iam, p_var) = sprintf("%s: Warning, using default var: %s!", p_iam, p_var)
 
 # Entry point:
 reset
@@ -26,11 +26,11 @@ iam = "dv2524-gnu/histograms.gnu"
 print sprintf("%s: Enter...", iam)
 if(!exists("arg_output")) { # Optional arguments.
     arg_output = "default.ps"
-    default(iam, arg_output)
+    print default(iam, arg_output)
 }
 if(!exists("arg_terminal")) {
     arg_terminal = "postscript"
-    default(iam, arg_terminal)
+    print default(iam, arg_terminal)
 }
 if(!exists("arg_data1")||!exists("arg_data2")||!exists("arg_data3")||!exists("arg_data4")||!exists("arg_data5")||!exists("arg_data6")) { # Mandatory arguments.
     print usage(iam)

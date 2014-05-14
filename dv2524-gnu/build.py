@@ -1,57 +1,77 @@
 #!/bin/python
 # Builds graphs using GNUplot.
 
+import os
 import subprocess
 
 g_iam = "dv2524-gnu/build.py"
+g_gnuHistograms = "../dv2524-gnu/histograms.gnu"
+g_gnuHistogramsStacked = "../dv2524-gnu/histogramsstacked.gnu"
 
 # Entry point:
 print(g_iam + ": Enter...")
 
-# TODO: Delete old plots.
+# Start by changing directory, as we want to work with possibly modified plots in the build directory:
+os.chdir("../dv2524-bin/")
 
-cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_data4='%s';arg_data5='%s';arg_data6='%s';arg_terminal='%s';arg_output='%s'\" histograms.gnu";
-
-arg1 = "results/simicschess60x60.ms"
-arg2 = "results/parachess60x60.ms"
-arg3 = "results/simicschess84x84.ms"
-arg4 = "results/parachess84x84.ms"
-arg5 = "results/simicschess118x118.ms"
-arg6 = "results/parachess118x118.ms"
+# Draw 3x2 histograms:
+cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_data4='%s';arg_data5='%s';arg_data6='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistograms;
+arg1 = "simicschess60x60.dat"
+arg2 = "parachess60x60.dat"
+arg3 = "simicschess84x84.dat"
+arg4 = "parachess84x84.dat"
+arg5 = "simicschess118x118.dat"
+arg6 = "parachess118x118.dat"
 arg7 = "epslatex"
 arg8 = "../dv2524-bin/simicsparachesshistograms.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
-arg1 = "results/simicsjulia225.ms"
-arg2 = "results/parajulia225.ms"
-arg3 = "results/simicsjulia450.ms"
-arg4 = "results/parajulia450.ms"
-arg5 = "results/simicsjulia900.ms"
-arg6 = "results/parajulia900.ms"
+arg1 = "simicsjulia225.dat"
+arg2 = "parajulia225.dat"
+arg3 = "simicsjulia450.dat"
+arg4 = "parajulia450.dat"
+arg5 = "simicsjulia900.dat"
+arg6 = "parajulia900.dat"
 arg7 = "epslatex"
 arg8 = "../dv2524-bin/simicsparajuliahistograms.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
-arg1 = "results/simicsphong1448x1448.ms"
-arg2 = "results/paraphong1448x1448.ms"
-arg3 = "results/simicsphong2048x2048.ms"
-arg4 = "results/paraphong2048x2048.ms"
-arg5 = "results/simicsphong2896x2896.ms"
-arg6 = "results/paraphong2896x2896.ms"
+arg1 = "simicsphong1448x1448.dat"
+arg2 = "paraphong1448x1448.dat"
+arg3 = "simicsphong2048x2048.dat"
+arg4 = "paraphong2048x2048.dat"
+arg5 = "simicsphong2896x2896.dat"
+arg6 = "paraphong2896x2896.dat"
 arg7 = "epslatex"
 arg8 = "../dv2524-bin/simicsparaphonghistograms.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
+# Draw 3x1 histograms:
+cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_title1='%s';arg_title2='%s';arg_title3='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistogramsStacked;
+arg1 = "hostchess84x84.dat"
+arg2 = "hostjulia450.dat"
+arg3 = "hostphong2048x2048.dat"
+arg4 = "Chess"
+arg5 = "Julia"
+arg6 = "Phong"
+arg7 = "epslatex"
+arg8 = "hosthistograms.tex"
+sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
+sp.wait()
+
+# Change working directory back before exiting:
+os.chdir("../dv2524-gnu/")
+
 print(g_iam + ": Exit.")
 
 # Old invocation of lone histograms:
 #benchmarks = \
-#	[["julia225.ms","julia450.ms","julia900.ms"],\
-#	["phong1448x1448.ms", "phong2048x2048.ms", "phong2896x2896.ms"],\
-#	["chess60x60.ms", "chess84x84.ms", "chess118x118.ms"]]
+#	[["julia225.dat","julia450.dat","julia900.dat"],\
+#	["phong1448x1448.dat", "phong2048x2048.dat", "phong2896x2896.dat"],\
+#	["chess60x60.dat", "chess84x84.dat", "chess118x118.dat"]]
 #platforms = ["simics", "para"]
 
 #cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_output='%s'\" demo.gpt";
