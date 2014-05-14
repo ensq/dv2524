@@ -51,6 +51,7 @@ sp.wait()
 
 # Draw 3x1 histograms:
 cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_title1='%s';arg_title2='%s';arg_title3='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistogramsStacked;
+
 arg1 = "hostchess84x84.dat"
 arg2 = "hostjulia450.dat"
 arg3 = "hostphong2048x2048.dat"
@@ -59,6 +60,17 @@ arg5 = "Julia"
 arg6 = "Phong"
 arg7 = "epslatex"
 arg8 = "hosthistograms.tex"
+sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
+sp.wait()
+
+arg1 = "qemuchess84x84.dat"
+arg2 = "qemujulia450.dat"
+arg3 = "qemuphong2048x2048.dat"
+arg4 = "Chess"
+arg5 = "Julia"
+arg6 = "Phong"
+arg7 = "epslatex"
+arg8 = "qemuhistograms.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
