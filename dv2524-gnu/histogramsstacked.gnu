@@ -62,7 +62,7 @@ files=sprintf("%s %s %s", arg_data1, arg_data2, arg_data3)
 do for [i=1:words(files)] {
     arg_data = word(files, i)
 
-    stats arg_data name "data"
+    stats arg_data name "data" nooutput
 
     hist_data_mean = data_mean_y
     hist_data_min = hist_data_mean - data_stddev_y
@@ -96,7 +96,7 @@ do for [i=1:words(files)] {
 		set title word(titles, i) offset -25,-8,0 # Hack
 	}
 
-    stats arg_data name "data" # To retrieve data_records.
+    stats arg_data name "data" nooutput # To retrieve data_records.
 
     plot arg_data u (mapToBin($1, plots_bin_width, plots_bin_min)):(100.0/data_records) smooth freq w boxes lc rgb"black" notitle
 }

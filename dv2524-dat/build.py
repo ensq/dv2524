@@ -73,7 +73,7 @@ def sort_file(p_iam, p_filename):
     file.close()
 
     print(p_iam + ": Sorted file " + p_filename + " with minimum entry " + str(msMin) + " and maximum entry " + str(msMax) + ".")
-
+    
 def keyval_create(p_iam, p_filename, p_val):
     print(p_iam + ": Creating keyval file " + p_filename + " with value " + str(p_val) + "...")
     file = open(p_filename, 'w')

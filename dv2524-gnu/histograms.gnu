@@ -47,7 +47,7 @@ files=sprintf("%s %s %s %s %s %s", arg_data1, arg_data2, arg_data3, arg_data4, a
 do for [i=1:words(files)] {
     arg_data = word(files, i)
 
-    stats arg_data name "data"
+    stats arg_data name "data" nooutput
 
     hist_numBins = 100
     hist_data_mean = data_mean_y
