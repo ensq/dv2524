@@ -1,9 +1,19 @@
 % thesisresults.tex
 % Chapter Results.
 
+% Results
 \chapter{Results}
 \label{cha:results}
-\ldots
+
+% TODO:
+% Below yadda yadda is visualized in histograms (see section Histograms for an elaboration on how these ought be interpreted).
+
+% TODO:
+% QEMU performance
+% X11 Performance
+% X11 complete performance under appendix or results?
+% Magic instruction profiling
+% Section for each demo? (analysis, rather?)
 
 % simicsparachesshistograms
 \begin{sidewaysfigure}
@@ -31,3 +41,12 @@
     \label{fig:results_simicsparaphonghistograms}
 \end{center}
 \end{sidewaysfigure}
+
+% Histograms
+\section{Histograms}
+\label{sec:histograms}
+The benchmarking results gathered for the purposes of this study, with the profiling methods having been described in section \dvtcmdrefname{sec:methodologyexperiment_platformprofiling}, are compiled into histograms; visualizing elapsed time in milliseconds to density in the figures presented in this section.
+As such, the $Y$ axis showcases sample density; although the axis keys have been removed as they bear little relevance to the outcomes presented in this document.
+The histograms each feature \dvtcmdnum{100} bins based off the \dvtcmdnum{1000} samples gathered per benchmark, as described in section \dvtcmdrefname{sec:methodologyexperiment_platformprofiling}, which are rounded into said bins.
+For the purposes of good visualization methodology, values outside of the standard deviation\footnote{That is; values above that of the $mean + std$ and values under that of $mean - std$.} are not featured in the figures presented in this section.
+In order to accomodate for the, however few, samples outside of said limits the figures are all complemented with key ratio tables (see \todo{Refer to tables} ).
