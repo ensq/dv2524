@@ -6,6 +6,7 @@ import glob
 import numpy
 import shutil
 import fileinput
+from decimal import *
 
 g_iam = "dv2524-dat/build.py"
 
@@ -75,9 +76,10 @@ def sort_file(p_iam, p_filename):
     print(p_iam + ": Sorted file " + p_filename + " with minimum entry " + str(msMin) + " and maximum entry " + str(msMax) + ".")
     
 def keyval_create(p_iam, p_filename, p_val):
-    print(p_iam + ": Creating keyval file " + p_filename + " with value " + str(p_val) + "...")
+    val_rounded = Decimal(str(p_val)).quantize(Decimal(10) ** -2)
+    print(p_iam + ": Creating keyval file " + p_filename + " with value " + str(val_rounded) + "...")
     file = open(p_filename, 'w')
-    file.write(str(p_val)+'\n')
+    file.write(str(val_rounded)) # No endline.
     file.close()
 
 def keyval_extract(p_iam, p_filename):

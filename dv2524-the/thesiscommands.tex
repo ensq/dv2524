@@ -50,6 +50,15 @@
 	\colorbox{black!5}{
 			\lstinline[basicstyle=\ttfamily\color{black}]{#1}}}
 
+% Command to read, and ouput the first line of a file:
+\newcommand{\dvtcmdkeyval}[1]{
+	\newread\file
+	\openin\file=#1
+	\read\file to \keyval
+	\keyval % Return keyval.
+	\closein\file
+}
+
 % Old abbreviation command. Doesn't make use of [glossaries]. Saved in case not all abbreviations are to have [glossaries] entries.
 %\newcommand{\dvtcmdabbrev}[2]{%
 %	\provideboolean{#2}%
