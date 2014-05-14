@@ -19,7 +19,7 @@
 \section{Platform Configuration}
 \label{sec:methodologyexperiment_platformconfiguration}
 The experiment devised for the purpose of this dissertation is performed on the platforms outlined in \dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
-Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
+Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform\todo{List host machine hardware!} .
 
 The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
 
@@ -64,11 +64,25 @@ Naturally, such is the case in terms of real-time interaction and rendering - as
 In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:appendixa_virtualtime} under \dvtcmdrefname{cha:appendixa}, time fleets differently than in the context of the \dvttermhost\ machine.
 As such, in order to appropriately measure the elapsed time of a benchmark frame, said profiling must take place outside of the simulation.
 As expanded upon in section \dvtcmdrefname{sec:appendixa_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
-Mayhaps the most intelligible is to instruct the simulator to listen in on, and set a simulation breakpoint at the occurence of, a specialized sequence of bytes 
+Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
+In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port (\todo{Refer to figure.}).
+In \dvttermlinux , the interface to such a port may be accessed by any of the \dvtcmdcodeinline{/dev/ttyS*} file descriptors.
 
-% Serial Console
-% UART
+\missingfigure[figwidth=6cm]{Visualization of write-/read to target UART.} % TODO: Insert visualization of write-/read of target UART.
 
+When using serial ports in this manner, one may introduce a profiling cost.
+This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immidiately sending said byte sequence via the system \dvttermuart .
+In order to ensure responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
+Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immidiately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
+Collected profiling overhead data is visualized in figure \todo{Refer to figure.} ...\todo{If collected benchmarking data has been modified with this overhead, this should be made apperent in this section.}
+
+\missingfigure[figwidth=6cm]{Profiling overhead figure.} % TODO: Insert visualization of the profiling overhead.
+
+Utilizing the methodology described in the above paragraph; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
+This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
+As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
+
+% QEMU timing
 Likewize, in \dvttermqemu ...
 However,
 
