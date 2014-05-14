@@ -9,6 +9,14 @@ import fileinput
 
 g_iam = "dv2524-dat/build.py"
 
+class Keyval:
+    def __init__(self, p_min, p_max, p_avg, p_std):
+        self.m_min = p_min
+        self.m_max = p_max
+        self.m_avg = p_avg
+        self.m_std = p_std
+
+
 def avg(p_iam, p_filename):
     file = open(p_filename, 'r')
 
@@ -20,9 +28,10 @@ def avg(p_iam, p_filename):
     msstd = numpy.std(mss)
     msmin = numpy.min(mss)
     msmax = numpy.max(mss)
-    print(p_iam + ": Parsed file " + p_filename + " has the following attributes: \n\tAvg: " + str(msavg) + "\n\tStd: " + str(msstd) + "\n\tMin: " + str(msmin) + "\n\tMax: " + str(msmax))
+    #print(p_iam + ": Parsed file " + p_filename + " has the following attributes: \n\tAvg: " + str(msavg) + "\n\tStd: " + str(msstd) + "\n\tMin: " + str(msmin) + "\n\tMax: " + str(msmax))
 
     file.close()
+    return Keyval(msmin, msmax, msavg, msstd)
     return msavg
 
 def correct_profiling(p_iam, p_filename, p_offset):
@@ -43,7 +52,7 @@ def correct_profiling(p_iam, p_filename, p_offset):
 
     avgAfter = avg(p_iam, p_filename)
 
-    print(p_iam + ": Offset profiling measurements in " + p_filename + " with " + str(p_offset) + ", effectively reducing the average from " + str(avgBefore) + " to " + str(avgAfter) + ".")
+    print(p_iam + ": Offset profiling measurements in " + p_filename + " with " + str(p_offset) + ", effectively reducing the average from " + str(avgBefore.m_avg) + " to " + str(avgAfter.m_avg) + ".")
 
 def sort_file(p_iam, p_filename):
     mss = []
@@ -65,6 +74,19 @@ def sort_file(p_iam, p_filename):
 
     print(p_iam + ": Sorted file " + p_filename + " with minimum entry " + str(msMin) + " and maximum entry " + str(msMax) + ".")
 
+def keyval_create(p_iam, p_filename, p_val):
+    print(p_iam + ": Creating keyval file " + p_filename + " with value " + str(p_val) + "...")
+    file = open(p_filename, 'w')
+    file.write(str(p_val)+'\n')
+    file.close()
+
+def keyval_extract(p_iam, p_filename):
+    keyval = avg(p_iam, p_filename)
+    keyval_create(p_iam, p_filename + ".min", keyval.m_avg)
+    keyval_create(p_iam, p_filename + ".max", keyval.m_max)
+    keyval_create(p_iam, p_filename + ".avg", keyval.m_avg)
+    keyval_create(p_iam, p_filename + ".std", keyval.m_avg)
+
 # Entry point:
 print(g_iam + ": Enter...")
 
@@ -85,7 +107,11 @@ sort_file(g_iam, "profile.dat")
 files_need_correcting = glob.glob("simics*.dat")
 files_need_correcting += glob.glob("para*.dat")
 for filename in files_need_correcting:
-    correct_profiling(g_iam, filename, -profiling_overhead)
+    correct_profiling(g_iam, filename, -profiling_overhead.m_avg)
+
+files_need_keyval_extract = glob.glob("*.dat")
+for filename in files_need_keyval_extract:
+    keyval_extract(g_iam, filename)
 
 # Before exiting, we change the current working directory back to the original one:
 os.chdir("../dv2524-dat/")
