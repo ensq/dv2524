@@ -1,15 +1,9 @@
-% thesisanalysis.tex
-% Chapter Analysis.
+% thesisanalysissolution.tex
+% Chapter Analysis, Solution
 
-% TODO:
-% Strengths of solution.
-% Identified bottlenecks.
-% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
-% Speculation surrounding memory page translation.
-
-% Analysis
-\chapter{Analysis}
-\label{cha:analysis}
+% Analysis, Solution
+\chapter{Analysis, Solution}
+\label{cha:analysissolution}
 As expanded upon in \dvtcmdcitefur{dissertation:nilsson:2014}, there are a number of ways of virtualizing \dvttermgpu s in system simulators, a few of which accomodate for hardware acceleration of \dvttermgpu\ kernels.
 When faced with tackling the issue of \dvttermgpu\ virtualization, there are equally many variables to consider as there are options; the first of which is the purpose of said virtualization.
 The \dvttermsimics\ architectural simulator is by all means a full-system simulator; meaning, as portrayed in section \dvtcmdrefname{sec:appendixa_simics} under \dvtcmdrefname{cha:appendixa}, that it may run complete real-software stacks without modification.
@@ -41,7 +35,7 @@ In terms of \dvttermgpu\ virtualization, this would induce the necessity of the 
 The tight coupling induced by direct contact with \dvttermhost\ hardware also requires the simulation \dvttermtarget\ to utilize the same device drivers as the \dvttermhost\ system, rendering the methodology unflexible in term so \dvttermgpu\ virtualization diversity.
 In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires modification of the \dvttermtarget\ system - in addition to configuration of the simulation \dvttermhost .
 
-% Another flaw, Linux only (or rather, not Windows).
+% Another flaw: Linux only (or rather, not Windows).
 
 % Soft Modeling
 \paragraph{Soft Modeling}
@@ -59,16 +53,8 @@ One might speculate that using such technologies in collaboration with \dvttermh
 % TODO:
 % Why paravirtualization is a sensible levelling.
 
+%Paravirtualization as described in thesis. Paravirtualization is cheaper to develop, but possibly hard to maintain depending on the paravirtualized framework might change in API revisions
+%Optimal for speed. Unfortunately requires modification of the host system, but this is often not a problem since the system only needs be modified at a level at which the user is not necessarily interested in. For example, while the OpenGL library might need be modified - the application the user is running needs not.
+
 % TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
 \missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
-
-% Benchmark variations
-\section{Benchmark Variations}
-\label{sec:analysis_benchmarkvariations}
-\ldots
-
-% TODO:
-% Expand upon Phong deviations.
-
-%Deviations caused by rotation of the model may cause, or partly cause, general fluctuation in benchmark (e.g. when paravirtualized). Furthermore, the texturing (or the sampling of, rather) of a rotating small model with such a large texture may cause severe cache misses due to the texture sampling. This is simply speculation, but may cause the major fluctuations in the software rasterized Phong benchmark.
-%As such, present suspicions of cache misses and general fluctuations in the Phong benchmark, but point out that the software rasterized Phong benchmark profiling is of less relevance to the paravirtualized sample due to this.

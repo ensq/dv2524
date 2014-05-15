@@ -1,6 +1,12 @@
 % thesismethodologysolution.tex
 % Chapter Methodology, Solution.
 
+% TODO:
+% Strengths of solution.
+% Identified bottlenecks.
+% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
+% Speculation surrounding memory page translation.
+
 % Methodology, Solution:
 \chapter{Methodology, Solution}
 \label{cha:methodologysolution}
@@ -26,7 +32,7 @@ In accordance to the \dvttermreferenceimplementation , paravirtualized graphics 
 \index{OpenGL ABI Generation}
 In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were developed for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} \& \ref{sec:methodologysolution_hostsystemlibraries}).
 As such, the majority of the \dvttermopengl\ function definitions described in section \ref{sec:methodologysolution_targetsystemlibraries} are produced by this tool.
-The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc .
+The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; in turn dictating the serializing \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s, and the corresponding - on the recieving end - \dvttermhost\ decoding libraries.
 
 % TODO:
 % Expand on the extent of methods being generated, including inout vairables, return values etc.
