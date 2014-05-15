@@ -56,7 +56,7 @@ plots_data_max = 0.0
 unset xtics
 unset ytics
 set tmargin 0
-set bmargin 0    
+set bmargin 0
 
 files=sprintf("%s %s %s", arg_data1, arg_data2, arg_data3)
 do for [i=1:words(files)] {
@@ -89,7 +89,8 @@ do for [i=1:words(files)] {
 	arg_data = word(files, i)
 	if(i==3) {
 		set xtics nomirror
-		set bmargin 1 # Extra spacing for figure description (I'm a generous God).
+		set xtics scale 0 # Remove the small tic-marks, but keep the labels.
+        set bmargin 1 # Extra spacing for figure description (I'm a generous God).
 	}
 	if(plots_notitle==0) {
 		titles=sprintf("%s %s %s", arg_title1, arg_title2, arg_title3)

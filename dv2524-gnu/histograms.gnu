@@ -42,6 +42,7 @@ set output arg_output
 
 set multiplot layout 3,2
 set xtics nomirror
+set tic scale 0 # Remove the small tic-marks, but keep the labels.
 
 files=sprintf("%s %s %s %s %s %s", arg_data1, arg_data2, arg_data3, arg_data4, arg_data5, arg_data6)
 
