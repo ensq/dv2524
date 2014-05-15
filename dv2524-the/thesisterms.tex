@@ -178,6 +178,9 @@
 \newcommand{\dvttermintelcoreiseven}{\dvttermintel\ Core\texttrademark\ i7}
 % IBM
 \newcommand{\dvttermibm}{IBM}
+% Instruction Set Architecture
+\newacronym{dvtglossisa}{ISA}{Instruction Set Architecture}
+\newcommand{\dvttermisa}{\dvtcmdabbrev{dvtglossisa}}
 
 % J
 % Just-in-Time
@@ -249,7 +252,13 @@
 \newacronym{dvtglosspci}{PCI}{Peripheral Component Interconnect}
 \newcommand{\dvttermpci}{\dvtcmdabbrev{dvtglosspci}}
 % PCI Passthrough
-\newcommand{\dvttermpcipassthrough}{\dvttermpci\ passthrough}
+\newglossaryentry{dvtglosspcipassthrough}
+{
+  name={PCI passthrough},
+  description={PCI passthrough may allow a simulation target exclusive control of physical PCI devices, such as GPUs, audio controllers, and USB controllers},
+  sort={PCI Passthrough},
+}
+\newcommand{\dvttermpcipassthrough}{\dvttermpci\ \dvtcmdcaponcegloss{dvtglosspcipassthrough}{Passthrough}}
 % Paravirtualization
 \newglossaryentry{dvtglossparavirtualization}
 {
