@@ -4,12 +4,9 @@
 % Results
 \chapter{Results}
 \label{cha:results}
-
-\input{tabkeyvalhost.tex}
-\input{tabkeyvalqemu.tex}
-
-\input{tabkeyvalsimics.tex}
-\input{tabkeyvalpara.tex}
+The benchmark configurations, as described in section \ref{sec:methodologyexperiment_benchmarking}, having been executed on the platforms, as described in section \ref{sec:methodologyexperiment_platformconfiguration}, using the profiling methods described in section \ref{sec:methodologyexperiment_platformprofiling}, are presented in this chapter.
+As such, the results gathered from execution on the \dvttermhost\ is presented in figure \ref{fig:histogramshost}, the results compiled from execution in the \dvttermandroidemulator\ are presented in figure \ref{fig:histogramsqemu}, and the results accumulated from software rasterized- and paravirtualized execution in \dvttermsimics\ are presented in figures \ref{fig:histogramssimicsparachess}, \ref{fig:histogramssimicsparajulia}, and \ref{fig:histogramssimicsparaphong}, respectively.
+See section \ref{sec:histograms} for an elaboration on how the data is visualized in the referenced graphs.
 
 % TODO:
 % Below yadda yadda is visualized in histograms (see section Histograms for an elaboration on how these ought be interpreted).
@@ -43,4 +40,9 @@ The benchmarking results gathered for the purposes of this study, with the profi
 As such, the $Y$ axis showcases sample density; although the axis keys have been removed as they bear little relevance to the outcomes presented in this document.
 The histograms each feature \dvtcmdnum{100} bins based off the \dvtcmdnum{1000} samples gathered per benchmark, as described in section \dvtcmdrefname{sec:methodologyexperiment_platformprofiling}, which are rounded into said bins.
 For the purposes of good visualization methodology, values outside of the standard deviation\footnote{That is; values above that of the $mean + std$ and values under that of $mean - std$.} are not featured in the figures presented in this section.
-In order to accomodate for the, however few, samples outside of said limits the figures are all complemented with key ratio tables (see \todo{Refer to tables} ).
+In order to accomodate for the, however few, samples outside of said limits the figures are all complemented with key ratio tables (see tables \ref{tab:keyvalhost}, \ref{tab:keyvalqemu}, \ref{tab:keyvalsimics}, and \ref{tab:keyvalpara}, respectively).
+
+\input{tabkeyvalhost.tex}
+\input{tabkeyvalqemu.tex}
+\input{tabkeyvalsimics.tex}
+\input{tabkeyvalpara.tex}
