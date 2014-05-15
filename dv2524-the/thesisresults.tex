@@ -4,7 +4,18 @@
 % Results
 \chapter{Results}
 \label{cha:results}
-\dvtcmdfirstline{simicsjulia900.dat.avg}
+
+\begin{table}
+\begin{center}
+
+\input{tabkeyvalhost.tex}
+
+\label{tab:tabletest}
+\caption{A test table}
+
+\end{center}
+\end{table}
+
 
 % TODO:
 % Below yadda yadda is visualized in histograms (see section Histograms for an elaboration on how these ought be interpreted).
@@ -17,54 +28,19 @@
 % Section for each demo? (analysis, rather?)
 
 % hosthistograms
-\begin{figure}
-\begin{center}
-	\input{hosthistograms.tex}
-
-	\label{fig:results_hosthistograms}
-	\caption{Histogram depicting benchmark elapsed frametimes in milliseconds and the density distribution of 1000 frames whilst hardware accelerated on the simulation host.}
-\end{center}
-\end{figure}
+\input{fighistogramshost.tex}
 
 % qemuhistograms
-\begin{figure}
-\begin{center}
-	\input{qemuhistograms.tex}
-
-	\label{fig:results_qemuhistograms}
-	\caption{Histogram depicting benchmark elapsed frametimes in milliseconds and the density distribution of 1000 frames whilst paravirtualized in QEMU.}
-\end{center}
-\end{figure}
+\input{fighistogramsqemu.tex}
 
 % simicsparachesshistograms
-\begin{sidewaysfigure}
-\begin{center}
-	\input{simicsparachesshistograms.tex}
-
-	\label{simicsparachesshistograms}
-	\caption{Left: Performance of the Chess benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Chess benchmark whilst paravirtualized in \dvttermsimics .}
-\end{center}
-\end{sidewaysfigure}
+\input{fighistogramssimicsparachess.tex}
 
 % simicsparajuliahistograms
-\begin{sidewaysfigure}
-\begin{center}
-	\input{simicsparajuliahistograms.tex}
-
-    \label{fig:results_simicsparajuliahistograms}
-    \caption{Left: Performance of the Julia benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Julia benchmark whilst paravirtualized in \dvttermsimics .}
-\end{center}
-\end{sidewaysfigure}
+\input{fighistogramssimicsparajulia.tex}
 
 % simicsparaphonghistograms
-\begin{sidewaysfigure}
-\begin{center}
-	\input{simicsparaphonghistograms.tex}
-
-    \label{fig:results_simicsparaphonghistograms}
-    \caption{Left: Performance of the Phong benchmark whilst software rasterized in \dvttermsimics . Right: Performance of the Phong benchmark whilst paravirtualized in \dvttermsimics .}
-\end{center}
-\end{sidewaysfigure}
+\input{fighistogramssimicsparaphong.tex}
 
 % Histograms
 \section{Histograms}

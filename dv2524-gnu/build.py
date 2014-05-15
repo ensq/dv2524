@@ -23,7 +23,7 @@ arg4 = "parachess84x84.dat"
 arg5 = "simicschess118x118.dat"
 arg6 = "parachess118x118.dat"
 arg7 = "epslatex"
-arg8 = "../dv2524-bin/simicsparachesshistograms.tex"
+arg8 = "../dv2524-bin/gnuhistogramssimicsparachess.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
@@ -34,7 +34,7 @@ arg4 = "parajulia450.dat"
 arg5 = "simicsjulia900.dat"
 arg6 = "parajulia900.dat"
 arg7 = "epslatex"
-arg8 = "../dv2524-bin/simicsparajuliahistograms.tex"
+arg8 = "../dv2524-bin/gnuhistogramssimicsparajulia.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
@@ -45,7 +45,7 @@ arg4 = "paraphong2048x2048.dat"
 arg5 = "simicsphong2896x2896.dat"
 arg6 = "paraphong2896x2896.dat"
 arg7 = "epslatex"
-arg8 = "../dv2524-bin/simicsparaphonghistograms.tex"
+arg8 = "../dv2524-bin/gnuhistogramssimicsparaphong.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
@@ -59,7 +59,7 @@ arg4 = "Chess"
 arg5 = "Julia"
 arg6 = "Phong"
 arg7 = "epslatex"
-arg8 = "hosthistograms.tex"
+arg8 = "gnuhistogramshost.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
@@ -70,7 +70,7 @@ arg4 = "Chess"
 arg5 = "Julia"
 arg6 = "Phong"
 arg7 = "epslatex"
-arg8 = "qemuhistograms.tex"
+arg8 = "gnuhistogramsqemu.tex"
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8), shell=True)
 sp.wait()
 
