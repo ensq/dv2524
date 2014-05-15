@@ -87,7 +87,7 @@ def keyval_extract(p_iam, p_filename):
     keyval_create(p_iam, p_filename + ".min", keyval.m_avg)
     keyval_create(p_iam, p_filename + ".max", keyval.m_max)
     keyval_create(p_iam, p_filename + ".avg", keyval.m_avg)
-    keyval_create(p_iam, p_filename + ".std", keyval.m_avg)
+    keyval_create(p_iam, p_filename + ".std", keyval.m_std)
 
 # Entry point:
 print(g_iam + ": Enter...")
