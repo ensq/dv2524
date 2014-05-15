@@ -16,7 +16,7 @@ The \dvttermsimics\ architectural simulator is by all means a full-system simula
 However, \dvttermsimics\ is intended to feature a low level of timing fidelity for the purposes of high performance, and is - as such - not a cycle-accurate simulator\footnote{This should not be confused with...}\todo{?}.
 As such, and in line with the considerations for \dvttermgpu\ virtualization - one must analyze and balance the purposes of simulation, as there is not always a winning general-case.
 In this way, methodologies with varying levels of implementational accuracy present themselves - from slow low-level instruction set modeling to fast high level paravirtualization.
-Said methods are presented in the paragraphs below.
+Said methods are presented in the paragraphs below, and visualized in figure...\todo{Refer to figure}
 
 % GPU Modeling
 \paragraph{GPU Modeling}
@@ -32,7 +32,7 @@ Furthermore, such modeling of massively parallelized \dvttermgpu\ technology on 
 % PCI Passthrough
 \paragraph{PCI Passthrough}
 \label{par:analysis_pcipassthrough}
-Secondly, one ought consider the benefits of \dvttermpcipassthrough ; allowing virtual systems first-hand - exclusive - access to \dvttermhost\ machine devices\dvtcmdciteref{web:jones:2009}.
+Secondly, one ought examine the benefits of \dvttermpcipassthrough ; allowing virtual systems first-hand - exclusive - access to \dvttermhost\ machine devices\dvtcmdciteref{web:jones:2009}.
 The direct contact with \dvttermhost\ system devices accomodated by methodologies such as \dvttermpcipassthrough\ enable performance, hardware accelerated, graphics acceleration.
 
 Yet, the methodology suffers from several disadvantages, such as only being capable of running on \dvttermlinux\ systems \todo{citation needed!}.
@@ -41,15 +41,15 @@ In terms of \dvttermgpu\ virtualization, this would induce the necessity of the 
 The tight coupling induced by direct contact with \dvttermhost\ hardware also requires the simulation \dvttermtarget\ to utilize the same device drivers as the \dvttermhost\ system, rendering the methodology unflexible in term so \dvttermgpu\ virtualization diversity.
 In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires modification of the \dvttermtarget\ system - in addition to configuration of the simulation \dvttermhost .
 
-% Linux only
+% Another flaw, Linux only (or rather, not Windows).
 
 % Soft Modeling
 \paragraph{Soft Modeling}
 \label{par:analysis_softmodeling}
-\ldots
-
-% TODO:
-% DV2549
+Thirdly, as an alternative to precise modeling of \dvttermgpu\ technologies, one might analyze the feasability of high-speed software rasterization.
+Albeit not up to hardware accelerated speeds, some results indicate an increased feasibility of high-speed software rasterization in modern graphics frameworks (see \dvtcmdcitefur{papers:nilsson:2013}), where traditional software rasterization is accelerated using thread pooling optimizations and \dvttermsimd\ technologies\dvtcmdciteref{web:microsoft:2013:warp}; all for the purposes of optimizing execution for \dvttermcpu -, rather than \dvttermgpu , execution.
+As such, one may avoid some of the overhead induced by simulating \dvttermgpu\ kernels on the \dvttermcpu , which is traditionally not fit for purpose.
+One might speculate that using such technologies in collaboration with \dvttermhost\ native execution accceleration might bring software rasterization up to competitative speeds fit for some simulatory development purposes, replacing the need for more sophisticated virtualization techniques.
 
 % Paravirtualization
 \paragraph{Paravirtualization}
@@ -57,7 +57,7 @@ In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires m
 \ldots
 
 % TODO:
-% Why paravirtualization is the sensible choice.
+% Why paravirtualization is a sensible levelling.
 
 % TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
 \missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
@@ -69,3 +69,6 @@ In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires m
 
 % TODO:
 % Expand upon Phong deviations.
+
+%Deviations caused by rotation of the model may cause, or partly cause, general fluctuation in benchmark (e.g. when paravirtualized). Furthermore, the texturing (or the sampling of, rather) of a rotating small model with such a large texture may cause severe cache misses due to the texture sampling. This is simply speculation, but may cause the major fluctuations in the software rasterized Phong benchmark.
+%As such, present suspicions of cache misses and general fluctuations in the Phong benchmark, but point out that the software rasterized Phong benchmark profiling is of less relevance to the paravirtualized sample due to this.

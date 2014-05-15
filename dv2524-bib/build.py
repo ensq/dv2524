@@ -18,6 +18,7 @@ g_reffiles = [\
     "../dv2524-bib/technicaldocs.bib",\
     "../dv2524-bib/web.bib"]
 g_furfiles = [\
+    "../dv2524-bib/papers.bib",\
     "../dv2524-bib/dissertations.bib",\
     "../dv2524-bib/technicaldocs.bib"]
 
