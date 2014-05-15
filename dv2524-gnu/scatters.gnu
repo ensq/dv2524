@@ -1,4 +1,4 @@
-# demo.gnu
+# scatters.gnu
 # Demo plot using GNUplot.
 # Requires GNUplot 4.6 or later.
 # ---
@@ -9,7 +9,7 @@
 # 4. Output filename 		: arg_output
 # ---
 # Invoke accordingly:
-# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" demo.nu
+# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" scatters.gnu
 # ---
 # TODO:
 # * Should recieve argument specifying output.
@@ -21,18 +21,18 @@ press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
 # Entry point:
 reset
-iam = "dv2524-gpt/demo.gpt"
+iam = "dv2524-gnu/scatters.gnu"
 print sprintf("%s: Enter...", iam)
 
 if(!exists("arg_output")) { # Optional arguments.
-	arg_output = "default.svg"
+    arg_output = "default.svg"
 }
 if(!exists("arg_data1") || !exists("arg_data2") || !exists("arg_data3")) { # Mandatory arguments.
-	print usage(iam)
-	pause -1 press(iam) # We should abort script here rather than simply pause it.
+    print usage(iam)
+    pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
-set terminal svg # Should be customizable.
+set terminal postscript # Should be customizable.
 set output arg_output
 
 print "Julia225 stats:"
@@ -62,7 +62,16 @@ juliaMax = max(juliaMax, julia900Max)
 
 set yrange[juliaMin:juliaMax]
 
-plot arg_data1, arg_data2, arg_data3
+#set style line 1 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
+#set style line 2 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
+#set style line 3 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
+#plot arg_data1 with linespoint ls 1 pt 6,\
+#    arg_data2 with linespoint ls 2 pt 32,\
+#    arg_data3 with linespoint ls 3 pt 64
+
+plot arg_data1 pt 1,\
+    arg_data2 pt 2,\
+    arg_data3 pt 3
 
 print sprintf("%s: Exit.", iam)
 

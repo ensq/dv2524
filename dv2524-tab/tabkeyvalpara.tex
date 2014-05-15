@@ -1,0 +1,40 @@
+% tabkeyvalpara.tex
+% Defines a table outlining the performance of the thesis benchmark whilst paravirtualized in the para full-system simulator.
+
+% This ought be made into an environment.
+
+\begin{table}
+\begin{center}
+
+\newcommand{\chesskeyone}{60x60 tiles}
+\newcommand{\chesskeytwo}{84x84 tiles}
+\newcommand{\chesskeythree}{118x118 tiles}
+
+\newcommand{\juliakeyone}{225 iterations}
+\newcommand{\juliakeytwo}{450 iterations}
+\newcommand{\juliakeythree}{900 iterations}
+
+\newcommand{\phongkeyone}{1448x1448 texels}
+\newcommand{\phongkeytwo}{2048x2048 texels}
+\newcommand{\phongkeythree}{2896x2896 texels}
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Benchmark} & \multirow{2}{*}{Key} & \multicolumn{4}{p{6cm}|}{\centering Elapsed time (milliseconds)} \\
+\cline{3-6} && \multicolumn{1}{c|}{Min} & \multicolumn{1}{c|}{Max} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Avg} \\ \hline
+\multirow{3}{*}{Chess} & \chesskeyone & \dvtcmdfirstline{parachess60x60.dat.min}		& \dvtcmdfirstline{parachess60x60.dat.max}		& \dvtcmdfirstline{parachess60x60.dat.std}		& \dvtcmdfirstline{parachess60x60.dat.avg} \\ %\cline{2-6}
+& \chesskeytwo & \dvtcmdfirstline{parachess84x84.dat.min} & \dvtcmdfirstline{parachess84x84.dat.max} & \dvtcmdfirstline{parachess84x84.dat.std} & \dvtcmdfirstline{parachess84x84.dat.avg} \\ %\cline{2-6}
+& \chesskeythree & \dvtcmdfirstline{parachess118x118.dat.min} & \dvtcmdfirstline{parachess118x118.dat.max} & \dvtcmdfirstline{parachess118x118.dat.std} & \dvtcmdfirstline{parachess118x118.dat.avg} \\ \hline
+\multirow{3}{*}{Julia} & \juliakeyone & \dvtcmdfirstline{parajulia225.dat.min}		& \dvtcmdfirstline{parajulia225.dat.max}		& \dvtcmdfirstline{parajulia225.dat.std} & \dvtcmdfirstline{parajulia225.dat.avg} \\ %\cline{2-6}
+& \juliakeytwo & \dvtcmdfirstline{parajulia450.dat.min} & \dvtcmdfirstline{parajulia450.dat.max} & \dvtcmdfirstline{parajulia450.dat.std} & \dvtcmdfirstline{parajulia450.dat.avg} \\ %\cline{2-6}
+& \juliakeythree & \dvtcmdfirstline{parajulia900.dat.min} & \dvtcmdfirstline{parajulia900.dat.max} & \dvtcmdfirstline{parajulia900.dat.std} & \dvtcmdfirstline{parajulia900.dat.avg} \\ \hline
+\multirow{3}{*}{Phong} & \phongkeyone & \dvtcmdfirstline{paraphong1448x1448.dat.min}		& \dvtcmdfirstline{paraphong1448x1448.dat.max}		& \dvtcmdfirstline{paraphong1448x1448.dat.std}		& \dvtcmdfirstline{paraphong1448x1448.dat.avg} \\ %\cline{2-6}
+& \phongkeytwo & \dvtcmdfirstline{paraphong2048x2048.dat.min} & \dvtcmdfirstline{paraphong2048x2048.dat.max} & \dvtcmdfirstline{paraphong2048x2048.dat.std} & \dvtcmdfirstline{paraphong2048x2048.dat.avg} \\ %\cline{2-6}
+& \phongkeythree & \dvtcmdfirstline{paraphong2896x2896.dat.min} & \dvtcmdfirstline{paraphong2896x2896.dat.max} & \dvtcmdfirstline{paraphong2896x2896.dat.std} & \dvtcmdfirstline{paraphong2896x2896.dat.avg} \\ \hline
+\end{tabular}
+
+\label{tab:keyvalpara}
+\caption{Benchmarking results whilst paravirtualized in the Simics full-system simulator.}
+
+\end{center}
+\end{table}

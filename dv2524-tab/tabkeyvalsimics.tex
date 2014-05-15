@@ -1,5 +1,5 @@
 % tabkeyvalsimics.tex
-% Defines a table outlining the performance of the thesis benchmark whilst hardware accelerated on the host platform.
+% Defines a table outlining the performance of the thesis benchmark whilst software rasterized in the Simics full-system simulator.
 
 % This ought be made into an environment.
 
@@ -20,7 +20,7 @@
 
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-\multirow{2}{*}{Benchmark} & \multirow{2}{*}{Key} & \multicolumn{4}{p{6cm}|}{\centering Elapsed time in Milliseconds} \\
+\multirow{2}{*}{Benchmark} & \multirow{2}{*}{Key} & \multicolumn{4}{p{6cm}|}{\centering Elapsed time (milliseconds)} \\
 \cline{3-6} && \multicolumn{1}{c|}{Min} & \multicolumn{1}{c|}{Max} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Avg} \\ \hline
 \multirow{3}{*}{Chess} & \chesskeyone & \dvtcmdfirstline{simicschess60x60.dat.min}		& \dvtcmdfirstline{simicschess60x60.dat.max}		& \dvtcmdfirstline{simicschess60x60.dat.std}		& \dvtcmdfirstline{simicschess60x60.dat.avg} \\ %\cline{2-6}
 & \chesskeytwo & \dvtcmdfirstline{simicschess84x84.dat.min} & \dvtcmdfirstline{simicschess84x84.dat.max} & \dvtcmdfirstline{simicschess84x84.dat.std} & \dvtcmdfirstline{simicschess84x84.dat.avg} \\ %\cline{2-6}
@@ -33,8 +33,8 @@
 & \phongkeythree & \dvtcmdfirstline{simicsphong2896x2896.dat.min} & \dvtcmdfirstline{simicsphong2896x2896.dat.max} & \dvtcmdfirstline{simicsphong2896x2896.dat.std} & \dvtcmdfirstline{simicsphong2896x2896.dat.avg} \\ \hline
 \end{tabular}
 
-\label{tab:tabletest}
-\caption{A test table}
+\label{tab:keyvalsimics}
+\caption{Benchmarking results whilst software rasterized in the Simics full-system simulator.}
 
 \end{center}
 \end{table}
