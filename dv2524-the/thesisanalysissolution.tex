@@ -1,6 +1,9 @@
 % thesisanalysissolution.tex
 % Chapter Analysis, Solution
 
+% TODO:
+% Consider moving to Methodology, Solution chapter?
+
 % Analysis, Solution
 \chapter{Analysis, Solution}
 \label{cha:analysissolution}
@@ -14,7 +17,7 @@ Said methods are presented in the paragraphs below, and visualized in figure...\
 
 % GPU Modeling
 \paragraph{GPU Modeling}
-\label{par:analysis_gpumodeling}
+\label{par:analysissolution_gpumodeling}
 Firstly, one may consider developing a full-fletched \dvttermgpu\ model; that is, implementing virtualization of the \dvttermgpu\ \dvttermisa .
 This methodology may be appropriate for the purposes of low-level development close to \dvttermgpu\ hardware.
 For example, one might imagine the scenario of driver development for next-generation \dvttermgpu s, as portrayed in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
@@ -25,7 +28,7 @@ Furthermore, such modeling of massively parallelized \dvttermgpu\ technology on 
 
 % PCI Passthrough
 \paragraph{PCI Passthrough}
-\label{par:analysis_pcipassthrough}
+\label{par:analysissolution_pcipassthrough}
 Secondly, one ought examine the benefits of \dvttermpcipassthrough ; allowing virtual systems first-hand - exclusive - access to \dvttermhost\ machine devices\dvtcmdciteref{web:jones:2009}.
 The direct contact with \dvttermhost\ system devices accomodated by methodologies such as \dvttermpcipassthrough\ enable performance, hardware accelerated, graphics acceleration.
 
@@ -39,7 +42,7 @@ In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires m
 
 % Soft Modeling
 \paragraph{Soft Modeling}
-\label{par:analysis_softmodeling}
+\label{par:analysissolution_softmodeling}
 Thirdly, as an alternative to precise modeling of \dvttermgpu\ technologies, one might analyze the feasability of high-speed software rasterization.
 Albeit not up to hardware accelerated speeds, some results indicate an increased feasibility of high-speed software rasterization in modern graphics frameworks (see \dvtcmdcitefur{papers:nilsson:2013}), where traditional software rasterization is accelerated using thread pooling optimizations and \dvttermsimd\ technologies\dvtcmdciteref{web:microsoft:2013:warp}; all for the purposes of optimizing execution for \dvttermcpu -, rather than \dvttermgpu , execution.
 As such, one may avoid some of the overhead induced by simulating \dvttermgpu\ kernels on the \dvttermcpu , which is traditionally not fit for purpose.
@@ -47,14 +50,18 @@ One might speculate that using such technologies in collaboration with \dvttermh
 
 % Paravirtualization
 \paragraph{Paravirtualization}
-\label{par:analysis_paravirtualization}
-\ldots
+\label{par:analysissolution_paravirtualization}
+Finally, and as portrayed throughout this document, there is the option of virtualization by paravirtualization (see chapter \ref{cha:methodologysolution}).
+Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level\todo{Refer to virtualization layer abstraction visualization figure when existant.}.
+Inherent from it's higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:analysissolution_gpumodeling}.
+Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:methodologysolution_simicspipe}) may accomodate for significant performance improvements.
+
+However, despite possibility for significant performance improvements (see chapters \ref{cha:analysisexperiment} \& \ref{cha:results}), graphics virtualization by the means of paravirtualization is not without it's inherent flaws.
+In particular, a paravirtualized graphics library may be expensive to maintain as frameworks evolve and specifications change.
+Additionally, the means of paravirtualization requires the target system to be modified; albeit not necessarily being a substantial flaw as such a paravirtualized framework may still accelerate unmodifient \dvttermtarget\ applications utilizing said library (see...\todo{refer to figure}).
 
 % TODO:
-% Why paravirtualization is a sensible levelling.
-
-%Paravirtualization as described in thesis. Paravirtualization is cheaper to develop, but possibly hard to maintain depending on the paravirtualized framework might change in API revisions
-%Optimal for speed. Unfortunately requires modification of the host system, but this is often not a problem since the system only needs be modified at a level at which the user is not necessarily interested in. For example, while the OpenGL library might need be modified - the application the user is running needs not.
+% Expand upon why paravirtualization is a sensible levelling.
 
 % TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
 \missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
