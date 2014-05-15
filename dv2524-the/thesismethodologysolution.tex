@@ -18,7 +18,8 @@ In accordance to the \dvttermreferenceimplementation , paravirtualized graphics 
 
 \ldots
 
-\missingfigure[figwidth=6cm]{Visualization of solution components.} % TODO: Insert figure visualizing structure of solution
+% TODO: Insert figure visualizing structure of solution
+\missingfigure[figwidth=6cm]{Visualization of solution components.}
 
 \section{OpenGL ABI Generation}
 \label{sec:methodologysolution_openglabigeneration}
@@ -130,6 +131,5 @@ As such, the memory pages must be 'traversed' and continiously translated on a p
 This can be done in a trivial manner by simply iterating the original virtual address with the \textit{\dvttermtarget } page size, commonly being - as during the study performed for the purpose of this dissertation - \dvtcmdnum{4096} bytes.
 Naturally, said process must be performed regardless of data being read or written to-/from the indended - physical - memory space.
 
-\missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.} % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
-
-
+% TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
+\missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.}

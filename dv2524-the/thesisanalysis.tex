@@ -1,11 +1,46 @@
 % thesisanalysis.tex
 % Chapter Analysis.
 
+% TODO:
+% Strengths of solution.
+% Identified bottlenecks.
+% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
+% Speculation surrounding memory page translation.
+
 % Analysis
 \chapter{Analysis}
 \label{cha:analysis}
 \ldots
 
+\paragraph{GPU Modeling}
+\label{par:analysis_gpumodeling}
+\ldots
+
+\paragraph{PCI Passthrough}
+\label{par:analysis_pcipassthrough}
+\ldots
+
+\paragraph{Soft Modeling}
+\label{par:analysis_softmodeling}
+\ldots
+
 % TODO:
-% Elaboration on why paravirtualization of graphics is sensible.
-% Other alternatives
+% DV2549
+
+\paragraph{Paravirtualization}
+\label{par:analysis_paravirtualization}
+\ldots
+
+% TODO:
+% Why paravirtualization is the sensible choice.
+
+% TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
+\missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
+
+% Benchmark variations
+\section{Benchmark Variations}
+\label{sec:analysis_benchmarkvariations}
+\ldots
+
+% TODO:
+% Expand upon Phong deviations.
