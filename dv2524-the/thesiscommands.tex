@@ -51,8 +51,8 @@
 			\lstinline[basicstyle=\ttfamily\color{black}]{#1}}}
 
 % Command to read, and ouput the first line of a file:
+\newread\file
 \newcommand{\dvtcmdfirstline}[1]{
-	\newread\file
 	\openin\file=#1
 	\read\file to \keyval
 	\keyval % Return keyval.
