@@ -103,5 +103,6 @@ do for [i=1:words(files)] {
 }
 
 unset multiplot
+set output # Terminate output file.
 
 print sprintf("%s: Exit.", iam)

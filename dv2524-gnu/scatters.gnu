@@ -2,17 +2,9 @@
 # Demo plot using GNUplot.
 # Requires GNUplot 4.6 or later.
 # ---
-# Arguments:
-# 1. Data set 1 filename 	: arg_data1
-# 2. Data set 2 filename 	: arg_data2
-# 3. Data set 3 filename 	: arg_data3
-# 4. Output filename 		: arg_output
-# ---
 # Invoke accordingly:
-# gnuplot -e "arg_data1='results/paraphong1448x1448.ms';arg_data2='results/paraphong2048x2048.ms';arg_data3='results/paraphong2896x2896.ms';arg_output='out.svg'" scatters.gnu
+# gnuplot -e "arg_data1='../dv2524-bin/simicsphong1448x1448.dat';arg_data2='../dv2524-bin/simicsphong2048x2048.dat';arg_data3='../dv2524-bin/simicsphong2896x2896.dat';arg_data4='../dv2524-bin/simicsphong1448x1448no2.dat';arg_data5='../dv2524-bin/simicsphong2048x2048.dat';arg_data6='../dv2524-bin/simicsphong2896x2896no2.dat';arg_data7='../dv2524-bin/simicsphong1448x1448no3.dat';arg_data8='../dv2524-bin/simicsphong2048x2048no3.dat';arg_data9='../dv2524-bin/simicsphong2896x2896no3.dat';arg_output='out.png'" scatters.gnu
 # ---
-# TODO:
-# * Should recieve argument specifying output.
 
 min(p_x, p_y) = (p_x<p_y) ? p_x : p_y
 max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
@@ -27,40 +19,70 @@ print sprintf("%s: Enter...", iam)
 if(!exists("arg_output")) { # Optional arguments.
     arg_output = "default.svg"
 }
-if(!exists("arg_data1") || !exists("arg_data2") || !exists("arg_data3")) { # Mandatory arguments.
+if(!exists("arg_data1")||!exists("arg_data2")||!exists("arg_data3")||!exists("arg_data4")||!exists("arg_data5")||!exists("arg_data6")||!exists("arg_data7")||!exists("arg_data8")||!exists("arg_data9")) { # Mandatory arguments.
     print usage(iam)
     pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
-set terminal postscript # Should be customizable.
+set terminal epslatex size 22cm, 15cm
 set output arg_output
 
-print "Julia225 stats:"
-stats arg_data1 name "Julia225"
-print "Julia450 stats:"
-stats arg_data2 name "Julia450"
-print "Julia900 stats:"
-stats arg_data3 name "Julia900"
+set multiplot layout 1,3
 
-julia225Mean=Julia225_mean_y
-julia225Min=julia225Mean-Julia225_stddev_y
-julia225Max=julia225Mean+Julia225_stddev_y
+set lmargin 3
+set rmargin 3
+unset xtics
 
-julia450Mean=Julia450_mean_y
-julia450Min=julia450Mean-Julia450_stddev_y
-julia450Max=julia450Mean+Julia450_stddev_y
+do for[i=1:3] {
+	files = ""
+	if(i==1) {
+		files=sprintf("%s %s %s", arg_data1, arg_data2, arg_data3)
+	}
+	if(i==2) {
+		files=sprintf("%s %s %s", arg_data4, arg_data5, arg_data6)
+	}
+	if(i==3) {
+		files=sprintf("%s %s %s", arg_data7, arg_data8, arg_data9)
+	}
 
-julia900Mean=Julia900_mean_y
-julia900Min=julia900Mean-Julia900_stddev_y
-julia900Max=julia900Mean+Julia900_stddev_y
+	plots_min = 9999.0
+	plots_max = 0.0
+	do for[i=1:3] {
+		arg_data = word(files, i)
+    	stats arg_data name "data" nooutput
 
-juliaMin = min(julia225Min, julia450Min)
-juliaMin = min(juliaMin, julia900Min)
+    	std = data_stddev_y
+		mean = data_mean_y
+    	min = mean - std
+    	max = mean + std
 
-juliaMax = max(julia225Max, julia450Max)
-juliaMax = max(juliaMax, julia900Max)
+    	if(min<data_min_y) {
+    		min = data_min_y
+    	}
+   		if(max>data_max_y) {
+   			max = data_max_y
+   		}
 
-set yrange[juliaMin:juliaMax]
+    	plots_min = min(plots_min, min)
+    	plots_max = max(plots_max, max)
+	}
+	set yrange[plots_min:plots_max]
+
+	data1 = word(files, 1)
+	data2 = word(files, 2)
+	data3 = word(files, 3)
+
+	plot data1 pt 1 lt rgb "black",\
+    	data2 pt 2 lt rgb "black",\
+    	data3 pt 3 lt rgb "black"
+}
+
+unset multiplot
+set output # Terminate output file.
+
+print sprintf("%s: Exit.", iam)
+
+# ---
 
 #set style line 1 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
 #set style line 2 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
@@ -68,14 +90,6 @@ set yrange[juliaMin:juliaMax]
 #plot arg_data1 with linespoint ls 1 pt 6,\
 #    arg_data2 with linespoint ls 2 pt 32,\
 #    arg_data3 with linespoint ls 3 pt 64
-
-plot arg_data1 pt 1,\
-    arg_data2 pt 2,\
-    arg_data3 pt 3
-
-print sprintf("%s: Exit.", iam)
-
-# ---
 
 # STATS Attributes:
 # STATS_min               # minimum value of in-range data points
