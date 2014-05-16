@@ -4,7 +4,6 @@
 % TODO:
 % Strengths of solution.
 % Identified bottlenecks.
-% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
 % Speculation surrounding memory page translation.
 
 % Analysis, Experiment
@@ -12,9 +11,47 @@
 \label{cha:analysisexperiment}
 \ldots
 
+% Analyze the performance of host benchmarks
+% Analyze the performance of qemu benchmarks
+
+% Double-peak behaviour in phong demo may be due to rotation of the teapot.
+
+\paragraph{Chess}
+\label{par:analysisexperiment_chess}
+From the data visualized in figure \ref{fig:histogramssimicsparachess}, we may observe that the Chess benchmark, when executed in the software rasterized \dvttermsimics\ platform, has a relatively broad distribution of it's sample density, yet the distribution often seems evenly distributed around a singe point\todo{Confirm this by analyzing and presenting the benchmark mean.}.
+The right-hand side of the graph, although also showcasing the impaired performance of the corresponding - paravirtualized - platform, visualises a decrease in the distribution of the sample density.
+This is supported by the data presented in table \ref{tab:keyvalpara}.
+
+Based on the data summarized in table \ref{tab:keyvalsimics} (whilst software rasterized in \dvttermsimics ) and comparing said data to that of table \ref{tab:keyvalpara} (whilst paravirtualized in \dvttermsimics ), we may observe that the software rasterized solution outperforms it's paravirtualized counterpart; not only in the base experiment, but in all of it's variations.
+The only redeeming attributes the paravirtualized solution brings to the table, as elaborated upon in the above paragraph, is a decrease in the standard deviation of the benchmark profiling.
+When comparing these results to the uncompromised hardware accelerated counterpart on the \dvttermhost\ machine (see figure \ref{fig:histogramshost}), we may observe - albeit considerably less prominent - an adherence to the single-peak behaviour in the destribution of the sample density.
+
+The purpose of the Chess benchmark was to locate any bottlenecks related to the number of paravirtualized library invocations, which was predicted during the pilot study performed for the sake of this experiment (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+As such, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed.
+
+The conclusion drawn from the Chess benchmark data presented in chapter \ref{cha:results}, stresses further analysis into what is the root cause for the \dvttermtarget - to \dvttermhost\ latency for a multitude of paravirtualized method invocations.
+Some suspicions related to this matter are presented in section \ref{sec:analysisexperiment_magicinstructionoverhead}. 
+
+% Mention the number of magic instructions.
+
+\paragraph{Julia}
+\label{par:analysisexperiment_julia}
+\ldots
+
+\paragraph{Phong}
+\label{par:analysisexperiment_phong}
+\ldots
+
+% Magic Instruction Overhead
+\section{Magic Instruction Overhead}
+\label{sec:analysisexperiment_magicinstructionoverhead}
+\ldots
+
+% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
+
 % Benchmark variations
 \section{Benchmark Variations}
-\label{sec:analysis_benchmarkvariations}
+\label{sec:analysisexperiment_benchmarkvariations}
 \ldots
 
 % Benchmark Variations
