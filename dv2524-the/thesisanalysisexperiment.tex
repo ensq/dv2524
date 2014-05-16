@@ -11,6 +11,7 @@
 \label{cha:analysisexperiment}
 \ldots
 
+% TODO:
 % Analyze the performance of host benchmarks
 % Analyze the performance of qemu benchmarks
 
@@ -27,29 +28,44 @@ The only redeeming attributes the paravirtualized solution brings to the table, 
 When comparing these results to the uncompromised hardware accelerated counterpart on the \dvttermhost\ machine (see figure \ref{fig:histogramshost}), we may observe - albeit considerably less prominent - an adherence to the single-peak behaviour in the destribution of the sample density.
 
 The purpose of the Chess benchmark was to locate any bottlenecks related to the number of paravirtualized library invocations, which was predicted during the pilot study performed for the sake of this experiment (see \dvtcmdcitefur{dissertation:nilsson:2014}).
-As such, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed.
+As such, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed; arguably identifying the weakness of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
 
 The conclusion drawn from the Chess benchmark data presented in chapter \ref{cha:results}, stresses further analysis into what is the root cause for the \dvttermtarget - to \dvttermhost\ latency for a multitude of paravirtualized method invocations.
 Some suspicions related to this matter are presented in section \ref{sec:analysisexperiment_magicinstructionoverhead}. 
 
+% TODO:
 % Mention the number of magic instructions.
 
 \paragraph{Julia}
 \label{par:analysisexperiment_julia}
+In figure \ref{fig:histogramssimicsparajulia}, we may observe double- to triple peak behaviour in the distribution of the sample density; both in software rasterized- and paravirtualized platforms.
+Albeit the hardware accelerated \dvttermhost\ profiling (see figure \ref{fig:histogramshost}) may, however minor, suggest such a pattern; it is by all means not significant.
+We may observe similar behaviour in the distribution of the sample density when profiling the same benchmark whilst paravirtualized in the \dvttermqemu -derived \dvttermandroidemulator\ (see figure \ref{fig:histogramsqemu}).
+What causes this behaviour is unclear, as frame-to-frame branching in the fractal algorithm is minor and ought not cause such a variance.
 
+The reason as to why the Julia benchmark was decided upon to be integrated into experiment outlined during the pilot study (see \dvtcmdcitefur{dissertation:nilsson:2014}) was to establish how the paravirtualized solution performed under computational stress.
+Using this benchmark, a performance weakness in the software rasterized \dvttermsimics\ platform has been identified, with frametimes well above the two second mark (see table \ref{tab:keyvalsimics}); with the corresponding maximum frametime in the paravirtualized \dvttermsimics\ platform measuring up to to \dvtcmdfirstline{parajulia900.dat.max} ms.
+With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernels, and - in turn - possibly identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator\todo{Expand upon scalability of Julia paravirtualization.}.
 
-% Strange double-peak to triple-peak behaviour whilst software rasterized and paravirtualized in Simics.
-% Albeit the host benchmarking suggesting such behaviour, it is not significant.
+% TODO:
+% Percentage-wize, the standard deviation has increased in the paravirtualized platform?
+% Scalability
+% Visualize how the Julia benchmark performed on the host with variations - in order to establish that the paravirtualized solution scales equally well - being inhibited only by overhead.
 
 \paragraph{Phong}
 \label{par:analysisexperiment_phong}
 \ldots
+
+% TODO:
+% Significantly higher standard deviation and maxmimum values
+% Better or competititive average values
 
 % Magic Instruction Overhead
 \section{Magic Instruction Overhead}
 \label{sec:analysisexperiment_magicinstructionoverhead}
 \ldots
 
+% TODO:
 % Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
 
 % Benchmark variations
@@ -57,6 +73,7 @@ Some suspicions related to this matter are presented in section \ref{sec:analysi
 \label{sec:analysisexperiment_benchmarkvariations}
 \ldots
 
+% TODO:
 % Benchmark Variations
 % Benchmark Fluctuations
 % Benchmark Volatility
@@ -66,3 +83,9 @@ Some suspicions related to this matter are presented in section \ref{sec:analysi
 
 %Deviations caused by rotation of the model may cause, or partly cause, general fluctuation in benchmark (e.g. when paravirtualized). Furthermore, the texturing (or the sampling of, rather) of a rotating small model with such a large texture may cause severe cache misses due to the texture sampling. This is simply speculation, but may cause the major fluctuations in the software rasterized Phong benchmark.
 %As such, present suspicions of cache misses and general fluctuations in the Phong benchmark, but point out that the software rasterized Phong benchmark profiling is of less relevance to the paravirtualized sample due to this.
+
+% Paravirtualization Performance
+\section{Paravirtualization Performance}
+\label{sec:analysisexperiment_paravirtualizationperformance}
+QEMU Vs. Simics.\\
+\ldots
