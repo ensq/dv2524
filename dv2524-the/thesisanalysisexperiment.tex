@@ -1,21 +1,25 @@
 % thesisanalysisexperiment.tex
 % Chapter Analysis, Experiment
 
-% TODO:
-% Strengths of solution.
-% Identified bottlenecks.
-% Speculation surrounding memory page translation.
-
 % Analysis, Experiment
 \chapter{Analysis, Experiment}
 \label{cha:analysisexperiment}
-\ldots
+Based off the reference profiling presented in figure \ref{fig:histogramshost}, we may conclude that the benchmarks, when hardware accelerated on the \dvttermhost\ system, perform with concentrated density; not being much scattered accross the graph except a few irregular extremeties in terms of maximum frametimes (see table \ref{tab:keyvalhost}).
+
+Furthermore, we may conclude that the Phong demo features two distinct peaks in density distribution - about $1$ ms in-between.
+There is cause to believe that this may be caused, or partly caused, by frame-wize rotation of the teapot - rotation featured in the benchmark (see section \ref{sec:methodologyexperiment_benchmarking}) - inducing some fluctutation into it's execution (see figure \ref{fig:histogramssimicsparaphong}).
+However, this behaviour is, strangely so, not apperent whilst paravirtualized in the \dvttermqemu\ derived \dvttermandroidemulator , although this may be a visual artifact due to the resolution of the graph (see figure \ref{fig:histogramsqemu}).
+See section \ref{sec:analysisexperiment_benchmarkvariations} for an elaboration on divergency in the Phong benchmark.
+
+Additionally, and in accordance to tables \ref{tab:keyvalhost} and \ref{tab:keyvalqemu}, one may observe relatively high recorded maximum frametimes in relation to compiled maximum- and average values, yet featuring - in relation to divergent maximum, relatively low standard deviations.
 
 % TODO:
 % Analyze the performance of host benchmarks
 % Analyze the performance of qemu benchmarks
 
-% Double-peak behaviour in phong demo may be due to rotation of the teapot.
+\noindent
+In this chapter, an analysis of the benchmarks, performed for the purpose of this experiment, in software rasterized- and paravirtualized \dvttermsimics\ platforms is presented and segmented into paragraphs for each benchmark.
+Said paragraphs are presented below.
 
 \paragraph{Chess}
 \label{par:analysisexperiment_chess}
