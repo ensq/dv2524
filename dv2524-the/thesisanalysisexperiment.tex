@@ -71,10 +71,10 @@ By analyzing the data in presented in tables \ref{tab:keyvalsimics} and \ref{tab
 However, and more interestingly so, executing the benchmark in the paravirtualized \dvttermsimics\ environment results in major improvements in terms of frametime maximum and standard deviation; topping in at \dvtcmdfirstline{simicsphong1448x1448.dat.max} ms where the corresponding paravirtualized maximum is but \dvtcmdfirstline{paraphong1448x1448.dat.max} ms.
 
 What causes the compiled paravirtualized Phong benchmark samples to be only marginally better or competitively to their the software rasterized counerparts is unclear.
-The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:experimentmethodology_memorypagetraversal}, signifying a possible weakness in - not only the communicational latency, as established in paragraph \ref{par:analysisexperiment_chess} - in the memory bandwidth of the Simics Pipe (see section \ref{sec:experimentmethodology_simicspipe}).
+The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:methodologysolution_memorypagetraversal}, signifying a possible weakness in - not only the communicational latency, as established in paragraph \dvtcmdrefname{par:analysisexperiment_chess} - in the memory bandwidth of the Simics Pipe (see section \ref{sec:methodologysolution_simicspipe}).
 However, in line with the recorded competatitive average- and minimum frametimes  - yet major improvements in frametime maximum and standard deviation - one might argue that the lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
 
-However, due to the deviances described in section \ref{sec:analysisexperiment_benchmarkvariations}, we will not elaborate on this further.
+However, due to the deviances described in section \ref{sec:analysisexperiment_benchmarkvariations}, this will not be elaborated upon further for the remainder of this dissertation.
 
 % Magic Instruction Overhead
 \section{Magic Instruction Overhead}

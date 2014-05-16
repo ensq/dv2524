@@ -21,11 +21,8 @@
 % Typesetting dependant on editorial-/release build:
 \newcommand{\releasebuildtostring}{}
 \iftoggle{releasebuild}{
-	\usepackage[hidelinks]{hyperref} % Force hide hyperlink borders. Consider removing this, as such settings ought to be up to .pdf-reader.
-
 	\renewcommand{\releasebuildtostring}{Release configuration}
 }{
-	\usepackage{hyperref}
 	\usepackage{todonotes} % Include TODO notes functionality.
 
 	\renewcommand{\releasebuildtostring}{Editorial configuration}
