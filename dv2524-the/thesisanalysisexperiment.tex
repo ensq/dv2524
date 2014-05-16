@@ -54,11 +54,27 @@ With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparaj
 
 \paragraph{Phong}
 \label{par:analysisexperiment_phong}
-\ldots
+\begin{alltt}
+DISCLAIMER: The Phong benchmark signals strange behaviour when software rasterized on the simulation \dvttermhost , and is to be considered less reliable (see section \ref{sec:analysisexperiment_benchmarkvariations}).
+\end{alltt}
+
+\noindent
+The Phong benchmark was incorporated into this study for the purposes of analyzing the performance of stressed bandwidth in \dvttermtarget - to \dvttermhost\ communications; featuring relaying and rendering of large texture to simulation \dvttermhost .
+The graphs presented in figure \ref{fig:histogramssimicsparaphong} display erratic distribution of the sample density in both software rasterized- and paravirtualized \dvttermsimics\ platforms.
+Suspicions as to why this is the case are presented in section \ref{sec:analysisexperiment_benchmarkvariations}.
+Furthermore, one might argue that parts of the distribution align with the double-peak density distribution showcased by the benchmark when hardware accelerated on the simulation \dvttermhost\ (see figure \ref{fig:histogramshost}).
 
 % TODO:
-% Significantly higher standard deviation and maxmimum values
-% Better or competititive average values
+% Elaborate into what may cause this cost. Memory page translation etc.
+
+By analyzing the data in presented in tables \ref{tab:keyvalsimics} and \ref{tab:keyvalpara}, it is clear that the Phong benchmark, in terms of average framtimes, performs only marginally better or competatively to it's software rasterized equivalent.
+However, and more interestingly so, executing the benchmark in the paravirtualized \dvttermsimics\ environment results in major improvements in terms of frametime maximum and standard deviation; topping in at \dvtcmdfirstline{simicsphong1448x1448.dat.max} ms where the corresponding paravirtualized maximum is but \dvtcmdfirstline{paraphong1448x1448.dat.max} ms.
+
+What causes the compiled paravirtualized Phong benchmark samples to be only marginally better or competitively to their the software rasterized counerparts is unclear.
+The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:experimentmethodology_memorypagetraversal}, signifying a possible weakness in - not only the communicational latency, as established in paragraph \ref{par:analysisexperiment_chess} - in the memory bandwidth of the Simics Pipe (see section \ref{sec:experimentmethodology_simicspipe}).
+However, in line with the recorded competatitive average- and minimum frametimes  - yet major improvements in frametime maximum and standard deviation - one might argue that the lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
+
+However, due to the deviances described in section \ref{sec:analysisexperiment_benchmarkvariations}, we will not elaborate on this further.
 
 % Magic Instruction Overhead
 \section{Magic Instruction Overhead}
