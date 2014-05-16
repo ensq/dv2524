@@ -29,9 +29,12 @@ set output arg_output
 
 set multiplot layout 1,3
 
-set lmargin 3
-set rmargin 3
+set lmargin 2
+set rmargin 2
+set noborder
+set ytics scale 0
 unset xtics
+unset key
 
 do for[i=1:3] {
 	files = ""
