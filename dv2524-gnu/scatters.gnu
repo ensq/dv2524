@@ -8,7 +8,7 @@
 
 min(p_x, p_y) = (p_x<p_y) ? p_x : p_y
 max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
-usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1='filename1';arg_data2='filename2';arg_data3='filename3';arg_output='filename4'\" demo.nu", p_iam)
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data1='../dv2524-bin/simicsphong1448x1448.dat';arg_data2='../dv2524-bin/simicsphong2048x2048.dat';arg_data3='../dv2524-bin/simicsphong2896x2896.dat';arg_data4='../dv2524-bin/simicsphong1448x1448no2.dat';arg_data5='../dv2524-bin/simicsphong2048x2048.dat';arg_data6='../dv2524-bin/simicsphong2896x2896no2.dat';arg_data7='../dv2524-bin/simicsphong1448x1448no3.dat';arg_data8='../dv2524-bin/simicsphong2048x2048no3.dat';arg_data9='../dv2524-bin/simicsphong2896x2896no3.dat';arg_output='out.png'\" scatters.gnu", p_iam)
 press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
 
 # Entry point:
