@@ -23,3 +23,30 @@
 %	\researchquestionitem{4}{What are the prerequisites of \termrevexe\ of paravirtualized graphics in virtual platforms?}
 %\end{itemize*}
 %\end{multicols}
+
+% Simics
+\section*{Simics}
+\label{sec:background_simics}
+\addcontentsline{toc}{section}{Simics}
+\index{Simics}
+% Describe the background of simics
+Simics is a \glslink{dvtglossfullsystemsimulation}{full-system simulator} developed by \dvttermintel\ and sold through \dvttermintel s subsidiary \dvttermwindriver\
+Simics was originally developed by the simulation group at the \dvttermsics\ (this being the first instance of an academic group running an unmodified \dvttermos\ in an entirely simulated environment) including \dvttermgoogle s Peter S. Magnusson; the members of which founded \dvttermvirtutech \footnote{Virtutech was aquired by \dvttermintel\ in \dvtcmdnum{2010}\dvtcmdciteref{web:miller:2010}.} and commercially launched the product in \dvtcmdnum{1998}\dvtcmdcitebib{journals:magnusson:2013}.\\
+
+\noindent
+As an architectural simulator, \dvttermsimics\ primary client group is software- and systems developers that produce an assortment of software for complex systems involving software and hardware interaction\dvtcmdcitebib{journals:aarno:2013}.
+As such, key attributes of \dvttermsimics\ are scalability, repeatability, and high-performance simulation.
+For these purposes, the simulator supports \dvttermhostvirtualizationextensions , and other performance boosting technologies such as \dvttermhypersimulation \dvtcmdcitebib[p.~38]{publications:leupers:2010}.
+
+Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:appendixa_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:appendixa_reverseexecution})\dvtcmdcitebib{publications:leupers:2010}.\\
+
+\noindent
+The ability to simulate the entirety of an unmodified software stack has led to Simics being used to simulate a variety of systems including, but not limited to, single-processor embedded boards, multiprocessor servers, and heterogeneous telecom clusters\dvtcmdcitebib{journals:aarno:2013}.
+
+Current employers of the \dvttermsimics\ full-system simulator include, but are not limited to, \dvttermibm \dvtcmdcitebib[p.~12:1,~12:6]{journals:koerner:2009}, \dvttermnasa \dvtcmdciteref{web:windriver:2014}\dvtcmdciteref{web:nasa:2014}, and \dvttermintel \dvtcmdcitebib[p.~100]{journals:veselyi:2013}.
+Other past and current employers of the simulator include \dvttermsunmicrosystems , \dvttermericsson , and \dvttermhewlettpackard \dvtcmdcitebib{journals:magnusson:2013}, in addition to \dvttermcisco , \dvttermfreescalesemiconductor , \dvttermgeavionics , \dvttermhoneywell , \dvttermlockheedmartin , \dvttermnortel\ and \dvttermnorthropgrumman\ \dvtcmdciteref{web:miller:2010}.
+
+Additionally, the simulator has a strong academic tradition; being known to operate in over \dvtcmdnum{300} universities throughout the world\dvtcmdcitebib[p.~252]{journals:villa:2005}.
+
+% TODO:
+% Explain the concepts of simulation target- and host.

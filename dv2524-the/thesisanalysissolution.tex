@@ -9,7 +9,7 @@
 \label{cha:analysissolution}
 As expanded upon in \dvtcmdcitefur{dissertation:nilsson:2014}, there are a number of ways of virtualizing \dvttermgpu s in system simulators, a few of which accomodate for hardware acceleration of \dvttermgpu\ kernels.
 When faced with tackling the issue of \dvttermgpu\ virtualization, there are equally many variables to consider as there are options; the first of which is the purpose of said virtualization.
-The \dvttermsimics\ architectural simulator is by all means a full-system simulator; meaning, as portrayed in section \dvtcmdrefname{sec:appendixa_simics} under \dvtcmdrefname{cha:appendixa}, that it may run complete real-software stacks without modification.
+The \dvttermsimics\ architectural simulator is by all means a full-system simulator; meaning, as portrayed in section \dvtcmdrefname{sec:background_simics} under \dvtcmdrefname{cha:appendixa}, that it may run complete real-software stacks without modification.
 However, \dvttermsimics\ is intended to feature a low level of timing fidelity for the purposes of high performance, and is - as such - not a cycle-accurate simulator\footnote{This should not be confused with...}\todo{?}.
 As such, and in line with the considerations for \dvttermgpu\ virtualization - one must analyze and balance the purposes of simulation, as there is not always a winning general-case.
 In this way, methodologies with varying levels of implementational accuracy present themselves - from slow low-level instruction set modeling to fast high level paravirtualization.
