@@ -51,10 +51,7 @@ Furthermore, the solution utilizes \dvttermhaxm\ (see \dvtcmdciteref{technicaldo
 \paragraph{Target Software Configuration}
 \label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
 In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform (see paragraph \dvtcmdrefname{par:methodologyexperiment_platformconfiguration_hostconfiguration}), it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
-As such, the platform \dvttermos s used for the purpose of this study are as follows: hardware accelerated \dvttermfedora\ \dvttermhost\ system, software rasterized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, and \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system.
-
-% TODO:
-% What software rasterizer is Simics using (Mesa)
+As such, the platform \dvttermos s used for the purpose of this study are as follows: hardware accelerated \dvttermfedora\ \dvttermhost\ system, software rasterized\footnote{Using the Mesa OpenGL software rasterization implementation.} \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, and \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system.
 
 % Platform Profiling
 \section{Platform Profiling}

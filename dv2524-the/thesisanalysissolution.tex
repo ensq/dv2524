@@ -23,7 +23,7 @@ This methodology may be appropriate for the purposes of low-level development cl
 For example, one might imagine the scenario of driver development for next-generation \dvttermgpu s, as portrayed in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 
 However, the development of \dvttermgpu\ models, similar to that of common architectural model development for the \dvttermsimics\ full-system simulator, incurs a number of flaws.
-The first of these flaws, due to \dvttermgpu\ hardware - still - often being poorly documented\todo{citation needed!}, on the contrary to \dvttermcpu\ architectures, driving estimated development costs to unsustainable levels.
+The first of these flaws, due to \dvttermgpu\ hardware - still - often being poorly documented\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, on the contrary to \dvttermcpu\ architectures, driving estimated development costs to unsustainable levels.
 Furthermore, such modeling of massively parallelized \dvttermgpu\ technology on \dvttermcpu s induce high costs rendering the methodology less preferable for development requiring some application speed.
 
 % PCI Passthrough
@@ -54,6 +54,7 @@ One might speculate that using such technologies in collaboration with \dvttermh
 Finally, and as portrayed throughout this document, there is the option of virtualization by paravirtualization (see chapter \ref{cha:methodologysolution}).
 Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level\todo{Refer to virtualization layer abstraction visualization figure when existant.}.
 Inherent from it's higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:analysissolution_gpumodeling}.
+Additionally, virtualizing at the graphics library software level circumvents the need for user to relink or modify the application they wish paravirtualized.
 Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:methodologysolution_simicspipe}) may accomodate for significant performance improvements.
 
 However, despite possibility for significant performance improvements (see chapters \ref{cha:analysisexperiment} \& \ref{cha:results}), graphics virtualization by the means of paravirtualization is not without it's inherent flaws.
