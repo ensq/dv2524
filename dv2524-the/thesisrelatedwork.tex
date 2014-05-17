@@ -35,25 +35,27 @@ Whatever the method, graphics virtualization is no longer limited to the academi
 \index{QEMU}
 \index{Reference Solution}
 \index{Reference Implementation}
-\dvttermqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005} (see \dvtcmdciteref[p.~69]{magazines:bartholomew:2006} for an overview of \dvttermqemu ) and a high-speed functional simulator\dvtcmdcitebib[p.~1]{inproceedings:shen:2010}.
+\dvttermqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005} and a high-speed functional simulator\dvtcmdcitebib[p.~1]{inproceedings:shen:2010} (see \dvtcmdciteref[p.~69]{magazines:bartholomew:2006} for an overview of \dvttermqemu ).
 Its virtual platform supports simulation of several common system architectures and hardware devices and can, like \dvttermsimics , save and restore the state of a simulation\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005}.
 
 As such, \dvttermqemu\ may, like \dvttermsimics , run unmodified \dvttermtarget\ hardware - such as \dvttermos s, drivers, and other software.
+The platform is widely used in academia, and is the subject of several articles and reports cited throughout this document, such as the graphics acceleration described by Lagar-Cavilla et al.\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, and the work by Guo et al.\dvtcmdcitebib{inproceedings:guo:2013}.
+Additionally, \dvttermqemu\ powers the \dvttermandroidemulator , which helps mobile developers bring about software for the \dvttermandroid\ \dvttermos\ (see paragraph \dvtcmdrefname{par:relatedwork_qemu_androidemulator} for an elaboration on the \dvttermandroidemulator ).
 
 \paragraph{Android Emulator}
 \label{par:relatedwork_qemu_androidemulator}
 \index{Android Emulator}
+The \dvttermandroidemulator\ is described as a virtual mobile device emulator\dvtcmdciteref{web:google:2013:usingtheemulator}.
+Included in the \dvttermandroidsdk , it supports virtualization of an assortment of mobile hardware permutations.
 
-The \dvttermandroidemulator\ is described as a virtual mobile device emulator\dvtcmdciteref{web:google:2013:usingtheemulator}. Included in the \dvttermandroidsdk , it supports virtualization of an assortment of mobile hardware permutations.
 In the presence of thet \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing performance of \dvttermcpu -bound workloads\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
 In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} \& \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ framework\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
-\dvttermgoogle 's solution, the design documents of which are attached in \dvtcmdcitefur{dissertation:nilsson:2014} (see \dvtcmdcitefur{technicaldocs:google:2014}), consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system directly via the simulator program.
+Note, however, that there is as of yet no software rasterized solution for running \dvttermopenglestwopointo\ in the \dvttermandroidemulator .\\
 
-As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix\ devices aiding those wishing to develop software for mobile units.
+\noindent
+\dvttermgoogle 's solution, the design documents of which are attached in \dvtcmdcitefur{dissertation:nilsson:2014} (see \dvtcmdcitefur{technicaldocs:google:2014}), consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system; by networking sockets or directly via the simulator program.
+
+As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:methodologyexperiment_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.\\
+
+\noindent
 The \dvttermandroidemulator\ implementation and solution are referred to as the \dvttermreferenceimplementation\ and the \dvttermreferencesolution , respectively, throughout this document.
-
-% Unsupported claims:
-%Albeit supporting \termgpu\ virtualization, at version $1.7$ \termqemu\ still, in and of its own, lack support for hardware accelerated rasterization\cite{NEEDED}.
-%However, as early as 2006 there were experimental attempts at accelerating \termopengl\ in \termqemu \cite{SEE}.
-%The \termqemu\ platform has since been the focal point of several attempts at achieving such acceleration, possibly due to its open-source licensing.
-%Such an attempt is the \termvirgilthreed\ virtual \termgpu-project\cite{SEE}, that strives to create an abstract \termtarget\ \termgpu\ which may utilize the \termhost\ device.
