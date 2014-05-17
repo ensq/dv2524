@@ -29,10 +29,72 @@ Accordingly, the key investigatory attributes and explicit research question for
 \noindent
 Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectives}, this thesis pertain to the concepts described in this chapter.
 
+% Graphics Virtualization
+\section{Graphics Virtualization}
+\label{sec:background_graphicsvirtualization}
+As expanded upon in \dvtcmdcitefur{dissertation:nilsson:2014}, there are a number of ways of virtualizing \dvttermgpu s in system simulators, a few of which accomodate for hardware acceleration of \dvttermgpu\ kernels.
+When faced with tackling the issue of \dvttermgpu\ virtualization, there are equally many variables to consider as there are options; the first of which is the purpose of said virtualization.
+The \dvttermsimics\ architectural simulator is by all means a full-system simulator; meaning, as portrayed in section \dvtcmdrefname{sec:background_simics} under \dvtcmdrefname{cha:appendixa}, that it may run complete real-software stacks without modification.
+However, \dvttermsimics\ is intended to feature a low level of timing fidelity for the purposes of high performance, and is - as such - not a cycle-accurate simulator\footnote{This should not be confused with...}\todo{?}.
+As such, and in line with the considerations for \dvttermgpu\ virtualization - one must analyze and balance the purposes of simulation, as there is not always a winning general-case.
+In this way, methodologies with varying levels of implementational accuracy present themselves - from slow low-level instruction set modeling to fast high level paravirtualization.
+Said methods are presented in the paragraphs below, and visualized in figure...\todo{Refer to figure}
+
+% GPU Modeling
+\paragraph{GPU Modeling}
+\label{par:background_graphicsvirtualization_gpumodeling}
+Firstly, one may consider developing a full-fletched \dvttermgpu\ model; that is, implementing virtualization of the \dvttermgpu\ \dvttermisa .
+This methodology may be appropriate for the purposes of low-level development close to \dvttermgpu\ hardware.
+For example, one might imagine the scenario of driver development for next-generation \dvttermgpu s, as portrayed in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+
+However, the development of \dvttermgpu\ models, similar to that of common architectural model development for the \dvttermsimics\ full-system simulator, incurs a number of flaws.
+The first of these flaws, due to \dvttermgpu\ hardware - still - often being poorly documented\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, on the contrary to \dvttermcpu\ architectures, driving estimated development costs to unsustainable levels.
+Furthermore, such modeling of massively parallelized \dvttermgpu\ technology on \dvttermcpu s induce high costs rendering the methodology less preferable for development requiring some application speed.
+
+% PCI Passthrough
+\paragraph{PCI Passthrough}
+\label{par:background_graphicsvirtualization_pcipassthrough}
+Secondly, one ought examine the benefits of \dvttermpcipassthrough ; allowing virtual systems first-hand - exclusive - access to \dvttermhost\ machine devices\dvtcmdciteref{web:jones:2009}.
+The direct contact with \dvttermhost\ system devices accomodated by methodologies such as \dvttermpcipassthrough\ enable performance, hardware accelerated, graphics acceleration.
+
+Yet, the methodology suffers from several disadvantages, such as only being capable of running on \dvttermlinux\ systems \todo{citation needed!}.
+Additionally, the solution requires dedicated hardware, followed by the \dvttermhost\ system losing all access to said devices during the course of simulation.
+In terms of \dvttermgpu\ virtualization, this would induce the necessity of the \dvttermhost\ machine featuring multiple graphics cards.
+The tight coupling induced by direct contact with \dvttermhost\ hardware also requires the simulation \dvttermtarget\ to utilize the same device drivers as the \dvttermhost\ system, rendering the methodology unflexible in term so \dvttermgpu\ virtualization diversity.
+In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires modification of the \dvttermtarget\ system - in addition to configuration of the simulation \dvttermhost .
+
+% Another flaw: Linux only (or rather, not Windows).
+
+% Soft Modeling
+\paragraph{Soft Modeling}
+\label{par:background_graphicsvirtualization_softmodeling}
+Thirdly, as an alternative to precise modeling of \dvttermgpu\ technologies, one might analyze the feasability of high-speed software rasterization.
+Albeit not up to hardware accelerated speeds, some results indicate an increased feasibility of high-speed software rasterization in modern graphics frameworks (see \dvtcmdcitefur{papers:nilsson:2013}), where traditional software rasterization is accelerated using thread pooling optimizations and \dvttermsimd\ technologies\dvtcmdciteref{web:microsoft:2013:warp}; all for the purposes of optimizing execution for \dvttermcpu -, rather than \dvttermgpu , execution.
+As such, one may avoid some of the overhead induced by simulating \dvttermgpu\ kernels on the \dvttermcpu , which is traditionally not fit for purpose.
+One might speculate that using such technologies in collaboration with \dvttermhost\ native execution accceleration might bring software rasterization up to competitative speeds fit for some simulatory development purposes, replacing the need for more sophisticated virtualization techniques.
+
+% Paravirtualization
+\paragraph{Paravirtualization}
+\label{par:background_graphicsvirtualization_paravirtualization}
+Finally, and as portrayed throughout this document, there is the option of virtualization by paravirtualization (see chapter \ref{cha:methodologysolution}).
+Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level\todo{Refer to virtualization layer abstraction visualization figure when existant.}.
+Inherent from it's higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:background_graphicsvirtualization_gpumodeling}.
+Additionally, virtualizing at the graphics library software level circumvents the need for user to relink or modify the application they wish paravirtualized.
+Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:methodologysolution_simicspipe}) may accomodate for significant performance improvements.
+
+However, despite possibility for significant performance improvements (see chapters \ref{cha:analysisexperiment} \& \ref{cha:results}), graphics virtualization by the means of paravirtualization is not without it's inherent flaws.
+In particular, a paravirtualized graphics library may be expensive to maintain as frameworks evolve and specifications change.
+Additionally, the means of paravirtualization requires the target system to be modified; albeit not necessarily being a substantial flaw as such a paravirtualized framework may still accelerate unmodifient \dvttermtarget\ applications utilizing said library (see...\todo{refer to figure}).
+
+% TODO:
+% Expand upon why paravirtualization is a sensible levelling.
+
+% TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
+\missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
+
 % Simics
-\section*{Simics}
+\section{Simics}
 \label{sec:background_simics}
-\addcontentsline{toc}{section}{Simics}
 \index{Simics}
 % Describe the background of simics
 Simics is a \glslink{dvtglossfullsystemsimulation}{full-system simulator} developed by \dvttermintel\ and sold through \dvttermintel s subsidiary \dvttermwindriver\
@@ -57,9 +119,8 @@ Additionally, the simulator has a strong academic tradition; being known to oper
 % Explain the concepts of simulation target- and host.
 
 % Deterministic Execution
-\section*{Deterministic Execution}
+\section{Deterministic Execution}
 \label{sec:background_deterministicexecution}
-\addcontentsline{toc}{section}{Deterministic Execution}
 \index{Deterministic Execution}
 
 \glslink{dvtglossdeterministicexecution}{'Deterministic execution'} commonly refers to the execution of \dvttermdeterministicalgorithm s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (see \dvtcmdcitebib{journals:cohen:1979} for an overview on \glslink{dvtglossdeterministicalgorithm}{deterministic- and non-deterministic algorithms}).
@@ -73,9 +134,8 @@ As such, given an arbitrary number of instructions, the simulation state may be 
 Thus, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermdeterministicexecution\ refers to the deterministic state transition of a \dvttermtarget\ system; as described in this paragraph.
 
 % Checkpointing
-\section*{Checkpointing}
+\section{Checkpointing}
 \label{sec:background_checkpointing}
-\addcontentsline{toc}{section}{Checkpointing}
 \index{Checkpointing}
 
 The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvtcmdcitebib[p.~103]{publications:harris:2007}.
@@ -88,9 +148,8 @@ This ability not only  saves time in terms of program initialization and debuggi
 As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes said functionality.
 
 % Reverse Execution
-\section*{Reverse Execution}
+\section{Reverse Execution}
 \label{sec:background_reverseexecution}
-\addcontentsline{toc}{section}{Reverse Execution}
 \index{Reverse Execution}
 
 \glslink{dvtglossreverseexecution}{'Reverse execution'} provides software developers with the ability to return, often from portable \dvttermcheckpoint s, to previous states of execution\dvtcmdcitebib[p.~2,~3]{journals:akgul:2004}.
@@ -101,9 +160,8 @@ As such, simulated systems may be run in reverse; including virtualized hardware
 As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermreverseexecution referse to the functionality described in this section.
 
 % Magic Instructions
-\section*{Magic Instructions}
+\section{Magic Instructions}
 \label{sec:background_magicinstructions}
-\addcontentsline{toc}{section}{Magic Instructions}
 \index{Magic Instruction}
 Sometimes during system simulation, there may be reasons as to why one would like to escape the simulation and resume execution in the real world.
 Such a scenario would be a debugging breakpoint, to share data in-between \dvttermtarget\ and \dvttermhost\ systems, or for any reason modify the simulation state.
@@ -118,8 +176,7 @@ In effect, implementation of \dvttermmagicinstruction s requires replacing one- 
 However, the solution is often designed to only respond to \dvttermmagicinstruction s wherein a certain magic number, sometimes called a 'leaf number'\dvtcmdcitebib[p.~131]{journals:rechistov:2013}, is present in an arbitrary processor register.
 
 % Virtual Time
-\section*{Virtual Time}
+\section{Virtual Time}
 \label{sec:background_virtualtime}
-\addcontentsline{toc}{section}{Virtual Time}
 \index{Virtual Time}
 \ldots
