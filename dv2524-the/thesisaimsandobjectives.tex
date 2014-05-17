@@ -3,4 +3,34 @@
 
 \chapter{Aims \& Objectives}
 \label{cha:aimsandobjectives}
-\ldots
+The scope of the study outlined in \dvtcmdcitefur{dissertation:nilsson:2014} consist of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
+Said implementation adheres to a certain \dvttermreferenceimplementation , which is elaborated upon in section \dvtcmdrefname{sec:appendixa_referencesolution}.
+
+As such, the aim concerns investigating the performance, and the feasability of extended benefits and advanced functionality, of paravirtualized graphics acceleration in a virtual platform.
+Said integration entails investigating, analyzing, and developing methods and techniques for efficient communication and execution in the \dvttermsimics\ run-time environment, in addition to identifying liabilities of paravirtualized technologies in regards to \dvttermsimics\ philosophy (being high-performance and \dvttermtiming -accurate determinism and repeatability\dvtcmdcitebib{journals:aarno:2013}).
+As such, this dissertation does not exclusively concern \dvttermsimics\ integration, but an investigation into paravirtualized drivers in virtual platforms.
+The key aspects of such integration are as follows:
+
+\begin{enumerate*}
+	\item \label{itm:enum_aspects_performance} Performance characteristics.
+	Comparing the performance of a paravirtualized solution to that of a software renderer (\dvttermsimics\ vs. \dvttermsimics ).
+	Comparing the \dvttermsimics\ solution to the \dvttermreferencesolution\ to see if the implementation carried over the same benefits (\dvttermsimics\ vs. \dvttermreferencesolution ).
+	\item \label{itm:enum_aspects_advancedanalyze} A naïve porting of the \dvttermreferenceimplementation 's \dvttermopengles\ acceleration into \dvttermsimics\ would not support advanced features such as \dvttermdeterministicexecution , \dvttermcheckpointing , or \dvttermreverseexecution .
+	Therefore, it would be beneficial to analyze the solution in terms of what it would take to support these features.
+	\item \label{itm:enum_aspects_advancedimplement} Extend the \dvttermopengles\ acceleration to support \dvttermcheckpointing\ and \dvttermreverseexecution .
+\end{enumerate*}
+
+The scope for this dissertation is to investigate (\ref{itm:enum_aspects_performance}) and (\ref{itm:enum_aspects_advancedanalyze}) with (\ref{itm:enum_aspects_performance}) being the focal point of the study and (\ref{itm:enum_aspects_advancedimplement}), or part of (\ref{itm:enum_aspects_advancedimplement}), being the stretch goal.
+As such, the objectives that follow from the stated aim may be summarized as follows (see chapter \ref{cha:methodologysolution} for implementational details):
+
+\newcommand*\objective[1]{\item}
+\begin{multicols}{2}
+\begin{enumerate}[(a)]
+	\objective{1} Establish performance-wize sound communications between \dvttermhost\ and \dvttermtarget .
+	\objective{2} Be able to send, recieve, and callback, data in-between \dvttermhost\ and \dvttermtarget .
+	\objective{3} Translate given methods into desktop \dvttermapi\ calls and invoke translated methods on the \dvttermhost\ system.
+	\objective{4} Display results in \dvttermtarget\ system.
+	\objective{5} Analyze performance variations of paravirtualized solution in regard to existing software~rasterizer in \dvttermsimics , as described in (\ref{itm:enum_aspects_performance}).
+	\objective{6} Investigate feasability of advanced functionality described in (\ref{itm:enum_aspects_advancedanalyze}).
+\end{enumerate}
+\end{multicols}
