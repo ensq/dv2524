@@ -7,9 +7,14 @@
 % Background
 \chapter{Background}
 \label{cha:background}
-In line with the research gaps entailed by chapter \ref{cha:relatedwork}, the following research questions formulated in this chapter are considered to be lacking in the field.
+In line with previous work in the area specified in chapter \ref{cha:relatedwork}, there has been no indication - in academic writing - of any pre-existing solution of paravirtualized graphics \dvttermapi s signifying support for advanced functionality such as \glslink{dvtglossdeterministicexecution}{deterministic} behaviour, \dvttermreverseexecution , or the ability to store and restore the state of a simulation.
+Such functionality could simplify debugging, testing, and profiling of applications comprising some \dvttermgpu -bound workload; not limited to graphics- or \dvttermgpu\ utilization in its entirety.
+Entailed by these research gaps, the research questions formulated in this chapter are considered to be lacking in the field.
+
+As such, the study performed for the purposes of this dissertation is relevant to the field of computer science by expanding upon the the knowledge of graphics acceleration in virtual platforms; in terms of facilitating debugging, testing, and profiling of software dependent on \dvttermgpu\ graphics acceleration, whilst maintaining feasible performance throughout simulation.
+
 By the means outlined in chapter \ref{cha:aimsandobjectives}, this dissertation contributes to the field of computer science by answering these questions from the perspective of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
-Accordingly, the key investigatory attributes and explicit research question formulations, suitable paravirtualized graphics studies, are presented below.
+Accordingly, the key investigatory attributes and explicit research question formulations, suitable for paravirtualized graphics studies, are presented below.
 
 \newcommand*\researchquestionitem[2]{\item[#1:] \textit{#2}}
 \begin{multicols}{2}
@@ -21,6 +26,7 @@ Accordingly, the key investigatory attributes and explicit research question for
 \end{itemize*}
 \end{multicols}
 
+\noindent
 Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectives}, this thesis pertain to the concepts described in this chapter.
 
 % Simics
