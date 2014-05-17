@@ -15,21 +15,6 @@
 \index{Virtual Time}
 \ldots
 
-% Checkpointing
-\section*{Checkpointing}
-\label{sec:appendixa_checkpointing}
-\addcontentsline{toc}{section}{Checkpointing}
-\index{Checkpointing}
-
-The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvtcmdcitebib[p.~103]{publications:harris:2007}.
-It may be benificial to store such states in a '\dvttermcheckpointrestart ' scheme, as suggested by Jiang et al. in regards to \dvttermcuda\ kernels\dvtcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}.
-In this way, developers may save- and restore the state of a system which can reduce overhead of restarting computationally heavy applications from scratch\dvtcmdcitebib[p.~19,~20]{journals:aarno:2013}.
-
-In \dvttermsimics , '\dvttermcheckpointing ' refers to the functionality to save the complete state of a simulation into a portable format.
-When applied, this format is known as a \dvttermcheckpoint .
-This ability not only  saves time in terms of program initialization and debugging\dvtcmdcitebib[p.~54]{journals:magnusson:2002}, but may also ease testing and collaboration in-between developers as \dvttermcheckpoint s may be distributed and shared\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:collaboratingusingsimics} for an overview on \dvttermcheckpointing\ in \dvttermsimics ).
-As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes said functionality.
-
 % Deterministic Execution
 \section*{Deterministic Execution}
 \label{sec:appendixa_deterministicexecution}

@@ -38,7 +38,7 @@ As an architectural simulator, \dvttermsimics\ primary client group is software-
 As such, key attributes of \dvttermsimics\ are scalability, repeatability, and high-performance simulation.
 For these purposes, the simulator supports \dvttermhostvirtualizationextensions , and other performance boosting technologies such as \dvttermhypersimulation \dvtcmdcitebib[p.~38]{publications:leupers:2010}.
 
-Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:appendixa_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:appendixa_reverseexecution})\dvtcmdcitebib{publications:leupers:2010}.\\
+Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:background_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:appendixa_reverseexecution})\dvtcmdcitebib{publications:leupers:2010}.\\
 
 \noindent
 The ability to simulate the entirety of an unmodified software stack has led to Simics being used to simulate a variety of systems including, but not limited to, single-processor embedded boards, multiprocessor servers, and heterogeneous telecom clusters\dvtcmdcitebib{journals:aarno:2013}.
@@ -50,3 +50,18 @@ Additionally, the simulator has a strong academic tradition; being known to oper
 
 % TODO:
 % Explain the concepts of simulation target- and host.
+
+% Checkpointing
+\section*{Checkpointing}
+\label{sec:background_checkpointing}
+\addcontentsline{toc}{section}{Checkpointing}
+\index{Checkpointing}
+
+The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvtcmdcitebib[p.~103]{publications:harris:2007}.
+It may be benificial to store such states in a '\dvttermcheckpointrestart ' scheme, as suggested by Jiang et al. in regards to \dvttermcuda\ kernels\dvtcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}.
+In this way, developers may save- and restore the state of a system which can reduce overhead of restarting computationally heavy applications from scratch\dvtcmdcitebib[p.~19,~20]{journals:aarno:2013}.
+
+In \dvttermsimics , '\dvttermcheckpointing ' refers to the functionality to save the complete state of a simulation into a portable format.
+When applied, this format is known as a \dvttermcheckpoint .
+This ability not only  saves time in terms of program initialization and debugging\dvtcmdcitebib[p.~54]{journals:magnusson:2002}, but may also ease testing and collaboration in-between developers as \dvttermcheckpoint s may be distributed and shared\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:collaboratingusingsimics} for an overview on \dvttermcheckpointing\ in \dvttermsimics ).
+As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes said functionality.
