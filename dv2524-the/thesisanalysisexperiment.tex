@@ -98,6 +98,7 @@ It is unclear as of what is causing this behaviour.
 However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volotile texture mapping.
 Such a scenario may be induced by the large texture in coagency with the frame-wize rotating model - since the texture mapping outcome will likely differ on a per-frame basis.
 In consideration to sheer size of the textures used the experiments presented in figure \ref{fig:scattersphong}, it likely that such eccentric memory referencing may account for the volotile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
+Albeit not applicable to \dvttermcpu\ cache bahaviour, see \dvtcmdcitebib{journals:dogget:2012} for an elaboration on texture mapping and \dvttermgpu\ cache methodologies, in addition to an analysis on the performance implications of \dvttermgpu\ cache behaviour.
 
 In line with the erratic benchmark behaviour that has been established in this section, the Phong benchmark results - although having value to this study in terms of profiling memory bandwidth scalability (see paragraph \dvtcmdrefname{par:analysisexperiment_phong}) - are to be considered less reliable than it's more predictable benchmark peers.
 
