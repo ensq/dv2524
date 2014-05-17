@@ -38,7 +38,7 @@ As an architectural simulator, \dvttermsimics\ primary client group is software-
 As such, key attributes of \dvttermsimics\ are scalability, repeatability, and high-performance simulation.
 For these purposes, the simulator supports \dvttermhostvirtualizationextensions , and other performance boosting technologies such as \dvttermhypersimulation \dvtcmdcitebib[p.~38]{publications:leupers:2010}.
 
-Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:background_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:appendixa_reverseexecution})\dvtcmdcitebib{publications:leupers:2010}.\\
+Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:background_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:background_reverseexecution})\dvtcmdcitebib{publications:leupers:2010}.\\
 
 \noindent
 The ability to simulate the entirety of an unmodified software stack has led to Simics being used to simulate a variety of systems including, but not limited to, single-processor embedded boards, multiprocessor servers, and heterogeneous telecom clusters\dvtcmdcitebib{journals:aarno:2013}.
@@ -98,3 +98,16 @@ Another advantage of the \dvttermmagicinstruction\ paradigm is that the system i
 
 In effect, implementation of \dvttermmagicinstruction s requires replacing one- or more instructions in the \dvttermtarget\ instruction set; thereby making the \dvttermmagicinstruction\ platform-dependent.
 However, the solution is often designed to only respond to \dvttermmagicinstruction s wherein a certain magic number, sometimes called a 'leaf number'\dvtcmdcitebib[p.~131]{journals:rechistov:2013}, is present in an arbitrary processor register.
+
+% Reverse Execution
+\section*{Reverse Execution}
+\label{sec:background_reverseexecution}
+\addcontentsline{toc}{section}{Reverse Execution}
+\index{Reverse Execution}
+
+\glslink{dvtglossreverseexecution}{'Reverse execution'} provides software developers with the ability to return, often from portable \dvttermcheckpoint s, to previous states of execution\dvtcmdcitebib[p.~2,~3]{journals:akgul:2004}.
+This may be useful when debugging, profiling, or testing as difficult-to-reach system states may be stored and returned to, effectively bypassing program initialization and other hindrances\dvtcmdcitebib[p.~54]{journals:magnusson:2002}.
+
+In \dvttermsimics , '\dvttermreverseexecution ' denotes said ability - covering the entirety of the simulated system\dvtcmdcitebib[p.~30,~31]{publications:leupers:2010}.
+As such, simulated systems may be run in reverse; including virtualized hardware device states, disk contents and \dvttermcpu\ registers\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:backtorevexe} for an overview on \dvttermreverseexecution\ in \dvttermsimics ); whilst still maintaining determinism in the simulated system.
+As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermreverseexecution referse to the functionality described in this section.
