@@ -5,12 +5,20 @@
 \chapter{Results}
 \label{cha:results}
 The benchmark configurations, as described in section \ref{sec:methodologyexperiment_benchmarking}, having been executed on the platforms, as described in section \ref{sec:methodologyexperiment_platformconfiguration}, using the profiling methods described in section \ref{sec:methodologyexperiment_platformprofiling}, are presented in this chapter.
-As such, the results gathered from execution on the \dvttermhost\ is presented in figure \ref{fig:histogramshost}, the results compiled from execution in the \dvttermandroidemulator\ are presented in figure \ref{fig:histogramsqemu}, and the results accumulated from software rasterized- and paravirtualized execution in \dvttermsimics\ are presented in figures \ref{fig:histogramssimicsparachess}, \ref{fig:histogramssimicsparajulia}, and \ref{fig:histogramssimicsparaphong}, respectively.
+As such, the results gathered from execution on the \dvttermhost\ is presented in figure \ref{fig:histogramshost}, the results compiled from execution in the \dvttermandroidemulator\ presented in figure \ref{fig:histogramsqemu}, and the results accumulated from software rasterized- and paravirtualized execution in \dvttermsimics\ are presented in figures \ref{fig:histogramssimicsparachess}, \ref{fig:histogramssimicsparajulia}, and \ref{fig:histogramssimicsparaphong}, respectively.
 
-See section \ref{sec:histograms} for an elaboration on how the data is visualized in the referenced graphs.\\
+Note that the data compiled from software rasterized- and paravirtualized \dvttermsimics\ platforms also include data form the key figure variation experiments, as described in section \ref{sec:methodologyexperiment_keyfigurevariations}.\\
 
 \noindent
-Based off the reference profiling presented in figure \ref{fig:histogramshost}, we may conclude that the benchmarks, when hardware accelerated on the \dvttermhost\ system, perform with concentrated density; not being much scattered accross the graph except a few irregular extremeties in terms of maximum frametimes (see table \ref{tab:keyvalhost}).
+In this chapter, the results are compiled into histograms; visualizing elapsed time in milliseconds to sample density.
+As such, the $Y$ axis showcases sample density; although the axis keys have been removed as they bear little relevance to the outcomes presented in this document.
+The histograms each feature \dvtcmdnum{100} bins; into which a 1000 samples, for each experiment performed, are rounded into.
+For the purposes of good visualization methodology, values outside of the standard deviation\footnote{That is; values above that of the $mean + std$ and values under that of $mean - std$.} are not featured in the figures presented in this section.
+In order to accomodate for the, however few, samples outside of said limits the figures are all complemented with key ratio tables (see tables \ref{tab:keyvalhost}, \ref{tab:keyvalqemu}, \ref{tab:keyvalsimics}, and \ref{tab:keyvalpara}, respectively).\\
+
+\noindent
+Based off the reference profiling presented in figure \ref{fig:histogramshost}, we may conclude that the benchmarks, when hardware accelerated on the \dvttermhost\ system, perform with concentrated density; not being much scattered across the graph except a few irregular extremeties in terms of maximum frametimes (see table \ref{tab:keyvalhost}).
+This is supported by the standard deviation presented in said table.
 
 Furthermore, we may conclude that the Phong demo features two distinct peaks in density distribution - about $1$ ms in-between.
 There is cause to believe that this may be caused, or partly caused, by frame-wize rotation of the teapot - rotation featured in the benchmark (see section \ref{sec:methodologyexperiment_benchmarking}) - inducing some fluctutation into it's execution (see figure \ref{fig:histogramssimicsparaphong}).
@@ -20,8 +28,9 @@ See section \ref{sec:results_benchmarkvariations} for an elaboration on divergen
 Additionally, and in accordance to tables \ref{tab:keyvalhost} and \ref{tab:keyvalqemu}, one may observe relatively high recorded maximum frametimes in relation to compiled maximum- and average values, yet featuring - in relation to divergent maximum, relatively low standard deviations.\\
 
 \noindent
-In this chapter, an analysis of the benchmarks, performed for the purpose of this experiment, in software rasterized- and paravirtualized \dvttermsimics\ platforms is presented and segmented into paragraphs for each benchmark.
-Said paragraphs are presented below.
+The remainder of this chapter will present a benchmark-wize analysis of the data compiled from executing the experiment on the software rasterized- and paravirtualized \dvttermsimics\ platforms; said platforms being the subject of this study.
+For the sake of brevity, these analyses are segmented into paragraphs for each benchmark.
+These paragraphs are presented below.
 
 % histogramshost
 \input{fighistogramshost.tex}
@@ -51,7 +60,7 @@ Based on the data summarized in table \ref{tab:keyvalsimics} (whilst software ra
 The only redeeming attributes the paravirtualized solution brings to the table, as elaborated upon in the above paragraph, is a decrease in the standard deviation of the benchmark profiling.
 When comparing these results to the uncompromised hardware accelerated counterpart on the \dvttermhost\ machine (see figure \ref{fig:histogramshost}), we may observe - albeit considerably less prominent - an adherence to the single-peak behaviour in the destribution of the sample density.
 
-The purpose of the Chess benchmark was to locate any bottlenecks related to the number of paravirtualized library invocations, which was predicted during the pilot study performed for the sake of this experiment (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+The purpose of the Chess benchmark was to locate any bottlenecks related to the number of paravirtualized library invocations (see section \ref{sec:methodologyexperiment_benchmarking}), which was predicted during the pilot study performed for the sake of this experiment (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 As such, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed; arguably identifying the weakness of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
 
 The conclusion drawn from the Chess benchmark data presented in chapter \ref{cha:results}, stresses further analysis into what is the root cause for the \dvttermtarget - to \dvttermhost\ latency for a multitude of paravirtualized method invocations.
@@ -70,9 +79,9 @@ Albeit the hardware accelerated \dvttermhost\ profiling (see figure \ref{fig:his
 We may observe similar behaviour in the distribution of the sample density when profiling the same benchmark whilst paravirtualized in the \dvttermqemu -derived \dvttermandroidemulator\ (see figure \ref{fig:histogramsqemu}).
 What causes this behaviour is unclear, as frame-to-frame branching in the fractal algorithm is minor and ought not cause such a variance.
 
-The reason as to why the Julia benchmark was decided upon to be integrated into experiment outlined during the pilot study (see \dvtcmdcitefur{dissertation:nilsson:2014}) was to establish how the paravirtualized solution performed under computational stress.
+The reason as to why the Julia benchmark was decided upon to be integrated into experiment outlined during the pilot study (see \dvtcmdcitefur{dissertation:nilsson:2014}) was to establish how the paravirtualized solution performed under computational stress (see section \ref{sec:methodologyexperiment_benchmarking}).
 Using this benchmark, a performance weakness in the software rasterized \dvttermsimics\ platform has been identified, with frametimes well above the two second mark (see table \ref{tab:keyvalsimics}); with the corresponding maximum frametime in the paravirtualized \dvttermsimics\ platform measuring up to to \dvtcmdfirstline{parajulia900.dat.max} ms.
-With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernels, and - in turn - possibly identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator\todo{Expand upon scalability of Julia paravirtualization.}.
+With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernerls and - in turn - identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator\todo{Expand upon scalability of Julia paravirtualization.}.
 
 % TODO:
 % Percentage-wize, the standard deviation has increased in the paravirtualized platform?
@@ -85,26 +94,29 @@ With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparaj
 \paragraph{Phong}
 \label{par:results_phong}
 \begin{alltt}
-DISCLAIMER: The Phong benchmark signals strange behaviour when software rasterized on the simulation \dvttermhost , and is to be considered less reliable (see section \ref{sec:results_benchmarkvariations}).
+DISCLAIMER: The Phong benchmark signals strange behaviour when software rasterized in \dvttermsimics , and is thus considered less reliable (see section \ref{sec:results_benchmarkvariations}).
 \end{alltt}
 
 \noindent
-The Phong benchmark was incorporated into this study for the purposes of analyzing the performance of stressed bandwidth in \dvttermtarget - to \dvttermhost\ communications; featuring relaying and rendering of large texture to simulation \dvttermhost .
+The Phong benchmark was incorporated into this study for the purposes of analyzing the performance of stressed bandwidth in \dvttermtarget - to \dvttermhost\ communications; featuring relaying and rendering of a large texture to simulation \dvttermhost .
 The graphs presented in figure \ref{fig:histogramssimicsparaphong} display erratic distribution of the sample density in both software rasterized- and paravirtualized \dvttermsimics\ platforms.
 Suspicions as to why this is the case are presented in section \ref{sec:results_benchmarkvariations}.
+
 Furthermore, one might argue that parts of the distribution align with the double-peak density distribution showcased by the benchmark when hardware accelerated on the simulation \dvttermhost\ (see figure \ref{fig:histogramshost}).
 
 % TODO:
 % Elaborate into what may cause this cost. Memory page translation etc.
 
-By analyzing the data in presented in tables \ref{tab:keyvalsimics} and \ref{tab:keyvalpara}, it is clear that the Phong benchmark, in terms of average framtimes, performs only marginally better or competatively to it's software rasterized equivalent.
-However, and more interestingly so, executing the benchmark in the paravirtualized \dvttermsimics\ environment results in major improvements in terms of frametime maximum and standard deviation; topping in at \dvtcmdfirstline{simicsphong1448x1448.dat.max} ms where the corresponding paravirtualized maximum is but \dvtcmdfirstline{paraphong1448x1448.dat.max} ms.
+By analyzing the data in presented in tables \ref{tab:keyvalsimics} and \ref{tab:keyvalpara}, it is clear that the Phong benchmark, in terms of average frametimes, performs only marginally better or competatively to it's software rasterized equivalent.
+However, and mayhaps more interestingly so, executing the benchmark in the paravirtualized \dvttermsimics\ environment results in major improvements in terms of frametime maximum and standard deviation; software rasterized samples topping in at \dvtcmdfirstline{simicsphong1448x1448.dat.max} ms where the corresponding paravirtualized maximum is but \dvtcmdfirstline{paraphong1448x1448.dat.max} ms.\\
 
-What causes the compiled paravirtualized Phong benchmark samples to be only marginally better or competitively to their the software rasterized counerparts is unclear.
-The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:methodologysolution_memorytabletraversal}, signifying a possible weakness in - not only the communicational latency, as established in paragraph \dvtcmdrefname{par:results_chess} - in the memory bandwidth of the Simics Pipe (see section \ref{sec:methodologysolution_simicspipe}).
-However, in line with the recorded competatitive average- and minimum frametimes  - yet major improvements in frametime maximum and standard deviation - one might argue that the lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
+\noindent
+What causes the compiled paravirtualized Phong benchmark samples to be only marginally better or competitively to their the software rasterized counterparts is unclear.
+The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:methodologysolution_memorytabletraversal}, signifying a possible weakness in - in addition to the communicational latency, as established in paragraph \dvtcmdrefname{par:results_chess} - the memory bandwidth of the Simics Pipe (see section \ref{sec:methodologysolution_simicspipe}).
 
-However, due to the deviances described in section \ref{sec:analysisexperiment_benchmarkvariations}, this will not be elaborated upon further for the remainder of this dissertation.
+However, in line with the recorded competatitive average- and minimum frametimes - yet major improvements in frametime maximum and standard deviation - one might also argue that the relatively lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
+
+However, due to the deviances described in section \ref{sec:results_benchmarkvariations}, this will not be elaborated upon further for the remainder of this dissertation.
 
 % TODO:
 % The maximum- and standard deviation variations may indicate that the solution is scalable.
@@ -119,15 +131,6 @@ However, due to the deviances described in section \ref{sec:analysisexperiment_b
 
 % TODO:
 % Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
-
-% Histograms
-\section{Histograms}
-\label{sec:histograms}
-The benchmarking results gathered for the purposes of this study, with the profiling methods having been described in section \dvtcmdrefname{sec:methodologyexperiment_platformprofiling}, are compiled into histograms; visualizing elapsed time in milliseconds to density in the figures presented in this section.
-As such, the $Y$ axis showcases sample density; although the axis keys have been removed as they bear little relevance to the outcomes presented in this document.
-The histograms each feature \dvtcmdnum{100} bins based off the \dvtcmdnum{1000} samples gathered per benchmark, as described in section \dvtcmdrefname{sec:methodologyexperiment_platformprofiling}, which are rounded into said bins.
-For the purposes of good visualization methodology, values outside of the standard deviation\footnote{That is; values above that of the $mean + std$ and values under that of $mean - std$.} are not featured in the figures presented in this section.
-In order to accomodate for the, however few, samples outside of said limits the figures are all complemented with key ratio tables (see tables \ref{tab:keyvalhost}, \ref{tab:keyvalqemu}, \ref{tab:keyvalsimics}, and \ref{tab:keyvalpara}, respectively).
 
 % Benchmark variations
 \section{Benchmark Variations}
