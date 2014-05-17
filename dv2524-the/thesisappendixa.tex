@@ -43,23 +43,6 @@ In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.
 As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix\ devices aiding those wishing to develop software for mobile units.
 The \dvttermandroidemulator\ implementation and solution are referred to as the \dvttermreferenceimplementation\ and the \dvttermreferencesolution , respectively, throughout this document.
 
-% Magic Instructions
-\section*{Magic Instructions}
-\label{sec:appendixa_magicinstructions}
-\addcontentsline{toc}{section}{Magic Instructions}
-\index{Magic Instruction}
-Sometimes during system simulation, there may be reasons as to why one would like to escape the simulation and resume execution in the real world.
-Such a scenario would be a debugging breakpoint, to share data in-between \dvttermtarget\ and \dvttermhost\ systems, or for any reason modify the simulation state.
-There are a number of ways to communicate with the outside world (including the \dvttermhost\ machine) from within the simulation, such as by networking means or specially devised kernel drivers, but few are as instant as the - arguably - legitimately coined '\dvttermmagicinstruction '.
-
-The \dvttermmagicinstruction s a concept used to denote a \dvtcmdcodeinline{nop}-type instruction, meaning an instruction that would have no effect if run on the \dvttermtarget\ architecture (such as \dvtcmdcodeinline{xchg ebx, ebx}\footnote{'Swap contents in registers \dvtcmdcodeinline{ebx} and \dvtcmdcodeinline{ebx}'.} on the \dvttermxeightysix -architecture), which - when executed on the simulated hardware in a virtual platform - invokes a certain callback-method\dvtcmdcitebib[p.~32]{publications:leupers:2010}.
-An advantage of this methodology is an often negligible invocation cost, as the context switch is often instant from the perspective of the \dvttermtarget\ system\dvtcmdcitebib[p.~131]{journals:rechistov:2013}.
-Furthermore, and a greatly desireable attribute, \dvttermmagicinstruction s require no modification of the \dvttermtarget\ system.
-Another advantage of the \dvttermmagicinstruction\ paradigm is that the system invoking such an instruction may, without complications, run outside of a simulation - as this would simply result in regular \dvtcmdcodeinline{nop}-behaviour.
-
-In effect, implementation of \dvttermmagicinstruction s requires replacing one- or more instructions in the \dvttermtarget\ instruction set; thereby making the \dvttermmagicinstruction\ platform-dependent.
-However, the solution is often designed to only respond to \dvttermmagicinstruction s wherein a certain magic number, sometimes called a 'leaf number'\dvtcmdcitebib[p.~131]{journals:rechistov:2013}, is present in an arbitrary processor register.
-
 % Determinism in OpenGL ES
 \section*{Determinism in OpenGL ES}
 \label{sec:appendixa_determinisminopengles}
