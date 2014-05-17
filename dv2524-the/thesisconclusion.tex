@@ -3,7 +3,29 @@
 
 \chapter{Conclusion}
 \label{cha:conclusion}
-\ldots
+% Present the conclusions from the results:
+% We have exposed bottlenecks in relation to the...
+% We have accelerated graphics by a factor or... thus identifying the potential of...
 
-% We have presented... In accordance tot he objectives outlined...
-% Established the feasability of...
+% To conclude...
+
+For the purposes of this dissertation, a solution for graphics acceleration has been implemented in the \dvttermsimics\ full-system simulator by the means of paravirtualization (see chapter \ref{cha:methodologysolution}).
+The end-result is a solution which may generate libraries imitating the \dvttermegl - and \dvttermopenglestwopointo\ libraries.
+By the means of preloading, the solution may effectively overload and spy in on an applications \dvttermegl\ utlization with a target window; without inhibiting said exchange - allowing unmodified \dvttermopengl\ applications to be accelerated from within the simulation \dvttermtarget .
+Said solution communicates by the means of low-latency \dvttermmagicinstruction s, and there is no apperent limit as to how much memory may be shared\footnote{In \dvttermlinux , there is a limit as to how much memory a user-space application may lock. However, this limit may be set to appropriate limits by the user beforehand, alternatively running the application as a super-user; circumventing said limit.} (see section \ref{sec:methodologysolution_simicspipe}).
+As such, throughout this document, several of the issue pertaining to graphics acceleration via paravirtualization, including - but not limited to, \dvttermtarget - \dvttermhost\ memory sharing, have been tackled, studied, and elaborated upon.
+
+For the purposes of the experiment performed for the sake of thesis, three benchmarks have been developed with the distinct purpose of profiling bottlenecks and potential weaknesses and strengths of graphics acceleration by the means of paravirtualization in the \dvttermsimics\ full-system simulator (see section \ref{sec:methodologyexperiment_benchmarking}).
+Said benchmarks have been performed on the \dvttermhost\ system, the \dvttermqemu -derived \dvttermandroidemulator , and in software rasterized- and paravirtualized \dvttermsimics\ platforms.
+Furthermore, the benchmarks - created specifically to identify issues related to memory latency, memory bandwidth, and computational complexity in the paravirtualized solution - have contributed to our understanding of the difficulties confronting paravirtualized graphics acceleration.
+
+In chapter \ref{cha:analysisexperiment}, we've presented an analysis of the results compiled throughout the performed experiments; along with an investigation into the scalability of the graphics acceleration for the tested bencharks; for software rasterized- and paravirtualized \dvttermsimics\ platforms.
+
+% Analysis
+% ---
+% We've compiled and presented an analysis on the benefits and drawbacks on paravirtualization as a means to achieve graphics acceleration in virtual platforms.
+% We've established the feasability of using paravirtualization to achieve graphics acceleration in virtual platforms 
+
+% As such, in coagency with the...
+% ...and pertaining to the idea of...
+% ...as supported by the results collected by Lagar-cavilla in regards to their investigation inot paravirtualization in the qemu platform...
