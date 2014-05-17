@@ -90,21 +90,24 @@ However, due to the deviances described in section \ref{sec:analysisexperiment_b
 % Benchmark variations
 \section{Benchmark Variations}
 \label{sec:analysisexperiment_benchmarkvariations}
-\ldots
+As visualized in figure \ref{fig:scattersphong}\footnote{Note the sinus-like pattern in the lower parts of the left-hand side scatterplot; it's oscillating performance may be a testimony to the rotation of the model.}, the Phong benchmark (see section \ref{sec:methodologyexperiment_benchmarking}) exhibits erratic variations in it's performance when software rasterized in the \dvttermsimics\ platform.
+Each graph presents the performance of the Phong benchmark where each symbol represent a frametime sample of one of the three Phong key figure variations (see section \ref{sec:methodologyexperiment_keyfigurevariations}).
+From this visualization we may establish that the performance of the Phong benchmark varies greatly when software rasterized in \dvttermsimics , independant of the Phong benchmark texture texel quantity.
+
+It is unclear as of what is causing this behaviour.
+However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volotile texture mapping.
+Such a scenario may be induced by the large texture in coagency with the frame-wize rotating model - since the texture mapping outcome will likely differ on a per-frame basis.
+In consideration to sheer size of the textures used the experiments presented in figure \ref{fig:scattersphong}, it likely that such eccentric memory referencing may account for the volotile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
+
+In line with the erratic benchmark behaviour that has been established in this section, the Phong benchmark results - although having value to this study in terms of profiling memory bandwidth scalability (see paragraph \dvtcmdrefname{par:analysisexperiment_phong}) - are to be considered less reliable than it's more predictable benchmark peers.
+
+\noindent
+Note that, for the sake of visualization, values outside of the standard deviation are not presented in figure \ref{fig:scattersphong}.
 
 \input{figscattersphong.tex}
 
 % TODO:
-% Benchmark Variations
-% Benchmark Fluctuations
-% Benchmark Volatility
-
-% TODO:
-% Expand upon Phong deviations.
-% Consider adding a figure visualizing said deviations.
-
-%Deviations caused by rotation of the model may cause, or partly cause, general fluctuation in benchmark (e.g. when paravirtualized). Furthermore, the texturing (or the sampling of, rather) of a rotating small model with such a large texture may cause severe cache misses due to the texture sampling. This is simply speculation, but may cause the major fluctuations in the software rasterized Phong benchmark.
-%As such, present suspicions of cache misses and general fluctuations in the Phong benchmark, but point out that the software rasterized Phong benchmark profiling is of less relevance to the paravirtualized sample due to this.
+% Consider adding table presenting minimum- and maximum values of these instances.
 
 % Paravirtualization Performance
 \section{Paravirtualization Performance}
