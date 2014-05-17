@@ -51,9 +51,11 @@ set tic scale 0 # Remove the small tic-marks, but keep the labels.
 set yrange [0:]
 unset ytics
 
-files=sprintf("%s %s %s %s %s %s", arg_data1, arg_data2, arg_data3, arg_data4, arg_data5, arg_data6)
-ylabels=sprintf("%s %s %s", arg_ylabel1, arg_ylabel2, arg_ylabel3)
+files = sprintf("%s %s %s %s %s %s", arg_data1, arg_data2, arg_data3, arg_data4, arg_data5, arg_data6)
+ylabels = sprintf("%s %s %s", arg_ylabel1, arg_ylabel2, arg_ylabel3)
+xlabels = sprintf("%s %s", "Software", "Paravirtualized") 
 
+xlabel_index = 1
 ylabel_index = 1
 everyother = 1
 do for [i=1:words(files)] {
@@ -66,6 +68,12 @@ do for [i=1:words(files)] {
     } else {
         everyother = 1
         unset ylabel
+    }
+    if(xlabel_index<3) { # HACK THE PLANET
+        set x2label word(xlabels, xlabel_index)
+        xlabel_index = xlabel_index + 1
+    } else {
+        unset x2label
     }
 
     stats arg_data name "data" nooutput
