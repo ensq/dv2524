@@ -1,5 +1,5 @@
 # scatters.gnu
-# Demo plot using GNUplot.
+# Renders three side-by-side scatterplots meant to visualize variance distribution.
 # Requires GNUplot 4.6 or later.
 # ---
 # Invoke accordingly:
@@ -84,28 +84,3 @@ unset multiplot
 set output # Terminate output file.
 
 print sprintf("%s: Exit.", iam)
-
-# ---
-
-#set style line 1 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
-#set style line 2 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
-#set style line 3 lc rgb "#77000000" lt 1 lw 1 pt 7 ps 1.5
-#plot arg_data1 with linespoint ls 1 pt 6,\
-#    arg_data2 with linespoint ls 2 pt 32,\
-#    arg_data3 with linespoint ls 3 pt 64
-
-# STATS Attributes:
-# STATS_min               # minimum value of in-range data points
-# STATS_max               # maximum value of in-range data points
-# STATS_index_min         # index i for which data[i] == STATS_min
-# STATS_index_max         # index i for which data[i] == STATS_max
-# STATS_lo_quartile       # value of the lower (1st) quartile boundary
-# STATS_median            # median value
-# STATS_up_quartile       # value of the upper (3rd) quartile boundary
-# STATS_mean              # mean value of in-range data points
-# STATS_stddev            # standard deviation of the in-range data points
-# STATS_sum               # sum
-# STATS_sumsq             # sum of squares
-
-# Goodie-bag:
-# Use "show variables all" if you get a bunch of undefined variable errors.
