@@ -76,8 +76,8 @@ do for[i=1:3] {
 	data3 = word(files, 3)
 
 	plot data1 pt 1 lt rgb "black",\
-    	data2 pt 2 lt rgb "black",\
-    	data3 pt 3 lt rgb "black"
+    	data2 pt 4 lt rgb "black",\
+    	data3 pt 8 lt rgb "black"
 }
 
 unset multiplot

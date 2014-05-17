@@ -94,7 +94,7 @@ As visualized in figure \ref{fig:scattersphong}\footnote{Note the sinus-like pat
 Each graph presents the performance of the Phong benchmark where each symbol represent a frametime sample of one of the three Phong key figure variations (see section \ref{sec:methodologyexperiment_keyfigurevariations}).
 From this visualization we may establish that the performance of the Phong benchmark varies greatly when software rasterized in \dvttermsimics , independant of the Phong benchmark texture texel quantity.
 
-It is unclear as of what is causing this behaviour.
+It is uncertain as of what is causing this behaviour.
 However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volotile texture mapping.
 Such a scenario may be induced by the large texture in coagency with the frame-wize rotating model - since the texture mapping outcome will likely differ on a per-frame basis.
 In consideration to sheer size of the textures used the experiments presented in figure \ref{fig:scattersphong}, it likely that such eccentric memory referencing may account for the volotile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
@@ -111,7 +111,10 @@ Note that, for the sake of visualization, values outside of the standard deviati
 % Consider adding table presenting minimum- and maximum values of these instances.
 
 % Paravirtualization Performance
-\section{Paravirtualization Performance}
-\label{sec:analysisexperiment_paravirtualizationperformance}
-QEMU Vs. Simics.\\
-\ldots
+%\section{Paravirtualization Performance}
+%\label{sec:analysisexperiment_paravirtualizationperformance}
+%QEMU Vs. Simics.\\
+%\ldots
+
+% TODO:
+% Add this section to document.
