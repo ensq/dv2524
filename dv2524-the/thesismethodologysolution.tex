@@ -115,15 +115,15 @@ The execution of a \dvttermmagicinstruction , in line with the \dvttermmagicinst
 Knowing the occurence of a \dvttermmagicinstruction\ with the corresponding leaf number, one may assume the existance of a \dvttermtarget\ memory address in the simulated \dvttermtarget\ \dvttermcpu\ register \dvtcmdcodeinline{rbx}.
 Note that, at this point, the retrieved address is in the format of a \dvttermtarget\ machine virtual address; the destination of which is unknown to the simulation \dvttermhost .
 As such, this address need be translated in order to retrieve the package contents said memory address points to.
-See \ref{sec:methodologysolution_memorypagetraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
+See \ref{sec:methodologysolution_memorytabletraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
 
 See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
 
 % TODO:
 % Point out that the buffer includes a number indicating what method invocation has been executed, and a variable indicating size of the buffer in it's entirety.
 
-\section{Memory Page Traversal}
-\label{sec:methodologysolution_memorypagetraversal}
+\section{Memory Table Traversal}
+\label{sec:methodologysolution_memorytabletraversal}
 As outlined in section \ref{sec:methodologysolution_simicspipe}, \dvttermtarget -/\dvttermhost\ memory sharing in the Simics Pipe is performed by the means of exposing a \dvttermtarget\ virtual address to the simulation \dvttermhost .
 Said virtual address is, understandably so, only valid in the simulated system and bears no relevance in the real world; outside of the fact that the data to which the virtual address refers - in the \dvttermtarget\ system - is, in turn, hidden behind layers of abstraction somewhere in the \dvttermhost\ system.
 
@@ -133,7 +133,7 @@ In order to solve this, using some \dvttermos s (e.g., \dvttermfedora \footnote{
 This is the methodology used to ensure that the physical memory space, referred to by the virtual address sent to the simulation \dvttermhost , is still existant in \dvttermtarget\ primary memory when the simulation state has been paused\footnote{Other methods to achieve this include repeatedly 'polling' the corresponding memory pages in the \dvttermtarget\ system before inducing the simulation context switch to the \dvttermhost\ system.}.
 
 Furthermore, and again induced by the unorthodox circumvention of the virtual memory paradigm, it is probable that the multiple memory pages making out particularily large serialized command streams, such as the transmission of vertex or texture data, are not consecutively aligned in physical memory (\todo{Refer to figure.} ), although guaranteed to be continious blocks in terms of virtual memory.
-As such, the memory pages must be 'traversed' and continiously translated on a per-page basis.
+As such, the the physical addresses of memory pages must be continiously retrieved and translated on a per-page basis; effectively 'traversing' the virtual memory table.
 This can be done in a trivial manner by simply iterating the original virtual address with the \textit{\dvttermtarget } page size, commonly being - as during the study performed for the purpose of this dissertation - \dvtcmdnum{4096} bytes.
 Naturally, said process must be performed regardless of data being read or written to-/from the indended - physical - memory space.
 
