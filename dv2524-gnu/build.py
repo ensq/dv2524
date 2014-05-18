@@ -5,8 +5,8 @@ import os
 import subprocess
 
 g_iam = "dv2524-gnu/build.py"
-g_gnuHistograms = "../dv2524-gnu/histograms.gnu"
-g_gnuHistogramsStacked = "../dv2524-gnu/histogramsstacked.gnu"
+g_gnuHistograms = "../dv2524-gnu/histogram2x3.gnu"
+g_gnuHistogramsStacked = "../dv2524-gnu/histogram1x3.gnu"
 g_gnuScatters = "../dv2524-gnu/scatters.gnu"
 
 # Entry point:

@@ -127,10 +127,11 @@ However, due to the deviances described in section \ref{sec:results_benchmarkvar
 % Magic Instruction Overhead
 \section{Magic Instruction Overhead}
 \label{sec:results_magicinstructionoverhead}
-\ldots
+In \dvttermsimics , \dvttermmagicinstruction s incur a context switch when exiting the simulation and beginning execution in the real world.
+This affects the performance by forcing the simulation to no longer be executed in native mode; inhibiting the massive simulatory performance imrovements given by \dvttermhostvirtualizationextensions .
+Additionally, this also entail \dvttermsimics\ no longer being able to utilize \dvttermjit\ compilation to speed up execution; having to rely on regular code interpretation.
+As such, in great numbers, \dvttermmagicinstruction s may potentially affect potentiallyerformance. 
 
-% TODO:
-% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
 
 % Benchmark variations
 \section{Benchmark Variations}

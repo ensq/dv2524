@@ -1,4 +1,4 @@
-# histogram.gnu
+# histogram1x1.gnu
 # GNUplot script rendering a histogram based on a lone data file.
 # Requires GNUplot 4.6 or later.
 # ---

@@ -1,4 +1,4 @@
-# histogramsstacked.gnu
+# histogram1x3.gnu
 # GNUplot script creating a 1x3 figure of histograms.
 # Requires GNUplot 4.6 or later.
 # ---
