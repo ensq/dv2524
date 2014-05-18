@@ -45,6 +45,7 @@ def buildThesis(p_from):
     print(p_from + ": Building Thesis document...")
     buildCommon()
 
+    subbuild(os.getcwd() + "/dv2524-img")
     subbuild(os.getcwd() + "/dv2524-tab")
     subbuild(os.getcwd() + "/dv2524-fig")
     subbuild(os.getcwd() + "/dv2524-dat")

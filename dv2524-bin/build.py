@@ -10,8 +10,8 @@ g_cleanfiletypes = [\
 ".bst", ".sty", ".cls", ".toc", ".pdf", ".gin",\
 ".glo", ".acn", ".acr", ".alg", ".glg", ".gls",\
 ".ist", ".ind", ".ilg", ".idx", ".tex", ".txt",\
-".svg", ".dat", ".ps", ".eps", ".lof", ".min",\
-".max", ".avg", ".std", ".mw"]
+".svg", ".dat", ".ps", ".eps", ".lof", ".lot", \
+".min", ".max", ".avg", ".std", ".mw"]
 g_cleaninadditionto = ["README",]
 g_cleanexcept = ["build.py", "README.md"]
 
