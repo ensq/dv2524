@@ -20,7 +20,7 @@ os.chdir("../dv2524-bin/")
 cmd = "gnuplot -e \"arg_data='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistogram
 arg1 = "magicinstrprofileeach.dat"
 arg2 = "epslatex"
-arg3 = "../dv2524-bin/gnuhistogrammagicinstructions.tex"
+arg3 = "../dv2524-bin/gnuhistogrammagicinstructionsforeach.tex"
 
 sp = subprocess.Popen(cmd % (arg1,arg2,arg3), shell=True)
 sp.wait()
