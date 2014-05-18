@@ -5,6 +5,8 @@
 \label{cha:conclusion}
 In chapter \ref{cha:results}, we established strengths and weaknesses of paravirtualized graphics in the \dvttermsimics\ full-system simulator; most notably the bottleneck introduced by the overhead of \dvttermmagicinstruction s in the Chess benchmark, which - in accordance to the findings presented in section \ref{sec:results_magicinstructionoverhead} - made out the majority of elapsed average frametime.
 As such, the methodology of creating benchmarks for the purpose of identifying such bottlenecks, established in \dvtcmdcitefur{dissertation:nilsson:2014}, has confirmed such suspicions.
+In this way, this study has identified performance bottlenecks in that of extreme per-frame numbers of \dvttermopengl\ invocations when utilizing \dvttermmagicinstruction\ technologies.
+However, and in line with the acceleration achieved - as presented in chapter \ref{cha:results} - this dissertation has established \dvttermmagicinstruction s and similar methodologies for fast \dvttermtarget - and \dvttermhost\ communications as viable for use in paravirtualized real-time graphics.
 
 Furthermore, compiled results have showcased radical improvements for computationally intensive graphics kernels, in line with the Julia fractal benchmark, compared to the software rasterized \dvttermsimics\ counterpart.
 As such, this study has, in addition to identifying the bottleneck induced by software rasterization for computationally intensive graphics kernels, accelerated graphics up to roughly $34$ times; reducing frametime from that of \dvtcmdfirstline{simicsjulia900.dat.avg} to the real-time feasible count of \dvtcmdfirstline{parajulia900.dat.avg}.
@@ -26,12 +28,8 @@ Said benchmarks have been performed on the \dvttermhost\ system, the \dvttermqem
 Furthermore, the benchmarks - created specifically to identify issues related to memory latency, memory bandwidth, and computational complexity in the paravirtualized solution - have contributed to our understanding of the difficulties confronting paravirtualized graphics acceleration.
 
 In chapter \ref{cha:results}, we've presented an analysis of the results compiled throughout the performed experiments; along with an investigation into the scalability of the graphics acceleration for the tested bencharks; for software rasterized- and paravirtualized \dvttermsimics\ platforms.
+We've compiled and presented an anlysis on the benefits and drawbacks of paravirtualization as a means to achieve graphics acceleration in virtual platforms; backed by hard data produced by a number of benchmarks stressing key points in the solution with the purpose of identifying both strengths and weaknesses in the discussed methodology.
+Accordingly, this dissertation has established the feasability of using paravirtualization to accelerate graphics in virtual platforms to that of real-time qualities.\\
 
-% Analysis
-% ---
-% We've compiled and presented an analysis on the benefits and drawbacks on paravirtualization as a means to achieve graphics acceleration in virtual platforms.
-% We've established the feasability of using paravirtualization to achieve graphics acceleration in virtual platforms 
-
-% As such, in coagency with the...
-% ...and pertaining to the idea of...
-% ...as supported by the results collected by Lagar-cavilla in regards to their investigation inot paravirtualization in the qemu platform...
+\noindent
+As such, in coagency with the results compiled in chapter \ref{cha:results}, collected by the means presented in chapter \ref{cha:methodologyexperiment}, and based on the solution portrayed in chapter \ref{cha:methodologysolution}, pertaining to the idea of real-time graphics in detailed full-system simulators, this dissertation suggests utilizing high-level paravirtualization to accelerate graphics- and as means to overcome accessability bottlenecks in virtual platforms.
