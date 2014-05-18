@@ -1,0 +1,43 @@
+% figmagicinstructionpseudocode.tex
+
+% int sercon = open("/dev/ttyS0",O_RDWR|O_NOCTTY);
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+	\centering
+	
+\begin{lstlisting}
+for(unsigned i=0;i<1000;i++){
+	write(sercon,"start",5);
+	tcdrain(sercon);
+
+	magic_instruction();
+
+	write(sercon,"stop",4);
+	tcdrain(sercon);
+}
+\end{lstlisting}
+	
+	\caption{Profiling of magic instructions on a per-invocation basis.}
+	\label{fig:magicinstructionpseudocodeforeach}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+	\centering
+	
+\begin{lstlisting}
+for(unsigned i=0;i<1000;i++){
+	write(sercon,"start",5);
+	tcdrain(sercon);
+	for(unsigned j=0;j<1000;j++){
+		magic_instruction();
+	}
+	write(sercon,"stop",4);
+	tcdrain(sercon);
+}
+\end{lstlisting}
+	
+	\caption{Profiling of magic instructions in batches.}
+	\label{fig:magicinstructionpseudocodeforall}
+\end{minipage}
+\end{figure}
