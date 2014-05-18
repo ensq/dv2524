@@ -74,11 +74,15 @@ When using serial ports in this manner, one may introduce a profiling cost.
 This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immidiately sending said byte sequence via the system \dvttermuart .
 In order to improve responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
 Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immidiately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
-Collected profiling overhead data is visualized in figure \todo{Refer to figure.} ...\todo{If collected benchmarking data has been modified with this overhead, this should be made apperent in this section.}
+Collected profiling overhead data is presented in table \ref{tab:profiling}.
 
-% TODO: Insert visualization of the profiling overhead.
-\missingfigure[figwidth=6cm]{Profiling overhead figure.}
+\input{tabprofiling.tex}
 
+From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occationally be volotile.
+However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, such large deviation is to be quite rare.
+If not specified otherwize, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximatative data is presented accordingly (see section \ref{sec:results_magicinstructionoverhead}).}.\\
+
+\noindent
 Utilizing the methodology described in the above paragraph; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
 This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
 As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
