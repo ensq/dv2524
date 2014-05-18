@@ -72,7 +72,7 @@ In \dvttermlinux , the interface to such a port may be accessed by any of the \d
 
 When using serial ports in this manner, one may introduce a profiling cost.
 This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immidiately sending said byte sequence via the system \dvttermuart .
-In order to ensure responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
+In order to improve responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
 Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immidiately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
 Collected profiling overhead data is visualized in figure \todo{Refer to figure.} ...\todo{If collected benchmarking data has been modified with this overhead, this should be made apperent in this section.}
 
