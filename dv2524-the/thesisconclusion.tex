@@ -3,17 +3,19 @@
 
 \chapter{Conclusion}
 \label{cha:conclusion}
+In chapter \ref{cha:results}, we established strengths and weaknesses of paravirtualized graphics in the \dvttermsimics\ full-system simulator; most notably the bottleneck introduced by the overhead of \dvttermmagicinstruction s in the Chess benchmark, which - in accordance to the findings presented in section \ref{sec:results_magicinstructionoverhead} - made out the majority of elapsed average frametime.
+As such, the methodology of creating benchmarks for the purpose of identifying such bottlenecks, established in \dvtcmdcitefur{dissertation:nilsson:2014}, has confirmed such suspicions.
 
+Furthermore, compiled results have showcased radical improvements for computationally intensive graphics kernels, in line with the Julia fractal benchmark, compared to the software rasterized \dvttermsimics\ counterpart.
+As such, this study has, in addition to identifying the bottleneck induced by software rasterization for computationally intensive graphics kernels, accelerated graphics up to roughly $34$ times; reducing frametime from that of \dvtcmdfirstline{simicsjulia900.dat.avg} to the real-time feasible count of \dvtcmdfirstline{parajulia900.dat.avg}.
+As speculated upon in chapter \ref{cha:results}, there is cause to believe that the paravirtualized solution described in this document may easily accelerate the Julia benchmark, as compared with software rasterized \dvttermsimics , to that of two orders of magnitude.
+In this way, based off the results presented in chapter \ref{cha:results}, this study has identified the potential of using paravirtualization for the means of accelerating graphics to that of real-time performance; testimonial to the results presented by Lagar-Cavilla et al. in their work on using paravirtualization to accelerate graphics (see \dvtcmdcitebib{inproceedings:lagarcavilla:2007}).
 
-% Present the conclusions from the results:
-% We have exposed bottlenecks in relation to the...
-% We have accelerated graphics by a factor or... thus identifying the potential of...
+Additionally, beyond that of accelerated graphics, the results gathered for the purpose of this study indicates performance improvements in terms of maximum frametimes (both in Chess and Phong benchmarks); leading to that of significantly improved standard deviation.
+In line with stable framerates being prerequisites for real-time applications, this indicates - in coagency with better frametimes as portrayed by the Julia benchmark - the feasibility of utilizing paravirtualized methodoligies for the purposes of accelerating graphics in virtual platforms.\\
 
-% The chess benchmark has, as it set out to do, confirmed past suspicion of a bottleneck existant in the paravirtualization of large amounts of OpenGL invocations.
-
-% The Julia benchmark has showcased radical performance improvements of paravirtualized graphics kernels in relation to software rasterization. This is testimonial to the performance gains aquired by means of paravirtualization in accordance to previous work by Lager-Cavilla.
-
-In order to conclude; for the purposes of this dissertation, a solution for graphics acceleration has been implemented in the \dvttermsimics\ full-system simulator by the means of paravirtualization (see chapter \ref{cha:methodologysolution}).
+\noindent
+As to conclude; for the purposes of this dissertation, a solution for graphics acceleration has been implemented in the \dvttermsimics\ full-system simulator by the means of paravirtualization (see chapter \ref{cha:methodologysolution}).
 The end-result is a solution which may generate libraries imitating the \dvttermegl - and \dvttermopenglestwopointo\ libraries.
 By the means of preloading, the solution may effectively overload and spy in on an applications \dvttermegl\ utlization with a target window; without inhibiting said exchange - allowing unmodified \dvttermopengl\ applications to be accelerated from within the simulation \dvttermtarget .
 Said solution communicates by the means of low-latency \dvttermmagicinstruction s, and there is no apperent limit as to how much memory may be shared\footnote{In \dvttermlinux , there is a limit as to how much memory a user-space application may lock. However, this limit may be set to appropriate limits by the user beforehand, alternatively running the application as a super-user; circumventing said limit.} (see section \ref{sec:methodologysolution_simicspipe}).
