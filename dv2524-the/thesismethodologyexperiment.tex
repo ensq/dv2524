@@ -131,8 +131,12 @@ In the Chess benchmark, this is achieved by renderering a grid of colored (black
 Since the vertices are already transformed into screen-space, the graphics kernel need perform no additional transformation, adhering to the desired lightweight behaviour of each kernel invocation.
 Additionally, the tileset vertices and indices are pre-loaded into \dvttermopengl\ vertex- and index element buffers, so that a lone buffer identifier may be carried over in-place of the heavier vertex set load.
 Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
-
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
+
+For each tile rendered, the solution will perform $12$ \dvttermmagicinstruction s; entailing a total of $43200$\footnote{$12\times60\times60=43200$.}, $84672$\footnote{$12\times84\times84=84672$.}, and $167088$\footnote{$12\times118\times118=167088$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively.
+The amount of invocations is purposeful as to stress the \dvttermmagicinstruction\ overhead, as outlined in section \ref{sec:results_magicinstructionoverhead}.\\
+
+\noindent
 The benchmark kernel in it's entirety is presented in section \dvtcmdrefname{sec:appendixb_benchmarkchesskernel} under \dvtcmdrefname{cha:appendixb}.
 
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multide of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
