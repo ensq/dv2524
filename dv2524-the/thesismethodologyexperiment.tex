@@ -133,7 +133,7 @@ Additionally, the tileset vertices and indices are pre-loaded into \dvttermopeng
 Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
 
-For each tile rendered, the solution will perform $12$ \dvttermmagicinstruction s; entailing a total of $43200$\footnote{$12\times60\times60=43200$.}, $84672$\footnote{$12\times84\times84=84672$.}, and $167088$\footnote{$12\times118\times118=167088$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively.
+For each tile rendered, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively, in addition to a minor number  per-frame.
 The amount of invocations is purposeful as to stress the \dvttermmagicinstruction\ overhead, as outlined in section \ref{sec:results_magicinstructionoverhead}.\\
 
 \noindent
