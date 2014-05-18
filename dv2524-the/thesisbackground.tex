@@ -20,7 +20,7 @@ Accordingly, the key investigatory attributes and explicit research question for
 \begin{multicols}{2}
 \begin{itemize*}
 	\researchquestionitem{1}{What are the benefits and disadvantages of paravirtualized graphics in virtual platforms?}
-	\researchquestionitem{2}{What are the prerequisites of \dvttermdeterministicexecution\  of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{2}{What are the prerequisites of \dvttermdeterministicexecution\ of paravirtualized graphics in virtual platforms?}
 	\researchquestionitem{3}{What are the prerequisites of \dvttermcheckpointing\ of paravirtualized graphics in virtual platforms?}
 	\researchquestionitem{4}{What are the prerequisites of \dvttermreverseexecution\ of paravirtualized graphics in virtual platforms?}
 \end{itemize*}
@@ -179,4 +179,11 @@ However, the solution is often designed to only respond to \dvttermmagicinstruct
 \section{Virtual Time}
 \label{sec:background_virtualtime}
 \index{Virtual Time}
-\ldots
+In terms of system simulation, time often becomes an abstract; as since it is not necessarily the same for an observer outside of the simulation as that of an observer from the inside.
+The variance in virtual time, as compared to that of real-world time, is called 'simulation slowdown' and may reach orders of magnitudes faster than that of real-world time, or likewise order of magnitude slower.
+
+The concepts of real- and virtual time are particularily important when considering performance measurements.
+When attempting to establish some sort of measurement in a full-system simulator, such as \dvttermsimics , one must contemplate what type of time is relevant to the type of study being performed.
+As of study into graphics acceleration of real-time applications, it is likely that the real-world wall clock is the primary point of reference (see section \ref{sec:methodologyexperiment_platformprofiling} for an elaboration on how time measurement is performed for the sake of this study).
+However, there are cases in which virtual time is more relevant to certain studies.
+
