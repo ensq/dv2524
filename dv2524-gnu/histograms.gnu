@@ -61,19 +61,20 @@ everyother = 1
 do for [i=1:words(files)] {
     arg_data = word(files, i)
 
-    if(everyother==1) { # Bit of a hack, but I'm getting things done.
+    # Hack the planet:
+    if(everyother==1) {
         everyother = 0
         set ylabel word(ylabels, ylabel_index)
         ylabel_index = ylabel_index + 1
     } else {
         everyother = 1
-        unset ylabel
+        set ylabel " " #unset ylabel
     }
-    if(xlabel_index<3) { # HACK THE PLANET
-        set x2label word(xlabels, xlabel_index)
+    if(xlabel_index<3) {
+        set x2label word(xlabels, xlabel_index) tc lt 1
         xlabel_index = xlabel_index + 1
     } else {
-        unset x2label
+        set x2label " " #unset x2label
     }
 
     stats arg_data name "data" nooutput
