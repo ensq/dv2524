@@ -61,7 +61,11 @@ The only redeeming attributes the paravirtualized solution brings to the table, 
 When comparing these results to the uncompromised hardware accelerated counterpart on the \dvttermhost\ machine (see figure \ref{fig:histogramshost}), we may observe - albeit considerably less prominent - an adherence to the single-peak behaviour in the destribution of the sample density.
 
 The purpose of the Chess benchmark was to locate any bottlenecks related to the number of paravirtualized library invocations (see section \ref{sec:methodologyexperiment_benchmarking}), which was predicted during the pilot study performed for the sake of this experiment (see \dvtcmdcitefur{dissertation:nilsson:2014}).
-As such, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed; arguably identifying the weakness of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
+As such, as presented in section \ref{sec:results_magicinstructionoverhead} in combination with the shaping of the Chess benchmark as presented in section \ref{sec:methodologyexperiment_benchmarking}, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed; arguably identifying the weakness of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
+Indeed, if proceeding from the findings of section \ref{sec:results_magicinstructionoverhead}, \dvttermmagicinstruction\ overhead accounts for the majority of the elapsed average when paravirtualized in \dvttermsimics .
+
+% TODO:
+% Solid figures here.
 
 The conclusion drawn from the Chess benchmark data presented in chapter \ref{cha:results}, stresses further analysis into what is the root cause for the \dvttermtarget - to \dvttermhost\ latency for a multitude of paravirtualized method invocations.
 Some suspicions related to this matter are presented in section \ref{sec:results_magicinstructionoverhead}. 
@@ -168,7 +172,7 @@ One may speculate that said system call may be the cause for eccentric behaviour
 
 As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} is rendered less reliable due to the eccentric profiled behaviour.
 From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
-We may deduce, albeit with regard to the less reliable results, that individual invocations of \dvttermmagicinstruction s could perform in line with the data presented in figure \ref{fig:histogrammagicinstructionsforeach} and table \ref{tab:magicinstructionsforeach} - in worst case scenario.
+Due to the volatility of the profiling presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, the author will refrain from using these results for any definite conclusions.
 
 % Benchmark variations
 \section{Benchmark Variations}
