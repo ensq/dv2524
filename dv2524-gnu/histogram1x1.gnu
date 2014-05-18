@@ -4,62 +4,60 @@
 # ---
 # Arguments:
 # 1. Data set		: arg_data
-# 2. Output file	: arg_output
+# 2. Output mode	: arg_terminal
+# 3. Output file	: arg_output
 # ---
 # Invoke accordingly:
-# gnuplot -e "arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'" histogram.gnu
-
-# Utility methods:
-usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='results/paraphong1448x1448.ms';arg_output='out.svg'\" histogram.gnu", p_iam)
-press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
+# gnuplot -e "arg_data='data.dat';arg_terminal='epslatex';arg_output='out.tex'" histogram1x1.gnu
 
 min(p_x, p_y) = (p_x<p_y) ? p_x : p_y
 max(p_x, p_y) = (p_x>p_y) ? p_x : p_y
 mapToBin(p_x, p_binWidth, p_binMin) = p_binWidth * (floor((p_x - p_binMin) / p_binWidth) + 0.5) + p_binMin # http://stackoverflow.com/a/19596160
+usage(p_iam) = sprintf("%s: Usage: gnuplot -e \"arg_data='data.dat';arg_mode='epslatex';arg_output='out.tex'\" histogram1x1.gnu", p_iam)
+press(p_iam) = sprintf("%s: Press any key to continue.", p_iam)
+default(p_iam, p_var) = sprintf("%s: Warning, using default var: %s!", p_iam, p_var)
 
 # Entry point:
 reset
-iam = "dv2524-gnu/histogram.gnu"
+iam = "dv2524-gnu/histogram1x1.gnu"
 print sprintf("%s: Enter...", iam)
-
 if(!exists("arg_output")) { # Optional arguments.
-	arg_output = "default.svg"
+    arg_output = "default.tex"
+    print default(iam, arg_output)
+}
+if(!exists("arg_terminal")) {
+    arg_terminal = "epslatex"
+    print default(iam, arg_terminal)
 }
 if(!exists("arg_data")) { # Mandatory arguments.
-	print usage(iam)
-	pause -1 press(iam) # We should abort script here rather than simply pause it.
+    print usage(iam)
+    pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
-set terminal svg # Should be customizable.
+set terminal arg_terminal
 set output arg_output
-set xlabel "Frametime (ms)"
-set ylabel "Sample frequency"
 
-print sprintf("%s stats:", arg_data)
-stats arg_data name "data"
+set xtics nomirror
+set tic scale 0 # Remove the small tic-marks, but keep the labels.
+set yrange [0:]
 
-hist_numBins = 250
+stats arg_data name "data" nooutput
+
+hist_numBins = 8.0
 hist_data_mean = data_mean_y
-hist_data_min = hist_data_mean - data_stddev_y
+hist_data_min = data_min_y
 hist_data_max = hist_data_mean + data_stddev_y
-hist_binWidth = (hist_data_max - hist_data_min) / hist_numBins
-hist_binMin = floor(max(hist_data_min, data_min_y)) # Currently causes bins to be rendered with differing widths, for some reason.
+hist_binMin = floor(max(hist_data_min, data_min_y))
 hist_binMax = ceil(min(hist_data_max, data_max_y))
+hist_binWidth = hist_binMax / hist_numBins
 
 set xrange [hist_binMin:hist_binMax]
-set yrange [0:]
-set boxwidth hist_binWidth # Avoid incorrectly rendering empty bins. (http://stackoverflow.com/questions/2471884/histogram-using-gnuplot)
-set style fill solid 0.5 # Fill bins to make them gorgous.
-set offset graph 0.05, 0.05, 0.05, 0.0 # Correct erronously rendered bins.
 
-plot arg_data u (mapToBin($1, hist_binWidth, hist_binMin)):(1.0) smooth freq w boxes lc rgb"black" notitle
+set boxwidth hist_binWidth
+set style fill solid 0.5
+
+plot arg_data u (mapToBin($1, hist_binWidth, hist_binMin)):(100.0/data_records) smooth freq w boxes lc rgb"black" notitle
+
+set output # Terminate output file.
 
 print sprintf("%s: Exit.", iam)
-
-# ---
-
-# Insert to remove axis ticks on the right-/top axes:
-# set tics out nomirror
-
-# Insert to display increased precision in axes:
-#set xtics hist_binMin, (hist_binMax - hist_binMin) / 5, hist_binMax

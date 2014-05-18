@@ -108,6 +108,7 @@ sort_file(g_iam, "profile.dat")
 
 files_need_correcting = glob.glob("simics*.dat")
 files_need_correcting += glob.glob("para*.dat")
+files_need_correcting += glob.glob("magicinstrprofileeach.dat")
 for filename in files_need_correcting:
     correct_profiling(g_iam, filename, -profiling_overhead.m_avg)
 

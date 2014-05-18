@@ -5,6 +5,7 @@ import os
 import subprocess
 
 g_iam = "dv2524-gnu/build.py"
+g_gnuHistogram = "../dv2524-gnu/histogram1x1.gnu"
 g_gnuHistograms = "../dv2524-gnu/histogram2x3.gnu"
 g_gnuHistogramsStacked = "../dv2524-gnu/histogram1x3.gnu"
 g_gnuScatters = "../dv2524-gnu/scatters.gnu"
@@ -14,6 +15,15 @@ print(g_iam + ": Enter...")
 
 # Start by changing directory, as we want to work with possibly modified plots in the build directory:
 os.chdir("../dv2524-bin/")
+
+# Draw 1x1 histograms:
+cmd = "gnuplot -e \"arg_data='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistogram
+arg1 = "magicinstrprofileeach.dat"
+arg2 = "epslatex"
+arg3 = "../dv2524-bin/gnuhistogrammagicinstructions.tex"
+
+sp = subprocess.Popen(cmd % (arg1,arg2,arg3), shell=True)
+sp.wait()
 
 # Draw 3x2 histograms:
 cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_data4='%s';arg_data5='%s';arg_data6='%s';arg_ylabel1='%s';arg_ylabel2='%s';arg_ylabel3='%s';arg_terminal='%s';arg_output='%s'\" " + g_gnuHistograms;
