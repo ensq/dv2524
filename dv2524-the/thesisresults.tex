@@ -134,10 +134,12 @@ As such, in great numbers, \dvttermmagicinstruction s may potentially affect per
 
 In line with the effect that this overhead may have on experiments such as benchmark Chess, a number of tests have been executed for the purposes of trying establish the overhead \dvttermmagicinstruction s may induce.
 
-These tests have been run in two instances; one in which each \dvttermmagicinstruction\ invocation is profiled seperately using the methodology described in section \ref{sec:methodologyexperiment_platformprofiling}, and another in which batches of \dvttermmagicinstruction\ invocations are profiled.
+These tests have been run in two instances; one in which each \dvttermmagicinstruction\ invocation is profiled seperately using the methodology described in section \ref{sec:methodologyexperiment_platformprofiling}, and another in which batches of \dvttermmagicinstruction\ invocations are profiled (see figures \ref{fig:magicinstructionpseudocodeforeach} and \ref{fig:magicinstructionpseudocodeforall}).
 This is performed due to profiling overhead, described in section \ref{sec:methodologyexperiment_platformprofiling}, which influenced the profiled costs too greatly.
 As such, \dvttermmagicinstruction s had to be batched in order to be profiled correctly.
 An elaboration on this may be found in section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}.
+
+\input{figmagicinstructionspseudocode.tex}
 
 Thus, the established overhead cost for $1000$ \dvttermmagicinstruction s is summarized in table \ref{tab:magicinstructionsforall}.
 From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}

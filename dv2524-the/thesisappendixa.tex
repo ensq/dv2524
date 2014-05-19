@@ -11,23 +11,23 @@
 \addcontentsline{toc}{section}{Simics Productification}
 \label{sec:appendixa_simicsproductification}
 For the purposes of productification of a graphics acceleration solution, as presented in this document, necessary improvements include endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} consideration in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
-If paravirtualization were to used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ as it is not all uncommon that these platforms differ.
+If paravirtualization were to be used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ architectures as it is not all uncommon that these platforms differ.
 After all, clients often wish to simulate other platforms than those they currently posess.
 
 Another cross-platform issue, that comes to mind when interfering with the \dvttermtarget\ physical memory from outside simulation, is that is \glslink{dvtglossmemorypagelocking}{memory page locking}.
-Such functionalities sometimes limited in some operating systems; albeit entirely controlled by the user in \dvttermlinux\ derived systems.
+Such functionalities are sometimes limited in operating systems; albeit entirely controlled by the user in \dvttermlinux\ derived systems.
 \glslink{dvtglosstarget}{Target} system platform differences such as these may incur performance hindrances in that the amount of memory that may be \glslink{dvtglossmemorypagelocking}{locked} could be limited; forcing the solution to perform its bytestream transmission in several instances of \dvttermmagicinstruction s.
 Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
 In section \ref{sec:background_graphicsvirtualization}, potentially costly maintenance of updated graphics frameworks is mentioned as drawback of paravirtualization as a methodology to achieve graphics acceleration.
-Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
+Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in this document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
 In order to further streamline the maintenance of a productified paravirtualized solution, such framework generation could be automated further by utilizing software such as \texttt{SWIG} or \texttt{SIL} to retrieve function signatures; no longer requiring developers to describe function headers by the means of configuration files as described in section \ref{sec:methodologysolution_openglabigeneration}.
 
 Furthermore, in line with the \dvttermsimics\ attributes described in chapter \ref{cha:background}, a certain set of behaviour must be attained in order to align with \dvttermsimics\ philosophy.
 Analyses and recommendations surrounding further study of said attributes, in terms of graphics acceleration by the means of paravirtualization, are presented below in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, respectively.\\
 
 \noindent
-Having analyzed the methodology of paravirtualization as a means to achieve graphics acceleration in the \dvttermsimics\ full-system simulator, and making the assumptions presented in parapgraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, there is no obvious obstacle as to why advanced functionalities such as \dvttermdeterministicexecution , \dvttermcheckpointing , or \dvttermreverseexecution\ could not be integrated with paravirtualized graphics acceleration; nor is there any reason to believe that such attributes should severly impair performance.
+Having analyzed the methodology of paravirtualization as a means to achieve graphics acceleration in the \dvttermsimics\ full-system simulator, and making the assumptions presented in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, there is no obvious obstacle as to why advanced functionalities such as \dvttermdeterministicexecution , \dvttermcheckpointing , or \dvttermreverseexecution\ could not be integrated with paravirtualized graphics acceleration; nor is there any reason to believe that such attributes should severly impair performance of such a solution.
 
 % Deterministic Execution (section Determinism in OpenGL ES)
 \paragraph{Deterministic Execution}
@@ -84,10 +84,11 @@ As such, assuming the graphics framebuffer being present in \dvttermtarget\ syst
 
 \section{Magic Instruction Profiling}
 \label{sec:appendixa_magicinstructionprofiling}
+Below, the two test cases performed for the purposes of profiling the overhead cost of \dvttermmagicinstruction s are presented (see section \ref{sec:results_magicinstructionoverhead}).
 
 \paragraph{Profile each}
 \label{par:results_magicinstructionoverhead_profileeach}
-The per-invocation profiling of $1000$ \dvttermmagicinstruction s is presented in figure \ref{fig:histogrammagicinstructions} as a histogram.
+The per-invocation profiling of $1000$ \dvttermmagicinstruction s is presented in figure \ref{fig:histogrammagicinstructionsforeach} as a histogram.
 All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:methodologyexperiment_platformprofiling}.
 In line with this modification of the source data, due to the established profiling average overhead of \dvtcmdfirstline{profile.dat.avg} having relatively much influence on the data, the visualization features only ten histogram bins - in coagency with the approximate data.
 As such, any offset values below that of zero are placed in the first bin.
@@ -104,8 +105,6 @@ The figure is complemented with the analyzed data presented in table \ref{tab:ma
 \label{par:results_magicinstructionoverhead_profileall}
 In order to complement the data presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, corresponding measurements for batch \dvttermmagicinstruction\ invocations is collected in accordance to the pseudo code presented in table \ref{tab:magicinstructionsforall}.
 In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:methodologyexperiment_platformprofiling}).\\
-
-\input{figmagicinstructionspseudocode.tex}
 
 \input{tabmagicinstructionsforall.tex}
 
