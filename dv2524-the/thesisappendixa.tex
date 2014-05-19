@@ -5,26 +5,3 @@
 \chapter*{Appendix A}
 \label{cha:appendixa}
 \addcontentsline{toc}{chapter}{Appendix A}
-
-% Determinism in OpenGL ES
-\section*{Determinism in OpenGL ES}
-\label{sec:appendixa_determinisminopengles}
-\addcontentsline{toc}{section}{Determinism in OpenGL ES}
-Following an \dvttermapi\ specification such as \dvttermopengles , it naturally follows that there may be implementational differences in-between vendor drivers.
-Such variations are commonly insignificant and, although present, do not affect the end-user.
-Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \dvttermsimics\ full-system simulator whilst simulating \dvttermopengles .\\
-
-\noindent
-In line with driver inconsistencies, there may be cause to belive that rounding of pixel values may vary dependent on \dvttermhost\ driver vendor.
-Typically, such variations are far from noticable and would not offset simulation timing.
-Neither would this inconsequential execution affect the local deterministic trait during simulation, as the driver in itself is coherent in its execution.
-
-In \dvttermsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independant on the \dvttermhost\ system.
-For example, one may pose the scenario of \dvttermsimics\ users, using different driver vendors on their respective \dvttermhost\ machines, wishing to share \dvttermcheckpoint s in which an application utilizing \dvttermopengles\ is being executed.
-In this manner, posing that the execution paths of said application treads on functionality that is not intricately defined by the \dvttermopengles\ specification, the output may differ.
-Note that, presuming the output (usually a buffer to-be presented on-screen) is not calculated upon, this does not affect the \dvttermtiming\ of the users' simulations.
-As such, this scenario maintains the determinism and repeatability traits of \dvttermsimics .
-
-However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot, such as the ones presented in section \ref{sec:methodologyexperiment_benchmarking}) the \dvttermtiming\ of simulation is influenced which may propogate - effectively causing a state-change in the simulated \dvttermcpu .
-In this manner, the deterministic trait of \dvttermsimics\ would be broken, as certain instructions no longer correspond to their previously \dvttermtiming -accurate cycles.
-
