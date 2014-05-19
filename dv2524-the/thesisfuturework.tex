@@ -4,12 +4,20 @@
 % Future Work
 \chapter{Future Work}
 \label{cha:futurework}
-\ldots
+The solution devised for the purpose of this study may be advanced in a number of ways in order to support higher variations in differing platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintinence.
+Additionally, in consideration before productivization, the solution may be improved in terms of cross-platform capabilites.
+Such improvements include consideration of endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
+If paravirtualization were to used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ as it is not all uncommon that these platforms differ.
+After all, clients often wish to simulate other platforms than those they currently posess.
+
+Another cross-platform issue, that comes to mind when interfering with the \dvttermtarget\ physical memory from outside simulation, is that is \glslink{dvtglossmemorypagelocking}{memory page locking}.
+Such functionalities sometimes limited in some operating systems; albeit entirely controlled by the user in \dvttermlinux\ derived systems.
+\glslink{dvtglosstarget}{Target} system platform differences such as these may incur performance hindrances in that the amount of memory that may be \glslink{dvtglossmemorypagelocking}{locked} could be limited; forcing the solution to perform its bytestream transmission in several instances of \dvttermmagicinstruction s.
+Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
 % TODO:
 
 % Plaform improvements:
-%Expand upon little-/big endian debauchery and floating points issues that would arise if target and host don't share platform. Might be tightly coupled with memory sharing issues that would arise if target system does not have similar functionality as with Linux's MAP_LOCKED.
 %One might consider automating method signature retrieval by using frameworks such as SWIG or SIL.
 
 % Safety Critical solutions:
@@ -34,7 +42,7 @@
 \label{par:futurework_advancedfunctionality_reverseexecution}
 \ldots
 
-\section{\dvttermapi\ Extensions}
+\section{API Extensions}
 \label{sec:futurework_apiextensions}
 \ldots
 
