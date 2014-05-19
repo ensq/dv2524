@@ -73,13 +73,22 @@ As such, the incorporation of \dvttermdeterministicexecution\ into the paravirtu
 \label{par:futurework_simicsproductification_checkpointing}
 \index{Checkpointing}
 The incorporation of \dvttermcheckpointrestart\ schemes in the paravirtualized solution described in chapter \ref{cha:methodologysolution} would require an efficient way of saving- and storing the \dvttermopengl\ state, as present in the \dvttermhost\ system.
-The possibility of incorporating such functionality has, as mentioned in chapter \ref{cha:relatedwork}, been studied and performed in the \dvttermqemu\ full-system simulator by...
+The possibility of incorporating such functionality has, as mentioned in chapter \ref{cha:relatedwork}, been studied and performed in the \dvttermqemu\ full-system simulator by Lagar-Cavilla et al. in their work on VMGL\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+Such state retrieval, in the case of \dvttermopenglestwopointo , may be achieved by the \dvtcmdcodeinline{glGet}-set of \dvttermopengl\ library methods\footnote{Note that such fit-for-purpose methods may not necessarily be available in other graphics frameworks, but since this dissertation focuses on \dvttermopenglestwopointo , such dilemmas will not be elaborated upon further in this document.}.
+Using these methods, one ought be able to retrieve the entirety of the \dvttermopengl\ state variables present in the \dvttermhost\ system (see \dvtcmdcitefur{technicaldocs:silicongraphics:2014} for more information on the \dvtcmdcodeinline{glGet}-family of methods).
+
+Having retrieved these variables, one might subsequently store the changes in \dvttermopengl\ states in some data structure; thus avoiding the need to store the entirety of these states every frame.\\
+
+\textit{SPECULATION: Had the subject framework of paravirtualization been earlier versions of \dvttermopengl , it might have been possible to use the push- and pop-methodology existant in those frameworks for the solution to know beforehand what states to save.}
 
 % Reverse execution
 \paragraph{Reverse Execution}
 \label{par:futurework_simicsproductification_reverseexecution}
 \index{Reverse Execution}
 \ldots
+
+% Having analyzed the addition of valued simics attributes
+% There is no clear obstacle as to why performance ought be severly impaired by the introduction of said 
 
 \section{API Extensions}
 \label{sec:futurework_apiextensions}
