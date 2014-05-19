@@ -1,28 +1,16 @@
 % thesismethodologysolution.tex
 % Chapter Methodology - Solution.
 
-% TODO:
-% Strengths of solution.
-% Identified bottlenecks.
-% Magic instruction profiling (point out that, although tests show no larger impact of just a magic instruction with nops, that magic instruction require to exit hardware aided virtualization, JIT-compilation optimization, and to simply interpret the occurence of a magic instruction. Speculate surrounding how this may affect the outcome)
-% Speculation surrounding memory page translation.
-
 % Methodology - Solution:
 \chapter{Methodology - Solution}
 \label{cha:methodologysolution}
 The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
-Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see section \dvtcmdrefname{sec:relatedwork_qemu} under \dvtcmdrefname{cha:appendixa}).\\
+Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see section.
 
-\noindent
 In accordance to the \dvttermreferenceimplementation , paravirtualized graphics acceleration is achieved by the means of three overall components; being the Target System Libraries, the Host System Libraries, and the communications channel aptly named the Simics Pipe (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the purposes of said components).
 
 % TODO:
 % Expand on general methodology in terms of system simulation, and describe simulation layer target using descriptive figure.
-
-%Cite dv2549:
-%Something akin to: "...although there are findings indicating that CPU simulation of GPUs is getting increasingly feasible..."
-
-\ldots
 
 % TODO: Insert figure visualizing structure of solution
 \missingfigure[figwidth=6cm]{Visualization of solution components.}
@@ -30,9 +18,9 @@ In accordance to the \dvttermreferenceimplementation , paravirtualized graphics 
 \section{OpenGL ABI Generation}
 \label{sec:methodologysolution_openglabigeneration}
 \index{OpenGL ABI Generation}
-In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were developed for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} \& \ref{sec:methodologysolution_hostsystemlibraries}).
+In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were devised for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} \& \ref{sec:methodologysolution_hostsystemlibraries}).
 As such, the majority of the \dvttermopengl\ function definitions described in section \ref{sec:methodologysolution_targetsystemlibraries} are produced by this tool.
-The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; in turn dictating the serializing \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s, and the corresponding - on the recieving end - \dvttermhost\ decoding libraries.
+The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; making out the majority of the \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s and the corresponding \dvttermhost\ decoding libraries.
 
 % TODO:
 % Expand on the extent of methods being generated, including inout vairables, return values etc.
@@ -50,7 +38,7 @@ As such, the target systems libraries implement the \dvttermegl - and \dvttermop
 However, instead of communicating with the platform windowing system (in terms of \dvttermegl ) and the graphics device (in terms of \dvttermopengl ) - and instructing said device in coagency with the user; the target system libraries rather serialize the given command stream and forwards it to the simulation \dvttermhost .
 However, the transmission of the command stream is not necessarily performed at once, or in the designated order due to the formation of the \dvttermopenglestwopointo\ framework.
 This complex of problems involve uncertanties of the proportion of argument data, as size is not necessarily specified by the user.
-As such, certain method serialization may have to be delayed until further information surrounding the argument	dimensions have been relayed to the \dvttermopengl\ library.
+As such, certain serialization may have to be delayed until further information surrounding the argument	dimensions have been relayed to the \dvttermopengl\ library.
 
 The serialization described in the above paragraph is thus formatted and encoded in accordance to a certain data format, which is kept as minimal as possible throughout execution.
 This encoding includes packing variable length data types, such as 8-bit characters, 16-bit fields, or 64-bit integer values into fixed length structures, so that the \dvttermhost\ system may interpret these values independently of how corresponding types are defined on that unrelated platform\footnote{It should be noted, however, that the solution assumes a little endian architecture and \dvttermieeefp\ standard for floating point representation. If the \dvttermhost\ system would not conform to these prerequisites, the solution would have to be complemented with additional support.}.
@@ -71,7 +59,7 @@ See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the method
 \index{Host System Libraries}
 In collaboration with the target system libraries (see \ref{sec:methodologysolution_targetsystemlibraries}), the host system libraries - running on the \dvttermhost\ system - subsequently decodes and interprets the recieved byte stream.
 Said decoding involves unpacking data from fixed length storage into variable-size types that the \dvttermopengl\ libraries expect.
-Furthermore, and again similarly to the target system libraries, due to some design decitions inherent in the \dvttermopenglestwopointo\ framework, the host system libraries need maintain some data; in particular - vertex attributes.
+Furthermore, and again similarily to the target system libraries, due to some design decisions inherent in the \dvttermopenglestwopointo\ framework, the host system libraries need maintain some data; in particular - vertex attributes.
 Such data is buffered in the host system libraries until drawn in a later, and seperate, \dvttermopengl\ invocation\footnote{A possible optimization would be to cache said data, to avoid the need to transmit unmodified vertices multiple times, despite so being specified by the user.}.
 When the requested \dvttermopengl\ invocation has been performed, any return- or in-out values are returned to the \dvttermtarget\ system using the Simics Pipe (see \ref{sec:methodologysolution_simicspipe}).
 
@@ -86,14 +74,14 @@ Due to variations in the creation and maintinence of windows on different platfo
 As such, for the purposes of this dissertation, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 
 The problem may be summarized as the dilemma of the target system libraries having to communicate with the correct window (located in the simulation \dvttermhost ), yet having the \dvttermtarget\ system window reporting sucessful initialization.
-After all, it would be problematic if the \dvttermopengl\ utilizing application would have to be modified in order to be paravirtualized.
+After all, it would be problematic if the \dvttermopengl -utilizing application would have to be modified in order to be paravirtualized.
 Effectively, this means that it would be desireble to maintain the native functionality of the target system \dvttermegl\ library.
 However, in order to swap the backbuffers to which \dvttermopengl\ renders in the window present in the \dvttermhost\ system, one must use \dvttermegl\ methods.
-In this way, the problem comprises a conflict in-between wanting to keep the functionality of the native \dvttermegl\ library, yet modify a small subset. 
+In this way, the problem comprises a conflict in-between wanting to keep the functionality of the native \dvttermegl\ library, yet modify a small subset of it. 
 This issue is overcome by the use of symbol overriding\footnote{Utilizing \dvtcmdcodeinline{LD_PRELOAD} on the \dvttermlinux\ platform.}, which allows the target system libraries to overload a function, serialize and forward the invocation to the \dvttermhost\ system as described in \ref{sec:methodologysolution_targetsystemlibraries}, locate the next occurance of the same symbol in the symbol table (being the original native \dvttermegl\ function definition), and invoke the original function.
 As such, the target system \dvttermegl\ library does not replace the native \dvttermtarget\ \dvttermegl\ library, as with the target system \dvttermopengl\ library, but rather overloads some of it's definition.
 This gives the effect of a sucessfully created window, not having returned any errors in the window creation and maintinence - yet having the application actually communicating with an entirely different window present only in the \dvttermhost\ system.
-As such, the target system libraries is effectively performing a man-in-the-middle attack.
+As such, the target system libraries is effectively performing a man-in-the-middle attack on the \dvttermegl\ library.
 
 At the time of writing, the target system libraries simply overload the \dvtcmdcodeinline{eglSwapBuffers} function, but the methodology could easily be extended to listen in on requested window dimensions and other window attributes - effectively circumventing the need to heed any differences in-between platform windowing systems.
 
@@ -103,9 +91,9 @@ At the time of writing, the target system libraries simply overload the \dvtcmdc
 The so named 'Simics Pipe' constitutes the communications channel in \dvttermsimics .
 As such, it is responsible for transferring a serialized command stream - or byte stream - to- and from the simulation \dvttermhost .
 There are a number methodologies serving such purposes, several of which are expanded upon in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}), such as utilizing UNIX sockets or other networking technologies.
-However, due to the inhererent performance demands brought on by serialization of real-time graphics invocations, the methodology of \dvttermmagicinstruction s were selected for use for the purpose of this study (see section \dvtcmdrefname{sec:background_magicinstructions} under \dvtcmdrefname{cha:appendixa} for an elaboration on \dvttermmagicinstruction s).
-Magic instructions allow for fast, in the pretext of the simulation \dvttermtarget , almost instant escape from the simulation context - and may carry a limited amount of information with it from inside the simulation out into the real world.
-However, other methodologies - albeit slower - may be fast enough to accomodate for graphics paravirtualization; a methodology the \dvttermandroidemulator , in addition to \dvttermmagicinstruction s, may utilize if the user so wishes\footnote{It may be of interest to know that the \dvttermsimics\ \dvttermopengles\ paravirtualization technology, during development, was accomodated by a TCP/IP client-/server model.}.
+However, due to the inhererent performance demands brought on by serialization of real-time graphics invocations, the methodology of \dvttermmagicinstruction s were selected for use for the purpose of this study.
+Magic instructions allow for fast, in the pretext of the simulation \dvttermtarget\ - almost instant - escape from the simulation context - and may carry a limited amount of information with it from inside the simulation out into the real world.
+However, other methodologies, albeit slower, may be fast enough to for use in graphics paravirtualization; the \dvttermandroidemulator , in addition to \dvttermmagicinstruction s, accomodating for TCP/IP communication\footnote{It may be of interest to know that the \dvttermsimics\ \dvttermopengles\ paravirtualization technology, during development, was accomodated by a TCP/IP client-/server model.}.
 
 In order to perform a \dvttermmagicinstruction , the Simics Pipe uses \texttt{GCC} Extended Asm to directly inject \dvtcmdcodeinline{__volatile__}-flagged (as to prevent the compiler from reordering memory accesses during optimization) \texttt{assembly} instructions into \dvttermc\ code, which - in addition to \dvttermcplusplus\ - the Simics Pipe is written in.
 During said instruction, one may simply write an arbitrary 64-bit address to any register fit for the purpose (the number- and size of processor registers being the data-sharing bottleneck of the \dvttermmagicinstruction\ paradigm).
@@ -115,7 +103,7 @@ The execution of a \dvttermmagicinstruction , in line with the \dvttermmagicinst
 Knowing the occurence of a \dvttermmagicinstruction\ with the corresponding leaf number, one may assume the existance of a \dvttermtarget\ memory address in the simulated \dvttermtarget\ \dvttermcpu\ register \dvtcmdcodeinline{rbx}.
 Note that, at this point, the retrieved address is in the format of a \dvttermtarget\ machine virtual address; the destination of which is unknown to the simulation \dvttermhost .
 As such, this address need be translated in order to retrieve the package contents said memory address points to.
-See \ref{sec:methodologysolution_memorytabletraversal} for more information on how the address is interpreted and the entirety of the indended sequence of bytes retrieved from \dvttermhost\ system memory.
+See \ref{sec:methodologysolution_memorytabletraversal} for more information on how the address is interpreted and the entirety of the intended sequence of bytes retrieved from \dvttermhost\ system memory.
 
 See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
 
@@ -127,13 +115,13 @@ See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the method
 As outlined in section \ref{sec:methodologysolution_simicspipe}, \dvttermtarget -/\dvttermhost\ memory sharing in the Simics Pipe is performed by the means of exposing a \dvttermtarget\ virtual address to the simulation \dvttermhost .
 Said virtual address is, understandably so, only valid in the simulated system and bears no relevance in the real world; outside of the fact that the data to which the virtual address refers - in the \dvttermtarget\ system - is, in turn, hidden behind layers of abstraction somewhere in the \dvttermhost\ system.
 
-Using \dvttermsimics , utilizing the \dvttermmmu\ of the \dvttermtarget\ system, one may translate a \dvttermtarget\ virtual address (or 'virtualized virtual address') to a (\dvttermtarget ) physical device address; to-/from which - again, using \dvttermsimics\ - we may read and-/or write an arbitrary number of bytes to-/from physical memory directly.
+Using \dvttermsimics , utilizing the \dvttermmmu\ of the \dvttermtarget\ system, one may translate a \dvttermtarget\ virtual address (or 'virtualized virtual address') to a (\dvttermtarget ) physical device address; to-/from which - again, using \dvttermsimics\ - we may read and-/or write an arbitrary number of bytes to or from physical memory directly.
 However, due to the complexity induced by circumventing the abstraction of virtual memory, there is no guarantee that the memory page to which the exposed physical address refers has not been swapped out of primary memory.
 In order to solve this, using some \dvttermos s (e.g., \dvttermfedora \footnote{Using the \dvtcmdcodeinline{MAP_LOCKED} flag during invocation of the \dvttermlinux\ \dvtcmdcodeinline{mmap}-system call; alternatively using the specific \dvtcmdcodeinline{mlock}-system call.}), one may \glslink{dvtglossmemorypagelocking}{'lock'} pages in order to prevent them from being swapped to disk.
 This is the methodology used to ensure that the physical memory space, referred to by the virtual address sent to the simulation \dvttermhost , is still existant in \dvttermtarget\ primary memory when the simulation state has been paused\footnote{Other methods to achieve this include repeatedly 'polling' the corresponding memory pages in the \dvttermtarget\ system before inducing the simulation context switch to the \dvttermhost\ system.}.
 
-Furthermore, and again induced by the unorthodox circumvention of the virtual memory paradigm, it is probable that the multiple memory pages making out particularily large serialized command streams, such as the transmission of vertex or texture data, are not consecutively aligned in physical memory (\todo{Refer to figure.} ), although guaranteed to be continious blocks in terms of virtual memory.
-As such, the the physical addresses of memory pages must be continiously retrieved and translated on a per-page basis; effectively 'traversing' the virtual memory table.
+Furthermore, and again induced by the unorthodox circumvention of the virtual memory paradigm, it is probable that the multiple memory pages making out particularily large serialized command streams, such as the transmission of vertex or texture data, are not consecutively aligned in physical memory, although guaranteed to be continious blocks in terms of virtual memory.
+As such, the physical addresses of memory pages must be continiously retrieved and translated on a per-page basis; effectively 'traversing' the virtual memory table.
 This can be done in a trivial manner by simply iterating the original virtual address with the \textit{\dvttermtarget } page size, commonly being - as during the study performed for the purpose of this dissertation - \dvtcmdnum{4096} bytes.
 Naturally, said process must be performed regardless of data being read or written to-/from the indended - physical - memory space.
 
