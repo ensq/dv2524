@@ -46,13 +46,10 @@ Analyses and recommendations surrounding further study of said attributes, in te
 \paragraph{Deterministic Execution}
 \label{par:futurework_simicsproductification_deterministicexecution}
 \index{Deterministic Execution}
-\ldots
-
 Following an \dvttermapi\ specification such as \dvttermopengles , it naturally follows that there may be implementational differences in-between vendor drivers.
 Such variations are commonly insignificant and, although present, do not affect the end-user.
-Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \dvttermsimics\ full-system simulator whilst simulating \dvttermopengles .\\
+Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \dvttermsimics\ full-system simulator whilst simulating \dvttermopengles .
 
-\noindent
 In line with driver inconsistencies, there may be cause to belive that rounding of pixel values may vary dependent on \dvttermhost\ driver vendor.
 Typically, such variations are far from noticable and would not offset simulation timing.
 Neither would this inconsequential execution affect the local deterministic trait during simulation, as the driver in itself is coherent in its execution.
@@ -64,7 +61,12 @@ Note that, presuming the output (usually a buffer to-be presented on-screen) is 
 As such, this scenario maintains the determinism and repeatability traits of \dvttermsimics .
 
 However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot, such as the ones presented in section \ref{sec:methodologyexperiment_benchmarking}) the \dvttermtiming\ of simulation is influenced which may propogate - effectively causing a state-change in the simulated \dvttermcpu .
-In this manner, the deterministic trait of \dvttermsimics\ would be broken, as certain instructions no longer correspond to their previously \dvttermtiming -accurate cycles.
+In this manner, the deterministic trait of \dvttermsimics\ would be broken, as certain instructions no longer correspond to their previously \dvttermtiming -accurate cycles.\\
+
+\noindent
+More often than not, the scenario described in the above paragraph will not be an issue to cycle-accurate \dvttermdeterministicexecution\ in \dvttermsimics , as the framebuffer usually only acts as means to present data to the user.
+In this way, the attribute of \dvttermdeterministicexecution\ would not be scathed by integration of paravirtualized graphics in the \dvttermsimics\ full-system simulator presuming the preconditions described above are not compromised.
+As such, the incorporation of \dvttermdeterministicexecution\ into the paravirtualized methodology as described in this document is possible through the set of assumptions, as described in this paragraph.
 
 % Checkpointing
 \paragraph{Checkpointing}
