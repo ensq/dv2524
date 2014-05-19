@@ -137,43 +137,17 @@ This affects the performance by forcing the simulation to no longer be executed 
 Additionally, this also entail \dvttermsimics\ no longer being able to utilize \dvttermjit\ compilation to speed up execution; having to rely on regular code interpretation.
 As such, in great numbers, \dvttermmagicinstruction s may potentially affect potentiallyerformance. 
 
-In line with the effect that this overhead may have on experiments such as benchmark Chess (see paragraph \dvtcmdrefname{par:results_phong}), a number of tests have been executed for the purposes of trying establish the obscure overhead \dvttermmagicinstruction s may induce.
+In line with the effect that this overhead may have on experiments such as benchmark Chess (see paragraph \dvtcmdrefname{par:results_phong}), a number of tests have been executed for the purposes of trying establish the overhead \dvttermmagicinstruction s may induce.
+
 These tests have been run in two instances; one in which each \dvttermmagicinstruction\ invocation is profiled seperately using the methodology described in section \ref{sec:methodologyexperiment_platformprofiling}, and another in which batches of \dvttermmagicinstruction\ invocations are profiled.
-This has been performed in this manner due to the overload of profiling described in section \ref{sec:methodologyexperiment_platformprofiling}.
+This is performed due to profiling overhead, described in section \ref{sec:methodologyexperiment_platformprofiling}, which influenced the profiled costs too greatly.
+As such, \dvttermmagicinstruction s had to be batched in order to be profiled correctly.
+An elaboration on this may be found in section \dvtcmdrefname{sec:appendixname_magicinstructionprofiling}.
 
-\paragraph{Profile each}
-\label{par:results_magicinstructionoverhead_profileeach}
-The per-invocation profiling of $1000$ \dvttermmagicinstruction s is presented in figure \ref{fig:histogrammagicinstructions} as a histogram.
-All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:methodologyexperiment_platformprofiling}.
-In line with this modification of the source data, due to the established profiling average overhead of \dvtcmdfirstline{profile.dat.avg} having relatively much influence on the data, the visualization features only ten histogram bins - in coagency with the approximate data.
-As such, any offset values below that of zero are placed in the first bin.
-Furthermore, any values outside that of the standard deviation are not visualized in this figure.
-
-\input{fighistogrammagicinstructionsforeach.tex}
-
-From this data, it is apperent that roughly $45\%$ of profiled samples fall in the interval of $0$-$0.5$ milliseconds, a relatively high measurement compared to that of the batch profiling (see paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}).
-The figure is complemented with the analyzed data presented in table \ref{tab:magicinstructionsforeach}
-
-\input{tabmagicinstructionsforeach.tex}
-
-\paragraph{Profile all}
-\label{par:results_magicinstructionoverhead_profileall}
-In order to complement the data presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, corresponding measurements for batch \dvttermmagicinstruction\ invocations is collected in accordance to the pseudo code presented in table \ref{tab:magicinstructionsforall}.
-In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:methodologyexperiment_platformprofiling}).\\
-
-\input{figmagicinstructionspseudocode.tex}
+Thus, the established overhead cost for $1000$ \dvttermmagicinstruction s is summarized in table \ref{tab:magicinstructionsforall}.
+From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}
 
 \input{tabmagicinstructionsforall.tex}
-
-\noindent
-From the data presented in paragraphs \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} and \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}, we may establish that the profiling overhead induced when profiling each \dvttermmagicinstruction\ individually causes misrepresentation in the actual elapsed time required by said \dvttermmagicinstruction .
-This is clear when analyzing the batch-wize data presented in table \ref{tab:magicinstructionsforall}, where the cost of a \dvttermmagicinstruction\ invocation is significantly lower.
-This may be caused by the system call \dvtcmdcodeinline{tcdrain}, which	waits until all output written to the referenced serial console has been transmitted.
-One may speculate that said system call may be the cause for eccentric behaviour in the profiling.
-
-As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} is rendered less reliable due to the eccentric profiled behaviour.
-From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
-Due to the volatility of the profiling presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, the author will refrain from using these results for any definite conclusions.
 
 % Benchmark variations
 \section{Benchmark Variations}

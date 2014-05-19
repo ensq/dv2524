@@ -4,19 +4,6 @@
 % Methodology - Experiment:
 \chapter{Methodology - Experiment}
 \label{cha:methodologyexperiment}
-\ldots
-
-% TODO:
-% Describe suspicions of bottlenecks and the purposes of the benchmarks described in sections further down below.
-% Experiment relevant data, such as number of frames gathered per benchmark, resolution of demo etc.
-% The key value variations of each benchmark, with each key value described in tables, deserve it's own section.
-
-%It is vital to sound experiment methodology that the tests performed throughout the benchmark focuses on critical areas and suspected bottlenecks in the implementation.
-%Such key points during simulation may concern a large number of relatively insignificant \termopengles\ invocations, frame-wize \termopengles\ state saving, or transferral of large chunks of data such as textures.
-%These areas may very well be bottlenecks of graphics paravirtualization and thus call for further investigation.
-%Due to the proposed study accentuating performance, and since it concerns a graphics framework often used with real-time applications, it may be viable to measure experimental data in \termframespersecond ~(\termfps ).
-%Alternatively, lone dispatch measurements could be used in coagency with \termframespersecond\ measurements.
-%Additionally, it may be favorable if, during development of said benchmark, if the software could utilize the same code-base to invoke the \termopengles -libraries - independant of platform.
 
 \section{Platform Configuration}
 \label{sec:methodologyexperiment_platformconfiguration}
@@ -87,9 +74,11 @@ Utilizing the methodology described in the above paragraph; when the simulator d
 This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
 As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
 
-% QEMU timing
-Likewize, in \dvttermqemu ...
-However,
+% TODO:
+% Timing in QEMU
+
+%Likewize, in \dvttermqemu , consideration must be taken to virtual time.
+%However,
 
 % TODO:
 % Timing methodologies:
