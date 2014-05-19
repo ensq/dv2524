@@ -4,17 +4,19 @@
 % Aims & Objectives
 \chapter{Aims \& Objectives}
 \label{cha:aimsandobjectives}
-The scope of the study outlined in \dvtcmdcitefur{dissertation:nilsson:2014} consist of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
-Said implementation adheres to a certain \dvttermreferenceimplementation , which is elaborated upon in section \ref{sec:relatedwork_qemu}.
+The study presented in this document, and outlined in \dvtcmdcitefur{dissertation:nilsson:2014}, consists of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full-system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
+The solution devised to accelerate \dvttermopengl\ adheres to a certain \dvttermreferenceimplementation , which is elaborated upon in section \ref{sec:relatedwork_qemu}.
 
-As such, this study concerns investigating the performance, and the feasability of extended benefits and advanced functionality, of paravirtualized graphics acceleration in a virtual platform.
-Said integration entails investigating, analyzing, and developing methods and techniques for efficient communication and execution in the \dvttermsimics\ run-time environment, in addition to identifying liabilities of paravirtualized technologies in regards to \dvttermsimics\ philosophy (being high-performance and \dvttermtiming -accurate determinism and repeatability\dvtcmdcitebib{journals:aarno:2013}).
+As such, this study concerns investigating the performance, and the feasability of extended benefits and advanced functionality, of paravirtualized graphics in a virtual platform.
+This entails investigation, analysis, and development of methods and techniques for efficient communication and execution in the \dvttermsimics\ run-time environment.
+Furthermore, the study comprises analysis of the liabilities of paravirtualized technologies in regards to \dvttermsimics\ philosophy (being high-performance determinism and repeatability\dvtcmdcitebib{journals:aarno:2013}).
 As such, this dissertation does not exclusively concern \dvttermsimics\ integration, but an investigation into paravirtualized drivers in virtual platforms.
 
 Accordingly, for the purpose of this thesis, a paravirtualized solution for graphics acceleration in \dvttermsimics\ has been developed to accomodate for this analysis.
 Said solution is the subject of the thesis presented in this document.
 
-Based off the solution developed for the purpose of this study, this document comprises an analysis into the performance of said solution compared to that of traditional software rasterization.
-As such, the objectives of this dissertation is to establish and present the method of paravirtualization as a feasable way of accelerating graphics in virtual platforms.
+Furthermore, as to accomodate the analysis of benefits and drawbacks of paravirtualized graphics, a number of benchmarks are developed for the purposes of stressing key points in the devised solution; with the goal of locating solution bottlenecks.
+These benchmarks are thusly designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational complexity.
 
-Furthermore, and presented in chapter \ref{cha:futurework}, this thesis also comprise an analysis into the prerequisites for achieving the valued attributes present in the \dvttermsimics\ full-system simulator, as elaborated upon in chapter \ref{cha:background}, in terms of paravirtualized graphics.
+Based off the developed solution, in coagency with the benchmarks devised to profile said solution, this document comprises an analysis into the performance of paravirtualized graphics compared to that of traditional software rasterization.
+As such, the objectives of this dissertation is to establish and present the method of paravirtualization as a feasable way of accelerating graphics in virtual platforms; along with profiling its strengths and weaknesses.
