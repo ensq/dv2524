@@ -5,7 +5,27 @@
 \chapter{Future Work}
 \label{cha:futurework}
 The solution devised for the purpose of this study may be advanced in a number of ways in order to support higher variations in differing platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintinence.
-Additionally, in consideration before productivization, the solution may be improved in terms of cross-platform capabilites.
+Additionally, in consideration to incorporation of a graphics acceleration solution - such as the one presented in this dissertation - into the \dvttermsimics\ full-system simulator, the solution must be improved in terms of cross-platform capabilites.
+Recommendations for future work in terms of integration into the \dvttermsimics\ environment is presented in section \ref{sec:futurework_simicsproductification}.
+
+Below, recommendations for future study, in terms of the experiment performed for the purposes of this thesis, are presented.\\
+
+\noindent
+
+% TODO:
+% Benchmarking accuracy
+% Profiling accuracy
+% Profilation of memory table traversal
+% Mini-benchmark stressing communication bandwidth, without causing cache misses by redundant rendering.
+% Further investigation
+% Heavier graphics benchmarking. The benchmarks presented for this study have effectively been mini-benchmarks, stressing particular bottlenecks in the solution. In line with chapter Rweults and conclusuons having concluded parabvrtualization as feasbile for the means of acceleration ghraphjiocs in virtual platforms, this ought be investigated further with heavier benchmarking in order to more efgfectivelty establish the magnitude of performance hains a paravirtualized solution may achieve.
+% This includes study into the great performance achieved by the QEMU-derived android emulator.
+
+
+
+% Advanced Functionality
+\section{Simcis Productification}
+\label{sec:futurework_simicsproductification}
 Such improvements include consideration of endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
 If paravirtualization were to used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ as it is not all uncommon that these platforms differ.
 After all, clients often wish to simulate other platforms than those they currently posess.
@@ -16,30 +36,25 @@ Such functionalities sometimes limited in some operating systems; albeit entirel
 Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
 % TODO:
-
 % Plaform improvements:
 %One might consider automating method signature retrieval by using frameworks such as SWIG or SIL.
 
-% Safety Critical solutions:
-%A number of possibilities present themselves in terms of safety critical OpenGL utilization, as a paravirtualization can make certain changes to how methods are invoked - without having to modified the application in-and-of-itself. Such a scenario would be to disable all vertex attributes not enabled specifically, each frame.
-
-% Advanced Functionality
-\section{Advanced Functionality}
-\label{sec:futurework_advancedfunctionality}
-
 % Deterministic Execution (section Determinism in OpenGL ES)
 \paragraph{Deterministic Execution}
-\label{par:futurework_advancedfunctionality_deterministicexecution}
+\label{par:futurework_simicsproductification_deterministicexecution}
+\index{Deterministic Execution}
 \ldots
 
 % Checkpointing
 \paragraph{Checkpointing}
-\label{par:futurework_advancedfunctionality_checkpointing}
+\label{par:futurework_simicsproductification_checkpointing}
+\index{Checkpointing}
 \ldots
 
 % Reverse execution
 \paragraph{Reverse Execution}
-\label{par:futurework_advancedfunctionality_reverseexecution}
+\label{par:futurework_simicsproductification_reverseexecution}
+\index{Reverse Execution}
 \ldots
 
 \section{API Extensions}
@@ -49,3 +64,6 @@ Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities m
 % TODO:
 % Use case scenario of existing GL libraries on the host machine - but DX libraries on the target system. Is translation possible (bring up Valve ToGL-project)?
 %Speculate surrounding possible use-case in which the target system has DirectX whereas the host machine sits on OpenGL and wants to accelerate target system graphics using paravirtualization.
+
+% Safety Critical solutions:
+%A number of possibilities present themselves in terms of safety critical OpenGL utilization, as a paravirtualization can make certain changes to how methods are invoked - without having to modified the application in-and-of-itself. Such a scenario would be to disable all vertex attributes not enabled specifically, each frame.
