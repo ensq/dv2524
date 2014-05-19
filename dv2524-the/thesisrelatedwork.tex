@@ -1,9 +1,6 @@
 % thesisrelatedwork.tex
 % Chapter Related Work.
 
-% TODO:
-% Add Lagar-Cavilla as a section
-
 \chapter{Related Work}
 \label{cha:relatedwork}
 System simulators are abundant and exist in corporate\dvtcmdcitebib{magazines:bohrer:2004}, academic\dvtcmdcitebib{journals:rosenblum:1995}, and open-source variations\dvtcmdciteref{magazines:bartholomew:2006}.
@@ -13,21 +10,21 @@ Furthermore, such simulators are may be used to port \dvttermos s to new process
 % Related work: Graphics acceleration
 \noindent
 For the purposes of graphics acceleration, there are number of stretegies, methodologies and procedures (several of these are expanded upon in chapter \ref{cha:methodologysolution}).
-Based off these core strategies, such as device modeling, various passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems; such as the development of specialized passthrough drivers\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
-One such instace is presented by Hansen in his work on the Blink display system\dvtcmdcitebib{inproceedings:hansen:2007}.
+Based off these core strategies, such as device modeling, various passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems, such as the development of specialized passthrough drivers\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+One such instance is presented by Hansen in his work on the Blink display system\dvtcmdcitebib{inproceedings:hansen:2007}.
 
 Neither are the concepts of advanced simulatory features new to \dvttermgpu\ virtualization, as there have are multiple attempts to implement the \dvttermcheckpointrestart -model in a \dvttermgpu\ context, such as the work done by Guo et al. on the CUDA framework\dvtcmdcitebib{inproceedings:guo:2013}.
-Another solution which also supports the \dvttermcheckpointrestart -scheme is the VMGL-solution, as presented by Lagar-Cavilla et al., which by the means of paravirtualization accelerated the \dvttermopengl\ $1.5$\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
-The groundwork produced by Lagar-Cavilla et al. showcased the potential for paravirtualized graphics, as the VMGL framework, for a certain set of benchmarks, attained improvements of roughly two order of magnitude - in relation to software rasterization.
+Another solution which also supports the \dvttermcheckpointrestart -scheme is VMGL, as presented by Lagar-Cavilla et al., which by the means of paravirtualization accelerated the \dvttermopengl\ $1.5$ framework\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+The groundwork produced by Lagar-Cavilla et al. showcased the potential for paravirtualized graphics, as the VMGL framework, for a certain set of benchmarks, attained improvements of roughly two orders of magnitude - in relation to software rasterization performed for the sake of said experiment.
 
-Current promosing projects surrounding \dvttermgpu\ virtualization include the Virgil3D-project, an introductory e-mail on which was first posted to the \texttt{qemu-devel} \dvttermqemu\ development mailing list\dvtcmdciteref{technicaldocs:qemudevel:2014}.
-As described at the project homepage\footnote{\url{http://virgil3d.github.io/}}, the project strives to create a virtual \dvttermgpu , which may subsequently utilize \dvttermhost\ hardware to accelerate 3D rendering.
+Current promising projects surrounding \dvttermgpu\ virtualization include the Virgil3D-project, an introductory e-mail on which was first posted to the \texttt{qemu-devel} \dvttermqemu\ development mailing list\dvtcmdciteref{technicaldocs:qemudevel:2014}.
+As described at the project homepage\footnote{\url{http://virgil3d.github.io/}}, the project strives to create a virtual \dvttermgpu\ which may subsequently utilize \dvttermhost\ hardware to accelerate 3D rendering.
 The project is currently being maintained, again according to the projects GitHub homepage, by Red Hats Dave Airlie.
 
 Other related works include modeling \dvttermgpu\ devices in the \dvttermqemu\ full-system simulator with software \dvttermopengles\ rasterization support, as presented by Shen et al.\dvtcmdcitebib{inproceedings:shen:2010}.\\
 
 \noindent
-Whatever the method, graphics virtualization is no longer limited to the academic community; but also in industry, as big virtualization players have begun to incorporate graphics accelerations support in their products - such as \dvttermvmware \dvtcmdciteref{technicaldocs:vmware:2014}.
+Whatever the method, graphics virtualization is no longer limited to the academic community; but also in the industry, as big virtualization players have begun to incorporate various graphics acceleration solutions in their products - such as \dvttermvmware \dvtcmdciteref{technicaldocs:vmware:2014}.
 
 % Reference Solution
 \section{QEMU}
@@ -38,9 +35,9 @@ Whatever the method, graphics virtualization is no longer limited to the academi
 \dvttermqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005} and a high-speed functional simulator\dvtcmdcitebib[p.~1]{inproceedings:shen:2010} (see \dvtcmdciteref[p.~69]{magazines:bartholomew:2006} for an overview of \dvttermqemu ).
 Its virtual platform supports simulation of several common system architectures and hardware devices and can, like \dvttermsimics , save and restore the state of a simulation\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005}.
 
-As such, \dvttermqemu\ may, like \dvttermsimics , run unmodified \dvttermtarget\ hardware - such as \dvttermos s, drivers, and other software.
-The platform is widely used in academia, and is the subject of several articles and reports cited throughout this document, such as the graphics acceleration described by Lagar-Cavilla et al.\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, and the work by Guo et al.\dvtcmdcitebib{inproceedings:guo:2013}.
-Additionally, \dvttermqemu\ powers the \dvttermandroidemulator , which helps mobile developers bring about software for the \dvttermandroid\ \dvttermos\ (see paragraph \dvtcmdrefname{par:relatedwork_qemu_androidemulator} for an elaboration on the \dvttermandroidemulator ).
+As such, \dvttermqemu\ may, like \dvttermsimics , run unmodified \dvttermtarget\ hardware such as \dvttermos s, drivers, and other software.
+The platform is widely used in academia, and is the subject of several articles and reports cited throughout this document such as the graphics acceleration described by Lagar-Cavilla et al.\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, and the work by Guo et al.\dvtcmdcitebib{inproceedings:guo:2013}.
+Additionally, \dvttermqemu\ powers the \dvttermandroidemulator , which helps mobile developers bring about software for the \dvttermandroid\ \dvttermos .
 
 \paragraph{Android Emulator}
 \label{par:relatedwork_qemu_androidemulator}
@@ -48,12 +45,12 @@ Additionally, \dvttermqemu\ powers the \dvttermandroidemulator , which helps mob
 The \dvttermandroidemulator\ is described as a virtual mobile device emulator\dvtcmdciteref{web:google:2013:usingtheemulator}.
 Included in the \dvttermandroidsdk , it supports virtualization of an assortment of mobile hardware permutations.
 
-In the presence of thet \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing performance of \dvttermcpu -bound workloads\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
+In the presence of the \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing performance of \dvttermcpu -bound workloads\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
 In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} \& \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ framework\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
 Note, however, that there is as of yet no software rasterized solution for running \dvttermopenglestwopointo\ in the \dvttermandroidemulator .\\
 
 \noindent
-\dvttermgoogle 's solution, the design documents of which are attached in \dvtcmdcitefur{dissertation:nilsson:2014} (see \dvtcmdcitefur{technicaldocs:google:2014}), consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system; by networking sockets or directly via the simulator program.
+\dvttermgoogle 's solution, the design documents of which are attached in \dvtcmdcitefur{dissertation:nilsson:2014} (see \dvtcmdcitefur{technicaldocs:google:2014}), consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system by using networking sockets or directly via the simulator program.
 
 As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:methodologyexperiment_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.\\
 
