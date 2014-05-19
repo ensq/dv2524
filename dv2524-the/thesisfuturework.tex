@@ -11,6 +11,12 @@
 % Due to variations in the creation and maintinence of windows in different platforms, incurred by said platforms utilizing different interfaces for the purpose (e.g., \dvttermfedora\ \& \dvttermandroid )
 % Use case scenario of existing GL libraries on the host machine - but DX libraries on the target system. Is translation possible (bring up Valve ToGL-project)?
 
+%Speculate surrounding possible use-case in which the target system has DirectX whereas the host machine sits on OpenGL and wants to accelerate target system graphics using paravirtualization.
+%A number of possibilities present themselves in terms of safety critical OpenGL utilization, as a paravirtualization can make certain changes to how methods are invoked - without having to modified the application in-and-of-itself. Such a scenario would be to disable all vertex attributes not enabled specifically, each frame.
+
+%Expand upon little-/big endian debauchery and floating points issues that would arise if target and host don't share platform. Might be tightly coupled with memory sharing issues that would arise if target system does not have similar functionality as with Linux's MAP_LOCKED.
+%One might consider automating method signature retrieval by using frameworks such as SWIG or SIL.
+
 % Advanced Functionality
 \section{Advanced Functionality}
 \label{sec:futurework_advancedfunctionality}
