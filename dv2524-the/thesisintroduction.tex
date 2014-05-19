@@ -3,7 +3,6 @@
 
 \chapter{Introduction}
 \label{cha:introduction}
-
 Virtual platforms are becoming a critical tool in the software industry in order to provide cost-effective \dvttermttm\ gains and meet the ever-shortening product life-cycles\dvtcmdcitebib[p.~50,~52]{journals:magnusson:2002}\dvtcmdcitebib[p.~268]{journals:yi:2006} (see \dvtcmdcitebib{magazines:magnusson:2004} for an overview of the benefits of full-system simulation).
 Virtual platforms may deliver these \dvttermttm -benefits in two major ways.
 Firstly, virtual platforms enable pre-silicon development, that is; software development can begin prior to next-generation hardware being available\dvtcmdcitebib[p.~52]{journals:magnusson:2002}.
@@ -19,7 +18,9 @@ Virtual platforms using these techniques can typically achieve a simulation perf
 \noindent
 The \dvttermgpu\ has become a vital part in delivering good user experience on many types of devices ranging from wearable, handheld, and portable units to desktop computers\todo{Statement require citation?}.
 In contrast to \dvttermcpu -bound workloads, when developing \dvttermgpu\ kernels, seemingly insignificant additions to code may cause significant changes in performance due to massively parallelized instruction sets (see Performance~Considerations by Kirk~\&~Hwu\dvtcmdcitebib[ch.~6]{publications:kirk:2010} for an analysis on the volatility of \dvttermgpu\ performance).
-Since \dvttermgpu s operate significantly different from \dvttermcpu s, they pose unique challenges to designers and developers (see Parallel~Programming~and~Computational~Thinking by Kirk~\&~Hwu\dvtcmdcitebib[ch.~13]{publications:kirk:2010} for an elaboration on \dvttermgpgpu\ methodology).
+Since \dvttermgpu s operate significantly different from \dvttermcpu s, they pose unique challenges to designers and developers.
+See Parallel~Programming~and~Computational~Thinking by Kirk~\&~Hwu\dvtcmdcitebib[ch.~13]{publications:kirk:2010} for an elaboration on \dvttermgpgpu\ methodology.
+
 The increased utilization of \dvttermgpu s for general purpose workloads has extended the need for virtualization of such hardware in situations when hardware is busy, unavailable, not sufficient, or for the purposes of debugging \& profiling\footnote{An example of modern technology developed for said purposes is \dvttermwarp\ - \dvttermmicrosoft s latest addition to the \dvttermdirectx\ framework (see \dvtcmdciteref{web:microsoft:2013:warp}).}.
 Yet seemingly few virtual platforms support virtualization of \dvttermgpu s, despite their influence on modern computing.\\
 
@@ -28,7 +29,7 @@ For the purposes of simulation, different solutions follow varying use-cases. Fo
 Albeit useful in certain use-cases and capable of running 'toy' applications, such platforms are often orders of magnitude too slow to run commercial workloads\dvtcmdcitebib[p.~50]{journals:magnusson:2002}.
 Application developers, on the other hand, do not necessarily care for the internal workings of hardware as they typically work at a higher abstraction level, for example; utilizing a graphics \dvttermapi\ (such as \dvttermopengl ) that, in turn, communicate with the device driver.
 As such, application developers may be more interested in achieving decent simulation performance rather than a timing-accurate processor model (see \dvtcmdcitebib[p.~30]{publications:leupers:2010} for an analysis of compromises in system simulation).
-However, due to large differences in-between \dvttermcpu - and \dvttermgpu -architecture, simply delegating commonly \dvttermgpu -bound workloads to the \dvttermhost\ \dvttermcpu\ is rarely feasible in terms of performance.\todo{Refer to dv2549?}
+However, due to large differences in-between \dvttermcpu - and \dvttermgpu -architecture, simply delegating commonly \dvttermgpu -bound workloads to the \dvttermhost\ \dvttermcpu\ is rarely feasible in terms of performance.
 
 Common approaches to achieve better simulation performance includes creating a functionally accurate model of the \dvttermgpu\ (inducing the advantage of being able to utilize the same software [drivers, libraries, etc.] as the \dvttermhost\ platform), where internal details may be simplified, or using \dvttermsoftwarerendering\ without involving the \dvttermgpu\ model.
 However, these methodologies traditionally incur heavy performance losses in comparison to \dvttermgpu\ hardware acceleration.
@@ -44,7 +45,7 @@ Additionally, paravirtualization entail erronous hardware simulation since kerne
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .\\
 
 \noindent
-This proposal suggests - pursuant to  modern-day influence of \dvttermgpu\ technologies and the increasing need for extended virtual platforms - investigation into \dvttermparavirtualization\ of \dvttermopengles\ in the \dvttermsimics\ virtual platform, in accordance to the methodology used by \dvttermgoogle\ in the \dvttermandroidsdk .
+This dissertation - pursuant to  modern-day influence of \dvttermgpu\ technologies and the increasing need for extended virtual platforms - comprises an investigation into \dvttermparavirtualization\ of \dvttermopengles\ in the \dvttermsimics\ virtual platform, in accordance to the methodology used by \dvttermgoogle\ in the \dvttermandroidsdk .
 
 As such, in accordance to The~2012~\dvttermacm ~Computing~Classification~System, proposed study concerns the fields of virtual~machines, graphics systems and interfaces,  and graphics~processors, respectively. Additionally, proposed study concerns, likewize in accordance to The~2012~\dvttermacm ~Computing~Classification~System, \dvttermintel ~Corporation.
 
