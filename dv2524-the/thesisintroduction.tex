@@ -16,7 +16,7 @@ There are several techniques to provide fast functional virtual platforms that a
 Virtual platforms using these techniques can typically achieve a simulation performance in the range of \dvtcmdnum{10}-\dvtcmdnum{1000} \dvttermmipsecond\ \dvtcmdcitebib[p.~24,~25]{journals:aarno:2013}, but there is recorded performance of up to \dvtcmdnum{5000} \dvttermmipsecond \dvtcmdcitebib[p.~38,~39]{publications:leupers:2010}.\\
 
 \noindent
-The \dvttermgpu\ has become a vital part in delivering good user experience on many types of devices ranging from wearable, handheld, and portable units to desktop computers. % \todo{Statement require citation?}
+The \dvttermgpu\ has become a vital part in delivering good user experience on many types of devices ranging from wearable, hand held, and portable units to desktop computers. % \todo{Statement require citation?}
 In contrast to \dvttermcpu -bound workloads, when developing \dvttermgpu\ kernels, seemingly insignificant additions to code may cause significant changes in performance due to massively parallelized instruction sets (see Performance Considerations by Kirk and Hwu\dvtcmdcitebib[ch.~6]{publications:kirk:2010} for an analysis on the volatility of \dvttermgpu\ performance).
 Since \dvttermgpu s operate significantly different from \dvttermcpu s, they pose unique challenges to designers and developers (see Parallel Programming and Computational Thinking by Kirk and Hwu\dvtcmdcitebib[ch.~13]{publications:kirk:2010} for an elaboration on \dvttermgpgpu\ methodology).
 
@@ -40,13 +40,13 @@ Effectively, this means modifying the virtual machine to be similar, but not ide
 As such, one may simplify the virtualization process by neglecting some hardware compatibility\dvtcmdcitebib[p.~1]{inproceedings:youseff:2006}.
 Implementing \dvttermgpu\ simulation by the means of \dvttermparavirtualization\ provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
 For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
-Additionally, paravirtualization entail erronous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
+Additionally, paravirtualization entail erroneous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .\\
 
 \noindent
 This dissertation - pursuant to  modern-day influence of \dvttermgpu\ technologies and the increasing need for extended virtual platforms - comprises an investigation into \dvttermparavirtualization\ of \dvttermopengles\ in the \dvttermsimics\ virtual platform, in accordance to the methodology used by \dvttermgoogle\ in the \dvttermandroidsdk .
 
-As such, in accordance to The~2012~\dvttermacm ~Computing~Classification~System, proposed study concerns the fields of virtual~machines, graphics systems and interfaces,  and graphics~processors, respectively. Additionally, proposed study concerns, likewize in accordance to The~2012~\dvttermacm ~Computing~Classification~System, \dvttermintel ~Corporation.
+As such, in accordance to The~2012~\dvttermacm ~Computing~Classification~System, proposed study concerns the fields of virtual~machines, graphics systems and interfaces,  and graphics~processors, respectively. Additionally, proposed study concerns, likewise in accordance to The~2012~\dvttermacm ~Computing~Classification~System, \dvttermintel ~Corporation.
 
 %The remainder of this document presents the objectives-, question~formulations thereof-, suggested procedure, predicted risks, and the time~plan of proposed study.
 %Implementational details and a breakdown structure is presented under \dvtcmdrefname{cha:appendixa}.

@@ -3,7 +3,7 @@
 \chapter{Research~Questions}
 \label{cha:researchquestions}
 Pursuant to the aim and objectives specified in \dvcmdrefcha{cha:aimandobjectives}, proposed study pertain to the concepts described in this \termcha .
-Accordingly, the key investigatory attributes and explicit research question formulations, sutiable for proposed study, are presented below.
+Accordingly, the key investigatory attributes and explicit research question formulations, suitable for proposed study, are presented below.
 
 \newcommand*\researchquestionitem[2]{\item[#1:] \textit{#2}}
 \begin{multicols}{2}
@@ -24,9 +24,9 @@ Additionally, in regards to the particular simulator this case study employs, a 
 \section{Deterministic~Execution}
 \label{sec:researchquestions_deterministicexecution}
 'Deterministic~Execution' commonly refers to the execution of \termdetalg s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (\dvcmdrefsee{\dvpcmdcitebib{journals:cohen:1979}} for an overview on deterministic- and non-deterministic algorithms).
-Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behaviour caused by concurrent software\dvpcmdcitebib[p.~3-5]{journals:lee:2006}\dvpcmdcitebib[p.~92]{journals:holzmann:1997}.
+Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behavior caused by concurrent software\dvpcmdcitebib[p.~3-5]{journals:lee:2006}\dvpcmdcitebib[p.~92]{journals:holzmann:1997}.
 Some even go as far as to argue that determinism is a prerequisite for effective debugging and testing\dvpcmdcitebib[p.~3,~4]{dissertation:devietti:2012}\dvpcmdcitebib[p.~51,~59]{inproceedings:yu:2012}.
-As such, deterministic behaviour may be seen as a valuable attribute in a virtual platform (\dvcmdrefsee{\dvpcmdcitebib[p.~1,~2]{papers:bergan:2011}} for an overview on the value of determinism in software~development).
+As such, deterministic behavior may be seen as a valuable attribute in a virtual platform (\dvcmdrefsee{\dvpcmdcitebib[p.~1,~2]{papers:bergan:2011}} for an overview on the value of determinism in software~development).
 
 In \termsimics , '\termdetexe ' denotes the entire \termtarget\ system as a \termdetalg , wherein all instructions are executed in a deterministic manner on the simulated hardware\dvpcmdcitebib[p.~20,~21]{journals:aarno:2013}.
 This means that the simulated system (i.e., an \termos ), presuming the same input, will allocate the same memory space in virtual memories, receive the same number of interrupts in sequence, and even inhabit the same registers in virtual \termcpu s\dvpcmdcitebib[p.~19,~20]{journals:aarno:2013} (\dvcmdrefsee{\dvpcmdciteref{web:engblom:2012:determinism}} for a brief rundown of \termdetexe\ in \termsimics ).
@@ -34,12 +34,12 @@ As such, given an arbitrary number of instructions, the simulation state may be 
 Throughout the remainder of this document, \termdetexe\ will refer to the deterministic state transition of the \termtarget\ system; as described in this paragraph.
 
 Due to the established importance of determinism for the purposes of testing \& debugging, and in line with the philosophy of repeatability in \termsimics \dvpcmdcitebib[p.~20,~21]{journals:aarno:2013}, \termdetexe\ is considered an important investigatory attribute for the purpose of proposed study.
-Hence, as a secondary objective with implementation as a stretch goal (\dvcmdrefsee{\dvcmdrefcha{cha:aimandobjectives}}), we propose investigation into the feasability of future \termdetexe\ in naïve paravirtualized graphics acceleration for system simulators.
+Hence, as a secondary objective with implementation as a stretch goal (\dvcmdrefsee{\dvcmdrefcha{cha:aimandobjectives}}), we propose investigation into the feasibility of future \termdetexe\ in naïve paravirtualized graphics acceleration for system simulators.
 
 \section{Checkpointing}
 \label{sec:researchquestions_checkpointing}
 The state of a computer system may be defined as the entirety of its stored information, or memory, at a given time\dvpcmdcitebib[p.~103]{publications:harris:2007}.
-It may be benificial to store such states in a '\termcheckpointrestart ' scheme, as suggested by \dvcmdrefetal{Jiang}\ in regards to \termcuda\ kernels\dvpcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}. 
+It may be beneficial to store such states in a '\termcheckpointrestart ' scheme, as suggested by \dvcmdrefetal{Jiang}\ in regards to \termcuda\ kernels\dvpcmdcitebib[p.~196-197,~210]{inproceedings:zhang:2013}. 
 In this way, developers may save- and restore the state of a system which can reduce overhead of restarting computationally heavy applications from scratch\dvpcmdcitebib[p.~19,~20]{journals:aarno:2013}.
 
 In \termsimics , '\termcheckpointing ' refers to the functionality to save the complete state of a simulation into a portable format.

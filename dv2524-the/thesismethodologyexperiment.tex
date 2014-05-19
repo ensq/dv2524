@@ -32,8 +32,8 @@ Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary p
 The \dvttermsimics\ hardware configuration utilized for the purpose of this experiment simulates an \dvttermintelcoreiseven ; the same processor series to that of the actual hardware of the simulation \dvttermhost\ system.
 Furthermore, \dvttermsimics\ execution, both the software rasterized and paravirtualized platforms, utilize \dvttermkvm\ for the simulation \dvttermtarget\ to run natively on the \dvttermhost\ hardware.
 
-In order to accomodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image (see \dvtcmdciteref{technicaldocs:intel:2013:x86}), circumventing the need to interpret \dvttermarm\ instructions\dvtcmdciteref{web:stylianou:2010}.
-Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see \dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accomodate for said native execution\dvtcmdciteref{web:hofemeier:2010}.}.
+In order to accommodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image (see \dvtcmdciteref{technicaldocs:intel:2013:x86}), circumventing the need to interpret \dvttermarm\ instructions\dvtcmdciteref{web:stylianou:2010}.
+Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see \dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accommodate for said native execution\dvtcmdciteref{web:hofemeier:2010}.}.
 
 \paragraph{Target Software Configuration}
 \label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
@@ -43,7 +43,7 @@ As such, the platform \dvttermos s used for the purpose of this study are as fol
 % Platform Profiling
 \section{Platform Profiling}
 \label{sec:methodologyexperiment_platformprofiling}
-In the presence of of the complexities caused by the occurence of virtual time, profiling of time in virtual platforms sometimes dictate special measures.
+In the presence of of the complexities caused by the occurrence of virtual time, profiling of time in virtual platforms sometimes dictate special measures.
 This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the pretext of the observer - is more relevant than profiling virtual time.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
@@ -51,23 +51,23 @@ In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:back
 As such, in order to appropriately measure the elapsed time of a benchmark frame, said profiling must take place outside of the simulation.
 As expanded upon in section \ref{sec:background_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
-In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
+In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
 In \dvttermlinux , the interface to such a port may be accessed by any of the \dvtcmdcodeinline{/dev/ttyS*} file descriptors.
 
 % TODO: Insert visualization of write-/read of target UART.
 %\missingfigure[figwidth=6cm]{Visualization of write-/read to target UART.}
 
 When using serial ports in this manner, one may introduce a profiling cost.
-This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immidiately sending said byte sequence via the system \dvttermuart .
+This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immediately sending said byte sequence via the system \dvttermuart .
 In order to improve responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
-Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immidiately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
+Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immediately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
 Collected profiling overhead data is presented in table \ref{tab:profiling}.
 
 \input{tabprofiling.tex}
 
-From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occationally be volotile.
+From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occasionally be volatile.
 However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, slightly below that of the average, such large deviation is to be quite rare.
-If not specified otherwize, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximatative data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.\\
+If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximate data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.\\
 
 \noindent
 Utilizing the methodology described in the above paragraph; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
@@ -108,8 +108,8 @@ Frame captures of the benchmarks are presented in figures \ref{fig:benchmarks_ch
 The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
 It is so named because of the chess-like tileset the graphics kernel produces.
 The benchmark is designed to perform a multitude of \dvttermopenglestwopointo\ library invocations per frame; in which each invocation is relatively lightweight in execution and carry a small amount of data argument-wize.
-In the Chess benchmark, this is achieved by renderering a grid of colored (black or white, in order to adhere to the chess paradigm) rectangles where each tile is represented by four two-dimensional vertices in screen-space, in addition to six indices outlining the rectangular shape.
-Since the vertices are already transformed into screen-space, the graphics kernel need perform no additional transformation, adhering to the desired lightweight behaviour of each kernel invocation.
+In the Chess benchmark, this is achieved by rendering a grid of colored (black or white, in order to adhere to the chess paradigm) rectangles where each tile is represented by four two-dimensional vertices in screen-space, in addition to six indices outlining the rectangular shape.
+Since the vertices are already transformed into screen-space, the graphics kernel need perform no additional transformation, adhering to the desired lightweight behavior of each kernel invocation.
 Additionally, the tileset vertices and indices are pre-loaded into \dvttermopengl\ vertex- and index element buffers, so that a lone buffer identifier may be carried over in-place of the heavier vertex set load.
 Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
@@ -117,7 +117,7 @@ Effectively, this means that, for each tile, the benchmark need only bind a vert
 For each tile rendered, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively, in addition to a minor number  per-frame.
 The amount of invocations is purposeful as to stress the \dvttermmagicinstruction\ overhead, as outlined in section \ref{sec:results_magicinstructionoverhead}.
 
-The repeated invocation of lesser draw calls is representative of common usage of drawing a multide of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
+The repeated invocation of lesser draw calls is representative of common usage of drawing a multitude of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
 
 The benchmark kernel, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkchesskernel} under \dvtcmdrefname{cha:appendixb}.
 
@@ -129,7 +129,7 @@ It is so named due to the kernel calculating the Julia fractal; the texturing an
 The benchmark is designed to perform a lone computationally intensive graphics kernel invocation, which will stress the computational prowess of the profiled platform.
 The case is selected for use as the computation of a fractal is trivially scalable in terms of complexity by modifying the number of iterations the fractal algorithm performs, and is thus considered suitable for profiling of computationally intensive graphics kernels.
 
-The benchark kernel, in it's entirety, is presented in section
+The benchmark kernel, in it's entirety, is presented in section
 \dvtcmdrefname{sec:appendixb_benchmarkjuliakernel} under \dvtcmdrefname{cha:appendixb}.
 
 \paragraph{Benchmark: Phong}
@@ -149,7 +149,7 @@ The kernel source code, in it's entirety, is presented in section \dvtcmdrefname
 % Key Figure Variations
 \section{Key Figure Variations}
 \label{sec:methodologyexperiment_keyfigurevariations}
-In order to detect anyting but linear potential of scaling in software rasterized- and paravirtualized \dvttermsimics\ platforms, each benchmark performed in said platforms has been executed in three different versions, respectively.
+In order to detect anything but linear potential of scaling in software rasterized- and paravirtualized \dvttermsimics\ platforms, each benchmark performed in said platforms has been executed in three different versions, respectively.
 These benchmark versions differ in terms of a key figure; where said key figure is a changed variable that could potentially improve- or worsen benchmark performance.
 The purpose of these 'key figure variations' is to detect any unexpected results in execution; and thus identify any performance complexity issues in software rasterized- and paravirtualized \dvttermsimics\ platforms.
 

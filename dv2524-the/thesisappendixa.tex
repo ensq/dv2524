@@ -12,7 +12,7 @@
 \label{sec:appendixa_simicsproductification}
 For the purposes of productification of a graphics acceleration solution, as presented in this document, necessary improvements include endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} consideration in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
 If paravirtualization were to be used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ architectures as it is not all uncommon that these platforms differ.
-After all, clients often wish to simulate other platforms than those they currently posess.
+After all, clients often wish to simulate other platforms than those they currently possess.
 
 Another cross-platform issue, that comes to mind when interfering with the \dvttermtarget\ physical memory from outside simulation, is that is \glslink{dvtglossmemorypagelocking}{memory page locking}.
 Such functionalities are sometimes limited in operating systems; albeit entirely controlled by the user in \dvttermlinux\ derived systems.
@@ -23,11 +23,11 @@ In section \ref{sec:background_graphicsvirtualization}, potentially costly maint
 Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in this document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
 In order to further streamline the maintenance of a productified paravirtualized solution, such framework generation could be automated further by utilizing software such as \texttt{SWIG} or \texttt{SIL} to retrieve function signatures; no longer requiring developers to describe function headers by the means of configuration files as described in section \ref{sec:methodologysolution_openglabigeneration}.
 
-Furthermore, in line with the \dvttermsimics\ attributes described in chapter \ref{cha:background}, a certain set of behaviour must be attained in order to align with \dvttermsimics\ philosophy.
+Furthermore, in line with the \dvttermsimics\ attributes described in chapter \ref{cha:background}, a certain set of behavior must be attained in order to align with \dvttermsimics\ philosophy.
 Analyses and recommendations surrounding further study of said attributes, in terms of graphics acceleration by the means of paravirtualization, are presented below in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, respectively.\\
 
 \noindent
-Having analyzed the methodology of paravirtualization as a means to achieve graphics acceleration in the \dvttermsimics\ full-system simulator, and making the assumptions presented in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, there is no obvious obstacle as to why advanced functionalities such as \dvttermdeterministicexecution , \dvttermcheckpointing , or \dvttermreverseexecution\ could not be integrated with paravirtualized graphics acceleration; nor is there any reason to believe that such attributes should severly impair performance of such a solution.
+Having analyzed the methodology of paravirtualization as a means to achieve graphics acceleration in the \dvttermsimics\ full-system simulator, and making the assumptions presented in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, there is no obvious obstacle as to why advanced functionalities such as \dvttermdeterministicexecution , \dvttermcheckpointing , or \dvttermreverseexecution\ could not be integrated with paravirtualized graphics acceleration; nor is there any reason to believe that such attributes should severely impair performance of such a solution.
 
 % Deterministic Execution (section Determinism in OpenGL ES)
 \paragraph{Deterministic Execution}
@@ -35,19 +35,19 @@ Having analyzed the methodology of paravirtualization as a means to achieve grap
 \index{Deterministic Execution}
 Following an \dvttermapi\ specification such as \dvttermopengles , it naturally follows that there may be implementational differences in-between vendor drivers.
 Such variations are commonly insignificant and, although present, do not affect the end-user.
-Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \dvttermsimics\ full-system simulator whilst simulating \dvttermopengles .
+Below, presuming the occurrence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desirable traits of the \dvttermsimics\ full-system simulator whilst simulating \dvttermopengles .
 
-In line with driver inconsistencies, there may be cause to belive that rounding of pixel values may vary dependent on \dvttermhost\ driver vendor.
-Typically, such variations are far from noticable and would not offset simulation timing.
+In line with driver inconsistencies, there may be cause to believe that rounding of pixel values may vary dependent on \dvttermhost\ driver vendor.
+Typically, such variations are far from noticeable and would not offset simulation timing.
 Neither would this inconsequential execution affect the local deterministic trait during simulation, as the driver in itself is coherent in its execution.
 
-In \dvttermsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independant on the \dvttermhost\ system.
+In \dvttermsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independent on the \dvttermhost\ system.
 For example, one may pose the scenario of \dvttermsimics\ users, using different driver vendors on their respective \dvttermhost\ machines, wishing to share \dvttermcheckpoint s in which an application utilizing \dvttermopengles\ is being executed.
 In this manner, posing that the execution paths of said application treads on functionality that is not intricately defined by the \dvttermopengles\ specification, the output may differ.
 Note that, presuming the output (usually a buffer to-be presented on-screen) is not calculated upon, this does not affect the \dvttermtiming\ of the users' simulations.
 As such, this scenario maintains the determinism and repeatability traits of \dvttermsimics .
 
-However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot, such as the ones presented in section \ref{sec:methodologyexperiment_benchmarking}) the \dvttermtiming\ of simulation is influenced which may propogate - effectively causing a state-change in the simulated \dvttermcpu .
+However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot, such as the ones presented in section \ref{sec:methodologyexperiment_benchmarking}) the \dvttermtiming\ of simulation is influenced which may propagate - effectively causing a state-change in the simulated \dvttermcpu .
 In this manner, the deterministic trait of \dvttermsimics\ would be broken, as certain instructions no longer correspond to their previously \dvttermtiming -accurate cycles.\\
 
 \noindent
@@ -68,7 +68,7 @@ Having retrieved these variables, one might subsequently store the changes in \d
 
 As such, albeit circumstantial, there ought be no reason as to why the introduction of \dvttermcheckpoint\ functionality should pose a problem to a paravirtualized graphics framework.\\
 
-\textit{SPECULATION: Had the subject framework of paravirtualization been earlier versions of \dvttermopengl , it might have been possible to use the push- and pop-methodology existant in those frameworks for the solution to know beforehand what states to save.}
+\textit{SPECULATION: Had the subject framework of paravirtualization been earlier versions of \dvttermopengl , it might have been possible to use the push- and pop-methodology existent in those frameworks for the solution to know beforehand what states to save.}
 
 % Reverse Execution
 \paragraph{Reverse Execution}
@@ -96,7 +96,7 @@ Furthermore, any values outside that of the standard deviation are not visualize
 
 \input{fighistogrammagicinstructionsforeach.tex}
 
-From this data, it is apperent that roughly $45\%$ of profiled samples fall in the interval of $0$-$0.5$ milliseconds, a relatively high measurement compared to that of the batch profiling (see paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}).
+From this data, it is apparent that roughly $45\%$ of profiled samples fall in the interval of $0$-$0.5$ milliseconds, a relatively high measurement compared to that of the batch profiling (see paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}).
 The figure is complemented with the analyzed data presented in table \ref{tab:magicinstructionsforeach}
 
 \input{tabmagicinstructionsforeach.tex}
@@ -112,8 +112,8 @@ In this way, we wanted to circumvent any obscurities induced by profiling overhe
 From the data presented in paragraphs \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} and \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}, we may establish that the profiling overhead induced when profiling each \dvttermmagicinstruction\ individually causes misrepresentation in the actual elapsed time required by said \dvttermmagicinstruction .
 This is clear when analyzing the batch-wize data presented in table \ref{tab:magicinstructionsforall}, where the cost of a \dvttermmagicinstruction\ invocation is significantly lower.
 This may be caused by the system call \dvtcmdcodeinline{tcdrain}, which	waits until all output written to the referenced serial console has been transmitted.
-One may speculate that said system call may be the cause for eccentric behaviour in the profiling.
+One may speculate that said system call may be the cause for eccentric behavior in the profiling.
 
-As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} is rendered less reliable due to the eccentric profiled behaviour.
+As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} is rendered less reliable due to the eccentric profiled behavior.
 From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
 Due to the volatility of the profiling presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, the author will refrain from using these results for any definite conclusions.

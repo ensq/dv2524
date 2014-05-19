@@ -20,7 +20,7 @@ As such, a driver implementing the \termopengl - and \termegl\ \termabi s is to 
 
 The sequence of \termapi -calls are retrieved, or otherwise sent to, by- and through the communications channel (described under \termsec ~\dvcmdrefname{sec:appendixa_simicspipe}) and decoded by a rendering component on the \termhost\ system that interprets said sequence.
 This component utilizes the \termhosttranslatorlibraries\ - described under \termsec ~\dvcmdrefname{sec:appendixa_hostsystemtranslatorlibraries} - to convert the interpreted sequence into the correct format, as expected by the corresponding, underlying, \termhost\ system \termabi s.
-This process may be seperate from \termsimics\ or implemented as a \termsimics ~component.
+This process may be separate from \termsimics\ or implemented as a \termsimics ~component.
 
 %Alternatively, the rasterizer\todo{Is really 'rasterizer' the correct terminology to use?}\ could be run as a process separate from \termsimics .
 %This may carry over some benefits, as stated in the \termandroid ~\termsdk\ technical documents\cite{SEE}.\todo{What benefits?}
@@ -76,18 +76,18 @@ These rules may entail describing the data types, method signatures, and other n
 
 Following an \termapi\ specification such as \termopengles , it naturally follows that there may be implementational differences in-between vendor drivers.
 Such variations are commonly insignificant and, although present, do not affect the end-user.
-Below, presuming the occurence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desireable traits of the \termsimics\ full-system simulator whilst simulating \termopengles .\\
+Below, presuming the occurrence of such inconsistencies, a number of scenarios are presented in order to explain how this may affect the desirable traits of the \termsimics\ full-system simulator whilst simulating \termopengles .\\
 
 \noindent
-In line with driver inconsistencies, there may be cause to belive that rounding of pixel values may vary dependent on \termhost\ driver vendor.
-Typically, such variations are far from noticable and would not offset simulation timing.
+In line with driver inconsistencies, there may be cause to believe that rounding of pixel values may vary dependent on \termhost\ driver vendor.
+Typically, such variations are far from noticeable and would not offset simulation timing.
 Neither would this inconsequential execution affect the local deterministic trait during simulation, as the driver in itself is coherent in its execution.
 
-In \termsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independant on the \termhost\ system.
+In \termsimics , determinism and repeatability are key values, meaning that simulation execution must not differ - independent on the \termhost\ system.
 For example, one may pose the scenario of \termsimics\ users, using different driver vendors on their respective \termhost\ machines, wishing to share \termcheckpoint s in which an application utilizing \termopengles\ is being executed.
 In this manner, posing that the execution paths of said application treads on functionality that is not intricately defined by the \termopengles\ specification, the output may differ.
 Note that, presuming the output (usually a buffer to-be presented on-screen) is not calculated upon, this does not affect the \termtiming\ of the users' simulations.
 As such, this scenario maintains the determinism and repeatability traits of \termsimics .
 
-However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot) the \termtiming\ of simulation is influenced which may propogate - effectively causing a state-change in the simulated \termcpu .
+However, if this varying output is calculated upon (a plausible scenario would be the compression of a graphics output screenshot) the \termtiming\ of simulation is influenced which may propagate - effectively causing a state-change in the simulated \termcpu .
 In this manner, the deterministic trait of \termsimics\ would be broken, as certain instructions no longer correspond to their previously \termtiming -accurate cycles.

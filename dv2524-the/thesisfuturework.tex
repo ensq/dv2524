@@ -4,19 +4,19 @@
 % Future Work
 \chapter{Future Work}
 \label{cha:futurework}
-The solution devised for the purpose of this study may be advanced in a number of ways in order to support higher variations in differing platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintinence.
-Additionally, in consideration to incorporation of a graphics acceleration solution - such as the one presented in this dissertation - into the \dvttermsimics\ full-system simulator, the solution must be improved in terms of cross-platform capabilites.
+The solution devised for the purpose of this study may be advanced in a number of ways in order to support higher variations in differing platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintenance.
+Additionally, in consideration to incorporation of a graphics acceleration solution - such as the one presented in this dissertation - into the \dvttermsimics\ full-system simulator, the solution must be improved in terms of cross-platform capabilities.
 Recommendations for future work in terms of integration into the \dvttermsimics\ environment is presented in section \dvtcmdrefname{sec:appendixa_simicsproductification} under \dvtcmdrefname{cha:appendixa}.
 
 Below, recommendations for future study, in terms of the experiment performed for the purposes of this thesis, are presented.\\
 
 \noindent
-For further studies into paravirtualization as a means to accomodate for graphics acceleration in virtual platforms, the author would like to suggest complementary benchmarking of accelerated graphics performance.
+For further studies into paravirtualization as a means to accommodate for graphics acceleration in virtual platforms, the author would like to suggest complementary benchmarking of accelerated graphics performance.
 This is due to the benchmarks presented for the purpose of this study having effectively been mini-benchmarks; stressing particular suspected bottlenecks in the solution.
 In line with chapter \ref{cha:results} and \ref{cha:conclusion} having concluded paravirtualization as feasible for the means of graphics acceleration in virtual platforms, the methodology ought be profiled further with more verbose benchmarks in order to more effectively establish the magnitude of performance gains a paravirtualized solution may achieve.
 
 Furthermore, and for the purposes of complementing this dissertation in particular, the author would like to suggest implementation of addition mini-benchmarks stressing \dvttermtarget -to-\dvttermhost\ communications.
-Preferably, said benchmark would stress said communication by other means than profiling the sampling of a large texture, since such a test may cause volotile performance in the reference material - being software rasterized \dvttermsimics , possibly due to cache misses (see section \ref{sec:results_benchmarkvariations}).
+Preferably, said benchmark would stress said communication by other means than profiling the sampling of a large texture, since such a test may cause volatile performance in the reference material - being software rasterized \dvttermsimics , possibly due to cache misses (see section \ref{sec:results_benchmarkvariations}).
 When executing such a benchmark, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:methodologysolution_memorytabletraversal}.\\
 
 \noindent
@@ -33,15 +33,15 @@ Earlier this year, \dvttermvalve\ released software capable of converting \dvtte
 Albeit limited in its capabilities, the functionality of translating in-between one, platform-specific, framework to that of a cross-platform framework may be practical.
 
 If such a solution could be implemented to translate- and execute some \dvttermtarget\ program on-the-fly in a virtual machine, in which the \dvttermhost\ system lacks the capability to interpret the original framework, this may extend the area-of-application for full-system simulation.
-As such, further studies into the feasability of such functionality ought be considered.
+As such, further studies into the feasibility of such functionality ought be considered.
 
 \paragraph{Safety Critical Considerations}
 \label{par:futurework_safetycriticalconsiderations}
 Paravirtualization of the \dvttermopenglestwopointo\ library induces the need to maintain various \dvttermopengl\ state variables in \dvttermtarget - and \dvttermhost\ systems (see chapter \ref{cha:methodologysolution}).
-The effective overload of a certain framework opens up the possibility of modifying the bahaviour of that library in certain ways; including how methods are invoked, in what order, and pre-/post-hooks of certain actions.
+The effective overload of a certain framework opens up the possibility of modifying the behavior of that library in certain ways; including how methods are invoked, in what order, and pre-/post-hooks of certain actions.
 
 This ability may be exploited to bend the capabilities of that library to the needs of a certain user; for example, a safety critical version of said paravirtualized library.
 Such a library could, for example, extend the capabilities of the \dvttermopengl\ error state, keeping multiple such instances in memory to prevent said state from being overwritten by the user; effectively making the framework more transparent.
 Another extension, and mayhaps a more usable one, could ensure that the \dvttermopengl\ state is consistent with that as requested by the user; for example, disabling any vertex attribute that the user has not explicitly enabled.
 
-As such, further studies into the feasability of such functionality may be considered.
+As such, further studies into the feasibility of such functionality may be considered.
