@@ -5,7 +5,7 @@
 \label{cha:relatedwork}
 System simulators are abundant and exist in corporate\dvtcmdcitebib{magazines:bohrer:2004}, academic\dvtcmdcitebib{journals:rosenblum:1995}, and open-source variations\dvtcmdciteref{magazines:bartholomew:2006}.
 Such platforms, like \dvttermsimics , have been used for a variety of purposes including, but not limited to, thermal control strategies in multicores\dvtcmdcitebib{inproceedings:bartolini:2010}, networking timing analysis\dvtcmdcitebib{journals:ortiz:2009}, web server performance evaluation\dvtcmdcitebib{journals:villa:2005}, and to simulate costly hardware financially unfeasible to researchers\dvtcmdcitebib{journals:alameldeen:2003}.
-Furthermore, such simulators are may be used to port \dvttermos s to new processors\dvtcmdciteref{technicaldocs:netbsd:2014}.\\
+Furthermore, such simulators may be used to port \dvttermos s to new processors\dvtcmdciteref{technicaldocs:netbsd:2014}.\\
 
 % Related work: Graphics acceleration
 \noindent
@@ -35,7 +35,7 @@ Whatever the method, graphics virtualization is no longer limited to the academi
 \dvttermqemu \footnote{'Quick~Emulator'.} is an open-source virtual platform described as a full system emulator\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005} and a high-speed functional simulator\dvtcmdcitebib[p.~1]{inproceedings:shen:2010} (see \dvtcmdciteref[p.~69]{magazines:bartholomew:2006} for an overview of \dvttermqemu ).
 Its virtual platform supports simulation of several common system architectures and hardware devices and can, like \dvttermsimics , save and restore the state of a simulation\dvtcmdcitebib[p.~1]{inproceedings:bellard:2005}.
 
-As such, \dvttermqemu\ may, like \dvttermsimics , run unmodified \dvttermtarget\ hardware such as \dvttermos s, drivers, and other software.
+As such, \dvttermqemu\ may, like \dvttermsimics , run unmodified \dvttermtarget\ software such as \dvttermos s, drivers, and other applications.
 The platform is widely used in academia, and is the subject of several articles and reports cited throughout this document such as the graphics acceleration described by Lagar-Cavilla et al.\dvtcmdcitebib{inproceedings:lagarcavilla:2007}, and the work by Guo et al.\dvtcmdcitebib{inproceedings:guo:2013}.
 Additionally, \dvttermqemu\ powers the \dvttermandroidemulator , which helps mobile developers bring about software for the \dvttermandroid\ \dvttermos .
 
@@ -46,7 +46,7 @@ The \dvttermandroidemulator\ is described as a virtual mobile device emulator\dv
 Included in the \dvttermandroidsdk , it supports virtualization of an assortment of mobile hardware permutations.
 
 In the presence of the \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing performance of \dvttermcpu -bound workloads\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
-In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} \& \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ framework\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
+In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} \& \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ frameworks\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
 Note, however, that there is as of yet no software rasterized solution for running \dvttermopenglestwopointo\ in the \dvttermandroidemulator .\\
 
 \noindent
