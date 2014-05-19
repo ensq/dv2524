@@ -21,12 +21,12 @@ Below, recommendations for future study, in terms of the experiment performed fo
 % Heavier graphics benchmarking. The benchmarks presented for this study have effectively been mini-benchmarks, stressing particular bottlenecks in the solution. In line with chapter Rweults and conclusuons having concluded parabvrtualization as feasbile for the means of acceleration ghraphjiocs in virtual platforms, this ought be investigated further with heavier benchmarking in order to more efgfectivelty establish the magnitude of performance hains a paravirtualized solution may achieve.
 % This includes study into the great performance achieved by the QEMU-derived android emulator.
 
-
+\ldots
 
 % Advanced Functionality
 \section{Simics Productification}
 \label{sec:futurework_simicsproductification}
-Such improvements include consideration of endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
+For the purposes of productification of a graphics acceleration solution, as presented in this document, necessary improvements include endianness\footnote{Which is, at the time of writing, assumed to be of little endian order.} consideration in the communication in-between \dvttermtarget - and \dvttermhost\ libraries, in addition to floating point format\footnote{Which is, at the time of writing, assumed to be that of \dvttermieeefp .}.
 If paravirtualization were to used for accelerating graphics in the \dvttermsimics\ full-system simulator, one would have to support such \dvttermtarget - and \dvttermhost\ as it is not all uncommon that these platforms differ.
 After all, clients often wish to simulate other platforms than those they currently posess.
 
@@ -35,9 +35,12 @@ Such functionalities sometimes limited in some operating systems; albeit entirel
 \glslink{dvtglosstarget}{Target} system platform differences such as these may incur performance hindrances in that the amount of memory that may be \glslink{dvtglossmemorypagelocking}{locked} could be limited; forcing the solution to perform its bytestream transmission in several instances of \dvttermmagicinstruction s.
 Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
-% TODO:
-% Plaform improvements:
-%One might consider automating method signature retrieval by using frameworks such as SWIG or SIL.
+In section \ref{sec:background_graphicsvirtualization}, potentially costly maintenance of updated graphics frameworks is mentioned as drawback of paravirtualization as a methodology to achieve graphics acceleration.
+Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
+In order to further streamline the maintenance of a productified paravirtualized solution, such framework generation could be automated further by utilizing software such as \texttt{SWIG} or \texttt{SIL} to retrieve function signatures; no longer requiring developers to describe function headers by the means of configuration files as described in section \ref{sec:methodologysolution_openglabigeneration}.
+
+Furthermore, in line with the \dvttermsimics\ attributes described in chapter \ref{cha:background}, a certain set of behaviour must be attained in order to align with \dvttermsimics\ philosophy.
+Analyses and recommendations surrounding further study of said attributes, in terms of graphics acceleration by the means of paravirtualization, are presented below in paragraphs \dvtcmdrefname{par:futurework_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:futurework_simicsproductification_checkpointing}, and \dvtcmdrefname{par:futurework_simicsproductification_reverseexecution}, respectively.
 
 % Deterministic Execution (section Determinism in OpenGL ES)
 \paragraph{Deterministic Execution}
