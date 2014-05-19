@@ -198,11 +198,17 @@ Note that, for the sake of visualization, values outside of the standard deviati
 % TODO:
 % Consider adding table presenting minimum- and maximum values of these instances.
 
-% Paravirtualization Performance
-%\section{Paravirtualization Performance}
-%\label{sec:analysisexperiment_paravirtualizationperformance}
-%QEMU Vs. Simics.\\
-%\ldots
+% Platform Comparison
+\section{Platform Comparison}
+\label{sec:analysisexperiment_platformcomparison}
+In the sections above, results have been presented indicating performance gains- and potential for gains in \dvttermsimics\ platforms by the means of accelerating graphics using paravirtualization methodologies.
+However, in accordance to figure \ref{fig:histogramsqemu} and table \ref{tab:keyvalqemu}, the platform on which the these results have been produced also utilizing a paravirtualized methodology to graphics acceleration, there is much potential for improvement.
+The benchmarks, when executed in the paravirtualized \dvttermandroidemulator\ exhibit better performance in each test performed for the purposes of this dissertation; most notably outperforming the software rasterized \dvttermsimics\ platform for the Chess benchmark.
+The Chess benchmark, incurring such an overhead when paravirtualized in \dvttermsimics\ (see paragraph \dvtcmdrefname{par:results_chess}) due to overhead induced by \dvttermmagicinstruction s (see section \ref{sec:results_magicinstructionoverhead}), performs but roughly two times worse than it's hardware accelerated counterpart at \dvtcmdfirstline{qemuchess84x84.dat.avg} milliseconds average (see tables \ref{tab:keyvalqemu} and \ref{tab:keyvalhost}).
+These results indicate potential for improvement in the \dvttermtarget -to-\dvttermhost\ communications used for the purposes of this study.
 
-% TODO:
-% Add this section to document.
+In fact, considering the large similarities exhibited in-between these two platforms (see \dvttermreferencesolution \dvtcmdcitefur{dissertation:nilsson:2014}), being the \dvttermandroidemulator\ and paravirtualized \dvttermsimics , the reference performance of the \dvttermqemu -derived \dvttermandroidemulator\ may be considered a goal for a potential productification of paravirtualized graphics in the \dvttermsimics\ full-system simulator (see section \ref{sec:futurework_simicsproductification}).\\
+
+\noindent
+These comparisons suggest that the performance recorded for the benchmarks devised for the purpose of this study is not necessarily representative for paravirtualization in general.
+Furthermore, the comparison to the \dvttermqemu -derived \dvttermandroidemulator\ indicates that the shaping of the \dvttermmagicinstruction -utilizing Simics Pipe - as established being the bottleneck during execution of the paravirtualized Chess benchmark (see section \ref{sec:results_magicinstructionoverhead}) - may have potential of improvement of approximately one order of magnitude (see tables \ref{tab:keyvalqemu} and \ref{tab:keyvalpara}).
