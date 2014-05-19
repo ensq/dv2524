@@ -38,7 +38,7 @@ As such, methodologies with varying levels of implementational accuracy present 
 Said methods are presented in paragraphs \dvtcmdrefname{par:background_graphicsvirtualization_gpumodeling}, \dvtcmdrefname{par:background_graphicsvirtualization_pcipassthrough}, \dvtcmdrefname{par:background_graphicsvirtualization_softmodeling}, and \dvtcmdrefname{par:background_graphicsvirtualization_paravirtualization}.
 
 % TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
-\missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
+%\missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
 
 % GPU Modeling
 \paragraph{GPU Modeling}
@@ -57,7 +57,7 @@ Furthermore, such modeling of massively parallelized \dvttermgpu\ technology on 
 Secondly, one ought examine the benefits of \dvttermpcipassthrough ; allowing virtual systems first-hand - exclusive - access to \dvttermhost\ machine devices\dvtcmdciteref{web:jones:2009}.
 The direct contact with \dvttermhost\ system devices accomodated by methodologies such as \dvttermpcipassthrough\ enable hardware accelerated graphics.
 
-Yet, the methodology suffers from several disadvantages, such as only being capable of running - as of yet - on \dvttermlinux\ systems\todo{citation needed!}.
+Yet, the methodology suffers from several disadvantages, such as only being capable of running - as of yet - on \dvttermlinux\ systems. % \todo{citation needed!}
 Additionally, the solution requires dedicated hardware, causing the \dvttermhost\ system to lose all access to said devices during the course of simulation.
 In terms of \dvttermgpu\ virtualization, this would induce the necessity of the \dvttermhost\ machine featuring multiple graphics cards.
 The tight coupling induced by direct contact with \dvttermhost\ hardware also requires the simulation \dvttermtarget\ to utilize the same device drivers as the \dvttermhost\ system, rendering the methodology unflexible in terms of \dvttermgpu\ virtualization diversity.
@@ -77,7 +77,7 @@ One might speculate that using such technologies in collaboration with \dvttermh
 \paragraph{Paravirtualization}
 \label{par:background_graphicsvirtualization_paravirtualization}
 Finally, and as portrayed throughout this document, there is the option of virtualization by paravirtualization.
-Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level\todo{Refer to virtualization layer abstraction visualization figure when existant.}.
+Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level. % \todo{Refer to virtualization layer abstraction visualization figure when existant.}
 Inherent from its higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:background_graphicsvirtualization_gpumodeling}.
 Additionally, virtualizing at the graphics library software level circumvents the need for users to relink or modify the application they wish accelerated.
 Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:methodologysolution_simicspipe}) may accomodate for significant performance improvements when compared to that of networking solutions (see \dvtcmdcitefur{dissertation:nilsson:2014}).

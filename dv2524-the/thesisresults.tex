@@ -52,7 +52,7 @@ These paragraphs are presented below.
 
 \paragraph{Chess}
 \label{par:results_chess}
-From the data visualized in figure \ref{fig:histogramssimicsparachess}, we may observe that the Chess benchmark, when executed in the software rasterized \dvttermsimics\ platform, has a relatively broad distribution of its sample density, yet the distribution often seems evenly distributed around a singe point\todo{Confirm this by analyzing and presenting the benchmark mean.}.
+From the data visualized in figure \ref{fig:histogramssimicsparachess}, we may observe that the Chess benchmark, when executed in the software rasterized \dvttermsimics\ platform, has a relatively broad distribution of its sample density, yet the distribution often seems evenly distributed around a singe point. % \todo{Confirm this by analyzing and presenting the benchmark mean.}
 The right-hand side of the graph, although also showcasing the impaired performance of the corresponding - paravirtualized - platform, visualises a decrease in the distribution of the sample density.
 This is supported by the data presented in table \ref{tab:keyvalpara}.
 
@@ -83,7 +83,7 @@ What causes this behaviour is unclear, as frame-to-frame branching in the fracta
 
 The reason as to why the Julia benchmark was decided upon to be integrated into experiment outlined during the pilot study (see \dvtcmdcitefur{dissertation:nilsson:2014}) was to establish how the paravirtualized solution performed under computational stress (see section \ref{sec:methodologyexperiment_benchmarking}).
 Using this benchmark, a performance weakness in the software rasterized \dvttermsimics\ platform has been identified, with frametimes well above the two second mark (see table \ref{tab:keyvalsimics}); with the corresponding maximum frametime in the paravirtualized \dvttermsimics\ platform measuring up to to \dvtcmdfirstline{parajulia900.dat.max} ms.
-With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernerls and - in turn - identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator\todo{Expand upon scalability of Julia paravirtualization.}.
+With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernerls and - in turn - identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator. % \todo{Expand upon scalability of Julia paravirtualization.}
 
 % TODO:
 % Percentage-wize, the standard deviation has increased in the paravirtualized platform?
