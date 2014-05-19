@@ -29,7 +29,12 @@ Furthermore, the benchmarks - created specifically to identify issues related to
 
 In chapter \ref{cha:results}, we've presented an analysis of the results compiled throughout the performed experiments; along with an investigation into the scalability of the graphics acceleration for the tested bencharks; for software rasterized- and paravirtualized \dvttermsimics\ platforms.
 We've compiled and presented an anlysis on the benefits and drawbacks of paravirtualization as a means to achieve graphics acceleration in virtual platforms; backed by hard data produced by a number of benchmarks stressing key points in the solution with the purpose of identifying both strengths and weaknesses in the discussed methodology.
-Accordingly, this dissertation has established the feasability of using paravirtualization to accelerate graphics in virtual platforms to that of real-time qualities.\\
+Accordingly, this dissertation has established the feasability of using paravirtualization to accelerate graphics in virtual platforms to that of real-time qualities.
+
+Additionally, the collected results have been compared with another platform using similar methodologies to accelerate the same graphics framework.
+Based off of these results, chapter \ref{cha:results} presents an analysis comparing the two platforms; being the \dvttermqemu -derived \dvttermandroidemulator\ and the paravirtualized \dvttermsimics\ solution devised for the purpose of this study.
+From this analysis, we've established points of improvement in the paravirtualized solution developed for the \dvttermsimics\ simulator.
+Furthermore, and based on the performance boasted by the \dvttermandroidemulator 's paravirtualized graphics acceleration when stressed by the Chess benchmark, we've predicted possible improvements in the Simics Pipe (see section \ref{sec:methodologysolution_simicspipe}) communications link of up to one order of magnitude.\\
 
 \noindent
 As such, in coagency with the results compiled in chapter \ref{cha:results}, collected by the means presented in chapter \ref{cha:methodologyexperiment}, and based on the solution portrayed in chapter \ref{cha:methodologysolution}, pertaining to the idea of real-time graphics in detailed full-system simulators, this dissertation suggests utilizing high-level paravirtualization to accelerate graphics- and as means to overcome accessability bottlenecks in virtual platforms.
