@@ -15,22 +15,28 @@ For further studies into paravirtualization as a means to accomodate for graphic
 This is due to the benchmarks presented for the purpose of this study having effectively been mini-benchmarks; stressing particular suspected bottlenecks in the solution.
 In line with chapter \ref{cha:results} and \ref{cha:conclusion} having concluded paravirtualization as feasible for the means of graphics acceleration in virtual platforms, the methodology ought be profiled further with more verbose benchmarks in order to more effectively establish the magnitude of performance gains a paravirtualized solution may achieve.
 
-Furthermore
+Furthermore, and for the purposes of complementing this dissertation in particular, the author would like to suggest implementation of addition mini-benchmarks stressing \dvttermtarget -to-\dvttermhost\ communications.
+Preferably, said benchmark would stress said communication by other means than profiling the sampling of a large texture, since such a test may cause volotile performance in the reference material - being software rasterized \dvttermsimics , possibly due to cache misses (see section \ref{sec:results:benchmarkvariations}).
+When executing such a benchmark, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:methodologysolution_memorytabletraversal}.\\
 
-% TODO:
-% Benchmarking accuracy
-% Profiling accuracy
-% Profilation of memory table traversal
-% Mini-benchmark stressing communication bandwidth, without causing cache misses by redundant rendering.
-% Further investigation
-% This includes study into the great performance achieved by the QEMU-derived android emulator.
+\noindent
+In addition to the complementary studies suggested in the above paragraph, there are two potential use-cases that might be viable subjects for further study; these being \dvtcmdrefname{par:futurework_apiextensions} and \dvtcmdrefname{par:futurework_safetycriticalconsiderations}.
+The concepts of these scenarios are presented below.
 
-\ldots
+\paragraph{API Extensions}
+\label{par:futurework_apiextensions}
+The essence of system simulation is often to simulate a system other than that of the simulation \dvttermhost .
+As of such, one could pose the scenario of a \dvttermlinux\ \dvttermhost\ system simulating a machine running some variation of the \dvttermwindows\ \dvttermos .
+In this case, it is possible that user applications in the simulation utilize the \dvttermdirectx\ framework to render graphics; whereas the \dvttermhost\ machine only supporting the \dvttermopengl\ libraries.
 
+Earlier this year, \dvttermvalve\ release software capable of converting \dvttermdirectx\ $9.0$c-code to that of \dvttermopengl \dvtcmdcitefur{technicaldocs:valve:2014}.
+Albeit limited in its capabilities, the functionality of translating in-between one, platform-specific, framework to that of a cross-platform framework may be practical.
 
+If such a solution could be implemented to translate- and execute some \dvttermtarget\ program on-the-fly in a virtual machine, in which the \dvttermhost\ system lacks the capability to interpret the original framework, this may extend the area-of-application for full-system simulation.
+As such, further studies into the feasability of such functionality ought be considered.
 
-\section{API Extensions}
-\label{sec:futurework_apiextensions}
+\paragraph{Safety Critical Considerations}
+\label{par:futurework_safetycriticalconsiderations}
 \ldots
 
 % TODO:
