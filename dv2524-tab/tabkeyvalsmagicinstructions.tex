@@ -1,0 +1,17 @@
+% tabkeyvalsmagicinstructions.tex
+% Renders a table defining the number of magic instructions performed for the benchmarks used in this experiment.
+
+\begin{table}
+\centering
+
+\begin{tabular}{lllll}
+	Benchmark	& \hspace{3.6cm} & Halved Fig.	& Reference Fig.	& Double Fig.	\\ \hline
+	Chess		& \hspace{3.6cm} & $32400+3$	& $63504+3$			& $125316+3$	\\
+	Julia		& \hspace{3.6cm} & $16$			& $16$				& $16$			\\
+	Phong		& \hspace{3.6cm} & $17$ 		& $17$ 				& $17$			\\
+\end{tabular} % Bit of a hack. YOLO.
+
+\caption{Number of magic instructions performed per-frame for each benchmark key figure variation.}
+\label{tab:keyvalsmagicinstructions}
+
+\end{table}

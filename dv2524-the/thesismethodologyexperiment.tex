@@ -114,7 +114,7 @@ Additionally, the tileset vertices and indices are pre-loaded into \dvttermopeng
 Each tile is then individually drawn to the backbuffer, rendering the chess-like appearance of the benchmark.
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
 
-For each tile rendered, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively, in addition to a minor number  per-frame.
+For each frame rendered, depending on the number of drawn tiles, the solution will perform a large number of \dvttermmagicinstruction s.
 This induces a high utilization of the Simics Pipe, which is intended to stress \dvttermmagicinstruction\ overhead (section \ref{sec:results_magicinstructionoverhead}).
 
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multitude of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
@@ -157,5 +157,12 @@ For consistency, each benchmark variation - of which there are two; resulting in
 
 \noindent
 The described key figures, for each benchmark, are presented in table \ref{tab:keyvals}.
+In table \ref{tab:keyvalsmagicinstructions}, the per-frame number of magic instructions induced by these key figure variations are presented.
 
+% tab:keyvals
 \input{tabkeyvals}
+
+% tab:keyvalsmagicinstructions
+\input{tabkeyvalsmagicinstructions}
+
+Note that for each tile rendered in the Chess benchmark, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s, respectively, in addition to a minor number per-frame.
