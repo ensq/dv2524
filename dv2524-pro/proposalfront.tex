@@ -3,13 +3,14 @@
 \newcommand{\intellogo}[1]{%
    \includegraphics[width=#1]{Intel-logo.pdf}%
 }
+\newcommand{\logossize}{3cm}
 
 {\pagestyle{empty}
 \changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
 \noindent%
 {\small
 \begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
-\textit{Thesis~Proposal}&\multirow{4}{*}{\bthcsnotextlogo{3cm}}\\
+\textit{Thesis~Proposal}&\multirow{4}{*}{\includegraphics[trim = 3mm 0mm 3mm 4.7cm, clip, width=\logossize]{bthnotext}}\\
 \textit{Master's~Thesis~in~Computer~Science}\\
 \textit{\gitAuthorDate}
 \end{tabular}}
@@ -34,8 +35,8 @@
 \noindent%
 {\small
 \begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
-\termbthdept&\multirow{4}{*}{\intellogo{3cm}}\\ % TODO: This case should be conditional. Insert intel-logo conditional toggle.
-\termbth\\
+Dept. Computer Science \& Engineering&\multirow{4}{*}{}\\
+Blekinge Institute of Technology\\
 SE--371 79 Karlskrona, Sweden
 \end{tabular}}
 

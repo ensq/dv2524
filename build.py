@@ -30,12 +30,12 @@ def buildCommon():
     subbuild(os.getcwd() + "/dv2524-bst")
     subbuild(os.getcwd() + "/dv2524-pac")
     subbuild(os.getcwd() + "/dv2524-git")
+    subbuild(os.getcwd() + "/dv2524-sty") # Both proposal and template use the same style.
 
 def buildProposal(p_from):
     print(p_from + ": Building Proposal document...")
     buildCommon()
 
-    subbuild(os.getcwd() + "/dv2524-sty", "--target proposal")
     subbuild(os.getcwd() + "/dv2524-res", "--target proposal")
     subbuild(os.getcwd() + "/dv2524-bib", "--target proposal")
     subbuild(os.getcwd() + "/dv2524-pro")
@@ -50,7 +50,6 @@ def buildThesis(p_from):
     subbuild(os.getcwd() + "/dv2524-fig")
     subbuild(os.getcwd() + "/dv2524-dat")
     subbuild(os.getcwd() + "/dv2524-gnu")
-    subbuild(os.getcwd() + "/dv2524-sty", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-res", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-bib", "--target thesis")
     subbuild(os.getcwd() + "/dv2524-the")
