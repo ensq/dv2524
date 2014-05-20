@@ -36,10 +36,10 @@ In order to achieve better performance, one may offload such kernels to the \dvt
 There are a number of way to achieve such acceleration, such as relying on \dvttermpcipassthrough\ and similar technologies to grant access to the underlying \dvttermhost\ hardware from within the virtual platform\dvtcmdcitebib[p.~415,~416]{inproceedings:regola:2010} (see \dvtcmdciteref{web:jones:2009} for an overview on \dvttermpcipassthrough ), or introducing a concept commonly referred to as '\dvttermparavirtualization ' at a higher level of abstraction (e.g., the \dvttermopengl\ library).
 
 Paravirtualization is a relatively new term originally defined as selectively modifying the virtual architecture to enhance scalability, performance, and simplicity\dvtcmdcitebib[p.~165-166]{magazines:bartholomew:2006}.
-Effectively, this means modifying the virtual machine to be similar, but not identical, to the simulated hardware\dvtcmdcitebib[p.~165]{journals:barham:2003}.
+Effectively, this means modifying the virtual machine to be similar, but not identical, to \dvttermhost\ hardware\dvtcmdcitebib[p.~165]{journals:barham:2003}.
 As such, one may simplify the virtualization process by neglecting some hardware compatibility\dvtcmdcitebib[p.~1]{inproceedings:youseff:2006}.
 Implementing \dvttermgpu\ simulation by the means of \dvttermparavirtualization\ provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
-For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
+For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution\ (see section \ref{sec:background_deterministicexecution}), \dvttermcheckpointing , and \dvttermreverseexecution .
 Additionally, paravirtualization entail erroneous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .\\
 
@@ -48,5 +48,7 @@ This dissertation - pursuant to  modern-day influence of \dvttermgpu\ technologi
 
 As such, in accordance to The~2012~\dvttermacm ~Computing~Classification~System, proposed study concerns the fields of virtual~machines, graphics systems and interfaces,  and graphics~processors, respectively. Additionally, proposed study concerns, likewise in accordance to The~2012~\dvttermacm ~Computing~Classification~System, \dvttermintel ~Corporation.
 
-%The remainder of this document presents the objectives-, question~formulations thereof-, suggested procedure, predicted risks, and the time~plan of proposed study.
-%Implementational details and a breakdown structure is presented under \dvtcmdrefname{cha:appendixa}.
+The remainder of this document presents the objectives and question formulations thereof, a compilation of previous work in the area, and a description of the devised paravirtualized solution.
+Furthermore, a chapter on experiment methodology is presented; followed by the results collected using said methodology, and finalized by a description of the conclusions that may be established from the compiled material.
+Finally, this dissertation is concluded by a report on recommended future work in the area.
+In \dvtcmdrefname{cha:appendixa}, an analysis of feasibility of advanced simulatory feature integration into paravirtualized graphics in the \dvttermsimics\ full-system simulator.
