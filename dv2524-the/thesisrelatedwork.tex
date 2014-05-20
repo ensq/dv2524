@@ -9,8 +9,7 @@ Furthermore, such simulators may be used to port \dvttermos s to new processors\
 
 % Related work: Graphics acceleration
 \noindent
-For the purposes of graphics acceleration, there are number of strategies, methodologies and procedures; several of which are expanded upon in chapter \ref{cha:methodologysolution}.
-
+For the purposes of graphics acceleration, strategies, methodologies and procedures are numerous; several of which are expanded upon in chapter \ref{cha:methodologysolution}.
 Based off these core strategies, such as device modeling, various passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems, such as the development of specialized passthrough drivers\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
 One such instance is presented by Hansen in his work on the Blink display system\dvtcmdcitebib{inproceedings:hansen:2007}.
 
@@ -20,7 +19,7 @@ The groundwork produced by Lagar-Cavilla et al. showcased the potential for para
 
 Current promising projects surrounding \dvttermgpu\ virtualization include the Virgil3D-project, an introductory e-mail on which was first posted to the \texttt{qemu-devel} \dvttermqemu\ development mailing list\dvtcmdciteref{technicaldocs:qemudevel:2014}.
 As described at the project homepage\footnote{\url{http://virgil3d.github.io/}}, the project strives to create a virtual \dvttermgpu\ which may subsequently utilize \dvttermhost\ hardware to accelerate 3D rendering.
-The project is currently being maintained, again according to the projects GitHub homepage, by Red Hats Dave Airlie.
+The project is currently being maintained, again according to the projects GitHub homepage, by Red Hat's Dave Airlie.
 
 Other related works include modeling \dvttermgpu\ devices in the \dvttermqemu\ full-system simulator with software \dvttermopengles\ rasterization support, as presented by Shen et al.\dvtcmdcitebib{inproceedings:shen:2010}.\\
 
@@ -56,4 +55,4 @@ Note, however, that there is as of yet no software rasterized solution for runni
 As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:methodologyexperiment_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.\\
 
 \noindent
-The \dvttermandroidemulator\ implementation and solution are referred to as the \dvttermreferenceimplementation\ and the \dvttermreferencesolution , respectively, throughout this document.
+The \dvttermandroidemulator\ implementation is referred to as the \dvttermreferencesolution\ throughout this document.
