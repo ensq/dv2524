@@ -14,7 +14,7 @@ The following paragraphs outline the configuration of these target platforms, in
 
 \paragraph{Host Configuration}
 \label{par:methodologyexperiment_platformconfiguration_hostconfiguration}
-The system upon which the experiment is performed is an \dvttermxeightysix -compatible \dvttermintel\ processor configured to run the \dvttermfedora\ \dvttermlinux\ distribution.
+The system upon which the experiment is performed is an \dvttermxeightysix -compatible Haswell \dvttermintel\ processor configured to run the \dvttermfedora\ \dvttermlinux\ distribution.
 Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary platform used for development of the \dvttermsimics\ full-system simulator at the \dvttermintel\ offices in Stockholm - at which the solution described in this document has been developed.
 
 % TODO:
@@ -47,7 +47,7 @@ In the presence of of the complexities caused by the occurrence of virtual time,
 This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the pretext of the observer - is more relevant than profiling virtual time.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
-In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:background_virtualtime}, time fleets differently than in the context of the \dvttermhost\ machine.
+In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:background_virtualtime}, time increments differently than in the context of the \dvttermhost\ machine.
 As such, in order to appropriately measure the elapsed time of a benchmark frame, said profiling must take place outside of the simulation.
 As expanded upon in section \ref{sec:background_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
@@ -91,7 +91,7 @@ Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\
 As such, a number of benchmarks have been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
 The benchmarks numbering three in total - they are intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
 The benchmarks, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilize \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
-Furthermore, all benchmarks have been configured to run at roughly \dvtcmdnum{16}~\milli\second\ (or roughly \dvtcmdnum{60}~\dvttermfps ) when hardware accelerated on the \dvttermhost\ system, in order to reflect the expected load of a modern real-time interactive system.
+Furthermore, all benchmarks have been configured to run at roughly \dvtcmdnum{16}~\milli\second , which would correspond to roughly \dvtcmdnum{60}~\dvttermfps , when hardware accelerated on the \dvttermhost\ system - in order to reflect the expected load of a modern real-time interactive application.
 As such, the purpose of developed benchmarks is to be representative of typical scenarios induced by modern \dvttermgui s whilst utilizing a graphics framework such as \dvttermopengl .
 
 Frame captures of the benchmarks are presented in figures \ref{fig:benchmarks_chess}, \ref{fig:benchmarks_julia}, and \ref{fig:benchmarks_phong}.
@@ -115,7 +115,7 @@ Each tile is then individually drawn to the backbuffer, rendering the chess-like
 Effectively, this means that, for each tile, the benchmark need only bind a vertex- and an index element buffer, set the corresponding tile color, and lastly invoke the rendering of said tile.
 
 For each tile rendered, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s per key figure variation (see section \ref{sec:methodologyexperiment_keyfigurevariations}), respectively, in addition to a minor number  per-frame.
-The amount of invocations is purposeful as to stress the \dvttermmagicinstruction\ overhead, as outlined in section \ref{sec:results_magicinstructionoverhead}.
+This induces a high utilization of the Simics Pipe, which is intended to stress \dvttermmagicinstruction\ overhead (section \ref{sec:results_magicinstructionoverhead}).
 
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multitude of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
 
