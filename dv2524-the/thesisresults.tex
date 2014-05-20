@@ -111,7 +111,7 @@ By analyzing the data in presented in tables \ref{tab:keyvalsimics} and \ref{tab
 However, and mayhaps more interestingly so, executing the benchmark in the paravirtualized \dvttermsimics\ environment results in major improvements in terms of frame time maximum and standard deviation; software rasterized samples topping in at \dvtcmdfirstline{simicsphong1448x1448.dat.max} ms where the corresponding paravirtualized maximum is but \dvtcmdfirstline{paraphong1448x1448.dat.max} ms.\\
 
 \noindent
-What causes the compiled paravirtualized Phong benchmark samples to be only marginally better or competitively to their the software rasterized counterparts is unclear.
+It is unclear what causes the compiled paravirtualized Phong benchmark to perform only marginally better or competitively to their the software rasterized counterparts.
 The effect could be related to a bottleneck in the memory page traversal, as described in section \ref{sec:methodologysolution_memorytabletraversal}, signifying a possible weakness in - in addition to the communication latency as established in paragraph \dvtcmdrefname{par:results_chess} - the memory bandwidth of the Simics Pipe (see section \ref{sec:methodologysolution_simicspipe}).
 
 However, in line with the recorded competitive average- and minimum frame times - yet major improvements in frame time maximum and standard deviation - one might also argue that the relatively lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
