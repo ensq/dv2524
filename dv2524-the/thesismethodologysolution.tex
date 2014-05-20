@@ -70,8 +70,7 @@ See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the method
 
 \section{Windowing Systems}
 \label{sec:methodologysolution_windowingsystems}
-Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ \& \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, this was considered out-of-scope for this study.
-As such, for the purposes of this dissertation, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ \& \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 
 The problem may be summarized as the dilemma of the target system libraries having to communicate with the correct window (located in the simulation \dvttermhost ), yet having the \dvttermtarget\ system window reporting successful initialization.
 After all, it would be problematic if the \dvttermopengl -utilizing application would have to be modified in order to be paravirtualized.
@@ -89,8 +88,13 @@ At the time of writing, the target system libraries simply overload the \dvtcmdc
 \label{sec:methodologysolution_simicspipe}
 \index{Simics Pipe}
 The so named 'Simics Pipe' constitutes the communications channel in \dvttermsimics .
-As such, it is responsible for transferring a serialized command stream - or byte stream - to- and from the simulation \dvttermhost .
-There are a number methodologies serving such purposes, several of which are expanded upon in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}), such as utilizing UNIX sockets or other networking technologies.
+As such, it is responsible for transferring a serialized command stream - or byte stream - to- and from the simulation \dvttermhost\ using \dvttermmagicinstruction s.
+The role of the Simics Pipe is comprised of the allocation and maintenance of \glslink{dvtglossmemorypagelocking}{page locked} \dvttermtarget\ memory.
+Furthermore, the Simics Pipe utilizes a \dvttermmagicinstruction\ to relay the address of said memory to the simulation \dvttermhost ; where the responsibilities of the Simics Pipe end.
+
+There are a numerous methodologies to communicate with the outside world from inside of the simulation, such as utilizing UNIX sockets or other networking technologies.
+Several of these methods are expanded upon in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014})
+
 However, due to the inherent performance demands brought on by serialization of real-time graphics invocations, the methodology of \dvttermmagicinstruction s were selected for use for the purpose of this study.
 Magic instructions allow for fast, in the pretext of the simulation \dvttermtarget\ - almost instant - escape from the simulation context - and may carry a limited amount of information with it from inside the simulation out into the real world.
 However, other methodologies, albeit slower, may be fast enough to for use in graphics paravirtualization; the \dvttermandroidemulator , in addition to \dvttermmagicinstruction s, accommodating for TCP/IP communication\footnote{It may be of interest to know that the \dvttermsimics\ \dvttermopengles\ paravirtualization technology, during development, was accommodated by a TCP/IP client-/server model.}.
