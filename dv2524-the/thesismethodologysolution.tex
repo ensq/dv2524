@@ -18,7 +18,7 @@ In accordance to the \dvttermreferencesolution , paravirtualized graphics accele
 \section{OpenGL ABI Generation}
 \label{sec:methodologysolution_openglabigeneration}
 \index{OpenGL ABI Generation}
-In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were devised for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} \& \ref{sec:methodologysolution_hostsystemlibraries}).
+In order to save in on precious development time, and ensure the scalability of the solution during development of the benchmarks that were devised for the purposes of this dissertation (see section \ref{sec:methodologyexperiment_benchmarking}), a set of scripts automating the generation of library source code is used to generate the majority of the target- and host system libraries (see section \ref{sec:methodologysolution_targetsystemlibraries} and \ref{sec:methodologysolution_hostsystemlibraries}).
 As such, the majority of the \dvttermopengl\ function definitions described in section \ref{sec:methodologysolution_targetsystemlibraries} are produced by this tool.
 The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; making out the majority of the \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s and the corresponding \dvttermhost\ decoding libraries.
 
@@ -70,7 +70,7 @@ See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the method
 
 \section{Windowing Systems}
 \label{sec:methodologysolution_windowingsystems}
-Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ \& \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ and \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
 
 The problem may be summarized as the dilemma of the target system libraries having to communicate with the correct window (located in the simulation \dvttermhost ), yet having the \dvttermtarget\ system window reporting successful initialization.
 After all, it would be problematic if the \dvttermopengl -utilizing application would have to be modified in order to be paravirtualized.
