@@ -1,0 +1,87 @@
+% oppositionfront.tex
+% Describes front pages of document.
+
+\newcommand{\logossize}{3cm}
+
+% ---
+% Front page
+% ---
+
+% Thesis info and institutional logo:
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+{\small
+\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+\textit{Opposition Report}&\multirow{4}{*}{\includegraphics[trim = 3mm 0mm 3mm 4.7cm, clip, width=\logossize]{bthnotext}}\\ % Hack, but at least it's less of a hack than the previous solution of a misplaced, hard-coded, logo.
+\textit{Master's Thesis in Computer Science}\\
+\textit{MM YYYY}\\ % TODO: Complement.
+\end{tabular}}
+
+% Title:
+\begin{center}
+\par\vspace {7cm}
+{\Huge\textbf{Opposition Report}} % Centered Title Times Font\\*[0.25cm] Size 24 Bold
+\par\vspace {0.5cm}
+{\Large\textbf{Software defect prediction using machine learning on test and source code metrics}} % Centered Subtitle Times Font Size 16 Bold
+\par\vspace {3cm}
+{\Large\textbf{Eric Nilsson}}
+\par\vspace{0.5cm}
+{\large\textit{\textbf{Opposing thesis by}}}
+\par\vspace{0.5cm}
+{\Large\textbf{Mattias Liljeson and Alexander Mohlin}}
+\par\vspace {6cm}
+\end{center}
+
+% Institutional info and Intel logo (if enabled in build settings):
+\noindent
+{\small
+	\begin{tabular}{p{0.75\textwidth} p{0.25\textwidth}}
+	Dept. Computer Science \& Engineering&\multirow{4}{*}{}\\
+	Blekinge Institute of Technology\\
+	SE--371 79 Karlskrona, Sweden
+	\end{tabular}}
+\clearpage
+}
+
+% ---
+% Additional details page
+% ---
+
+% Thesis details:
+{\pagestyle{empty}
+\changepage{5cm}{1cm}{-0.5cm}{-0.5cm}{}{-2cm}{}{}{}
+\noindent%
+\begin{tabular}{p{\textwidth}}
+{\small This report is submitted to the Department of Computer Science \& Engineering at Blekinge
+Institute of Technology in partial fulfillment of the requirements for the degree of Master
+of Science in Computer Science.}
+\end{tabular}
+
+\par\vspace {12cm}
+
+% Author and supervisor contact information:
+\noindent%
+\begin{tabular}{p{0.5\textwidth}lcl}
+\textbf{Contact Information:}\\
+Author(s):\\
+Eric Nilsson\\
+E-mail: \href{mailto:erne09@student.bth.se}{erne09@student.bth.se} \\ % Consider adding additional e-mail adress.
+\par\vspace {5cm}
+University advisor:\\
+Prof.\ Håkan Grahn, Research Dean of Faculty\\
+Dept. Computer Science \& Engineering
+
+\par\vspace {1cm}
+
+% Institutional contact information:
+\noindent%
+ \\
+Dept. Computer Science \& Engineering & Internet & : & \href{http://www.bth.se/didd}{www.bth.se/didd}\\
+Blekinge Institute of Technology & Phone	& : & +46 455 38 50 00 \\
+SE--371 79 Karlskrona, Sweden & Fax & : & +46 455 38 50 57 \\
+\end{tabular}
+\clearpage
+} % Back to \pagestyle{plain}
+
+\setcounter{page}{1}

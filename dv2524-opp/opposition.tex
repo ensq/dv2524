@@ -1,0 +1,60 @@
+% opposition.tex
+
+\documentclass[a4paper,oneside]{bth}
+\DeclareGraphicsExtensions{.pdf}
+
+% Packages none of which the author of the original template has stated the purpose of:
+\usepackage{url}
+\usepackage{xtab}
+\usepackage{pifont}
+\usepackage{xspace}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathenv}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{changepage}
+
+% User includes:
+\usepackage{ifthen} % \provideboolean command and conditional utility methods.
+\usepackage{nameref} % Used to reference sections and chapters by name rather than numbering.
+\usepackage{datetime} % Used to format dates.
+\usepackage{mfirstuc} % Used to uppercase the first character of text sets in thesiscommands.tex.
+\usepackage[hidelinks]{hyperref} % Force hide hyperlink borders. Consider removing this, as such settings ought to be up to .pdf-reader.
+\usepackage[mediumspace,mediumqspace,squaren,binary]{SIunits} % We use SIunits rather than siunitx due to a package conflict with, possibly, the [glossaries] package.
+\usepackage{rotating} % Used to rotate figures sideways.
+\usepackage{alltt} % Used to emphasize paragraphcs.
+\usepackage{mdwlist} % Included in order to support the enumerate* environment under Aims and Objectives.
+\usepackage{enumerate} % Used to enumerate letters under Aims and Objectives.
+
+% Local packages includes:
+\usepackage[footinfo]{gitinfo}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\include{oppositionfront}
+
+% Table of Contents
+%\include{acknowledgments} %OPTIONAL
+\tableofcontents
+%\listoffigures
+%\listoftables
+%\listofalgorithms %in case you have them
+\cleardoublepage
+\pagestyle{headings}
+\pagenumbering{arabic}
+
+\chapter{Test}
+Test.
+
+\include{oppositionback}
+
+\end{document}

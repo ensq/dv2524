@@ -30,7 +30,7 @@ def buildCommon():
     subbuild(os.getcwd() + "/dv2524-bst")
     subbuild(os.getcwd() + "/dv2524-pac")
     subbuild(os.getcwd() + "/dv2524-git")
-    subbuild(os.getcwd() + "/dv2524-sty") # Both proposal and template use the same style.
+    subbuild(os.getcwd() + "/dv2524-sty") # Both proposal, thesis and opposition report use the same style.
 
 def buildProposal(p_from):
     print(p_from + ": Building Proposal document...")
@@ -55,6 +55,13 @@ def buildThesis(p_from):
     subbuild(os.getcwd() + "/dv2524-the")
     shutil.copyfile("dv2524-bin/thesis.pdf", "thesis.pdf")
 
+def buildOpposition(p_from):
+    print(p_from + ": Building Opposition Report document...")
+    buildCommon()
+
+    subbuild(os.getcwd() + "/dv2524-opp")
+    shutil.copyfile("dv2524-bin/opposition.pdf", "opposition.pdf")
+
 # Entry point:
 print(g_iam + ": Enter...")
 
@@ -74,28 +81,35 @@ for opt, arg in opts:
         usage(g_iam)
         sys.exit(2)
 
-buildproposal = False
-buildthesis = False
+build_proposal = False
+build_thesis = False
+build_opposition = False
 try:
   target
 except NameError:
-    buildproposal = True
-    buildthesis = True
+    build_proposal = True
+    build_thesis = True
+    build_opposition = True
 else:
     if target=="proposal":
-        buildproposal = True
+        build_proposal = True
     elif target=="thesis":
-        buildthesis = True
+        build_thesis = True
+    elif target=="opposition":
+        build_opposition = True
     else:
         print(g_iam + ": Invalid target!")
         usage(g_iam)
         sys.exit(2)
 
-if buildproposal==True:
+if build_proposal==True:
     deleteFile(g_iam, "proposal.pdf")
     buildProposal(g_iam)
-if buildthesis==True:
+if build_thesis==True:
     deleteFile(g_iam, "thesis.pdf")
     buildThesis(g_iam)
+if build_opposition==True:
+    deleteFile(g_iam, "opposition.pdf")
+    buildOpposition(g_iam)
 
 print(g_iam + ": Exit.")
