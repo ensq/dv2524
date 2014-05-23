@@ -1,9 +1,9 @@
 % oppositionanalysis.tex
 
-\paragraph{Analysis}
-\label{par:analysis}
+\paragraph{Opposition: Analysis}
+\label{par:oppositionanalysis}
 When the author visited the SICS (The Swedish Institute of Computer Science) Open House 2014 fair, he had very giving conversations with systems maintainers that worked with testing of large-scale systems at an international Swedish company.
-Said systems developer spoke about how a large majority of tests used to maintain their systems could rarely be executed due to overhead induced by a massive amount of tests spanning the systems.
+Said systems developer spoke about how a large majority of tests used to maintain their systems could rarely be executed in full due to overhead induced by a massive amount of tests spanning the systems.
 In order to accomodate for this problem, at said company, severe restrictions would be put in place to restrict tests to certain cycles of test-iterations.
 As such, tests are performed - depending on their percieved importance - in cycles of build-wize, daily, weekly, and even bi-weekly iterations.
 The tests were often prioritized in accordance to he span of code they tested; often limiting build-wise tests to function testing.
@@ -11,13 +11,12 @@ In this way, the entirety of said company's unit tests would often only be execu
 
 The author brings this up to illustrate how large overhead induced by weide-spread test coverage may reach unsustainable levels. 
 
-When reading the opposed thesis, the author finds a lacking...
+When reading the opposed thesis, the original authors - correctly so - state that testers may save Ericsson resources by prioritizing certain files that are prone to errors.
+This is entirely correct, and of value to the shareholders.
+However, the author of this opposition finds the opposed thesis lacking in that the performance implications of modern test-bases are not mentioned as an argument for defect prediction in software.
+The unfeasible costs introduced by large test-bases may also incur costs for a company with large projects, such as Ericsson.
+This is another reason as to why software defect prediction could ensure stability in systems; by improving the priority ranking of tests that ought be run as often as possible.
+The author would suggest expanding upon this in the thesis, as to strengthen its academic relevance.
+As such, the author would suggest mention of prioritizing tests for the purposes of computational complexity in large software products.
 
-In order to illustrate how sucessful said company was at their testing; they shipped commits to their products as they were pushed by developers.
-
-% TODO:
-% Ought expand upon how the large amounts of time taken to perform the metric analysis may affect use in industry. How often would such a slow operation have to be run?
-
-
-% This is another reason as to why software defect prediction could ensure stability in systems; by improving the priority ranking of tests that ought be run as often as possible.
-% I would suggest expanding upon this in the thesis, as to strengthen its academic relevance.
+Furthermore, and in order to illustrate how sucessful said company was at their testing; they shipped commits to their products as they were pushed to remote servers by developers.
