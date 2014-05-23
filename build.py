@@ -62,6 +62,13 @@ def buildOpposition(p_from):
     subbuild(os.getcwd() + "/dv2524-opp")
     shutil.copyfile("dv2524-bin/opposition.pdf", "opposition.pdf")
 
+def buildPresentation(p_from):
+    print(p_from + ": Building Presentation document...")
+    buildCommon()
+
+    subbuild(os.getcwd() + "/dv2524-pre")
+    shutil.copyfile("dv2524-bin/presentation.pdf", "presentation.pdf")
+
 # Entry point:
 print(g_iam + ": Enter...")
 
@@ -84,12 +91,14 @@ for opt, arg in opts:
 build_proposal = False
 build_thesis = False
 build_opposition = False
+build_presentation = False
 try:
   target
 except NameError:
     build_proposal = True
     build_thesis = True
     build_opposition = True
+    build_presentation = True
 else:
     if target=="proposal":
         build_proposal = True
@@ -97,6 +106,8 @@ else:
         build_thesis = True
     elif target=="opposition":
         build_opposition = True
+    elif target=="presentation":
+        build_presentation = True
     else:
         print(g_iam + ": Invalid target!")
         usage(g_iam)
@@ -111,5 +122,8 @@ if build_thesis==True:
 if build_opposition==True:
     deleteFile(g_iam, "opposition.pdf")
     buildOpposition(g_iam)
+if build_presentation==True:
+    deleteFile(g_iam, "presentation.pdf")
+    buildPresentation(g_iam)
 
 print(g_iam + ": Exit.")
