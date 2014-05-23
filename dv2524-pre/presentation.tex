@@ -1,7 +1,54 @@
+% presentation.tex
+
 \documentclass{beamer}
 \usetheme{Intel}
 
+\title{Paravirtualizing OpenGL ES in Simics}
+\subtitle{Master's Thesis in Computer Science}
+\author{Eric Nilsson}
+\institute{Blekinge Institute of Technology}
+\date{\today} % Fix
+
+% Opposition presentation:
+% 20 minutes
+% Three key points:
+% * Paravirtualization is feasible for accelerating graphics in virtual platforms.
+% * Magic instructions is good methodology to transmit real-time invocations between target and host systems.
+% * Paravirtualization may be subject to advanced functionality.
+% The frames should lead to these conclusions.
+
+% Screen-play:
+% ---
+% Front page
+% Introduction:
+% * Virtualization
+% * Simics
+% * [SHOW VIDEO]
+% * Present key points
+% Background:
+% * Graphics virtualization
+% Paravirtualization:
+% * Solution architecture
+% * (Man-in-the-middle windows)
+% * Magic instructions and memory table traversal
+% Experiment:
+% * Benchmarks
+% * Profiling methodology
+% Results:
+% * Chess results
+% * Julia results
+% * (Phong results)
+% Conclusion:
+% * Magic instruction overhead
+% * Performance gains
+% * Key points recap
+% Acknowledgement
+% Back page
+% ---
+
 \begin{document}
+	\input{presentationfront.tex}
+	
 	\begin{frame}
 	\frametitle{This is the first slide}
 	%Content goes here
@@ -14,6 +61,5 @@
 	%More content goes here
 	\end{frame}
 
-	% etc
-
+	\input{presentationback.tex}
 \end{document}

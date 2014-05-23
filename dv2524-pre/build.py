@@ -26,6 +26,8 @@ subprocess.call(["git", "checkout"])
 
 print("Building LaTeX-document with pdflatex...")
 subprocess.call("pdflatex presentation", shell=True)
+subprocess.call("pdflatex presentation", shell=True)
+subprocess.call("pdflatex presentation", shell=True)
 
 # When build has completed, reset working directory back to original directory:
 os.chdir("../dv2524-pre/")
