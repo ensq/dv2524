@@ -2,11 +2,27 @@
 
 \paragraph{Opposition: Conclusion}
 \label{par:oppositionconclusion}
-\ldots
+Under chapter 4 in the opposed thesis, it is briefly mentioned that the process of establishing the metrics for the study was a process spanning four days on a modern PC.
+As far as the author can tell, this is not mentioned for the remainder of the thesis.
 
-% Expand on that the performance implication by metric analysis should be analyzed in how much it may cost ericsson.
-% How often does such an analysis have to be run.
-% Four days for a modern pc is extremely expensive.
-% Can it be optimized?
-% What are the suspected benchmarks?
-% If the analysis would have to be run often, optimizing it should be mentioned under future work.
+The elapsed time and performance implications thereof does not affect the results nor conclusions of the thesis in-and-of-its-own.
+However, in regard to the conclusion elaborated upon below; there may be a lack of further analysis.
+
+\begin{alltt}
+"For Ericsson, this means that faults can be predicted
+on the file level with good predictive performance."
+\end{alltt}
+
+It may very well be the case that the devised solution has a positive influence on testing methodology at Ericsson.
+It is also to be noted that the performance implications mentioned in this document does not necessarily oppose this fact; since only a part of the process required for said metric analysis has such computational complexity.
+The author simply wishes to expose that there is no elaboration into how often this process would have to be run.
+
+In consideration that a batch job spanning four days on a modern pc is very expensive, the authors ought consider to elaborate on how many times this process would have to be performed if used in an industrial setting; in order to back the claim that the devised solution may predict these faults in a realistic scenario at Ericsson.
+Note that this may very well be the case, as supported by the evidence presented in the opposed thesis - but the thesis lacks elaboration into the performance implication of this subset of the analysis, which features such a long execution time.
+As such, the author would be very interested in elaboration into the following questions posed for the scenario of industry utilization of the devised solution at Ericsson, to which the thesis refers in its concluson:
+
+\begin{enumerate}
+	\item Realistically, how often does this analysis have to be run?
+	\item May the analysis be optimized?
+	\item Are there established bottlenecks?
+\end{enumerate}
