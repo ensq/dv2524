@@ -4,7 +4,11 @@
 \usetheme{Intel}
 %\setbeameroption{show notes} % If annotations are desired.
 
+% Package inclusion:
 \usepackage{hyperref}
+\usepackage{tikz} % Used by presentationprogressbar.tex
+
+% Package configuration:
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
@@ -12,6 +16,9 @@
 	citecolor=blue,
 	anchorcolor=blue
 }
+\usetikzlibrary{calc}
+
+\input{presentationprogressbar.tex}
 
 \title{Paravirtualizing OpenGL ES in Simics}
 \subtitle{Master's Thesis in Computer Science}
@@ -57,14 +64,31 @@
 % ---
 
 \begin{document}
-	% Front matter
+	% FRONT MATTER
+	% ---
 	\input{presentationfront.tex}
 	
-	% Body matter
+	% BODY MATTER
+	% ---
+	% INTRODUCTION
+	\section{Introduction}
+	% Simics
+	\subsection{Simics}
 	\input{presentationsimics.tex}
+	% Demonstration
+	\subsection{Demonstration}
 	\input{presentationdemonstration.tex}
+	% Key points
+	\subsection{Key points}
 	\input{presentationkeypoints.tex}
 
-	% Back matter
+	% BACKGROUND
+	\section{Background}
+	% Graphics virtualization
+	\subsection{Graphics virtualization}
+	\input{presentationgraphicsvirtualization.tex}
+
+	% BACK MATTER
+	% ---
 	\input{presentationback.tex}
 \end{document}
