@@ -66,6 +66,8 @@ def buildPresentation(p_from):
     print(p_from + ": Building Presentation document...")
     buildCommon()
 
+    subbuild(os.getcwd() + "/dv2524-img")
+    subbuild(os.getcwd() + "/dv2524-fig")
     subbuild(os.getcwd() + "/dv2524-pre")
     shutil.copyfile("dv2524-bin/presentation.pdf", "presentation.pdf")
 

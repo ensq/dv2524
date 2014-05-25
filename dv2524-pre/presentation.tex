@@ -5,8 +5,8 @@
 
 % Document configuration
 %\setbeameroption{show notes} % If annotations are desired.
-\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
-\setbeamertemplate{subsection in toc}{\hspace{0.5cm}\rule[0.3ex]{3pt}{3pt}~\inserttocsubsection\par}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection} % Use number keys for table of content sections.
+\setbeamertemplate{subsection in toc}{\hspace{0.5cm}\rule[0.3ex]{3pt}{3pt}~\inserttocsubsection\par} % Use a symbol for table of content subsections.
 \AtBeginSection[]
 {
 	\begin{frame}
@@ -15,7 +15,8 @@
 			\tableofcontents[currentsection]
 		\end{multicols}
     \end{frame}
-}
+} % Insert table of contents frame before each new section.
+\setbeamertemplate{caption}[numbered] % Number figures.
 
 % Package inclusion:
 \usepackage{tikz} % Used by presentationprogressbar.tex
@@ -104,21 +105,19 @@
 
 	% PARAVIRTUALIZATION
 	\section{Paravirtualization}
+	\subsection{Overview}
+	\input{presentationoverview.tex}
+	% (Man-in-the-middle windows)
+	% Memory table traversal
+	\subsection{Memory table traversal}
+	%\input{presentationmemorytabletraversal.tex}
 
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
-	\section{test}
-	\subsection{test}
+	% EXPERIMENT
+	\section{Experiment}
+	% Benchmarks
+	\subsection{Benchmarks}
+	\input{presentationbenchmarks.tex}
+	% Profiling
 
 	% BACK MATTER
 	% ---
