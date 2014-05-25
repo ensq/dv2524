@@ -2,6 +2,16 @@
 
 \documentclass{beamer}
 \usetheme{Intel}
+%\setbeameroption{show notes} % If annotations are desired.
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+	anchorcolor=blue
+}
 
 \title{Paravirtualizing OpenGL ES in Simics}
 \subtitle{Master's Thesis in Computer Science}
@@ -21,7 +31,7 @@
 % ---
 % Front page
 % Introduction:
-% * Virtualization
+% * (Virtualization)
 % * Simics
 % * [SHOW VIDEO]
 % * Present key points
@@ -47,19 +57,13 @@
 % ---
 
 \begin{document}
+	% Front matter
 	\input{presentationfront.tex}
 	
-	\begin{frame}
-	\frametitle{This is the first slide}
-	%Content goes here
-	\end{frame}
+	% Body matter
+	\input{presentationsimics.tex}
+	\input{presentationdemonstration.tex}
 
-	\begin{frame}
-
-	\frametitle{This is the second slide}
-	\framesubtitle{A bit more information about this}
-	%More content goes here
-	\end{frame}
-
+	% Back matter
 	\input{presentationback.tex}
 \end{document}
