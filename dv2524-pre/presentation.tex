@@ -22,8 +22,7 @@
 \usepackage{tikz} % Used by presentationprogressbar.tex
 \usepackage{hyperref} % Used to invoke Santa Claus.
 \usepackage{multicol} % Used to split up table of contents in a double column style.
-
-\usepackage{adjustbox}
+\usepackage{multirow} % Needed for multirow graphs
 
 % Package configuration:
 \hypersetup{
@@ -36,6 +35,15 @@
 \usetikzlibrary{calc}
 
 \input{presentationprogressbar.tex}
+
+% Command to read, and ouput the first line of a file:
+\newread\file
+\newcommand{\dvtcmdfirstline}[1]{
+	\openin\file=#1
+	\read\file to \keyval
+	\keyval % Return keyval.
+	\closein\file
+}
 
 \title{Paravirtualizing OpenGL ES in Simics}
 \subtitle{Master's Thesis in Computer Science}
@@ -123,6 +131,21 @@
 	% Profiling
 	\subsection{Profiling}
 	\input{presentationprofiling.tex}
+
+	% RESULTS
+	\section{Results}
+	% Results - Host
+	\subsection{Results - Reference}
+	\input{presentationresultshost.tex}
+	% Results - Chess
+	\subsection{Results - Chess}
+	\input{presentationresultschess.tex}
+	% Results - Julia
+	\subsection{Results - Julia}
+	\input{presentationresultsjulia.tex}
+	% Results - Phong
+	\subsection{Results - Phong}
+	\input{presentationresultsphong.tex}
 
 	% BACK MATTER
 	% ---

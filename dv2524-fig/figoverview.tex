@@ -8,7 +8,7 @@
 	
 \begin{tikzpicture}
 	\node[block, text width=\linewidth, align=center] (app) {Application};
-	
+
 	\node[block, below=0.5cm of app, text width=0.25\linewidth] (targetegl) {EGL (1)};
 	\node[block, left=1cm of targetegl, text width=0.25\linewidth] (targetgl) {OpenGL};
 	\node[block, right=1cm of targetegl, text width=0.25\linewidth] (targeteglnative) {EGL (2)};
@@ -36,3 +36,6 @@
 	\path [line] (hostlibraries) -- (hostgl);
 	\path [line] (hostlibraries) -- (hostegl);
 \end{tikzpicture}
+
+% Layers:
+% http://www.texample.net/tikz/examples/system-combination/
