@@ -1,7 +1,15 @@
 % presentationback.tex
 
-\begin{frame}
+\newcommand{\commitlink}{https://github.com/CaterHatterPillar/dv2524/commit/}
+\expandafter\def\expandafter\commitlink\expandafter{\commitlink \gitAbbrevHash}
 
-% Frame intentionally left blank.
+\yyyymmdddate
+\renewcommand{\dateseparator}{-} % To print date in same format as gitinfo-package.
+
+\begin{frame}[t]
+
+\begin{tabular}{p{\textwidth}}
+{\small This document was compiled \today\ and last edited by \gitAuthorName\ \gitAuthorDate . This document is Version.\gitVtagn , and can be identified using revision- and commit hash \href{\commitlink}{\texttt{\gitAbbrevHash}}}.
+\end{tabular}
 
 \end{frame}
