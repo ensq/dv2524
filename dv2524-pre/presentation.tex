@@ -23,6 +23,8 @@
 \usepackage{hyperref} % Used to invoke Santa Claus.
 \usepackage{multicol} % Used to split up table of contents in a double column style.
 
+\usepackage{adjustbox}
+
 % Package configuration:
 \hypersetup{
 	colorlinks=true,
@@ -62,7 +64,8 @@
 % Paravirtualization:
 % * Solution architecture
 % * (Man-in-the-middle windows)
-% * Magic instructions and memory table traversal
+% * Magic instructions
+% * (Memory table traversal)
 % Experiment:
 % * Benchmarks
 % * Profiling methodology
@@ -108,9 +111,9 @@
 	\subsection{Overview}
 	\input{presentationoverview.tex}
 	% (Man-in-the-middle windows)
+	\subsection{Magic instructions}
 	% Memory table traversal
 	\subsection{Memory table traversal}
-	%\input{presentationmemorytabletraversal.tex}
 
 	% EXPERIMENT
 	\section{Experiment}
@@ -118,6 +121,8 @@
 	\subsection{Benchmarks}
 	\input{presentationbenchmarks.tex}
 	% Profiling
+	\subsection{Profiling}
+	\input{presentationprofiling.tex}
 
 	% BACK MATTER
 	% ---
