@@ -24,6 +24,7 @@
 \usepackage{multicol} % Used to split up table of contents in a double column style.
 \usepackage{multirow} % Needed for multirow graphs
 \usepackage{datetime} % Used to format dates.
+\usepackage{pdflscape}
 
 \usepackage[footinfo]{gitinfo} % dv2524-pac/
 
@@ -62,35 +63,7 @@
 % * Paravirtualization may be subject to advanced functionality.
 % The frames should lead to these conclusions.
 
-% Screen-play:
-% ---
-% Front page
-% Introduction:
-% * (Virtualization)
-% * Simics
-% * [SHOW VIDEO]
-% * Present key points
-% Background:
-% * Graphics virtualization
-% Paravirtualization:
-% * Solution architecture
-% * (Man-in-the-middle windows)
-% * Magic instructions
-% * (Memory table traversal)
-% Experiment:
-% * Benchmarks
-% * Profiling methodology
-% Results:
-% * Chess results
-% * Julia results
-% * (Phong results)
-% Conclusion:
-% * Magic instruction overhead
-% * Performance gains
-% * Key points recap
-% Acknowledgement
-% Back page
-% ---
+\newtheorem{thm}{Key point}
 
 \begin{document}
 	% FRONT MATTER
@@ -121,10 +94,12 @@
 	\section{Paravirtualization}
 	\subsection{Overview}
 	\input{presentationoverview.tex}
-	% (Man-in-the-middle windows)
+	% Man-in-the-middle windows
+	\subsection{Man-in-the-middle windows}
+	\input{presentationwindows.tex}
+	% Magic instructions
 	\subsection{Magic instructions}
-	% Memory table traversal
-	\subsection{Memory table traversal}
+	\input{presentationmagicinstructions.tex} % W. memory table traversal
 
 	% EXPERIMENT
 	\section{Experiment}
@@ -138,17 +113,35 @@
 	% RESULTS
 	\section{Results}
 	% Results - Host
-	\subsection{Results - Reference}
+	\subsection{Reference histograms}
 	\input{presentationresultshost.tex}
 	% Results - Chess
-	\subsection{Results - Chess}
+	\subsection{Chess histograms}
 	\input{presentationresultschess.tex}
 	% Results - Julia
-	\subsection{Results - Julia}
+	\subsection{Julia histograms}
 	\input{presentationresultsjulia.tex}
 	% Results - Phong
-	\subsection{Results - Phong}
+	\subsection{Phong histograms}
 	\input{presentationresultsphong.tex}
+
+	\subsection{Tables}
+	\input{presentationtables.tex}
+
+	% CONCLUSION
+	\section{Conclusion}
+	% Performance improvements
+	\subsection{Performance improvements}
+	\input{presentationperformance.tex}
+	% Magic instruction overhead
+	\subsection{Magic instruction overhead}
+	\input{presentationmagicinstructionoverhead.tex}
+	% Advanced functionality
+	\subsection{Advanced functionality}
+	\input{presentationadvancedfunctionality.tex}
+	% Key point recap
+	\subsection{Key point recap}
+	\input{presentationkeypoints.tex}
 
 	% BACK MATTER
 	% ---

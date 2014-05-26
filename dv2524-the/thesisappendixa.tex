@@ -99,14 +99,14 @@ Furthermore, any values outside that of the standard deviation are not visualize
 From this data, it is apparent that roughly $45\%$ of profiled samples fall in the interval of $0$-$0.5$ milliseconds, a relatively high measurement compared to that of the batch profiling (see paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}).
 The figure is complemented with the analyzed data presented in table \ref{tab:magicinstructionsforeach}
 
-\input{tabmagicinstructionsforeach.tex}
+\input{figmagicinstructionsforeach.tex}
 
 \paragraph{Profile all}
 \label{par:results_magicinstructionoverhead_profileall}
 In order to complement the data presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, corresponding measurements for batch \dvttermmagicinstruction\ invocations is collected in accordance to the pseudo code presented in table \ref{tab:magicinstructionsforall}.
 In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:methodologyexperiment_platformprofiling}).\\
 
-\input{tabmagicinstructionsforall.tex}
+\input{figmagicinstructionsforall.tex}
 
 \noindent
 From the data presented in paragraphs \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} and \dvtcmdrefname{par:results_magicinstructionoverhead_profileall}, we may establish that the profiling overhead induced when profiling each \dvttermmagicinstruction\ individually causes misrepresentation in the actual elapsed time required by said \dvttermmagicinstruction .

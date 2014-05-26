@@ -63,7 +63,7 @@ In order to improve responsivity in time critical profiling of elapsed time, we 
 Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immediately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
 Collected profiling overhead data is presented in table \ref{tab:profiling}.
 
-\input{tabprofiling.tex}
+\input{figprofiling.tex}
 
 From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occasionally be volatile.
 However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, slightly below that of the average, such large deviation is to be quite rare.
@@ -159,10 +159,10 @@ For consistency, each benchmark variation - of which there are two; resulting in
 The described key figures, for each benchmark, are presented in table \ref{tab:keyvals}.
 In table \ref{tab:keyvalsmagicinstructions}, the per-frame number of magic instructions induced by these key figure variations are presented.
 
-% tab:keyvals
-\input{tabkeyvals}
+% fig:keyvals
+\input{figkeyvals}
 
-% tab:keyvalsmagicinstructions
-\input{tabkeyvalsmagicinstructions}
+% fig:keyvalsmagicinstructions
+\input{figkeyvalsmagicinstructions}
 
 Note that for each tile rendered in the Chess benchmark, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s, respectively, in addition to a minor number per-frame.
