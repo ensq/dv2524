@@ -19,6 +19,7 @@
 \usepackage{changepage}
 
 % User includes:
+\usepackage{pdfpages} % Used to include .pdf documents in appendix.
 \usepackage{datetime} % Used to format dates.
 \usepackage[hidelinks]{hyperref} % Force hide hyperlink borders. Consider removing this, as such settings ought to be up to .pdf-reader.
 \usepackage{alltt} % Used for verbatim environments under oppositionconclusion.
@@ -43,16 +44,18 @@
 
 % Body matter:
 \input{oppositiondisclaimer}
+\section*{Critical Review}
+\subsection*{Recommended Changes}
 \input{oppositionpresentation}
 \input{oppositionvisualization}
 \input{oppositionbackground}
 \input{oppositionmethodology}
 \input{oppositionresults}
+\subsection*{Required Changes}
 \input{oppositionanalysis}
 \input{oppositionconclusion}
-
-% Add original draft.
-% Add annotated draft.
+\section*{Appendix}
+\input{oppositionappendix}
 
 % Back matter:
 \include{oppositionback}
