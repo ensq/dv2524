@@ -3,6 +3,23 @@
 \begin{frame}
 \frametitle{Man-in-the-middle windows}
 
-\ldots
+Paravirtualizing window libraries is tricky.
+\begin{itemize}
+	\item Platforms use different libraries
+\end{itemize}
+
+Override of EGL libraries would be problematic:
+\begin{itemize}
+	\item Overload desired methods\footnote{\dvtcmdcodeinline{eglSwapBuffers}}
+	\item Forward invocation to target
+\end{itemize}
+
+May cause application to fail.
+\begin{itemize}
+	\item \dvtcmdcodeinline{LD_PRELOAD}
+	\item Invoke original method
+\end{itemize}
+
+Thus unmodified application may use paravirtualized libraries.
 
 \end{frame}
