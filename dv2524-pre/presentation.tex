@@ -24,7 +24,8 @@
 \usepackage{multicol} % Used to split up table of contents in a double column style.
 \usepackage{multirow} % Needed for multirow graphs
 \usepackage{datetime} % Used to format dates.
-\usepackage{pdflscape}
+\usepackage{pdflscape} % Used to landscape frames.
+\usepackage{listings} % Used to format inline code throughout document.
 
 \usepackage[footinfo]{gitinfo} % dv2524-pac/
 
@@ -48,6 +49,11 @@
 	\keyval % Return keyval.
 	\closein\file
 }
+
+% Formatting inline code command:
+\newcommand{\dvtcmdcodeinline}[1]{
+	\colorbox{black!5}{
+			\lstinline[basicstyle=\ttfamily\color{black}]{#1}}}
 
 \title{Paravirtualizing OpenGL ES in Simics}
 \subtitle{Master's Thesis in Computer Science}
@@ -142,6 +148,11 @@
 	% Key point recap
 	\subsection{Key point recap}
 	\input{presentationkeypoints.tex}
+
+	% Observations:
+	% For the Chess benchmark, we may observe impaired performance.
+	% For the Julia benchmark, we may observe significant performance improvements.
+	% For the Phong benchmark, we may observe erratic performance issues on the software rasterized platform; possibly due to strange cache behavior caused by sampling the gargantuan texture. However, the tables also demonstrate considerably better maximum- and standard deviation.
 
 	% BACK MATTER
 	% ---
