@@ -26,6 +26,7 @@
 \usepackage{datetime} % Used to format dates.
 \usepackage{pdflscape} % Used to landscape frames.
 \usepackage{listings} % Used to format inline code throughout document.
+\usepackage{color} % Used to gray out text
 
 \usepackage[footinfo]{gitinfo} % dv2524-pac/
 
@@ -38,6 +39,8 @@
 	anchorcolor=blue
 }
 \usetikzlibrary{calc}
+
+\newenvironment{graytext}{\color{gray}}{\ignorespacesafterend}
 
 \input{presentationprogressbar.tex}
 
