@@ -129,5 +129,7 @@ As such, the physical addresses of memory pages must be continuously retrieved a
 This can be done in a trivial manner by simply iterating the original virtual address with the \textit{\dvttermtarget } page size, in our case, \dvtcmdnum{4096} bytes.
 Naturally, said process must be performed regardless of data being read or written to-/from the intended - physical - memory space.
 
+\input{figvirtualmemory.tex}
+
 % TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
 %\missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.}
