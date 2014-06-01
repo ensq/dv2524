@@ -174,11 +174,12 @@
               </data>
             </node>
             <node id="n0::n0::n3">
+              <data key="d4"/>
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.bpmn.Artifact.withShadow">
                   <y:Geometry height="120.62499999999989" width="139.25" x="433.0" y="238.69999999999993"/>
-                  <y:Fill color="#FFFFFFE6" transparent="false"/>
+                  <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="67.625" y="58.31249999999994">
                     <y:LabelModel>
