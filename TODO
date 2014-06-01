@@ -23,3 +23,7 @@ Chapter Background:
 * * Biggest issue is that target must be modified to utilize host hardware.
 * * Determinism and checkpointing may be difficult (only speculation).
 * * In effect, the only reason PCI passthrough methodologies is Linux-only is that no-one has developed Windows support yet.
+
+Create figures in arbitrary application outputting to binary files which may - not - be properly revision controlled. These ought be converted into TeX TiKz drawings later on.
+* Solution overview
+* Memory Table Traversal
