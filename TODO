@@ -13,9 +13,14 @@ Add Discussion chapter. This chapter ought to outline the following things:
 * * * Advances in software rasterization capabilities may very well be used in coagency with VMP.
 * * * However, when native execution functionality is disabled (such as with breakpoint functionality), accelerating methods such as paravirtualization must be employed.
 
+Introduction, or corresponding chapter wherein we specify the importance of graphics acceleration:
+* Hardware assisted acceleration especially important when not utilizing host virtualization extensions.
+* Advances in software rasterization capabilities may very well be used in coagency with VMP.
+
 Additions to future work:
 * Amend magic instruction overhead by batching invocations.
 * * Problem: one must ensure to copy data in case referenced memory changes.
+* Perform study without utilizing host virtualization extensions.
 
 Add Threats to Validity section. This section ought to outline the following things:
 * Move Phong benchmarking elaboration to this section.

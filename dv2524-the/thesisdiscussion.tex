@@ -73,3 +73,16 @@ As such, \dvttermsimics\ \dvttermreverseexecution\ functionality would not inclu
 For a productification of a paravirtualized graphics framework for the \dvttermsimics\ full-system simulator, it is probable that - unlike an academic study into the subject, such as the one presented in this document - the window in which the paravirtualized framework displays its graphics would be located inside of the \dvttermtarget\ system.
 If so would be the case, the framebuffer would be located in \dvttermtarget\ memory, rendering said framebuffer eligible for \dvttermreverseexecution\ since such memory is stored in \dvttermcheckpoint s.
 As such, assuming the graphics framebuffer being present in \dvttermtarget\ system memory, \dvttermreverseexecution\ would be supported natively by \dvttermsimics .
+
+% Host Virtualization Extensions
+\section{Host Virtualization Extensions}
+\label{sec:discussion_hostvirtualizationextensions}
+For the purposes of the experiment conducted, \dvttermhostvirtualizationextensions\ have been used to accelerate performance of \dvttermxeightysix\ instructions.
+Host virtualization extensions reduces much of the overhead incurred by simulating hardware similar to that of the simulation \dvttermhost ; thus stressing the capabilities of the paravirtualized acceleration devised for this study.
+
+However, there are times when utilization of \dvttermhostvirtualizationextensions\ is rendered impossible.
+Such examples include simulating systems other than that of the \dvttermhost\ machine - such as \dvttermarm\ architectures - or when a user wishes to set breakpoints in the software stack.
+At such times, the simulation is forced to execute without the benefits of native execution; often slowing down the simulation by several orders of magnitude.
+It may be argued that hardware assisted graphics acceleration may become particularily influential in such situations, as \dvttermcpu -bound methodologies - such as software rasterization commonly used in \dvttermsimics\ - may incur large performance issues that does not scale well with interpreted instruction sets.
+
+As such, it may be argued that the full capabilities of paravirtualized graphics acceleration, as compared to software rasterization, is not necessarily demonstrated in an environment utilizing \dvttermhostvirtualizationextensions ; a scenario lessening the impact of \dvttermcpu -bound workloads.
