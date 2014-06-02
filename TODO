@@ -4,15 +4,6 @@ TODO
 ...in accordance to corporate advisor:
 ---
 
-Add Discussion chapter. This chapter ought to outline the following things:
-* VMP and its effects on the thesis
-* * There are times when one cannot use vmp to accelerate native code.
-* * The devised solution would induce much larger performance improvements when vmp is not activated.
-* * Discuss how this may affect the thesis and future work.
-* * Elaborate on the following:
-* * * Advances in software rasterization capabilities may very well be used in coagency with VMP.
-* * * However, when native execution functionality is disabled (such as with breakpoint functionality), accelerating methods such as paravirtualization must be employed.
-
 Introduction, or corresponding chapter wherein we specify the importance of graphics acceleration:
 * Hardware assisted acceleration especially important when not utilizing host virtualization extensions.
 * Advances in software rasterization capabilities may very well be used in coagency with VMP.
