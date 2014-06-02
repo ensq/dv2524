@@ -16,6 +16,7 @@ Additions to future work:
 Add Threats to Validity section. This section ought to outline the following things:
 * Move Phong benchmarking elaboration to this section.
 * Consider moving profiling profiling to said section as well.
+* Move Benchmark Variations to this new section.
 
 Chapter Background:
 * Under background, each graphics virtualization methodology is described briefly. Paravirtualization ought to be described as well. Either insert description or refer to other section in document.
