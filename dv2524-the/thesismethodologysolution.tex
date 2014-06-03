@@ -4,10 +4,10 @@
 % Methodology - Solution:
 \chapter{Methodology - Solution}
 \label{cha:methodologysolution}
-The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+The implementation constitutes the realization of the paravirtualized technology described in this document and corresponding thesis proposal (see ~\dvtcmdcitefur{dissertation:nilsson:2014}).
 Throughout this document, several concepts and phrases may be recognized and related to the Android Hardware OpenGL ES emulation design overview (see section.
 
-In accordance to the \dvttermreferencesolution , paravirtualized graphics acceleration is achieved by the means of three overall components; being the Target System Libraries, the Host System Libraries, and the communications channel aptly named the Simics Pipe (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the purposes of said components).
+In accordance to the \dvttermreferencesolution , paravirtualized graphics acceleration is achieved by the means of three overall components; being the Target System Libraries, the Host System Libraries, and the communications channel aptly named the Simics Pipe (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the purposes of said components).
 
 \input{figoverview.tex}
 
@@ -48,7 +48,7 @@ Given that the target system libraries adheres to the \dvttermopengl\ headers de
 The interplay with the original \dvttermopengles\ headers also results in the solution adhering to the platform-dependent type definition, flags, and constants; as originally defined by \dvttermkhronos .
 
 The target system libraries are written in \dvttermc\ and \dvttermcplusplus .
-See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the target system libraries.
+See ~\dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the target system libraries.
 
 \section{Host System Libraries}
 \label{sec:methodologysolution_hostsystemlibraries}
@@ -62,11 +62,11 @@ When the requested \dvttermopengl\ invocation has been performed, any return- or
 As with the the target system libraries, the receiving end of an \dvttermopengl\ method definition in the host system libraries are likewise generated to a large degree (see \ref{sec:methodologysolution_openglabigeneration}).
 
 The host system libraries are written in \dvttermc\ and \dvttermcplusplus .
-See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the host system libraries.
+See ~\dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the host system libraries.
 
 \section{Windowing Systems}
 \label{sec:methodologysolution_windowingsystems}
-Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ and \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014}).
+Due to variations in the creation and maintenance of windows on different platforms (e.g., \dvttermfedora\ and \dvttermandroid ), incurred by said platforms utilizing different interfaces for the purpose, the window to which \dvttermopengl\ renders is kept on the simulation \dvttermhost , in accordance to the scope outlined in the thesis proposal (see ~\dvtcmdcitefur{dissertation:nilsson:2014}).
 
 The problem may be summarized as the dilemma of the target system libraries having to communicate with the correct window (located in the simulation \dvttermhost ), yet having the \dvttermtarget\ system window reporting successful initialization.
 After all, it would be problematic if the \dvttermopengl -utilizing application would have to be modified in order to be paravirtualized.
@@ -89,7 +89,7 @@ The role of the Simics Pipe is comprised of the allocation and maintenance of \g
 Furthermore, the Simics Pipe utilizes a \dvttermmagicinstruction\ to relay the address of said memory to the simulation \dvttermhost ; where the responsibilities of the Simics Pipe end.
 
 There are a numerous methodologies to communicate with the outside world from inside of the simulation, such as utilizing UNIX sockets or other networking technologies.
-Several of these methods are expanded upon in the thesis proposal (see \dvtcmdcitefur{dissertation:nilsson:2014})
+Several of these methods are expanded upon in the thesis proposal (see ~\dvtcmdcitefur{dissertation:nilsson:2014})
 
 However, due to the inherent performance demands brought on by serialization of real-time graphics invocations, the methodology of \dvttermmagicinstruction s were selected for use for the purpose of this study.
 Magic instructions allow for fast, in the pretext of the simulation \dvttermtarget\ - almost instant - escape from the simulation context - and may carry a limited amount of information with it from inside the simulation out into the real world.
@@ -98,14 +98,14 @@ However, other methodologies, albeit slower, may be fast enough to for use in gr
 In order to perform a \dvttermmagicinstruction , the Simics Pipe uses \texttt{GCC} Extended Asm to directly inject \dvtcmdcodeinline{__volatile__}-flagged (as to prevent the compiler from reordering memory accesses during optimization) \texttt{assembly} instructions into \dvttermc\ code, which - in addition to \dvttermcplusplus\ - the Simics Pipe is written in.
 During said instruction, one may simply write an arbitrary 64-bit address to any register fit for the purpose (the number- and size of processor registers being the data-sharing bottleneck of the \dvttermmagicinstruction\ paradigm).
 
-Not being the first time \dvttermmagicinstruction s have been used for the purposes of hardware acceleration\dvtcmdcitebib[p.~32]{publications:leupers:2010}, the Simics Pipe utilizes such methodology - namely the \dvtcmdcodeinline{CPUID} \dvttermxeightysix\ instruction - to carry a lone memory address (being the serialized command stream) in the \dvttermtarget\ \dvtcmdcodeinline{rbx}\footnote{Accordingly, if the simulation \dvttermtarget\ should correspond to a 32-bit \dvttermxeightysix\ system, said register would translate to the \dvtcmdcodeinline{ebx} register.} register.
+Not being the first time \dvttermmagicinstruction s have been used for the purposes of hardware acceleration~\dvtcmdcitebib[p.~32]{publications:leupers:2010}, the Simics Pipe utilizes such methodology - namely the \dvtcmdcodeinline{CPUID} \dvttermxeightysix\ instruction - to carry a lone memory address (being the serialized command stream) in the \dvttermtarget\ \dvtcmdcodeinline{rbx}\footnote{Accordingly, if the simulation \dvttermtarget\ should correspond to a 32-bit \dvttermxeightysix\ system, said register would translate to the \dvtcmdcodeinline{ebx} register.} register.
 The execution of a \dvttermmagicinstruction , in line with the \dvttermmagicinstruction\ paradigm, invokes a callback method in the host side of the Simics Pipe; having effectively escaped the simulation and paused the simulation state.
 Knowing the occurrence of a \dvttermmagicinstruction\ with the corresponding leaf number, one may assume the existence of a \dvttermtarget\ memory address in the simulated \dvttermtarget\ \dvttermcpu\ register \dvtcmdcodeinline{rbx}.
 Note that, at this point, the retrieved address is in the format of a \dvttermtarget\ machine virtual address; the destination of which is unknown to the simulation \dvttermhost .
 As such, this address need be translated in order to retrieve the package contents said memory address points to.
 See \ref{sec:methodologysolution_memorytabletraversal} for more information on how the address is interpreted and the entirety of the intended sequence of bytes retrieved from \dvttermhost\ system memory.
 
-See \dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
+See ~\dvtcmdcitefur{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
 
 % TODO:
 % Point out that the buffer includes a number indicating what method invocation has been executed, and a variable indicating size of the buffer in it's entirety.

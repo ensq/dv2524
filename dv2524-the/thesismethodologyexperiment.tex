@@ -7,7 +7,7 @@
 
 \section{Platform Configuration}
 \label{sec:methodologyexperiment_platformconfiguration}
-The experiment devised for the purpose of this dissertation is performed on the platforms outlined in \dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
+The experiment devised for the purpose of this dissertation is performed on the platforms outlined in ~\dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
 Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform. % \todo{List host machine hardware!}
 
 The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
@@ -32,8 +32,8 @@ Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary p
 The \dvttermsimics\ hardware configuration utilized for the purpose of this experiment simulates an \dvttermintelcoreiseven ; the same processor series to that of the actual hardware of the simulation \dvttermhost\ system.
 Furthermore, \dvttermsimics\ execution, both the software rasterized and paravirtualized platforms, utilize \dvttermkvm\ for the simulation \dvttermtarget\ to run natively on the \dvttermhost\ hardware.
 
-In order to accommodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image (see \dvtcmdciteref{technicaldocs:intel:2013:x86}), circumventing the need to interpret \dvttermarm\ instructions\dvtcmdciteref{web:stylianou:2010}.
-Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see \dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accommodate for said native execution\dvtcmdciteref{web:hofemeier:2010}.}.
+In order to accommodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image (see ~\dvtcmdciteref{technicaldocs:intel:2013:x86}), circumventing the need to interpret \dvttermarm\ instructions~\dvtcmdciteref{web:stylianou:2010}.
+Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see ~\dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accommodate for said native execution~\dvtcmdciteref{web:hofemeier:2010}.}.
 
 \paragraph{Target Software Configuration}
 \label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
@@ -87,10 +87,10 @@ As such, this method is used for the software rasterized- and paravirtualized \d
 % Benchmarking
 \section{Benchmarking}
 \label{sec:methodologyexperiment_benchmarking}
-Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
+Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
 As such, a number of benchmarks have been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
-The benchmarks numbering three in total - they are intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
-The benchmarks, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilize \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in \dvtcmdcitefur{dissertation:nilsson:2014}.
+The benchmarks numbering three in total - they are intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
+The benchmarks, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilize \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in ~\dvtcmdcitefur{dissertation:nilsson:2014}.
 Furthermore, all benchmarks have been configured to run at roughly \dvtcmdnum{16}~\milli\second , which would correspond to roughly \dvtcmdnum{60}~\dvttermfps , when hardware accelerated on the \dvttermhost\ system - in order to reflect the expected load of a modern real-time interactive application.
 As such, the purpose of developed benchmarks is to be representative of typical scenarios induced by modern \dvttermgui s whilst utilizing a graphics framework such as \dvttermopengl .
 

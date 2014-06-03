@@ -9,7 +9,7 @@ After all, clients often wish to simulate other platforms than those they curren
 Another cross-platform issue, that comes to mind when interfering with the \dvttermtarget\ physical memory from outside simulation, is that is \glslink{dvtglossmemorypagelocking}{memory page locking}.
 Such functionalities are sometimes limited in operating systems; albeit entirely controlled by the user in \dvttermlinux\ derived systems.
 \glslink{dvtglosstarget}{Target} system platform differences such as these may incur performance hindrances in that the amount of memory that may be \glslink{dvtglossmemorypagelocking}{locked} could be limited; forcing the solution to perform its bytestream transmission in several instances of \dvttermmagicinstruction s.
-Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see \dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
+Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
 In section \ref{sec:background_graphicsvirtualization}, potentially costly maintenance of updated graphics frameworks is mentioned as drawback of paravirtualization as a methodology to achieve graphics acceleration.
 Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in this document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
@@ -52,9 +52,9 @@ As such, the incorporation of \dvttermdeterministicexecution\ into the paravirtu
 \label{par:discussion_checkpointing}
 \index{Checkpointing}
 The incorporation of \dvttermcheckpointrestart\ schemes in the paravirtualized solution described in chapter \ref{cha:methodologysolution} would require an efficient way of saving- and storing the \dvttermopengl\ state, as present in the \dvttermhost\ system.
-The possibility of incorporating such functionality has, as mentioned in chapter \ref{cha:relatedwork}, been studied and performed in the \dvttermqemu\ full-system simulator by Lagar-Cavilla et al. in their work on VMGL\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+The possibility of incorporating such functionality has, as mentioned in chapter \ref{cha:relatedwork}, been studied and performed in the \dvttermqemu\ full-system simulator by Lagar-Cavilla et al. in their work on VMGL~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
 Such state retrieval, in the case of \dvttermopenglestwopointo , may be achieved by the \dvtcmdcodeinline{glGet}-set of \dvttermopengl\ library methods\footnote{Note that such fit-for-purpose methods may not necessarily be available in other graphics frameworks, but since this dissertation focuses on \dvttermopenglestwopointo , such dilemmas will not be elaborated upon further in this document.}.
-Using these methods, one ought be able to retrieve the entirety of the \dvttermopengl\ state variables present in the \dvttermhost\ system (see \dvtcmdciteref{technicaldocs:silicongraphics:2014} for more information on the \dvtcmdcodeinline{glGet}-family of methods).
+Using these methods, one ought be able to retrieve the entirety of the \dvttermopengl\ state variables present in the \dvttermhost\ system (see ~\dvtcmdciteref{technicaldocs:silicongraphics:2014} for more information on the \dvtcmdcodeinline{glGet}-family of methods).
 
 Having retrieved these variables, one might subsequently store the changes in \dvttermopengl\ states in some data structure; thus avoiding the need to store the entirety of these states every frame.
 
