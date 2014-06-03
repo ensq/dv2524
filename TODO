@@ -44,3 +44,49 @@ Consider moving research questions under background to aims and objectives
 Other comments:
 Possible inconsistent capitalization of words such as Figure, Table, Section, and Chapter. Be sure to look up.
 Veronica suggests Methodology - Implementation to be a better title than Methodology - Solution.
+
+...in accordance to advisor during meeting:
+---
+
+Move profiling appendix content into section 9.1.
+
+If there is time, add a statistical significance test. Not a priority since the results are clear enough.
+
+Research questions ought be changed. Keep the first one, but replace the others with the following:
+* What would consist a viable implementation
+* How does the performance relate to software rasterization.
+The rest of the current research questions ought be kept as 'discussion' questions.
+
+Add some descriptory text in the caption of the overview figure.
+
+In the context of the List of Terms, the index may seem redundant. Remove the index.
+
+References ought carry preceeding spaces.
+
+Inconsistent paragraphs. Keep indents or double newline. Don't do both.
+
+Don't refer to your proposal. It carries no academic relevance.
+
+dv2549 may be put in web references.
+
+Remove further reading.
+
+Elaborate on OpenGL ES in new section under Background.
+Also add a section on GPU architecture and why they differ from CPUs to the degree that simulation of GPU-bound workloads on CPUs is unfeasible.
+
+Background and Related Work ought be combined into a new chapter.
+Simics with its corresponding attribute chapters should be made into a new chapter.
+
+Memory Table Traversal should be renamed Page Table Traversal.
+
+The occurence of a preface describing document structure allows you to keep capitilizing new terminology rather than having them in italics.
+
+Preface:
+first occurence, .e.g
+
+Conferences to look up:
+---
+
+Mascots - modeling and...
+
+
