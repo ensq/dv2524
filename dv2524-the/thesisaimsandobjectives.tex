@@ -16,9 +16,8 @@ Furthermore, as to accommodate the analysis of benefits and drawbacks of paravir
 These benchmarks are thus designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational intensity.
 
 Based on the developed solution, in coagency with the benchmarks devised to profile said solution, this document comprises an analysis of the performance of paravirtualized graphics compared to that of traditional software rasterization.
-The objectives of this dissertation is to evaluate the feasibility of paravirtualization as an approach to accelerate graphics in virtual platforms; along with identifying its strengths and weaknesses.\\
+The objectives of this dissertation is to evaluate the feasibility of paravirtualization as an approach to accelerate graphics in virtual platforms; along with identifying its strengths and weaknesses.
 
-\noindent
 In line with the previous work in the area specified in chapter \ref{cha:relatedwork}, there has been no indication - in academic writing - of any pre-existing solution of paravirtualized graphics \dvttermapi s signifying \glslink{dvtglossdeterministicexecution}{deterministic} behavior; paving the way for supporting \dvttermreverseexecution\ graphics.
 Such functionality could simplify debugging, testing, and profiling of applications comprising some \dvttermgpu -bound workload; not limited to graphics- or \dvttermgpu\ utilization in its entirety.
 Entailed by these research gaps, the research questions formulated in this chapter are considered to be lacking in the field.
@@ -31,9 +30,18 @@ Accordingly, the key investigatory attributes and explicit research question for
 \newcommand*\researchquestionitem[2]{\item[#1:] \textit{#2}}
 \begin{multicols}{2}
 \begin{itemize*}
-	\researchquestionitem{1}{What are the benefits and disadvantages of paravirtualized graphics in virtual platforms?}
-	\researchquestionitem{2}{What are the prerequisites of \dvttermdeterministicexecution\ of paravirtualized graphics in virtual platforms?}
-	\researchquestionitem{3}{What are the prerequisites of \dvttermcheckpointing\ of paravirtualized graphics in virtual platforms?}
-	\researchquestionitem{4}{What are the prerequisites of \dvttermreverseexecution\ of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{1}{What constitutes a viable implementation of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{2}{What are the benefits and disadvantages of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{3}{How does paravirtualized graphics performance relate to software rasterization?}
+\end{itemize*}
+\end{multicols}
+
+Furthermore, the study pertains to a number of discussion topics in line with the solution's relation to the \dvttermsimics\ full-system simulator. These discussion questions presented below.
+
+\begin{multicols}{2}
+\begin{itemize*}
+	\researchquestionitem{1}{What are the prerequisites of \dvttermdeterministicexecution\ of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{2}{What are the prerequisites of \dvttermcheckpointing\ of paravirtualized graphics in virtual platforms?}
+	\researchquestionitem{3}{What are the prerequisites of \dvttermreverseexecution\ of paravirtualized graphics in virtual platforms?}
 \end{itemize*}
 \end{multicols}
