@@ -47,9 +47,9 @@ In the presence of of the complexities caused by the occurrence of virtual time,
 This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the pretext of the observer - is more relevant than profiling virtual time.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
-In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:background_virtualtime}, time increments differently than in the context of the \dvttermhost\ machine.
+In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:backgroundandrelatedwork_virtualtime}, time increments differently than in the context of the \dvttermhost\ machine.
 As such, in order to appropriately measure the elapsed time of a benchmark frame, said profiling must take place outside of the simulation.
-As expanded upon in section \ref{sec:background_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
+As expanded upon in section \ref{sec:backgroundandrelatedwork_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
 In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
 In \dvttermlinux , the interface to such a port may be accessed by any of the \dvtcmdcodeinline{/dev/ttyS*} file descriptors.
