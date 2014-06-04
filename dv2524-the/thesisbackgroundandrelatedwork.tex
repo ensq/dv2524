@@ -7,7 +7,7 @@ System simulators are abundant and exist in corporate~\dvtcmdcitebib{magazines:b
 Such platforms, like \dvttermsimics , have been used for a variety of purposes including, but not limited to, thermal control strategies in multicores~\dvtcmdcitebib{inproceedings:bartolini:2010}, networking timing analysis~\dvtcmdcitebib{journals:ortiz:2009}, web server performance evaluation~\dvtcmdcitebib{journals:villa:2005}, and to simulate costly hardware financially unfeasible to researchers~\dvtcmdcitebib{journals:alameldeen:2003}.
 Furthermore, such simulators may be used to port \dvttermos s to new processors~\dvtcmdciteref{technicaldocs:netbsd:2014}.
 
-For the purposes of graphics acceleration, strategies, methodologies and procedures are numerous; several of which are expanded upon in chapter \ref{cha:methodologysolution}.
+For the purposes of graphics acceleration, strategies, methodologies and procedures are numerous; several of which are expanded upon in chapter \ref{cha:proposedsolutionandimplementation}.
 Based off these core strategies, such as device modeling, various passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems, such as the development of specialized passthrough drivers~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
 One such instance is presented by Hansen in his work on the Blink display system~\dvtcmdcitebib{inproceedings:hansen:2007}.
 
@@ -82,7 +82,7 @@ Finally, there is the option of virtualization by paravirtualization.
 Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level (see figure \ref{fig:overview}).
 Inherent from its higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_gpumodeling}.
 Additionally, virtualizing at the graphics library software level circumvents the need for users to re-link or modify the application they wish accelerated.
-Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:methodologysolution_simicspipe}) may accommodate for significant performance improvements when compared to that of networking solutions (see ~\dvtcmdcitefur{dissertation:nilsson:2014}).
+Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:proposedsolutionandimplementation_simicspipe}) may accommodate for significant performance improvements when compared to that of networking solutions (see ~\dvtcmdcitefur{dissertation:nilsson:2014}).
 
 However, despite the possibility for significant performance improvements (see chapter \ref{cha:results}), graphics virtualization by the means of paravirtualization is not without it's inherent flaws.
 In particular, a paravirtualized graphics library may be expensive to maintain as frameworks evolve and specifications change.

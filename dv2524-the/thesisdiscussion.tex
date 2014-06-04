@@ -12,8 +12,8 @@ Such functionalities are sometimes limited in operating systems; albeit entirely
 Furthermore, \glslink{dvtglossmemorypagelocking}{page locking} functionalities may not be accessible by the user whatsoever, suggesting further studies into how a paravirtualized solution for graphics acceleration may perform using other methodologies for trans-simulation communication; such as TCP/IP-networking (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on such methodologies).
 
 In section \ref{sec:backgroundandrelatedwork_graphicsvirtualization}, potentially costly maintenance of updated graphics frameworks is mentioned as drawback of paravirtualization as a methodology to achieve graphics acceleration.
-Later, in section \ref{sec:methodologysolution_openglabigeneration}, it is mentioned that the solution described in this document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
-In order to further streamline the maintenance of a productified paravirtualized solution, such framework generation could be automated further by utilizing software such as \texttt{SWIG} or \texttt{SIL} to retrieve function signatures; no longer requiring developers to describe function headers by the means of configuration files as described in section \ref{sec:methodologysolution_openglabigeneration}.
+Later, in section \ref{sec:proposedsolutionandimplementation_openglabigeneration}, it is mentioned that the solution described in this document utilizes software to partly generate paravirtualized graphics \dvttermabi s where possible.
+In order to further streamline the maintenance of a productified paravirtualized solution, such framework generation could be automated further by utilizing software such as \texttt{SWIG} or \texttt{SIL} to retrieve function signatures; no longer requiring developers to describe function headers by the means of configuration files as described in section \ref{sec:proposedsolutionandimplementation_openglabigeneration}.
 
 Furthermore, in line with the \dvttermsimics\ attributes described in chapter \ref{cha:backgroundandrelatedwork}, a certain set of behavior must be attained in order to align with \dvttermsimics\ philosophy.
 Analyses and recommendations surrounding further study of said attributes, in terms of graphics acceleration by the means of paravirtualization, are presented below in paragraphs \dvtcmdrefname{par:appendixa_simicsproductification_deterministicexecution}, \dvtcmdrefname{par:appendixa_simicsproductification_checkpointing}, and \dvtcmdrefname{par:appendixa_simicsproductification_reverseexecution}, respectively.\\
@@ -51,7 +51,7 @@ As such, the incorporation of \dvttermdeterministicexecution\ into the paravirtu
 \paragraph{Checkpointing}
 \label{par:discussion_checkpointing}
 \index{Checkpointing}
-The incorporation of \dvttermcheckpointrestart\ schemes in the paravirtualized solution described in chapter \ref{cha:methodologysolution} would require an efficient way of saving- and storing the \dvttermopengl\ state, as present in the \dvttermhost\ system.
+The incorporation of \dvttermcheckpointrestart\ schemes in the paravirtualized solution described in chapter \ref{cha:proposedsolutionandimplementation} would require an efficient way of saving- and storing the \dvttermopengl\ state, as present in the \dvttermhost\ system.
 The possibility of incorporating such functionality has, as mentioned in chapter \ref{cha:backgroundandrelatedwork}, been studied and performed in the \dvttermqemu\ full-system simulator by Lagar-Cavilla et al. in their work on VMGL~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
 Such state retrieval, in the case of \dvttermopenglestwopointo , may be achieved by the \dvtcmdcodeinline{glGet}-set of \dvttermopengl\ library methods\footnote{Note that such fit-for-purpose methods may not necessarily be available in other graphics frameworks, but since this dissertation focuses on \dvttermopenglestwopointo , such dilemmas will not be elaborated upon further in this document.}.
 Using these methods, one ought be able to retrieve the entirety of the \dvttermopengl\ state variables present in the \dvttermhost\ system (see ~\dvtcmdciteref{technicaldocs:silicongraphics:2014} for more information on the \dvtcmdcodeinline{glGet}-family of methods).
@@ -66,7 +66,7 @@ As such, albeit circumstantial, there ought be no reason as to why the introduct
 \paragraph{Reverse Execution}
 \label{par:discussion_reverseexecution}
 \index{Reverse Execution}
-In the solution devised for the purpose of this study, the paravirtualized solution renders to a window present in the \dvttermhost\ system (see chapter \ref{cha:methodologysolution}).
+In the solution devised for the purpose of this study, the paravirtualized solution renders to a window present in the \dvttermhost\ system (see chapter \ref{cha:proposedsolutionandimplementation}).
 Effectively, this means that the framebuffer is present in \dvttermhost\ memory.
 As such, \dvttermsimics\ \dvttermreverseexecution\ functionality would not include said memory space; leading to the framebuffer presented in in the \dvttermhost\ system not to display in reverse in coagency with the \glslink{dvtglossreverseexecution}{reverse executing} \dvttermtarget\ system.
 

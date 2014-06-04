@@ -17,7 +17,7 @@ In line with chapter \ref{cha:results} and \ref{cha:conclusion} having concluded
 
 Furthermore, and for the purposes of complementing this dissertation in particular, the author would like to suggest implementation of addition mini-benchmarks stressing \dvttermtarget -to-\dvttermhost\ communications.
 Preferably, said benchmark would stress said communication by other means than profiling the sampling of a large texture, since such a test may cause volatile performance in the reference material - being software rasterized \dvttermsimics , possibly due to cache misses (see section \ref{sec:results_benchmarkvariations}).
-When executing such a benchmark, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:methodologysolution_memorytabletraversal}.\\
+When executing such a benchmark, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:proposedsolutionandimplementation_pagetabletraversal}.\\
 
 \noindent
 In addition to the complementary studies suggested in the above paragraph, there are two potential use-cases that might be viable subjects for further study; these being \dvtcmdrefname{par:futurework_apiextensions} and \dvtcmdrefname{par:futurework_safetycriticalconsiderations}.
@@ -37,7 +37,7 @@ As such, further studies into the feasibility of such functionality ought be con
 
 \paragraph{Safety Critical Considerations}
 \label{par:futurework_safetycriticalconsiderations}
-Paravirtualization of the \dvttermopenglestwopointo\ library induces the need to maintain various \dvttermopengl\ state variables in \dvttermtarget - and \dvttermhost\ systems (see chapter \ref{cha:methodologysolution}).
+Paravirtualization of the \dvttermopenglestwopointo\ library induces the need to maintain various \dvttermopengl\ state variables in \dvttermtarget - and \dvttermhost\ systems (see chapter \ref{cha:proposedsolutionandimplementation}).
 The effective overload of a certain framework opens up the possibility of modifying the behavior of that library in certain ways; including how methods are invoked, in what order, and pre-/post-hooks of certain actions.
 
 This ability may be exploited to bend the capabilities of that library to the needs of a certain user; for example, a safety critical version of said paravirtualized library.
