@@ -71,7 +71,7 @@ In line with a paravirtualized approach, \dvttermpcipassthrough\ also requires m
 \paragraph{Soft Modeling}
 \label{par:backgroundandrelatedwork_graphicsvirtualization_softmodeling}
 As an alternative to precise modeling of \dvttermgpu\ technologies, one might analyze the feasibility of high-speed software rasterization.
-Albeit not up to hardware accelerated speeds, some results indicate an increased feasibility of high-speed software rasterization in modern graphics frameworks (see ~\dvtcmdcitefur{papers:nilsson:2013}), where traditional software rasterization is accelerated using thread pooling optimizations and \dvttermsimd\ technologies~\dvtcmdciteref{web:microsoft:2013:warp}; all for the purposes of optimizing execution for \dvttermcpu -, rather than \dvttermgpu -, execution.
+Albeit not up to hardware accelerated speeds, some results indicate an increased feasibility of high-speed software rasterization in modern graphics frameworks (see ~\dvtcmdciteref{papers:nilsson:2013}), where traditional software rasterization is accelerated using thread pooling optimizations and \dvttermsimd\ technologies~\dvtcmdciteref{web:microsoft:2013:warp}; all for the purposes of optimizing execution for \dvttermcpu -, rather than \dvttermgpu -, execution.
 As such, one may avoid some of the overhead induced by simulating \dvttermgpu\ workload on \dvttermcpu s, which is traditionally not fit for purpose.
 One might speculate that using such technologies in collaboration with \dvttermhost\ native execution acceleration might bring software rasterization up to competitive speeds fit for some simulatory development purposes, replacing the need for more sophisticated virtualization techniques.
 
@@ -82,7 +82,7 @@ Finally, there is the option of virtualization by paravirtualization.
 Paravirtualization incurs the benefits of \dvttermhost\ hardware acceleration of some framework graphics library, and is implemented at a relatively high abstraction level (see figure \ref{fig:overview}).
 Inherent from its higher abstraction, paravirtualization may be relatively cost-effective to implement - in comparison to alternatives such as \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_gpumodeling}.
 Additionally, virtualizing at the graphics library software level circumvents the need for users to re-link or modify the application they wish accelerated.
-Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:proposedsolutionandimplementation_simicspipe}) may accommodate for significant performance improvements when compared to that of networking solutions (see ~\dvtcmdcitefur{dissertation:nilsson:2014}).
+Furthermore, the serialization of framework invocations by the means of fast communications channels (see section \ref{sec:proposedsolutionandimplementation_simicspipe}) may accommodate for significant performance improvements when compared to that of networking solutions (see ~\dvtcmdciteref{dissertation:nilsson:2014}).
 
 However, despite the possibility for significant performance improvements (see chapter \ref{cha:results}), graphics virtualization by the means of paravirtualization is not without it's inherent flaws.
 In particular, a paravirtualized graphics library may be expensive to maintain as frameworks evolve and specifications change.
@@ -111,7 +111,7 @@ Included in the \dvttermandroidsdk , it supports virtualization of an assortment
 
 In the presence of the \dvttermandroid\ \dvtcmdnum{4.0.3} release, the \dvttermandroidsdk\ was updated to make use of hardware-assisted \dvttermxeightysix\ virtualization; significantly increasing the performance of \dvttermcpu -bound workloads~\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
 In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.1} and \dvtcmdnum{2.0} hardware acceleration; offering a substantial performance boost to developers utilizing the \dvttermopengles\ frameworks~\dvtcmdciteref{web:ducrohet:2012:afasteremulator}.
-\dvttermgoogle 's solution~\dvtcmdcitefur{technicaldocs:google:2014}, consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system by using networking sockets or directly via the simulator program.
+\dvttermgoogle 's solution~\dvtcmdciteref{technicaldocs:google:2014}, consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system by using networking sockets or directly via the simulator program.
 Note, however, that there is no software rasterized solution for running \dvttermopenglestwopointo\ in the \dvttermandroidemulator .
 
 As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:experimentalmethodology_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.
