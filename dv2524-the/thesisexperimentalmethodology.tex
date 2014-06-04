@@ -4,12 +4,14 @@
 \chapter{Experimental Methodology}
 \label{cha:experimentalmethodology}
 
+% Platform Configuration
 \section{Platform Configuration}
 \label{sec:experimentalmethodology_platformconfiguration}
 The experiment devised for the purpose of this dissertation is performed in software rasterized- and paravirtualized \dvttermsimics\ platforms, respectively.
 Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
 The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
 
+% Host Configuration
 \paragraph{Host Configuration}
 \label{par:experimentalmethodology_platformconfiguration_hostconfiguration}
 The system upon which the experiment is performed is an \dvttermxeightysix -compatible Haswell \dvttermintel\ processor configured to run the \dvttermfedora\ \dvttermlinux\ distribution.
@@ -25,6 +27,7 @@ Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary p
 % GPU: ?
 % Tip: Look up if there are any recommendations as to how one ought to list system configuration for experiments.
 
+% Target Hardware Configuration
 \paragraph{Target Hardware Configuration}
 \label{par:experimentalmethodology_platformconfiguration:targethardwareconfiguration}
 The \dvttermsimics\ hardware configuration utilized for the purpose of this experiment simulates an \dvttermintelcoreiseven ; the same processor series to that of the actual hardware of the simulation \dvttermhost\ system.
@@ -33,6 +36,7 @@ Furthermore, \dvttermsimics\ execution, both the software rasterized and paravir
 In order to accommodate for similar acceleration in \dvttermqemu , \dvttermandroid\ is configured to run on the \dvttermintel\ \dvttermandroid\ \dvttermxeightysix\ system image (see ~\dvtcmdciteref{technicaldocs:intel:2013:x86}), circumventing the need to interpret \dvttermarm\ instructions~\dvtcmdciteref{web:stylianou:2010}.
 Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see ~\dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accommodate for said native execution~\dvtcmdciteref{web:hofemeier:2010}.}.
 
+% Target Software Configuration
 \paragraph{Target Software Configuration}
 \label{par:experimentalmethodology_platformconfiguration_targetsoftwareconfiguration}
 In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform (see paragraph \dvtcmdrefname{par:experimentalmethodology_platformconfiguration_hostconfiguration}), it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
