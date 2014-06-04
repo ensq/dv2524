@@ -3,22 +3,20 @@
 % Aims, Objectives, and Research Questions
 \chapter{Aims, Objectives, and Research Questions}
 \label{cha:aimsandobjectives}
-The study presented in this document, and outlined in ~\dvtcmdcitefur{dissertation:nilsson:2014}, consists of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full-system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
+The study presented in this document consists of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full-system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
 The solution devised to accelerate \dvttermopengl\ adheres to a certain \dvttermreferencesolution , which is elaborated upon in section \ref{sec:relatedwork_qemu}.
 
 As such, this study concerns investigating the performance, and the feasibility of extended benefits and advanced functionality, of paravirtualized graphics in a virtual platform.
 This entails investigation, analysis, and development of methods and techniques for efficient communication and execution in the \dvttermsimics\ run-time environment.
 Furthermore, the study comprises analysis of the liabilities of paravirtualized technologies in regards to \dvttermsimics\ philosophy (being high-performance determinism and repeatability~\dvtcmdcitebib{journals:aarno:2013}).
-As such, this dissertation does not exclusively concern \dvttermsimics\ integration, but an investigation into paravirtualized drivers in virtual platforms.
+As such, the dissertation does not exclusively concern \dvttermsimics\ integration, but an investigation of paravirtualized drivers in virtual platforms.
 
-Accordingly, for the purpose of this thesis, a paravirtualized solution for graphics acceleration in \dvttermsimics\ has been developed to accommodate for this analysis.
-Said solution is the subject of the thesis presented in this document.
-
+For the purpose of this thesis, a paravirtualized solution for graphics acceleration in \dvttermsimics\ has been developed to accommodate for this analysis.
 Furthermore, as to accommodate the analysis of benefits and drawbacks of paravirtualized graphics, a number of benchmarks are developed for the purposes of stressing key points in the devised solution; with the goal of locating solution bottlenecks.
-These benchmarks are thus designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational complexity.
+These benchmarks are thus designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational intensity.
 
-Based off the developed solution, in coagency with the benchmarks devised to profile said solution, this document comprises an analysis into the performance of paravirtualized graphics compared to that of traditional software rasterization.
-As such, the objectives of this dissertation is to establish and present the method of paravirtualization as a feasible way of accelerating graphics in virtual platforms; along with profiling its strengths and weaknesses.\\
+Based on the developed solution, in coagency with the benchmarks devised to profile said solution, this document comprises an analysis of the performance of paravirtualized graphics compared to that of traditional software rasterization.
+The objectives of this dissertation is to evaluate the feasibility of paravirtualization as an approach to accelerate graphics in virtual platforms; along with identifying its strengths and weaknesses.\\
 
 \noindent
 In line with the previous work in the area specified in chapter \ref{cha:relatedwork}, there has been no indication - in academic writing - of any pre-existing solution of paravirtualized graphics \dvttermapi s signifying \glslink{dvtglossdeterministicexecution}{deterministic} behavior; paving the way for supporting \dvttermreverseexecution\ graphics.
