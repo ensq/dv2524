@@ -1,19 +1,17 @@
 % thesismethodologyexperiment.tex
-% Chapter Methodology - Experiment.
 
-% Methodology - Experiment:
-\chapter{Methodology - Experiment}
-\label{cha:methodologyexperiment}
+% Experimental Methodology:
+\chapter{Experimental Methodology}
+\label{cha:experimentalmethodology}
 
 \section{Platform Configuration}
-\label{sec:methodologyexperiment_platformconfiguration}
-The experiment devised for the purpose of this dissertation is performed on the platforms outlined in ~\dvtcmdcitefur{dissertation:nilsson:2014}; being software rasterized- and paravirtualized \dvttermsimics , respectively.
-Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform. % \todo{List host machine hardware!}
-
+\label{sec:experimentalmethodology_platformconfiguration}
+The experiment devised for the purpose of this dissertation is performed in software rasterized- and paravirtualized \dvttermsimics\ platforms, respectively.
+Furthermore, the experiment profiles the performance of the \dvttermreferencesolution\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
 The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
 
 \paragraph{Host Configuration}
-\label{par:methodologyexperiment_platformconfiguration_hostconfiguration}
+\label{par:experimentalmethodology_platformconfiguration_hostconfiguration}
 The system upon which the experiment is performed is an \dvttermxeightysix -compatible Haswell \dvttermintel\ processor configured to run the \dvttermfedora\ \dvttermlinux\ distribution.
 Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary platform used for development of the \dvttermsimics\ full-system simulator at the \dvttermintel\ offices in Stockholm - at which the solution described in this document has been developed.
 
@@ -28,7 +26,7 @@ Said \dvttermos\ was selected for use due to \dvttermfedora\ being the primary p
 % Tip: Look up if there are any recommendations as to how one ought to list system configuration for experiments.
 
 \paragraph{Target Hardware Configuration}
-\label{par:methodologyexperiment_platformconfiguration:targethardwareconfiguration}
+\label{par:experimentalmethodology_platformconfiguration:targethardwareconfiguration}
 The \dvttermsimics\ hardware configuration utilized for the purpose of this experiment simulates an \dvttermintelcoreiseven ; the same processor series to that of the actual hardware of the simulation \dvttermhost\ system.
 Furthermore, \dvttermsimics\ execution, both the software rasterized and paravirtualized platforms, utilize \dvttermkvm\ for the simulation \dvttermtarget\ to run natively on the \dvttermhost\ hardware.
 
@@ -36,19 +34,25 @@ In order to accommodate for similar acceleration in \dvttermqemu , \dvttermandro
 Furthermore, the solution also utilize \dvttermkvm\ in order to provide similar native execution on the \dvttermhost\ hardware\footnote{Had the solution been running on the \dvttermwindows\ \dvttermos , the solution would have utilized \dvttermhaxm\ (see ~\dvtcmdciteref{technicaldocs:intel:2013:haxm}) to accommodate for said native execution~\dvtcmdciteref{web:hofemeier:2010}.}.
 
 \paragraph{Target Software Configuration}
-\label{par:methodologyexperiment_platformconfiguration_targetsoftwareconfiguration}
-In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform (see paragraph \dvtcmdrefname{par:methodologyexperiment_platformconfiguration_hostconfiguration}), it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
-As such, the platform \dvttermos s used for the purpose of this study are as follows: hardware accelerated \dvttermfedora\ \dvttermhost\ system, software rasterized\footnote{Using the Mesa OpenGL software rasterization implementation.} \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system, and \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system.
+\label{par:experimentalmethodology_platformconfiguration_targetsoftwareconfiguration}
+In line with \dvttermfedora\ being the \dvttermos\ in use when performing the reference benchmark experiments on the \dvttermhost\ platform (see paragraph \dvtcmdrefname{par:experimentalmethodology_platformconfiguration_hostconfiguration}), it may be of value to have the simulated \dvttermtarget\ machine configured to run with the same \dvttermos .
+As such, the platform \dvttermos s used for the purpose of this study are as follows:
+\begin{itemize}[noitemsep]
+	\item Hardware accelerated \dvttermfedora\ \dvttermhost\ system
+	\item Software rasterized\footnote{Using the Mesa OpenGL software rasterization implementation.} \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system
+	\item Paravirtualized \dvttermfedora\ \dvttermsimics\ \dvttermtarget\ system
+	\item \dvttermqemu\ \dvttermandroid\ \dvtcmdnum{4.4} (KitKat, API level 19) \dvttermtarget\ system
+\end{itemize}
 
 % Platform Profiling
 \section{Platform Profiling}
-\label{sec:methodologyexperiment_platformprofiling}
+\label{sec:experimentalmethodology_platformprofiling}
 In the presence of of the complexities caused by the occurrence of virtual time, profiling of time in virtual platforms sometimes dictate special measures.
-This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the pretext of the observer - is more relevant than profiling virtual time.
+This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the context of the observer - is more relevant than profiling virtual time.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
-In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:backgroundandrelatedwork_virtualtime}, time increments differently than in the context of the \dvttermhost\ machine.
-As such, in order to appropriately measure the elapsed time of a benchmark frame, said profiling must take place outside of the simulation.
+In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:backgroundandrelatedwork_virtualtime}, time increments different than in the context of the \dvttermhost\ machine.
+As such, in order to appropriately measure the elapsed time of a benchmark frame, the profiling must take place outside of the simulation.
 As expanded upon in section \ref{sec:backgroundandrelatedwork_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
 In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
@@ -84,13 +88,13 @@ As such, this method is used for the software rasterized- and paravirtualized \d
 % Timing methodologies:
 % * In Linux, we may simply...
 
-% Benchmarking
-\section{Benchmarking}
-\label{sec:methodologyexperiment_benchmarking}
-Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on said inquiry).
+% Benchmarks
+\section{Benchmarks}
+\label{sec:experimentalmethodology_benchmarks}
+Throughout the course of the pilot study, no existing \dvttermopenglestwopointo\ benchmark - with cross-platform profiling support for \dvttermandroid\ and \dvttermxeleven\ \dvttermlinux\ - was deemed appropriate for for the purposes of this dissertation.
 As such, a number of benchmarks have been devised on-site for the purposes of stress-testing the solution developed for the purpose of this study.
-The benchmarks numbering three in total - they are intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models (see ~\dvtcmdcitefur{dissertation:nilsson:2014} for an elaboration on the ambitions and motives for said benchmark).
-The benchmarks, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilize \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform; in line with the motives outlined in ~\dvtcmdcitefur{dissertation:nilsson:2014}.
+The benchmarks numbering three in total - they are intended to stress suspected bottlenecks in the implementation; corresponding to a large number of relatively insignificant \dvttermopengl\ invocations, computationally intensive \dvttermgpu\ kernels, and passing of large data such as textures or models.
+The benchmarks, intended to run on a \dvttermhost\ \dvttermfedora\ \dvttermlinux\ system, a virtualized \dvttermsimics\ \dvttermfedora\ configuration, and a \dvttermqemu\ \dvttermandroid\ configuration, utilize \dvttermjni\ to invoke \dvttermopengles\ from the same \dvttermc\ code base independent of platform.
 Furthermore, all benchmarks have been configured to run at roughly \dvtcmdnum{16}~\milli\second , which would correspond to roughly \dvtcmdnum{60}~\dvttermfps , when hardware accelerated on the \dvttermhost\ system - in order to reflect the expected load of a modern real-time interactive application.
 As such, the purpose of developed benchmarks is to be representative of typical scenarios induced by modern \dvttermgui s whilst utilizing a graphics framework such as \dvttermopengl .
 
@@ -103,7 +107,7 @@ Frame captures of the benchmarks are presented in figures \ref{fig:benchmarks_ch
 % * Resolution of experiment and other common factors
 
 \paragraph{Benchmark: Chess}
-\label{par:methodologyexperiment_benchmarking_benchmarkchess}
+\label{par:experimentalmethodology_benchmarking_benchmarkchess}
 \index{Chess benchmark}
 The 'Chess' benchmark is developed for the purposes of stressing the latency in-between \dvttermtarget - and \dvttermhost\ systems.
 It is so named because of the chess-like tileset the graphics kernel produces.
@@ -119,21 +123,16 @@ This induces a high utilization of the Simics Pipe, which is intended to stress 
 
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multitude of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
 
-The benchmark kernel, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkchesskernel} under \dvtcmdrefname{cha:appendixb}.
-
 \paragraph{Benchmark: Julia}
-\label{par:methodologyexperiment_benchmarking_benchmarkjulia}
+\label{par:experimentalmethodology_benchmarking_benchmarkjulia}
 \index{Julia fractal benchmark}
 The 'Julia' benchmark is developed for the purposes of stressing computational intensity in software-rasterized and paravirtualized platforms.
 It is so named due to the kernel calculating the Julia fractal; the texturing and frame-wise seeding of which gives the benchmark it's distinct look.
 The benchmark is designed to perform a lone computationally intensive graphics kernel invocation, which will stress the computational prowess of the profiled platform.
 The case is selected for use as the computation of a fractal is trivially scalable in terms of complexity by modifying the number of iterations the fractal algorithm performs, and is thus considered suitable for profiling of computationally intensive graphics kernels.
 
-The benchmark kernel, in it's entirety, is presented in section
-\dvtcmdrefname{sec:appendixb_benchmarkjuliakernel} under \dvtcmdrefname{cha:appendixb}.
-
 \paragraph{Benchmark: Phong}
-\label{par:methodologyexperiment_benchmarking_benchmarkphong}
+\label{par:experimentalmethodology_benchmarking_benchmarkphong}
 \index{Phong shading benchmark}
 The 'Phong' benchmark is developed for the purposes of stressing the throughput, or bandwidth - if adhering to the networking paradigm, in-between \dvttermtarget - and \dvttermhost\ systems.
 The Phong benchmark is comprised of a rotating model, being the Newell teapot, which is textured and subsequently shaded by a single point light using the Phong shading model; thus giving the benchmark it's name. % \todo{point out as to why the newell teapot is a standard model}
@@ -144,18 +143,14 @@ For the purposes of stressing the bandwidth of \dvttermtarget - and \dvttermhost
 Vertices and indices of the model do not utilize \dvttermopengl\ vertex- and-/or index element buffers, thus forcing the solution to transmit the data every frame.
 Additionally, in order to further stress the throughput of the profiled platform, the large texture is updated every frame.
 
-The kernel source code, in it's entirety, is presented in section \dvtcmdrefname{sec:appendixb_benchmarkphongkernel} under \dvtcmdrefname{cha:appendixb}.
-
-% Key Figure Variations
-\section{Key Figure Variations}
-\label{sec:methodologyexperiment_keyfigurevariations}
+% Input Data Variation
+\section{Input Data Variation}
+\label{sec:experimentalmethodology_inputdatavariation}
 In order to detect anything but linear potential of scaling in software rasterized- and paravirtualized \dvttermsimics\ platforms, each benchmark performed in said platforms has been executed in three different versions, respectively.
 These benchmark versions differ in terms of a key figure; where said key figure is a changed variable that could potentially improve- or worsen benchmark performance.
 The purpose of these 'key figure variations' is to detect any unexpected results in execution; and thus identify any performance complexity issues in software rasterized- and paravirtualized \dvttermsimics\ platforms.
-
 For consistency, each benchmark variation - of which there are two; resulting in three unique experiments per benchmark - has been produced to halve- and subsequently double the corresponding key figure.
 
-\noindent
 The described key figures, for each benchmark, are presented in table \ref{tab:keyvals}.
 In table \ref{tab:keyvalsmagicinstructions}, the per-frame number of magic instructions induced by these key figure variations are presented.
 

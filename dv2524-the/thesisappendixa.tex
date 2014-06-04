@@ -14,7 +14,7 @@ Below, the two test cases performed for the purposes of profiling the overhead c
 \paragraph{Profile each}
 \label{par:results_magicinstructionoverhead_profileeach}
 The per-invocation profiling of $1000$ \dvttermmagicinstruction s is presented in figure \ref{fig:histogrammagicinstructionsforeach} as a histogram.
-All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:methodologyexperiment_platformprofiling}.
+All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:experimentalmethodology_platformprofiling}.
 In line with this modification of the source data, due to the established profiling average overhead of \dvtcmdfirstline{profile.dat.avg} having relatively much influence on the data, the visualization features only ten histogram bins - in coagency with the approximate data.
 As such, any offset values below that of zero are placed in the first bin.
 Furthermore, any values outside that of the standard deviation are not visualized in this figure.
@@ -29,7 +29,7 @@ The figure is complemented with the analyzed data presented in table \ref{tab:ma
 \paragraph{Profile all}
 \label{par:results_magicinstructionoverhead_profileall}
 In order to complement the data presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, corresponding measurements for batch \dvttermmagicinstruction\ invocations is collected in accordance to the pseudo code presented in table \ref{tab:magicinstructionsforall}.
-In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:methodologyexperiment_platformprofiling}).\\
+In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:experimentalmethodology_platformprofiling}).\\
 
 \input{figmagicinstructionsforall.tex}
 
@@ -40,5 +40,5 @@ This may be caused by the system call \dvtcmdcodeinline{tcdrain}, which	waits un
 One may speculate that said system call may be the cause for eccentric behavior in the profiling.
 
 As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach} is rendered less reliable due to the eccentric profiled behavior.
-From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:methodologyexperiment_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
+From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:experimentalmethodology_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
 Due to the volatility of the profiling presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_profileeach}, the author will refrain from using these results for any definite conclusions.

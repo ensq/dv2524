@@ -114,7 +114,7 @@ In addition to this, \dvttermgoogle\ implemented \dvttermopengles\ \dvtcmdnum{1.
 \dvttermgoogle 's solution~\dvtcmdcitefur{technicaldocs:google:2014}, consists of a paravirtualized implementation which circumvents the simulated system by forwarding its \dvttermopengles\ invocations to the \dvttermhost\ system by using networking sockets or directly via the simulator program.
 Note, however, that there is no software rasterized solution for running \dvttermopenglestwopointo\ in the \dvttermandroidemulator .
 
-As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:methodologyexperiment_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.
+As of \dvttermandroid\ \dvtcmdnum{4.4}, the \dvttermandroidemulator\ uses \dvttermqemu\ to simulate \dvttermarm\ and \dvttermxeightysix \footnote{In coagency with images compiled by \dvttermintel , the \dvttermandroidemulator\ may be used to run the \dvttermandroid\ \dvttermos\ on \dvttermxeightysix\ simulated hardware (see section \ref{sec:experimentalmethodology_platformconfiguration}).} devices aiding those wishing to develop software for mobile units.
 The \dvttermandroidemulator\ implementation is referred to as the \dvttermreferencesolution\ throughout this document.
 
 % Magic Instructions
@@ -142,7 +142,7 @@ The variance in virtual time, as compared to that of real-world time, is called 
 
 The concepts of real-world and virtual time are particularly important when considering performance measurements.
 When attempting to establish some sort of measurement in a full-system simulator, such as \dvttermsimics , one must contemplate what type of time is relevant to the study being performed.
-For graphics acceleration of real-time applications, it is likely that the real-world wall clock is the primary point of reference (see section \ref{sec:methodologyexperiment_platformprofiling} for an elaboration on how time measurement is performed for the sake of this study).
+For graphics acceleration of real-time applications, it is likely that the real-world wall clock is the primary point of reference (see section \ref{sec:experimentalmethodology_platformprofiling} for an elaboration on how time measurement is performed for the sake of this study).
 However, there are cases in which virtual time is more relevant to analyze.
 
 %Explain the concepts of virtual time. Expand upon how timing was achieved in Simics and QEMU, respectively.
