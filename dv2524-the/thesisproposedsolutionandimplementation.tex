@@ -15,7 +15,8 @@ In accordance to the \dvttermreferencesolution , paravirtualized graphics accele
 \index{OpenGL ABI Generation}
 For the purposes of ensuring scalability of the solution during development, a set of scripts automating the generation of library source code is used to generate the majority of the \dvttermtarget . and \dvttermhost\ system libraries.
 As such, the majority of the \dvttermopengl\ function definitions described in sections \ref{sec:proposedsolutionandimplementation_targetsystemlibraries} and \ref{sec:proposedsolutionandimplementation_hostsystemlibraries} are produced by this tool.
-The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; making out the majority of the \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s and the corresponding \dvttermhost\ decoding libraries.
+The functionality is implemented in a set of \dvttermpython\ scripts that, from a number of specification/configuration files detailing function signatures and argument attributes, generate both headers and source files in \dvttermc ; making out the majority of the \dvttermtarget\ \dvttermopengl\ and \dvttermegl\ \dvttermabi s and the corresponding \dvttermhost\ decoding libraries.
+See figure \ref{fig:abigeneration} for an overview of this process.
 
 \input{figabigeneration.tex}
 
@@ -23,7 +24,6 @@ The functionality is implemented in a set of \dvttermpython\ scripts that, from 
 % Expand on the extent of methods being generated, including inout vairables, return values etc.
 % Point out what kind of methods are not being generated.
 % Number of function definitions is being generated? Could be interesting to know.
-% Add figure describing generation.
 
 \section{Target System Libraries}
 \label{sec:proposedsolutionandimplementation_targetsystemlibraries}
