@@ -4,10 +4,6 @@ TODO
 ...in accordance to corporate advisor:
 ---
 
-Introduction, or corresponding chapter wherein we specify the importance of graphics acceleration:
-* Hardware assisted acceleration especially important when not utilizing host virtualization extensions.
-* Advances in software rasterization capabilities may very well be used in coagency with VMP.
-
 Additions to future work:
 * Amend magic instruction overhead by batching invocations.
 * * Problem: one must ensure to copy data in case referenced memory changes.
@@ -28,9 +24,6 @@ Chapter Background:
 ...in accordance to Opponent:
 ---
 
-Related work:
-* Consider moving chapter until after Background in accordance to advice given by opponent.
-
 General input from Opponent:
 * "There are some minor issues with the language. The term ”it’s” is used in a few places, where it should be ”its”. The usage of certain expres- sions, such as; “as such, ” - often used in conjunction with the word “said”, are overused in the thesis."
 
@@ -48,20 +41,16 @@ Veronica suggests Methodology - Implementation to be a better title than Methodo
 ...in accordance to advisor during meeting:
 ---
 
-Move profiling appendix content into section 9.1.
-
 If there is time, add a statistical significance test. Not a priority since the results are clear enough.
 
-Add some descriptory text in the caption of the overview figure.
-
-In the context of the List of Terms, the index may seem redundant. Remove the index.
-
-dv2549 may be put in web references.
-
-Remove further reading.
+Don't refer to the study as an experiment.
 
 Elaborate on OpenGL ES in new section under Background.
 Also add a section on GPU architecture and why they differ from CPUs to the degree that simulation of GPU-bound workloads on CPUs is unfeasible.
+
+Scatterplot ought feature only one of the sample tests.
+
+Insert ABI generation visualization.	
 
 Conferences to look up:
 ---
