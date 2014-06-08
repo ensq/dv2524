@@ -51,16 +51,17 @@ As such, the platform \dvttermos s used for the purpose of this study are as fol
 % Platform Profiling
 \section{Platform Profiling}
 \label{sec:experimentalmethodology_platformprofiling}
-In the presence of of the complexities caused by the occurrence of virtual time, profiling of time in virtual platforms sometimes dictate special measures.
-This is due to the fact that sometimes, if the simulation has outside dependencies of some sort, elapsed time outside of the simulation - that is, time in the context of the observer - is more relevant than profiling virtual time.
+In the presence of the complexities caused by the occurrence of virtual time, profiling of elapsed time in virtual platforms sometimes dictate special measures.
+This is due to the fact that profiling of elapsed time outside of the simulation - that is, time in the context of the observer - may be more relevant than profiling of virtual time.
+This is often the case if the simulation has outside dependencies of some sort.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
-In a \dvttermsimics\ simulation, as described by section \dvtcmdrefname{sec:backgroundandrelatedwork_virtualtime}, time increments different than in the context of the \dvttermhost\ machine.
+In a \dvttermsimics\ simulation, as described by section \ref{sec:backgroundandrelatedwork_virtualtime}, time increments different than in the context of the \dvttermhost\ machine.
 As such, in order to appropriately measure the elapsed time of a benchmark frame, the profiling must take place outside of the simulation.
 As expanded upon in section \ref{sec:backgroundandrelatedwork_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
 In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
-In \dvttermlinux , the interface to such a port may be accessed by any of the \dvtcmdcodeinline{/dev/ttyS*} file descriptors.
+In \dvttermlinux , the interface to such a port may be accessed by any of the \texttt{/dev/ttyS*} file descriptors.
 
 % TODO: Insert visualization of write-/read of target UART.
 %\missingfigure[figwidth=6cm]{Visualization of write-/read to target UART.}
@@ -75,9 +76,8 @@ Collected profiling overhead data is presented in table \ref{tab:profiling}.
 
 From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occasionally be volatile.
 However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, slightly below that of the average, such large deviation is to be quite rare.
-If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximate data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.\\
+If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximate data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.
 
-\noindent
 Utilizing the methodology described in the above paragraph; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
 This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
 As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
@@ -87,10 +87,6 @@ As such, this method is used for the software rasterized- and paravirtualized \d
 
 %Likewize, in \dvttermqemu , consideration must be taken to virtual time.
 %However,
-
-% TODO:
-% Timing methodologies:
-% * In Linux, we may simply...
 
 % Benchmarks
 \section{Benchmarks}
@@ -165,3 +161,8 @@ In table \ref{tab:keyvalsmagicinstructions}, the per-frame number of magic instr
 \input{figkeyvalsmagicinstructions}
 
 Note that for each tile rendered in the Chess benchmark, the solution will perform $9$ \dvttermmagicinstruction s; entailing a total of $32400$\footnote{$9\times60\times60=32400$.}, $63504$\footnote{$9\times84\times84=63504$.}, and $125316$\footnote{$9\times118\times118=125316$.} \dvttermmagicinstruction s, respectively, in addition to a minor number per-frame.
+
+% Threats to Validity
+\section{Threats to Validity}
+\label{sec:experimentalmethodology_threatstovalidity}
+\ldots
