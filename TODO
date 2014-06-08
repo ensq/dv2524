@@ -26,8 +26,6 @@ Don't refer to the study as an experiment.
 Elaborate on OpenGL ES in new section under Background.
 Also add a section on GPU architecture and why they differ from CPUs to the degree that simulation of GPU-bound workloads on CPUs is unfeasible.
 
-Scatterplot ought feature only one of the sample tests.	
-
 Conferences to look up:
 ---
 
