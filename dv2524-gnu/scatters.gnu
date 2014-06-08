@@ -24,10 +24,10 @@ if(!exists("arg_data1")||!exists("arg_data2")||!exists("arg_data3")||!exists("ar
     pause -1 press(iam) # We should abort script here rather than simply pause it.
 }
 
-set terminal epslatex size 22cm, 15cm
+set terminal epslatex size 15cm, 22cm
 set output arg_output
 
-set multiplot layout 1,3
+#set multiplot layout 1,3
 
 set lmargin 2
 set rmargin 2
@@ -36,7 +36,7 @@ set ytics scale 0
 unset xtics
 unset key
 
-do for[i=1:3] {
+do for[i=2:2] {
 	files = ""
 	if(i==1) {
 		files=sprintf("%s %s %s", arg_data1, arg_data2, arg_data3)
@@ -80,7 +80,7 @@ do for[i=1:3] {
     	data3 pt 8 lt rgb "black"
 }
 
-unset multiplot
+#unset multiplot
 set output # Terminate output file.
 
 print sprintf("%s: Exit.", iam)
