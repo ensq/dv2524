@@ -62,9 +62,9 @@ As expanded upon in section \ref{sec:backgroundandrelatedwork_magicinstructions}
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
 In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
 In \dvttermlinux , the interface to such a port may be accessed by any of the \texttt{/dev/ttyS*} file descriptors.
+This process is visualized in figure \ref{fig:profilingsimics}.
 
-% TODO: Insert visualization of write-/read of target UART.
-%\missingfigure[figwidth=6cm]{Visualization of write-/read to target UART.}
+\input{figprofilingsimics.tex}
 
 When using serial ports in this manner, one may introduce a profiling cost.
 This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immediately sending said byte sequence via the system \dvttermuart .
