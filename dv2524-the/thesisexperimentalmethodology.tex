@@ -77,16 +77,16 @@ Collected profiling overhead data is presented in table \ref{tab:profiling}.
 From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occasionally be volatile.
 However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, slightly below that of the average, such large deviation is to be quite rare.
 If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximate data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.
-
-Utilizing the methodology described in the above paragraph; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
+Utilizing said methodology; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
 This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
 As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
 
-% TODO:
-% Timing in QEMU
-
-%Likewize, in \dvttermqemu , consideration must be taken to virtual time.
-%However,
+Likewise, in \dvttermqemu , consideration must be taken to virtual time.
+However, in the \dvttermqemu -derived \dvttermandroidemulator , the system clock appears synchronized to that of the simulation \dvttermhost \dvtcmdciteref{technicaldocs:google:2014:androidtimers}\dvtcmdciteref{web:diebin:2010}.
+The theory is supported by findings presented in \dvtcmdciteref{web:stackoverflow:2011}, and has been confirmed with tests profiling elapsed time before performing any experiments.
+It is probably that the \dvttermandroidemulator\ has been implemented in this way to accomodate for audio- and video playback common for Android applications.
+As such, in order to profile elapsed wall clock time when performing benchmarks test in the \dvttermandroidemulator , one may simply measure time elapsed inside of the simulation.
+This is the methodology used to profile the \dvttermqemu\ platform.
 
 % Benchmarks
 \section{Benchmarks}
