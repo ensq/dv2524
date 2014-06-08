@@ -3,7 +3,7 @@
 % Results
 \chapter{Results}
 \label{cha:results}
-The benchmark configurations, as described in section \ref{sec:experimentalmethodology_benchmarks}, having been executed on the platforms, as described in section \ref{sec:experimentalmethodology_platformconfiguration}, using the profiling methods described in section \ref{sec:experimentalmethodology_platformprofiling}, are presented in this chapter.
+The benchmark configurations, as described in section \ref{sec:experimentalmethodology_benchmarks}, having been executed on the platforms, as described in section \ref{sec:experimentalmethodology_platformconfiguration}, using the profiling methods described in section \ref{sec:threatstovalidity_platformprofiling}, are presented in this chapter.
 As such, the results gathered from execution on the \dvttermhost\ is presented in figure \ref{fig:histogramshost}, the results compiled from execution in the \dvttermandroidemulator\ presented in figure \ref{fig:histogramsqemu}, and the results accumulated from software rasterized- and paravirtualized execution in \dvttermsimics\ are presented in figures \ref{fig:histogramssimicsparachess}, \ref{fig:histogramssimicsparajulia}, and \ref{fig:histogramssimicsparaphong}, respectively.
 Note that the data compiled from software rasterized- and paravirtualized \dvttermsimics\ platforms include the data from the key figure variation experiments, as described in section \ref{sec:experimentalmethodology_inputdatavariation}.
 
@@ -22,11 +22,10 @@ This is supported by the standard deviation presented in said table.
 Furthermore, we may conclude that the Phong demo features two distinct peaks in density distribution - about $1$ ms in-between.
 There is cause to believe that this may be caused, or partly caused, by frame-wize rotation of the teapot - rotation featured in the benchmark (see section \ref{sec:experimentalmethodology_benchmarks}) - inducing some fluctuation into its execution (see figure \ref{fig:histogramssimicsparaphong}).
 However, this behavior is, strangely so, not apparent whilst paravirtualized in the \dvttermqemu\ derived \dvttermandroidemulator , although this may be a visual artifact due to the resolution of the graph (see figure \ref{fig:histogramsqemu}).
-See section \ref{sec:results_benchmarkvariations} for an elaboration on divergence in the Phong benchmark.
+See section \ref{sec:threatstovalidity_benchmarkvariations} for an elaboration on divergence in the Phong benchmark.
 
-Additionally, and in accordance to tables \ref{tab:keyvalhost} and \ref{tab:keyvalqemu}, one may observe relatively high recorded maximum frame times in relation to compiled maximum- and average values, yet featuring - in relation to divergent maximum, relatively low standard deviations.\\
+Additionally, and in accordance to tables \ref{tab:keyvalhost} and \ref{tab:keyvalqemu}, one may observe relatively high recorded maximum frame times in relation to compiled maximum- and average values, yet featuring - in relation to divergent maximum, relatively low standard deviations.
 
-\noindent
 The remainder of this chapter will present a benchmark-wize analysis of the data compiled from executing the experiment on the software rasterized- and paravirtualized \dvttermsimics\ platforms; said platforms being the subject of this study.
 For the sake of brevity, these analyses are segmented into paragraphs for each benchmark.
 These paragraphs are presented below.
@@ -63,10 +62,6 @@ The purpose of the Chess benchmark was to locate any bottlenecks related to the 
 As such, as presented in section \ref{sec:results_magicinstructionoverhead} in combination with the shaping of the Chess benchmark as presented in section \ref{sec:experimentalmethodology_benchmarks}, there is cause to believe that the prediction of a probable bottleneck in the \dvttermtarget - to \dvttermhost\ communication latency has been confirmed; arguably identifying the weakness of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
 Indeed, if proceeding from the findings of section \ref{sec:results_magicinstructionoverhead}, \dvttermmagicinstruction\ overhead accounts for the majority of the elapsed average when paravirtualized in \dvttermsimics .
 
-% TODO:
-% Solid figures here.
-% Speculate in scalability and in how much we could boost.
-
 The conclusion drawn from the Chess benchmark data presented in chapter \ref{cha:results}, stresses further analysis into what is the root cause for the \dvttermtarget - to \dvttermhost\ latency for a multitude of paravirtualized method invocations.
 Results related to this matter are presented in section \ref{sec:results_magicinstructionoverhead}. 
 
@@ -82,24 +77,19 @@ What causes this behavior is unclear, as frame-to-frame branching in the fractal
 
 The reason as to why the Julia benchmark was decided upon to be integrated into experiment outlined during the pilot study (see ~\dvtcmdciteref{dissertation:nilsson:2014}) was to establish how the paravirtualized solution performed under computational stress (see section \ref{sec:experimentalmethodology_benchmarks}).
 Using this benchmark, a performance weakness in the software rasterized \dvttermsimics\ platform has been identified, with frame times well above the two second mark (see table \ref{tab:keyvalsimics}); with the corresponding maximum frame time in the paravirtualized \dvttermsimics\ platform measuring up to to \dvtcmdfirstline{parajulia900.dat.max} ms.
-With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernels and - in turn - identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator. % \todo{Expand upon scalability of Julia paravirtualization.}
-
-% TODO:
-% Percentage-wize, the standard deviation has increased in the paravirtualized platform?
-% Scalability
-% Visualize how the Julia benchmark performed on the host with variations - in order to establish that the paravirtualized solution scales equally well - being inhibited only by overhead.
+With the Julia benchmark, as visualized in figure \ref{fig:histogramssimicsparajulia}, we've showcased radical performance improvements for computationally intensive graphics kernels and - in turn - identified the capabilities of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
 
 % histogramssimicsparajulia
 \input{fighistogramssimicsparajulia.tex}
 
 \paragraph{Phong}
 \label{par:results_phong}
-\textit{DISCLAIMER: The Phong benchmark signals strange behavior when software rasterized in \dvttermsimics , and is thus considered less reliable (see section \ref{sec:results_benchmarkvariations}).}\\
+\textit{DISCLAIMER: The Phong benchmark signals strange behavior when software rasterized in \dvttermsimics , and is thus considered less reliable (see section \ref{sec:threatstovalidity_benchmarkvariations}).}\\
 
 \noindent
 The Phong benchmark was incorporated into this study for the purposes of analyzing the performance of stressed bandwidth in \dvttermtarget -to-\dvttermhost\ communications; featuring relaying and rendering of a large texture to the simulation \dvttermhost .
 The graphs presented in figure \ref{fig:histogramssimicsparaphong} display erratic distribution of the sample density in both software rasterized- and paravirtualized \dvttermsimics\ platforms.
-Suspicions as to why this is the case are presented in section \ref{sec:results_benchmarkvariations}.
+Suspicions as to why this is the case are presented in section \ref{sec:threatstovalidity_benchmarkvariations}.
 
 Furthermore, one might argue that parts of the distribution align with the double-peak density distribution showcased by the benchmark when hardware accelerated on the simulation \dvttermhost\ (see figure \ref{fig:histogramshost}).
 
@@ -112,7 +102,7 @@ The effect could be related to a bottleneck in the memory page traversal, as des
 
 However, in line with the recorded competitive average- and minimum frame times - yet major improvements in frame time maximum and standard deviation - one might also argue that the relatively lightweight benchmark is misrepresentative in that it's software rasterized execution is below that of the overhead induced by paravirtualization.
 
-However, due to the deviances described in section \ref{sec:results_benchmarkvariations}, this will not be elaborated upon further for the remainder of this dissertation.
+However, due to the deviances described in section \ref{sec:threatstovalidity_benchmarkvariations}, this will not be elaborated upon further for the remainder of this dissertation.
 
 % histogramssimicsparaphong
 \input{fighistogramssimicsparaphong.tex}
@@ -128,15 +118,15 @@ As such, in great numbers, \dvttermmagicinstruction s may potentially affect per
 \input{figmagicinstructionspseudocode.tex}
 
 In line with the effect that this overhead may have on experiments such as benchmark Chess, two tests have been performed to establish the overhead \dvttermmagicinstruction s may induce.
-These tests have been run in two instances; one in which each \dvttermmagicinstruction\ invocation is profiled separately using the methodology described in section \ref{sec:experimentalmethodology_platformprofiling}, and another in which batches of \dvttermmagicinstruction\ invocations are profiled to reduce influence of profiling overhead (see figures \ref{fig:magicinstructionpseudocodeforeach} and \ref{fig:magicinstructionpseudocodeforall}).
-This is performed due to profiling overhead, described in section \ref{sec:experimentalmethodology_platformprofiling}, which influenced the profiled costs too greatly.
+These tests have been run in two instances; one in which each \dvttermmagicinstruction\ invocation is profiled separately using the methodology described in section \ref{sec:threatstovalidity_platformprofiling}, and another in which batches of \dvttermmagicinstruction\ invocations are profiled to reduce influence of profiling overhead (see figures \ref{fig:magicinstructionpseudocodeforeach} and \ref{fig:magicinstructionpseudocodeforall}).
+This is performed due to profiling overhead, described in section \ref{sec:threatstovalidity_platformprofiling}, which influenced the profiled costs too greatly.
 As such, \dvttermmagicinstruction s had to be batched in order to be profiled correctly.
 Below, we present the results of both of these tests.
 
 \paragraph{Individual profiling}
 \label{par:results_magicinstructionoverhead_individualprofiling}
 The per-invocation profiling of $1000$ \dvttermmagicinstruction s is presented in figure \ref{fig:histogrammagicinstructionsforeach} as a histogram.
-All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:experimentalmethodology_platformprofiling}.
+All samples compiled in said test have been subtracted with the established average performance, as described in section \ref{sec:threatstovalidity_platformprofiling}.
 In line with this modification of the source data, due to the established profiling average overhead of \dvtcmdfirstline{profile.dat.avg} having relatively much influence on the data, the visualization features only ten histogram bins - in coagency with the approximate data.
 As such, any offset values below that of zero are placed in the first bin.
 Furthermore, any values outside that of the standard deviation are not visualized in this figure.
@@ -151,7 +141,7 @@ The figure is complemented with the analyzed data presented in table \ref{tab:ma
 \paragraph{Batch profiling}
 \label{par:results_magicinstructionoverhead_batchprofiling}
 In order to complement the data presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_individualprofiling}, corresponding measurements for batch \dvttermmagicinstruction\ invocations is collected in accordance to the pseudo code presented in table \ref{tab:magicinstructionsforall}.
-In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:experimentalmethodology_platformprofiling}).
+In this way, we wanted to circumvent any obscurities induced by profiling overhead (see section \ref{sec:threatstovalidity_platformprofiling}).
 
 \input{figmagicinstructionsforall.tex}
 
@@ -161,34 +151,11 @@ This may be caused by the system call \dvtcmdcodeinline{tcdrain}, which	waits un
 One may speculate that said system call may be the cause for eccentric behavior in the profiling.
 
 As such, the per-invocation profiling elaborated upon in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_individualprofiling} is rendered less reliable due to the eccentric profiled behavior.
-From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:experimentalmethodology_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
+From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:threatstovalidity_platformprofiling}\footnote{Note that this may be regarded as an optimum case, since batch execution of \dvttermmagicinstruction s may induce an executional pattern which could lead to improved results. However, this is just speculation.}.
 Due to the volatility of the profiling presented in paragraph \dvtcmdrefname{par:results_magicinstructionoverhead_individualprofiling}, the author will refrain from using these results for any definite conclusions.
 
 Thus, the established overhead cost for $1000$ \dvttermmagicinstruction s is summarized in table \ref{tab:magicinstructionsforall}.
-From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:experimentalmethodology_platformprofiling}.
-
-% Benchmark variations
-\section{Benchmark Variations}
-\label{sec:results_benchmarkvariations}
-As visualized in figure \ref{fig:scattersphong}\footnote{Note the sinus-like pattern in the lower parts of the left-hand side scatterplot; it's oscillating performance may be a testimony to the rotation of the model.}, the Phong benchmark (see section \ref{sec:experimentalmethodology_benchmarks}) exhibits erratic variations in it's performance when software rasterized in the \dvttermsimics\ platform.
-Each graph presents the performance of the Phong benchmark where each symbol represent a frame time sample of one of the three Phong key figure variations (see section \ref{sec:experimentalmethodology_inputdatavariation}).
-From this visualization we may establish that the performance of the Phong benchmark varies greatly when software rasterized in \dvttermsimics , independent of the Phong benchmark texture texel quantity.
-
-It is uncertain as of what is causing this behavior.
-However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volatile texture mapping.
-Such a scenario may be induced by the large texture in coagency with the frame-wize rotating model - since the texture mapping outcome will likely differ on a per-frame basis.
-In consideration to the sheer size of the textures used for the experiments presented in figure \ref{fig:scattersphong}, it is likely that such eccentric memory referencing may account for the volatile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
-Albeit not applicable to \dvttermcpu\ cache behavior; see ~\dvtcmdcitebib{journals:dogget:2012} for an elaboration on texture mapping and \dvttermgpu\ cache methodologies in addition to an analysis on the performance implications of \dvttermgpu\ cache behavior.
-
-In line with the erratic benchmark behavior that has been established in this section, the Phong benchmark results - although having value to this study in terms of profiling memory bandwidth scalability (see paragraph \dvtcmdrefname{par:results_phong}) - are to be considered less reliable than its more predictable benchmark peers.
-
-\noindent
-Note that, for the sake of visualization, values outside of the standard deviation are not presented in figure \ref{fig:scattersphong}.
-
-\input{figscattersphong.tex}
-
-% TODO:
-% Consider adding table presenting minimum- and maximum values of these instances.
+From this we may conclude that the execution of $1000$ \dvttermmagicinstruction s is expected to induce an average overhead of roughly \dvtcmdfirstline{magicinstrprofileall.dat.avg} milliseconds, accounting for profiling errors as presented in section \ref{sec:threatstovalidity_platformprofiling}.
 
 % Platform Comparison
 \section{Platform Comparison}
