@@ -34,7 +34,8 @@ set rmargin 2
 set noborder
 set ytics scale 0
 unset xtics
-unset key
+#unset key
+set key above
 
 do for[i=2:2] {
 	files = ""
@@ -75,9 +76,9 @@ do for[i=2:2] {
 	data2 = word(files, 2)
 	data3 = word(files, 3)
 
-	plot data1 pt 1 lt rgb "black",\
-    	data2 pt 4 lt rgb "black",\
-    	data3 pt 8 lt rgb "black"
+	plot data1 pt 1 lt rgb "black" title "1448x1448",\
+    	data2 pt 4 lt rgb "black" title "2048x2048",\
+    	data3 pt 8 lt rgb "black" title "2896x2896"
 }
 
 #unset multiplot
