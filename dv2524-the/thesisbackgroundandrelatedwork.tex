@@ -26,9 +26,7 @@ One such example is \dvttermvmware ~\dvtcmdciteref{technicaldocs:vmware:2014}.
 
 Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectives}, this thesis pertain to the technologies and concepts described in this chapter.
 
-% TODO:
-% Insert section on OpenGL ES
-% Insert section on GPU Architecture
+% TODO: Insert section on OpenGL ES, Insert section on GPU Architecture
 
 % Graphics Virtualization
 \section{Graphics Virtualization}
@@ -40,9 +38,6 @@ However, \dvttermsimics\ is intended to feature a low level of timing fidelity f
 In this way, and in line with the considerations for \dvttermgpu\ virtualization, one must analyze and balance the purposes of simulation since there is not always a general winning-case.
 As such, methodologies with varying levels of implementational accuracy present themselves - from slow low-level instruction set modeling to fast high level paravirtualization of an assortment of graphics frameworks.
 Said methods are presented in paragraphs \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_gpumodeling}, \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_pcipassthrough}, \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_softmodeling}, and \dvtcmdrefname{par:backgroundandrelatedwork_graphicsvirtualization_paravirtualization}.
-
-% TODO: Insert figure visualizing virtualization methodologies (see https://github.com/CaterHatterPillar/dv2524/issues/161).
-%\missingfigure[figwidth=6cm]{Visualization of GPU virtualization methodologies.}
 
 % GPU Modeling
 \paragraph{GPU Modeling}
@@ -88,9 +83,6 @@ However, despite the possibility for significant performance improvements (see c
 In particular, a paravirtualized graphics library may be expensive to maintain as frameworks evolve and specifications change.
 Additionally, the means of paravirtualization requires the target system to be modified; albeit not necessarily being a substantial flaw as such a paravirtualized framework may still accelerate unmodified \dvttermtarget\ applications utilizing said library.
 In this way, paravirtualization may be considered to be a decent leveling of the benefits and drawbacks of the various virtualization methodologies presented in this section.
-
-% TODO:
-% Expand upon why paravirtualization is a sensible levelling.
 
 % QEMU
 \section{QEMU}
@@ -144,8 +136,3 @@ The concepts of real-world and virtual time are particularly important when cons
 When attempting to establish some sort of measurement in a full-system simulator, such as \dvttermsimics , one must contemplate what type of time is relevant to the study being performed.
 For graphics acceleration of real-time applications, it is likely that the real-world wall clock is the primary point of reference (see section \ref{sec:threatstovalidity_platformprofiling} for an elaboration on how time measurement is performed for the sake of this study).
 However, there are cases in which virtual time is more relevant to analyze.
-
-%Explain the concepts of virtual time. Expand upon how timing was achieved in Simics and QEMU, respectively.
-%http://stackoverflow.com/questions/5774612/is-the-emulator-clock-synced-to-the-real-system-clock
-%https://wiki.diebin.at/Under_the_hood_of_Android_Emulator_(appcert)#vl-android.c.2Finit_clocks.28.29:
-%http://gamasutra.com/view/feature/171774/getting_high_precision_timing_on_.php?print=1

@@ -20,10 +20,7 @@ See figure \ref{fig:abigeneration} for an overview of this process.
 
 \input{figabigeneration.tex}
 
-% TODO:
-% Expand on the extent of methods being generated, including inout vairables, return values etc.
-% Point out what kind of methods are not being generated.
-% Number of function definitions is being generated? Could be interesting to know.
+% TODO: Expand on the extent of methods being generated, including inout vairables, return values etc., Point out what kind of methods are not being generated, Number of function definitions is being generated? Could be interesting to know.
 
 \section{Target System Libraries}
 \label{sec:proposedsolutionandimplementation_targetsystemlibraries}
@@ -104,9 +101,6 @@ See \ref{sec:proposedsolutionandimplementation_pagetabletraversal} for more info
 
 See ~\dvtcmdciteref{dissertation:nilsson:2014} for more information on the methodology behind the Simics Pipe.
 
-% TODO:
-% Point out that the buffer includes a number indicating what method invocation has been executed, and a variable indicating size of the buffer in it's entirety.
-
 \section{Page Table Traversal}
 \label{sec:proposedsolutionandimplementation_pagetabletraversal}
 As outlined in section \ref{sec:proposedsolutionandimplementation_simicspipe}, \dvttermtarget -/\dvttermhost\ memory sharing in the Simics Pipe is performed by the means of exposing a \dvttermtarget\ virtual address to the simulation \dvttermhost .
@@ -123,6 +117,3 @@ This can be done in a trivial manner by simply iterating the original virtual ad
 Naturally, said process must be performed regardless of data being read or written to-/from the intended - physical - memory space.
 
 \input{figvirtualmemory.tex}
-
-% TODO: Insert figure visualizing structure memory page traversal when sharing memory in-between target and host systems.
-%\missingfigure[figwidth=6cm]{Figure visualizing memory page traversal during translation.}

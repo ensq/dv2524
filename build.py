@@ -124,6 +124,9 @@ if build_proposal==True:
 if build_thesis==True:
     deleteFile(g_iam, "thesis.pdf")
     buildThesis(g_iam)
+    print(g_iam + ": open thesis todos:")
+    bp = subprocess.Popen("grep -n \"TODO\" dv2524-the/*.tex", shell=True)
+    bp.wait()
 if build_opposition==True:
     deleteFile(g_iam, "opposition.pdf")
     buildOpposition(g_iam)
