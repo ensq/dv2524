@@ -28,8 +28,18 @@ Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectiv
 
 \section{OpenGL ES}
 \label{sec:backgroundandrelatedwork_opengles}
-\ldots
-% TODO: Insert section on OpenGL ES
+\dvttermopengles\ is an \dvttermapi\ for 3D-graphics on an assortment of embedded systems, such as mobile devices or vehicle displays~\dvtcmdcitebib{publications:munshi:2008}.
+The \dvttermopengles\ set of \dvttermapi s is developed by \dvttermkhronos , the same konsortium responsible for the development of the \dvttermopengl\ \dvttermapi s, which - unlike \dvttermopengl\ for embedded systems - intended for desktop graphics~\dvtcmdcitebib{publications:wright:2010}.
+The \dvttermopengles\ \dvttermapi s are traditionally derived from the standard \dvttermopengl\ \dvttermapi s, and are thus similar in appereance albeit more limited~\dvtcmdcitebib{publications:wright:2010}.
+The \dvttermopengles\ specification is intended to adhere to the following specifications in relation to the original \dvttermopengl\ \dvttermapi s~\dvtcmdcitebib{publications:munshi:2008}:
+\begin{itemize}[noitemsep]
+	\item Reduce complexity, but attempt maintain compatibility with \dvttermopengl\ when possible.
+	\item Optimize power consumption for embedded devices.
+	\item Incorporate a set of quality specifiers into the \dvttermopengles\ specification. This includes minimum quality specifiers for image quality into the standard; accomodating for limited screen sizes in embedded systems.
+\end{itemize}
+
+\dvttermopenglestwopointo\ consists of two \dvttermkhronos\ specifications; being the \dvttermopenglestwopointo\ \dvttermapi\ specification and the \dvttermopengles\ Shading Language Specification (\dvttermopengles\ SL)~\dvtcmdcitebib{publications:munshi:2008}.
+Being derived from the \dvttermopengl ~$2.0$ specification~\dvtcmdcitebib{publications:wright:2010}, \dvttermopenglestwopointo\ supports programmable shaders and is no longer encumbered by the fixed functionality that characterized earlier versions of the \dvttermopengl\ and \dvttermopengles\ \dvttermapi s\dvtcmdcitebib{publications:munshi:2008}; making the \dvttermapi\ a modern contestant amongst a variety of applications on a range of platforms, such as \dvttermandroid\ and \dvttermios ~\dvtcmdcitebib{publications:wright:2010} popular on modern smartphones.
 
 \section{GPU Architecture}
 \label{sec:backgroundandrelatedwork_gpuarchitecture}
