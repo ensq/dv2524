@@ -43,8 +43,24 @@ Being derived from the \dvttermopengl ~$2.0$ specification~\dvtcmdcitebib{public
 
 \section{GPU Architecture}
 \label{sec:backgroundandrelatedwork_gpuarchitecture}
-\ldots
-% TODO: Insert section on GPU Architecture
+\dvttermgpu s are massively parallel numeric computing processors often used for 3D graphics acceleration.
+While \dvttermcpu s are designed to maximize sequential performance, \dvttermgpu s are designed to maximize \dvttermflops\ throughput; originally required for the floating point linear algebrae often needed by 3D graphics in the fast growing medium of video games.
+The continous need for faster processing units, slowed down by the heat dissipation issues limiting clock frequency since 2003~\dvtcmdcitebib{publications:kirk:2010}, has driven the utilization of \dvttermgpu s for general purpose workloads.
+
+Generally, \dvttermcpu s are designed to optimize the execution of an individual thread.
+In order to fascilitate sequential performance, the processing pipeline is designed for low-latency; including thorough caching methodologies and low-latency arithmetic units.
+This design philosophy is often referred to as latency-oriented design, since it strives for low-latency operations to accomodate high performance of individual threads~\dvtcmdcitebib{publications:kirk:2010}.
+
+Meanwhile, \dvttermgpu s are designed to maximize the the throughput of a large number of threads; having less regard for the performance of individual threads.
+As such, \dvttermgpu s do not prioritize caches or other low-latency optimizations like \dvttermcpu s, but aim to conceal overhead induced by memory references or arithmetic by the execution of many threads, which may perform in place during arithmetic or memory operations.
+Such design is often referred to as throughput-oriented design~\dvtcmdcitebib{publications:kirk:2010}.
+
+The differing design philosophies of \dvttermcpu\ and \dvttermgpu\ units are so fundementally different that they are largely incompatible in terms their workloads, as explained by Kirk and Hwu~\dvtcmdcitebib{publications:kirk:2010}.
+As such, programs that feature few threads, \dvttermcpu s with lower operation latencies may perform better than \dvttermgpu s; whereas a program with a large number of threads may fully utilize the higher execution throughput of \dvttermgpu s~\dvtcmdcitebib{publications:kirk:2010}.
+
+The introduction of a number of \dvttermcpu -oriented optimizations for simulating \dvttermgpu -bound workloads on \dvttermcpu s has made it possible to simulate such kernels several times faster than traditional simulation.
+Although orders of magnitudes slower, such optimizations may ease the simulation of \dvttermgpu\ workloads on \dvttermcpu s, as indicative by some studies~\dvtcmdcitebib{papers:nilsson:2013}.
+However, without \dvttermhostvirtualizationextensions , the execution of \dvttermgpu\ workloads on \dvttermcpu s quickly becomes unfeasible; inducing the need of more advanced simulation methodologies for \dvttermgpu -bound workloads.
 
 % Graphics Virtualization
 \section{Graphics Virtualization}

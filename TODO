@@ -23,8 +23,6 @@ If there is time, add a statistical significance test. Not a priority since the 
 
 Don't refer to the study as an experiment.
 
-Add a section on GPU architecture and why they differ from CPUs to the degree that simulation of GPU-bound workloads on CPUs is unfeasible.
-
 Conferences to look up:
 ---
 
