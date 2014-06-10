@@ -3,12 +3,19 @@
 % Experimental Methodology:
 \chapter{Experimental Methodology}
 \label{cha:experimentalmethodology}
+From this chapter onward, the term 'experiment' is used to refer to the experimental methodology put in place to answer the question formulations phrased in chapter \ref{cha:aimsandobjectives}.
+The author would like to emphasize that the terminology is simply used to denote a method of experimentation to answer, that is verify or refute the validity of the hypotheses that may be intristically derived from-, the research questions outlined in chapter \ref{cha:aimsandobjectives}.
+As such, 'experiment' does not refer to controlled-, natural-, or field experiment methodologies, or indeed any other specific method for experimentation unless specified otherwise.
+The author reserves the right to use the following terminology interchangeably: study, case study, and experiment.
+
+As such, the terminology used to describe the experimental methodology produced for the purpose of this study, henceforth referred to as 'the experiment', is not meant to be indicative of the method quality, or in any way indirectly describe said experimental methodology.
+Below, the methods used to perform the experiment are presented.
 
 % Platform Configuration
 \section{Platform Configuration}
 \label{sec:experimentalmethodology_platformconfiguration}
 The experiment devised for the purpose of this dissertation is performed in software rasterized- and paravirtualized \dvttermsimics\ platforms, respectively.
-Furthermore, the experiment profiles the performance of the \dvttermandroidemulator\ for good measure, in addition to the performance of the original execution on the hardware accelerated \dvttermhost\ platform.
+Furthermore, the study profiles the performance of the \dvttermandroidemulator\ for good measure, in addition to execution on the hardware accelerated \dvttermhost\ platform as a reference case.
 The following paragraphs outline the configuration of these target platforms, in terms of \dvttermhost\ configuration, simulated hardware, and the software configuration of the simulated systems.
 
 % Host Configuration
@@ -54,6 +61,7 @@ Frame captures of the benchmarks are presented in figures \ref{fig:benchmarks_ch
 
 % TODO: Describe how the benchmark is written in Java, C, and GLSL, Resolution of experiment and other common factors
 
+% Benchmark: Chess
 \paragraph{Benchmark: Chess}
 \label{par:experimentalmethodology_benchmarking_benchmarkchess}
 \index{Chess benchmark}
@@ -71,6 +79,7 @@ This induces a high utilization of the Simics Pipe, which is intended to stress 
 
 The repeated invocation of lesser draw calls is representative of common usage of drawing a multitude of shapes with \dvttermopengl , such as a user interface. Additionally, the number of tiles being computed is easily modifiable; rendering the benchmark scalable for the purposes of the experiment described in this document. As such, said benchmark is considered suitable for the purpose of representing a large number of graphics invocations using \dvttermopenglestwopointo .
 
+% Benchmark: Julia
 \paragraph{Benchmark: Julia}
 \label{par:experimentalmethodology_benchmarking_benchmarkjulia}
 \index{Julia fractal benchmark}
@@ -79,6 +88,7 @@ It is so named due to the kernel calculating the Julia fractal; the texturing an
 The benchmark is designed to perform a lone computationally intensive graphics kernel invocation, which will stress the computational prowess of the profiled platform.
 The case is selected for use as the computation of a fractal is trivially scalable in terms of complexity by modifying the number of iterations the fractal algorithm performs, and is thus considered suitable for profiling of computationally intensive graphics kernels.
 
+% Benchmark: Phong
 \paragraph{Benchmark: Phong}
 \label{par:experimentalmethodology_benchmarking_benchmarkphong}
 \index{Phong shading benchmark}
