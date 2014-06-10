@@ -47,12 +47,7 @@
 \newacronym{dvtglosscpu}{CPU}{Central Processing Unit}
 \newcommand{\dvttermcpu}{\glslink{dvtglosscpu}{CPU}} % Assume the reader knows about CPUs, so don't print the acronym in plain text the first time it is mentioned.
 % Checkpoint / Restart
-\newglossaryentry{dvtglosscheckpointrestart}
-{
-  name=Checkpoint / Restart,
-  description={Description of Checkpoint / Restart.}
-}
-\newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponcegloss{dvtglosscheckpointrestart}{Checkpoint / Restart}}
+\newcommand{\dvttermcheckpointrestart}{\dvtcmdcaponce{dvtglosscheckpointrestart}{Checkpoint / Restart}}
 \newcommand{\dvttermcuda}{CUDA}
 % C (Programming language)
 \newcommand{\dvttermc}{\texttt{C}}
@@ -76,7 +71,7 @@
 \newglossaryentry{dvtglossdeterministicexecution}
 {
   name=Deterministic Execution,
-  description={See section \nameref{sec:simics_deterministicexecution} under chapter \nameref{cha:appendixa}}
+  description={See section \ref{sec:simics_deterministicexecution}}
 }
 \newcommand{\dvttermdeterministicexecution}{\dvtcmdcaponcegloss{dvtglossdeterministicexecution}{Deterministic Execution}}
 % Deterministic Algorithm
@@ -147,7 +142,7 @@
 \newglossaryentry{dvtglosshost}
 {
   name={Simulation Host},
-  description={Description of a Simulation Host.}
+  description={A system on which a virtual platform is run}
 }
 \newcommand{\dvttermhost}{\dvtcmdcaponcegloss{dvtglosshost}{Host}}
 % Hewlett-Packard
@@ -233,7 +228,7 @@
 \newglossaryentry{dvtglossmagicinstruction}
 {
   name={Magic Instruction},
-  description={See section \dvtcmdrefname{sec:backgroundandrelatedwork_magicinstructions} under \dvtcmdrefname{cha:appendixa}},
+  description={See section \ref{sec:backgroundandrelatedwork_magicinstructions}},
 }
 \newcommand{\dvttermmagicinstruction}{\dvtcmdcaponcegloss{dvtglossmagicinstruction}{Magic Instruction}}
 % Memory Management Unit (MMU)
@@ -332,14 +327,14 @@
 \newglossaryentry{dvtglosstiming}
 {
   name=Simulation Timing,
-  description={Description of Timing.}
+  description={Time intervals when state changes in a simulated system occur}
 }
 \newcommand{\dvttermtiming}{\dvtcmdcaponcegloss{dvtglosstiming}{Timing}}
 % Target
 \newglossaryentry{dvtglosstarget}
 {
   name=Simulation Target,
-  description={Description of Target.}
+  description={A simulated system}
 }
 \newcommand{\dvttermtarget}{\dvtcmdcaponcegloss{dvtglosstarget}{Target}}
 
