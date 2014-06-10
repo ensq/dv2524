@@ -22,13 +22,13 @@ Since \dvttermgpu s operate significantly different from \dvttermcpu s, they pos
 The increased utilization of \dvttermgpu s for general purpose workloads has extended the need for virtualization of such hardware in situations when hardware is busy, unavailable, not sufficient, or for the purposes of debugging and profiling\footnote{An example of modern technology developed for said purposes is \dvttermwarp\ - \dvttermmicrosoft s latest addition to the \dvttermdirectx\ framework (see \dvtcmdciteref{web:microsoft:2013:warp}).}.
 Yet seemingly few virtual platforms support virtualization of \dvttermgpu s, despite their influence on modern computing.
 
-For the purposes of simulation, different solutions follow varying use-cases. For example, developers interested in benchmarking or driver development for next generation \dvttermgpu - or \dvttermcpu s may need detailed simulators that provide insight into execution engines and pipelines~\dvtcmdcitebib[p.~1]{inproceedings:schumacher:2010}.
-Albeit useful in certain use-cases and capable of running 'toy' applications, such platforms are often orders of magnitude too slow to run commercial workloads~\dvtcmdcitebib[p.~50]{journals:magnusson:2002}.
+For the purposes of simulation, different solutions follow varying use-cases. For example, developers interested in benchmarking or driver development for next generation \dvttermgpu - or \dvttermcpu s may require detailed simulators that provide insight into execution engines and pipelines~\dvtcmdcitebib[p.~1]{inproceedings:schumacher:2010}.
+Albeit applicable in certain use-cases and capable of running 'toy' applications, such platforms are often orders of magnitude too slow to run commercial workloads~\dvtcmdcitebib[p.~50]{journals:magnusson:2002}.
 Application developers, on the other hand, do not necessarily care for the internal workings of hardware as they typically work at a higher abstraction level, for example; utilizing a graphics \dvttermapi\ (such as \dvttermopengl ) that, in turn, communicate with the device driver.
 As such, application developers may be more interested in achieving decent simulation performance rather than a timing-accurate processor model (see \dvtcmdcitebib[p.~30]{publications:leupers:2010} for an analysis of compromises in system simulation).
 However, due to large differences in-between \dvttermcpu - and \dvttermgpu -architecture, simply delegating commonly \dvttermgpu -bound workloads to the \dvttermcpu\ is rarely feasible in terms of performance.
 
-Common approaches to achieve better simulation performance includes creating a functionally accurate model of the \dvttermgpu\ (inducing the advantage of being able to utilize the same software [drivers, libraries, etc.] as the \dvttermhost\ platform), where internal details may be simplified, or using software rasterization without involving the \dvttermgpu\ model.
+Common approaches to achieve better simulation performance includes creating a functionally accurate model of the \dvttermgpu\ (inducing the advantage of being able to utilize the same software (drivers, libraries, etc.) as the \dvttermhost\ platform), where internal details may be simplified, or using software rasterization without involving the \dvttermgpu\ model.
 However, these methodologies traditionally incur heavy performance losses in comparison to \dvttermgpu\ hardware acceleration.
 In order to achieve better performance, one may offload such kernels to the \dvttermgpu\ of the simulation \dvttermhost .
 There are a number of way to achieve such acceleration, such as relying on \dvttermpcipassthrough\ and similar technologies to grant access to the underlying \dvttermhost\ hardware from within the virtual platform~\dvtcmdcitebib[p.~415,~416]{inproceedings:regola:2010} (see \dvtcmdciteref{web:jones:2009} for an overview on \dvttermpcipassthrough ), or utilizing a concept commonly referred to as '\dvttermparavirtualization ' at a higher level of abstraction (e.g., the \dvttermopengl\ library).
@@ -37,11 +37,11 @@ Paravirtualization is a relatively new term originally defined as selectively mo
 Effectively, this means modifying the virtual machine to be similar, but not identical, to \dvttermhost\ hardware~\dvtcmdcitebib[p.~165]{journals:barham:2003}.
 As such, one may simplify the virtualization process by neglecting some hardware compatibility~\dvtcmdcitebib[p.~1]{inproceedings:youseff:2006}.
 Implementing \dvttermgpu\ simulation by the means of \dvttermparavirtualization\ provides the benefits of improved simulation performance, albeit it may entail loosing some of the benefits a virtual platform can provide.
-For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution\ (see section \ref{sec:simics_deterministicexecution}), \dvttermcheckpointing , and \dvttermreverseexecution .
-Additionally, paravirtualization entail erroneous hardware simulation since kernel drivers are modified to accommodate the paravirtualized solution.
+For example, it may be challenging to support advanced features such as \dvttermdeterministicexecution , \dvttermcheckpointing , and \dvttermreverseexecution .
+Additionally, paravirtualization entails modifying the simulated system, since some part of the \dvttermtarget\ machine must be modified to accomodate the paravirtualized methodology.
 Yet, aforementioned technique is the preferred method of \dvttermgoogle\ in the \dvttermandroidsdk\ when utilizing the \dvttermqemu\ virtual platform in order to simulate \dvttermopengles .
 
-This dissertation comprises an investigation of \glslink{dvtglossparavirtualization}{paravirtualizing} \dvttermopengles\ in the \dvttermsimics\ virtual platform.
+This dissertation comprises an investigation of \dvttermparavirtualization\ of \dvttermopengles\ in the \dvttermsimics\ virtual platform.
 The work presents an implementation of accelerated \dvttermopenglestwopointo\ graphics by the means of \dvttermparavirtualization\ and using \dvttermmagicinstruction s as a communications bridge.
 In addition to this, we present the development of three benchmarks stressing important attributes of the devised solution.
 Using the results collected from the execution of said benchmarks on a number of platforms, the solution is evaluated.
@@ -49,6 +49,6 @@ Furthermore, this dissertation identifies performance bottlenecks obstructing la
 The results presented in this thesis show performance improvements of up to $34$ times in relation to software rasterized counterparts.
 
 The remainder of the report presents the objectives and question formulations thereof, an introductory chapter on relevant background, a compilation of previous work in the area, and a description of the devised \glslink{dvtglossparavirtualization}{paravirtualized} implementation.
-Furthermore, a chapter on experiment methodology is presented; followed by the results collected using said methods, and finalized by elaboration of the conclusions which may be established from the compiled material.
+Furthermore, a chapter on experimental methodology is presented; followed by elaboration on potential threats to validity and a chapter detailing the results collected using said methods, and finalized by elaboration on the conclusions which may be established from the compiled material.
 In addition to this, an elaborate discussion chapter is presented analyzing the \glslink{dvtglossparavirtualization}{paravirtualized} solution in regard to advanced functionality in the \dvttermsimics\ full-system simulator.
 Finally, this dissertation is concluded by a report on recommended future work in the area.
