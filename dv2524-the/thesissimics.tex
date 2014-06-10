@@ -5,34 +5,30 @@
 \label{cha:simics}
 \index{Simics}
 Simics is a \glslink{dvtglossfullsystemsimulation}{full-system simulator} developed by \dvttermintel\ and sold through \dvttermintel s subsidiary \dvttermwindriver\
-Simics was originally developed by the simulation group at the \dvttermsics\ (this being the first instance of an academic group running an unmodified \dvttermos\ in an entirely simulated environment); the members of which founded \dvttermvirtutech \footnote{Virtutech was acquired by \dvttermintel\ in \dvtcmdnum{2010}~\dvtcmdciteref{web:miller:2010}.} and commercially launched the product in \dvtcmdnum{1998}~\dvtcmdcitebib{journals:magnusson:2013}.
+Simics was originally developed by the simulation group at the \dvttermsics \footnote{This being the first instance of an academic group running an unmodified \dvttermos\ in an entirely simulated environment}; the members of which founded \dvttermvirtutech \footnote{Virtutech was acquired by \dvttermintel\ in \dvtcmdnum{2010}~\dvtcmdciteref{web:miller:2010}.} and commercially launched the product in \dvtcmdnum{1998}~\dvtcmdcitebib{journals:magnusson:2013}.
 
 As an architectural simulator, \dvttermsimics\ primary client group is software- and systems developers that produce an assortment of software for complex systems involving software and hardware interaction~\dvtcmdcitebib{journals:aarno:2013}.
 As such, key attributes of \dvttermsimics\ are scalability, repeatability, and high-performance simulation.
-For these purposes, the simulator supports \dvttermhostvirtualizationextensions , and other performance boosting technologies such as \dvttermhypersimulation ~\dvtcmdcitebib[p.~38]{publications:leupers:2010}.
-
+For these purposes, the simulator utilizes \dvttermdirectvirtualization , and other performance boosting technologies such as \dvttermhypersimulation ~\dvtcmdcitebib[p.~38]{publications:leupers:2010}.
 Simics also features a number of advanced functionalities, adhering to the deterministic nature of the simulator, such as \dvttermcheckpointing\ (see section \dvtcmdrefname{sec:simics_checkpointing}) and \dvttermreverseexecution\ (see section \dvtcmdrefname{sec:simics_reverseexecution})~\dvtcmdcitebib{publications:leupers:2010}.
 
 The ability to simulate the entirety of an unmodified software stack has led to Simics being used to simulate a variety of systems including, but not limited to, single-processor embedded boards, multiprocessor servers, and heterogeneous telecom clusters~\dvtcmdcitebib{journals:aarno:2013}.
-
-Current employers of the \dvttermsimics\ full-system simulator include, but are not limited to, \dvttermibm ~\dvtcmdcitebib[p.~12:1,~12:6]{journals:koerner:2009}, \dvttermnasa ~\dvtcmdciteref{web:windriver:2014}~\dvtcmdciteref{web:nasa:2014}, and \dvttermintel ~\dvtcmdcitebib[p.~100]{journals:veselyi:2013}.
-Other past and current employers of the simulator include \dvttermsunmicrosystems , \dvttermericsson , and \dvttermhewlettpackard ~\dvtcmdcitebib{journals:magnusson:2013}, in addition to \dvttermcisco , \dvttermfreescalesemiconductor , \dvttermgeavionics , \dvttermhoneywell , \dvttermlockheedmartin , \dvttermnortel\ and \dvttermnorthropgrumman\ ~\dvtcmdciteref{web:miller:2010}.
-
+Current employers of the \dvttermsimics\ full-system simulator include \dvttermibm ~\dvtcmdcitebib[p.~12:1,~12:6]{journals:koerner:2009}, \dvttermnasa ~\dvtcmdciteref{web:windriver:2014}\dvtcmdciteref{web:nasa:2014}, and \dvttermintel ~\dvtcmdcitebib[p.~100]{journals:veselyi:2013}.
+Other past and current employers of the simulator include \dvttermsunmicrosystems , \dvttermericsson , and \dvttermhewlettpackard ~\dvtcmdcitebib{journals:magnusson:2013}, in addition to \dvttermcisco , \dvttermfreescalesemiconductor , \dvttermgeavionics , \dvttermhoneywell , \dvttermlockheedmartin , \dvttermnortel\ and \dvttermnorthropgrumman ~\dvtcmdciteref{web:miller:2010}.
 Additionally, the simulator has a strong academic tradition; being known to operate in over \dvtcmdnum{300} universities throughout the world~\dvtcmdcitebib[p.~252]{journals:villa:2005}.
 
 % Deterministic Execution
 \section{Deterministic Execution}
 \label{sec:simics_deterministicexecution}
 \index{Deterministic Execution}
-\glslink{dvtglossdeterministicexecution}{'Deterministic execution'} commonly refers to the execution of \dvttermdeterministicalgorithm s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (see ~\dvtcmdcitebib{journals:cohen:1979} for an overview on \glslink{dvtglossdeterministicalgorithm}{deterministic and non-deterministic algorithms}).
-Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behavior caused by concurrent software~\dvtcmdcitebib[p.~3-5]{journals:lee:2006}~\dvtcmdcitebib[p.~92]{journals:holzmann:1997}.
-Some even go as far as to argue that determinism is a prerequisite for effective debugging and testing~\dvtcmdcitebib[p.~3,~4]{dissertation:devietti:2012}~\dvtcmdcitebib[p.~51,~59]{inproceedings:yu:2012}.
-As such, deterministic behavior may be seen as a valuable attribute in a virtual platform (see ~\dvtcmdcitebib[p.~1,~2]{papers:bergan:2011} for an overview on the value of determinism in software development).
+\glslink{dvtglossdeterministicexecution}{'Deterministic execution'} commonly refers to the execution of \dvttermdeterministicalgorithm s; meaning that a certain function, given a definite input, will produce a decisive output - throughout the process in which the system passes through a distinct set of states (see \dvtcmdcitebib{journals:cohen:1979} for an overview on \glslink{dvtglossdeterministicalgorithm}{deterministic and non-deterministic algorithms}).
+Some sources have voiced concerns over the consequences, in terms of debugging, of non-deterministic behavior caused by concurrent software~\dvtcmdcitebib[p.~3-5]{journals:lee:2006}\dvtcmdcitebib[p.~92]{journals:holzmann:1997}.
+Some even go as far as to argue that determinism is a prerequisite for effective debugging and testing~\dvtcmdcitebib[p.~3,~4]{dissertation:devietti:2012}\dvtcmdcitebib[p.~51,~59]{inproceedings:yu:2012}.
+As such, deterministic behavior may be seen as a valuable attribute in a virtual platform (see \dvtcmdcitebib[p.~1,~2]{papers:bergan:2011} for an overview on the value of determinism in software development).
 
 In \dvttermsimics , '\dvttermdeterministicexecution ' denotes the entire \dvttermtarget\ system as a \dvttermdeterministicalgorithm , wherein all instructions are executed in a deterministic manner on the simulated hardware~\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013}.
-This means that the simulated system (e.g., an \dvttermos ), presuming the same input, will allocate the same memory space in virtual memories, receive the same number of interrupts in sequence, and even inhabit the same registers in virtual \dvttermcpu s~\dvtcmdcitebib[p.~19,~20]{journals:aarno:2013} (see ~\dvtcmdciteref{web:engblom:2012:determinism} for a brief rundown of \dvttermdeterministicexecution\ in \dvttermsimics ).
+This means that the simulated system (e.g., an \dvttermos ), presuming the same input, will allocate the same memory space in virtual memories, receive the same number of interrupts in sequence, and even inhabit the same registers in virtual \dvttermcpu s~\dvtcmdcitebib[p.~19,~20]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2012:determinism} for a brief rundown of \dvttermdeterministicexecution\ in \dvttermsimics ).
 As such, given an arbitrary number of instructions, the simulation state may be recreated indiscriminately down to the level of the instruction set and corresponding cycles.
-
 Thus, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermdeterministicexecution\ refers to the deterministic state transition of a \dvttermtarget\ system; as described in this section.
 
 % Checkpointing
@@ -45,9 +41,8 @@ In this way, developers may save- and restore the state of a system which can re
 
 In \dvttermsimics , '\dvttermcheckpointing ' refers to the functionality to save the complete state of a simulation into a portable format.
 When applied, this format is known as a \dvttermcheckpoint .
-This ability not only  saves time in terms of program initialization and debugging~\dvtcmdcitebib[p.~54]{journals:magnusson:2002}, but may also ease testing and collaboration in-between developers as \dvttermcheckpoint s may be distributed and shared~\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see ~\dvtcmdciteref{web:engblom:2013:collaboratingusingsimics} for an overview on \dvttermcheckpointing\ in \dvttermsimics ).
-
-As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes said functionality.
+This ability not only  saves time in terms of program initialization and debugging~\dvtcmdcitebib[p.~54]{journals:magnusson:2002}, but may also ease testing and collaboration in-between developers as \dvttermcheckpoint s may be distributed and shared~\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:collaboratingusingsimics} for an overview on \dvttermcheckpointing\ in \dvttermsimics ).
+As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermcheckpointing\ denotes this functionality.
 
 % Reverse Execution
 \section{Reverse Execution}
@@ -56,7 +51,6 @@ As such, throughout this document and in relation to the \dvttermsimics\ full-sy
 \glslink{dvtglossreverseexecution}{'Reverse execution'} provides software developers with the ability to return, often from portable \dvttermcheckpoint s, to previous states of execution~\dvtcmdcitebib[p.~2,~3]{journals:akgul:2004}.
 This may be useful when debugging, profiling, or testing as difficult-to-reach system states may be stored and returned to, effectively bypassing program initialization and other hindrances~\dvtcmdcitebib[p.~54]{journals:magnusson:2002}.
 
-In \dvttermsimics , '\dvttermreverseexecution ' denotes said ability - covering the entirety of the simulated system~\dvtcmdcitebib[p.~30,~31]{publications:leupers:2010}.
-As such, simulated systems may be run in reverse; including virtualized hardware device states, disk contents and \dvttermcpu\ registers~\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see ~\dvtcmdciteref{web:engblom:2013:backtorevexe} for an overview on \dvttermreverseexecution\ in \dvttermsimics ); whilst still maintaining determinism in the simulated system.
-
+In \dvttermsimics , '\dvttermreverseexecution ' denotes said ability - spanning the entirety of the simulated system~\dvtcmdcitebib[p.~30,~31]{publications:leupers:2010}.
+As such, simulated systems may be run in reverse; including virtualized hardware device states, disk contents and \dvttermcpu\ registers~\dvtcmdcitebib[p.~20,~21]{journals:aarno:2013} (see \dvtcmdciteref{web:engblom:2013:backtorevexe} for an overview on \dvttermreverseexecution\ in \dvttermsimics ); whilst still maintaining determinism in the simulated system.
 As such, throughout this document and in relation to the \dvttermsimics\ full-system simulator, \dvttermreverseexecution\ refers to the functionality described in this section.
