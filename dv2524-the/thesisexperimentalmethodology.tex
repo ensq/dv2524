@@ -55,7 +55,7 @@ Effectively, this entails having the benchmarks produced using \texttt{Java}, \t
 Furthermore, all benchmarks are configured to run at roughly \dvtcmdnum{16}~\milli\second , which would correspond to roughly \dvtcmdnum{60}~\dvttermfps , when hardware accelerated on the \dvttermhost\ system.
 The benchmarks are devised in this way in order to reflect the expected load of a modern real-time interactive application.
 As such, the purpose of developed benchmarks is to be representative of typical scenarios induced by modern graphics applications whilst utilizing a graphics framework such as \dvttermopengl .
-
+When run during the experiment, each benchmark instance measures the elapsed time of $1000$ frames which makes up the data subsequently analyzed.
 Frame captures of the benchmarks are presented in figures \ref{fig:benchmarks_chess}, \ref{fig:benchmarks_julia}, and \ref{fig:benchmarks_phong}.
 
 \input{figbenchmarks.tex}
