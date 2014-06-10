@@ -2,7 +2,6 @@
 
 % Threats to Validity
 \chapter{Threats to Validity}
-\ldots
 
 % Platform Profiling
 \section{Platform Profiling}
@@ -12,11 +11,11 @@ This is due to the fact that profiling of elapsed time outside of the simulation
 This is often the case if the simulation has outside dependencies of some sort.
 Naturally, such is the case in terms of real-time interaction and rendering - as such application is observed from outside of the simulation.
 
-In a \dvttermsimics\ simulation, as described by section \ref{sec:backgroundandrelatedwork_virtualtime}, time increments different than in the context of the \dvttermhost\ machine.
+In a \dvttermsimics\ simulation, as described by section \ref{sec:backgroundandrelatedwork_virtualtime}, time increments differently than in the context of the \dvttermhost\ machine.
 As such, in order to appropriately measure the elapsed time of a benchmark frame, the profiling must take place outside of the simulation.
 As expanded upon in section \ref{sec:backgroundandrelatedwork_magicinstructions}, there are a number of ways to escape- and pause the state of a simulation.
 Mayhaps the most intelligible is to listen in on activity passing through a \dvttermtarget\ serial port; being a traditional front-end to the machine.
-In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written - via a serial console - to a \dvttermuart\ hardware serial port.
+In this way, the simulator is instructed to listen in on, and set a simulation breakpoint at the occurrence of, a specialized sequence of bytes being written (via a serial console) to a \dvttermuart\ hardware serial port.
 In \dvttermlinux , the interface to such a port may be accessed by any of the \texttt{/dev/ttyS*} file descriptors.
 This process is visualized in figure \ref{fig:profilingsimics}.
 
@@ -24,42 +23,38 @@ This process is visualized in figure \ref{fig:profilingsimics}.
 
 When using serial ports in this manner, one may introduce a profiling cost.
 This may be induced by - amongst other possible factors - the file descriptors, to which data is being written, not immediately sending said byte sequence via the system \dvttermuart .
-In order to improve responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to, by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
-Furthermore, in order to ensuring the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start/stop immediately, with nothing but a \dvtcmdcodeinline{nop}-type instruction in-between.}.
+In order to improve responsivity in time critical profiling of elapsed time, we ensure said serial console is flushed to by the means of performing the system call \dvtcmdcodeinline{tcdrain}.
+Furthermore, in order to ensure the accuracy of performed time profiling, the overhead cost of said method has been measured\footnote{This has been performed by the means of invoking profiling start and stop consecutively.}.
 Collected profiling overhead data is presented in table \ref{tab:profiling}.
 
 \input{figprofiling.tex}
 
 From the data presented in table \ref{tab:profiling}, we may deduce that the profiling overhead cost may occasionally be volatile.
-However, with a standard deviation of \dvtcmdfirstline{profile.dat.std}, slightly below that of the average, such large deviation is to be quite rare.
-If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg}\footnote{In some cases, where the overhead cost is to be considered substantial, approximate data is presented accordingly (see section \dvtcmdrefname{sec:appendixa_magicinstructionprofiling} under \dvtcmdrefname{cha:appendixa}).}.
-Utilizing said methodology; when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
+However, with a standard deviation of \dvtcmdfirstline{profile.dat.std} ms, slightly below that of the average, such large deviation is to be quite rare.
+If not specified otherwise, all results collected from the \dvttermsimics\ platforms are subtracted with the average of this profiling cost; being \dvtcmdfirstline{profile.dat.avg} ms.
+Utilizing said methodology - when the simulator detects the chosen bit-pattern, it may start- or stop platform timing.
 This is the method used to measure the elapsed time of a frame during any benchmark running inside of a \dvttermsimics\ simulation.
 As such, this method is used for the software rasterized- and paravirtualized \dvttermsimics\ platforms. 
 
-Likewise, in \dvttermqemu , consideration must be taken to virtual time.
-However, in the \dvttermqemu -derived \dvttermandroidemulator , the system clock appears synchronized to that of the simulation \dvttermhost \dvtcmdciteref{technicaldocs:google:2014:androidtimers}\dvtcmdciteref{web:diebin:2010}.
-The theory is supported by findings presented in \dvtcmdciteref{web:stackoverflow:2011}, and has been confirmed with tests profiling elapsed time before performing any experiments.
-It is probably that the \dvttermandroidemulator\ has been implemented in this way to accomodate for audio- and video playback common for Android applications.
-As such, in order to profile elapsed wall clock time when performing benchmarks test in the \dvttermandroidemulator , one may simply measure time elapsed inside of the simulation.
+Likewise, in a \dvttermqemu\ simulation, consideration must be taken to virtual time.
+However, in the \dvttermqemu -derived \dvttermandroidemulator , the system clock appears synchronized to that of the simulation \dvttermhost ~\dvtcmdciteref{technicaldocs:google:2014:androidtimers}\dvtcmdciteref{web:diebin:2010}.
+The theory is supported by findings presented in \dvtcmdciteref{web:stackoverflow:2011} and has been confirmed with tests profiling elapsed time before performing any experiments.
+It is probable that the \dvttermandroidemulator\ has been implemented in this way to accomodate for audio- and video playback in simulated Android applications.
+As such, in order to profile elapsed wall clock time when performing benchmarks test in the \dvttermandroidemulator , one may simply measure time elapsed inside of the simulation in accordance to the system clock.
 This is the methodology used to profile the \dvttermqemu\ platform.
 
 % Benchmark variations
 \section{Benchmark Variations}
 \label{sec:threatstovalidity_benchmarkvariations}
-As visualized in figure \ref{fig:scattersphong}\footnote{Note the sinus-like pattern in the lower parts of the left-hand side scatterplot; it's oscillating performance may be a testimony to the rotation of the model.}, the Phong benchmark (see section \ref{sec:experimentalmethodology_benchmarks}) exhibits erratic variations in it's performance when software rasterized in the \dvttermsimics\ platform.
-Each graph presents the performance of the Phong benchmark where each symbol represent a frame time sample of one of the three Phong key figure variations (see section \ref{sec:experimentalmethodology_inputdatavariation}).
-From this visualization we may establish that the performance of the Phong benchmark varies greatly when software rasterized in \dvttermsimics , independent of the Phong benchmark texture texel quantity.
+As visualized in figure \ref{fig:scattersphong}, the Phong benchmark exhibits erratic variations in its performance when software rasterized in the \dvttermsimics\ platform.
+From this visualization we may establish that the performance of the Phong benchmark varies greatly when software rasterized in \dvttermsimics , independent of the Phong benchmark texture size.
 
-It is uncertain as of what is causing this behavior.
+It is uncertain as to what is causing this behavior.
 However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volatile texture mapping.
-Such a scenario may be induced by the large texture in coagency with the frame-wize rotating model - since the texture mapping outcome will likely differ on a per-frame basis.
-In consideration to the sheer size of the textures used for the experiments presented in figure \ref{fig:scattersphong}, it is likely that such eccentric memory referencing may account for the volatile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
-Albeit not applicable to \dvttermcpu\ cache behavior; see ~\dvtcmdcitebib{journals:dogget:2012} for an elaboration on texture mapping and \dvttermgpu\ cache methodologies in addition to an analysis on the performance implications of \dvttermgpu\ cache behavior.
+Such a scenario may occur due to the large texture, in coagency with the frame-wize rotating model, causing the texture mapping outcome to be likely to differ on a per-frame basis.
+In consideration to the sheer size of the textures used for the experiments, it is likely that such eccentric memory referencing may account for the volatile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
+Albeit not necessarily applicable to \dvttermcpu\ cache behavior; see \dvtcmdcitebib{journals:dogget:2012} for an elaboration on texture mapping and \dvttermgpu\ cache methodologies in addition to an analysis on the performance implications of \dvttermgpu\ cache behavior.
 
-In line with the erratic benchmark behavior that has been established in this section, the Phong benchmark results - although having value to this study in terms of profiling memory bandwidth scalability (see paragraph \dvtcmdrefname{par:results_phong}) - are to be considered less reliable than its more predictable benchmark peers.
-
-\noindent
-Note that, for the sake of visualization, values outside of the standard deviation are not presented in figure \ref{fig:scattersphong}.
+In accordance to the erratic benchmark behavior that has been established in this section, the Phong benchmark results - although having value to this study in terms of profiling memory bandwidth scalability - are to be considered less reliable than its more predictable benchmark peers.
 
 \input{figscattersphong.tex}
