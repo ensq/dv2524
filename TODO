@@ -1,19 +1,6 @@
 TODO
 01062014
 
-...in accordance to corporate advisor:
----
-
-Chapter Future Work:
-* Amend magic instruction overhead by batching invocations.
-* * Problem: one must ensure to copy data in case referenced memory changes.
-* Perform study without utilizing host virtualization extensions.
-
-...in accordance to advisor during meeting:
----
-
-If there is time, add a statistical significance test. Not a priority since the results are clear enough.
-
 ...in accordance to oneself:
 ---
 

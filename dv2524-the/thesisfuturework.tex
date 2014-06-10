@@ -4,44 +4,49 @@
 % Future Work
 \chapter{Future Work}
 \label{cha:futurework}
-The solution devised for the purpose of this study may be advanced in a number of ways in order to support higher variations in differing platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintenance.
-Additionally, in consideration to incorporation of a graphics acceleration solution - such as the one presented in this dissertation - into the \dvttermsimics\ full-system simulator, the solution must be improved in terms of cross-platform capabilities.
-Recommendations for future work in terms of integration into the \dvttermsimics\ environment is presented in section \dvtcmdrefname{sec:appendixa_simicsproductification} under \dvtcmdrefname{cha:appendixa}.
+The solution devised for the purpose of this study may be advanced in a number of ways in order to support a higher number of platforms, automation in \dvttermabi\ generation, an array of performance improvements, and general enhancements to make the paravirtualized solution more flexible during maintenance.
+Additionally, in consideration to incorporation of a graphics acceleration solution into the \dvttermsimics\ full-system simulator, the solution ought be improved in terms of cross-platform capabilities.
+Below, recommendations for future study are presented.
 
-Below, recommendations for future study, in terms of the experiment performed for the purposes of this thesis, are presented.\\
+For the purposes of improved solution performance, the author would recommend investigation into the possibility of command serialization batching; that is, the functionality to queue framework invocations and send the command stream to the \dvttermhost\ system.
+By batching framework invocations rather than serializing individual invocations, one might drastically reduce the number of \dvttermmagicinstruction s performed during \dvttermparavirtualization .
+Considering \dvttermmagicinstruction s having been identified as a bottleneck for the solution devised for the purposes of this study, such an optimization may improve solution performance.
+However, to accomodate batch-jobs of \dvttermopenglestwopointo\ function invocations, one would have to ensure that data to which pointer arguments refer is not modified before being transmitted to the simulation \dvttermhost .
+Alternatively, the solution could copy all argument data when invoked; only to transfer said data at a later stage.
 
-\noindent
-For further studies into paravirtualization as a means to accommodate for graphics acceleration in virtual platforms, the author would like to suggest complementary benchmarking of accelerated graphics performance.
+In order to strengthen the validity of this thesis, the author would suggest complementary study into similar conditions where the target solution does not utilize \dvttermdirectvirtualization .
+Without hardware-assisted acceleration to boost the performance of \dvttermcpu -bound workloads, the benefits of paravirtualized methodologies may be emphasized.
+
+For further studies into paravirtualization as a means to accommodate graphics acceleration in virtual platforms, the author would like to suggest complementary benchmarking of accelerated graphics performance.
 This is due to the benchmarks presented for the purpose of this study having effectively been mini-benchmarks; stressing particular suspected bottlenecks in the solution.
 In line with chapter \ref{cha:results} and \ref{cha:conclusion} having concluded paravirtualization as feasible for the means of graphics acceleration in virtual platforms, the methodology ought be profiled further with more verbose benchmarks in order to more effectively establish the magnitude of performance gains a paravirtualized solution may achieve.
 
-Furthermore, and for the purposes of complementing this dissertation in particular, the author would like to suggest implementation of addition mini-benchmarks stressing \dvttermtarget -to-\dvttermhost\ communications.
-Preferably, said benchmark would stress said communication by other means than profiling the sampling of a large texture, since such a test may cause volatile performance in the reference material - being software rasterized \dvttermsimics , possibly due to cache misses (see section \ref{sec:threatstovalidity_benchmarkvariations}).
-When executing such a benchmark, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:proposedsolutionandimplementation_pagetabletraversal}.\\
+Furthermore, and for the purposes of complementing this dissertation in particular, the author would like to suggest additional tests stressing \dvttermtarget -to-\dvttermhost\ communications.
+Preferably, said tests would stress the communication by other means than profiling the sampling of a large texture, since such a test may cause volatile performance in the reference material (being software rasterized \dvttermsimics ), possibly due to cache misses (see section \ref{sec:threatstovalidity_benchmarkvariations}).
+When performing such a test, it may be of value to profile the overhead induced by the memory table traversal described in section \ref{sec:proposedsolutionandimplementation_pagetabletraversal}.
 
-\noindent
-In addition to the complementary studies suggested in the above paragraph, there are two potential use-cases that might be viable subjects for further study; these being \dvtcmdrefname{par:futurework_apiextensions} and \dvtcmdrefname{par:futurework_safetycriticalconsiderations}.
+In addition to the complementary studies suggested in the above paragraphs, certain advanced functionality may be viable for further study; being \dvtcmdrefname{par:futurework_apiextensions} and \dvtcmdrefname{par:futurework_safetycriticalconsiderations}.
 The concepts of these scenarios are presented below.
 
+% API Extensions
 \paragraph{API Extensions}
 \label{par:futurework_apiextensions}
 The essence of system simulation is often to simulate a system other than that of the simulation \dvttermhost .
 As of such, one could pose the scenario of a \dvttermlinux\ \dvttermhost\ system simulating a machine running some variation of the \dvttermwindows\ \dvttermos .
-In this case, it is possible that user applications in the simulation utilize the \dvttermdirectx\ framework to render graphics; whereas the \dvttermhost\ machine only supporting the \dvttermopengl\ libraries.
+In this case, it is possible that user applications in the simulation utilize the \dvttermdirectx\ framework to render graphics; whereas the \dvttermhost\ machine only features the \dvttermopengl\ libraries.
 
 Earlier this year, \dvttermvalve\ released software capable of converting \dvttermdirectx\ $9.0$c-code to that of \dvttermopengl ~\dvtcmdciteref{technicaldocs:valve:2014}.
 Albeit limited in its capabilities, the functionality of translating in-between one, platform-specific, framework to that of a cross-platform framework may be practical.
-
 If such a solution could be implemented to translate- and execute some \dvttermtarget\ program on-the-fly in a virtual machine, in which the \dvttermhost\ system lacks the capability to interpret the original framework, this may extend the area-of-application for full-system simulation.
-As such, further studies into the feasibility of such functionality ought be considered.
+As such, further studies into the feasibility of similar functionality ought be considered.
 
+% Safety Critical Considerations
 \paragraph{Safety Critical Considerations}
 \label{par:futurework_safetycriticalconsiderations}
 Paravirtualization of the \dvttermopenglestwopointo\ library induces the need to maintain various \dvttermopengl\ state variables in \dvttermtarget - and \dvttermhost\ systems (see chapter \ref{cha:proposedsolutionandimplementation}).
 The effective overload of a certain framework opens up the possibility of modifying the behavior of that library in certain ways; including how methods are invoked, in what order, and pre-/post-hooks of certain actions.
 
-This ability may be exploited to bend the capabilities of that library to the needs of a certain user; for example, a safety critical version of said paravirtualized library.
-Such a library could, for example, extend the capabilities of the \dvttermopengl\ error state, keeping multiple such instances in memory to prevent said state from being overwritten by the user; effectively making the framework more transparent.
+This ability may be exploited to bend the capabilities of that library to the needs of a certain user; for example, a safety critical version of a paravirtualized library.
+Such a library could, for example, extend the capabilities of the \dvttermopengl\ error state, keeping multiple such instances in memory to prevent the state from being overwritten by the user; effectively making the framework more transparent.
 Another extension, and mayhaps a more usable one, could ensure that the \dvttermopengl\ state is consistent with that as requested by the user; for example, disabling any vertex attribute that the user has not explicitly enabled.
-
 As such, further studies into the feasibility of such functionality may be considered.
