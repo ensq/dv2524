@@ -4,9 +4,6 @@ TODO
 ...in accordance to corporate advisor:
 ---
 
-Chapter Introduction:
-* Explain the concepts of Target and Host
-
 Chapter Background:
 * Under background, each graphics virtualization methodology is described briefly. Paravirtualization ought to be described as well. Either insert description or refer to other section in document.
 * Sort problems under PCI Passthrogh in accordance to relevance.
