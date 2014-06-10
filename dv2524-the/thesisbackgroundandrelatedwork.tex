@@ -28,13 +28,13 @@ Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectiv
 \section{OpenGL ES}
 \label{sec:backgroundandrelatedwork_opengles}
 \dvttermopengles\ is an \dvttermapi\ for 3D-graphics on an assortment of embedded systems, such as mobile devices or vehicle displays~\dvtcmdcitebib{publications:munshi:2008}.
-The \dvttermopengles\ set of \dvttermapi s is developed by \dvttermkhronos , the same konsortium responsible for the development of the \dvttermopengl\ \dvttermapi s, which - unlike \dvttermopengl\ for embedded systems - is intended for desktop graphics~\dvtcmdcitebib{publications:wright:2010}.
-The \dvttermopengles\ \dvttermapi s are traditionally derived from the standard \dvttermopengl\ \dvttermapi s, and are thus similar in appereance albeit more limited~\dvtcmdcitebib{publications:wright:2010}.
+The \dvttermopengles\ set of \dvttermapi s is developed by \dvttermkhronos , the same consortium responsible for the development of the \dvttermopengl\ \dvttermapi s, which - unlike \dvttermopengl\ for embedded systems - is intended for desktop graphics~\dvtcmdcitebib{publications:wright:2010}.
+The \dvttermopengles\ \dvttermapi s are traditionally derived from the standard \dvttermopengl\ \dvttermapi s, and are thus similar in appearance albeit more limited~\dvtcmdcitebib{publications:wright:2010}.
 The \dvttermopengles\ specification is intended to adhere to the following specifications, in relation to the original \dvttermopengl\ \dvttermapi s~\dvtcmdcitebib{publications:munshi:2008}:
 \begin{itemize}[noitemsep]
 	\item Reduce complexity, but attempt maintain compatibility with \dvttermopengl\ when possible.
 	\item Optimize power consumption for embedded devices.
-	\item Incorporate a set of quality specifiers into the \dvttermopengles\ specification. This includes minimum quality specifiers for image quality into the standard; accomodating for limited screen sizes in embedded systems.
+	\item Incorporate a set of quality specifiers into the \dvttermopengles\ specification. This includes minimum quality specifiers for image quality into the standard; accommodating for limited screen sizes in embedded systems.
 \end{itemize}
 
 \dvttermopenglestwopointo\ consists of two \dvttermkhronos\ specifications; being the \dvttermopenglestwopointo\ \dvttermapi\ specification and the \dvttermopengles\ Shading Language Specification~\dvtcmdcitebib{publications:munshi:2008}.
@@ -44,18 +44,18 @@ The \dvttermopenglestwopointo\ \dvttermapi\ was selected for use, for the purpos
 \section{GPU Architecture}
 \label{sec:backgroundandrelatedwork_gpuarchitecture}
 \dvttermgpu s are massively parallel numeric computing processors often used for 3D graphics acceleration.
-While \dvttermcpu s are designed to maximize sequential performance, \dvttermgpu s are designed to maximize \dvttermflops\ throughput; originally required for the floating point linear algebrae often needed by 3D graphics.
-Additionally, the continous need for faster processing units, slowed down by the heat dissipation issues limiting clock frequency since 2003~\dvtcmdcitebib{publications:kirk:2010}, has driven the utilization of \dvttermgpu s for general purpose workloads.
+While \dvttermcpu s are designed to maximize sequential performance, \dvttermgpu s are designed to maximize \dvttermflops\ throughput; originally required for the floating point linear algebra often needed by 3D graphics.
+Additionally, the continuous need for faster processing units, slowed down by the heat dissipation issues limiting clock frequency since 2003~\dvtcmdcitebib{publications:kirk:2010}, has driven the utilization of \dvttermgpu s for general purpose workloads.
 
 Generally, \dvttermcpu s are designed to optimize the execution of an individual thread.
-In order to fascilitate sequential performance, the processing pipeline is designed for low-latency operations; including thorough caching methodologies and low-latency arithmetic units.
-This design philosophy is often referred to as latency-oriented design, since it strives for low-latency operations to accomodate high performance of individual threads~\dvtcmdcitebib{publications:kirk:2010}.
+In order to facilitate sequential performance, the processing pipeline is designed for low-latency operations; including thorough caching methodologies and low-latency arithmetic units.
+This design philosophy is often referred to as latency-oriented design, since it strives for low-latency operations to accommodate high performance of individual threads~\dvtcmdcitebib{publications:kirk:2010}.
 
 Meanwhile, \dvttermgpu s are designed to maximize the the throughput of a large number of threads; having less regard for the performance of individual threads.
 As such, \dvttermgpu s do not prioritize caches or other low-latency optimizations like \dvttermcpu s, but aim to conceal overhead induced by memory references or arithmetic by the execution of many threads, which may perform in place during arithmetic- or memory operations.
 Such design is often referred to as throughput-oriented design~\dvtcmdcitebib{publications:kirk:2010}.
 
-The differing design philosophies of \dvttermcpu\ and \dvttermgpu\ units are so fundementally different that they are largely incompatible in terms their workloads, as explained by Kirk and Hwu~\dvtcmdcitebib{publications:kirk:2010}.
+The differing design philosophies of \dvttermcpu\ and \dvttermgpu\ units are so fundamentally different that they are largely incompatible in terms their workloads, as explained by Kirk and Hwu~\dvtcmdcitebib{publications:kirk:2010}.
 As such, programs that feature few threads, \dvttermcpu s with lower operation latencies may perform better than \dvttermgpu s; whereas a program with a large number of threads may fully utilize the higher execution throughput of \dvttermgpu s~\dvtcmdcitebib{publications:kirk:2010}.
 
 The introduction of a number of \dvttermcpu -oriented optimizations for simulating \dvttermgpu -bound workloads on \dvttermcpu s has made it possible to simulate such kernels several times faster than traditional simulation.
@@ -92,7 +92,7 @@ The direct contact with \dvttermhost\ system devices accommodated by methodologi
 Yet the methodology suffers from several disadvantages, such as requiring dedicated hardware, causing the \dvttermhost\ system to lose access to devices during the course of simulation.
 In terms of \dvttermgpu\ virtualization, this would induce the necessity of the \dvttermhost\ machine featuring multiple graphics cards.
 Additionally, and mayhaps the biggest flaw of passthrough methodologies, is the requirement of modifying the simulation \dvttermtarget\ to utilize \dvttermhost\ hardware; effectively restricting what systems may be simulated.
-This restriction encompasses, inter alia, the utilization of corresponding device drivers to the \dvttermhost\ system, rendering the methodology unflexible in terms of \dvttermgpu\ virtualization diversity.
+This restriction encompasses, inter alia, the utilization of corresponding device drivers to the \dvttermhost\ system, rendering the methodology inflexible in terms of \dvttermgpu\ virtualization diversity.
 As such, and in line with a paravirtualized approach, \dvttermpcipassthrough\ requires modification of the \dvttermtarget\ system - in addition to configuration of the simulation \dvttermhost .
 
 % Soft Modeling

@@ -19,12 +19,12 @@ In order to accommodate for the, however few, samples outside of said limits the
 Based on the reference profiling presented in figure \ref{fig:histogramshost}, we may conclude that the benchmarks, when hardware accelerated on the \dvttermhost\ system, perform with concentrated density; not being much scattered across the graph except a few irregular extremities in terms of maximum frame times (see table \ref{tab:keyvalhost}).
 This is supported by the standard deviation presented in said table.
 Furthermore, we may conclude that the Phong demo features two distinct peaks in density distribution - about $1$ ms in-between.
-There may be cause to believe that this is caused, or partly caused, by frame-wize rotation of the teapot - rotation featured in the benchmark (see section \ref{sec:experimentalmethodology_benchmarks}) - inducing some fluctuation into its execution (see figure \ref{fig:histogramssimicsparaphong}).
+There may be cause to believe that this is caused, or partly caused, by frame-wise rotation of the teapot - rotation featured in the benchmark (see section \ref{sec:experimentalmethodology_benchmarks}) - inducing some fluctuation into its execution (see figure \ref{fig:histogramssimicsparaphong}).
 However, this behavior is, strangely so, not apparent whilst paravirtualized in the \dvttermqemu\ derived \dvttermandroidemulator , although this may be a visual artifact due to the resolution of the graph (see figure \ref{fig:histogramsqemu}).
 See section \ref{sec:threatstovalidity_benchmarkvariations} for an elaboration on divergence in the Phong benchmark.
 Additionally, and in accordance to tables \ref{tab:keyvalhost} and \ref{tab:keyvalqemu}, one may observe relatively high recorded maximum frame times in relation to compiled maximum- and average values, yet featuring - in relation to divergent maximum, relatively low standard deviations.
 
-The remainder of this chapter will present a benchmark-wize analysis of the data compiled from executing the experiment on the software rasterized- and paravirtualized \dvttermsimics\ platforms; said platforms being the subject of this study.
+The remainder of this chapter will present a benchmark-Wise analysis of the data compiled from executing the experiment on the software rasterized- and paravirtualized \dvttermsimics\ platforms; said platforms being the subject of this study.
 For the sake of brevity, these analyses are segmented into paragraphs for each benchmark.
 These paragraphs are presented below.
 
@@ -142,7 +142,7 @@ In this way, we wanted to circumvent any obscurities induced by profiling overhe
 \input{figmagicinstructionsforall.tex}
 
 From the data presented in paragraphs \dvtcmdrefname{par:results_magicinstructionoverhead_individualprofiling} and \dvtcmdrefname{par:results_magicinstructionoverhead_batchprofiling}, we may deduce that the profiling overhead induced when measuring the elapsed time of individual \dvttermmagicinstruction s causes misrepresentation in the actual elapsed time of said \dvttermmagicinstruction s.
-This is clear when analyzing the batch-wize data presented in table \ref{tab:magicinstructionsforall}, where the cost of a \dvttermmagicinstruction\ invocation is significantly lower.
+This is clear when analyzing the batch-wise data presented in table \ref{tab:magicinstructionsforall}, where the cost of a \dvttermmagicinstruction\ invocation is significantly lower.
 This may be caused by the system call \dvtcmdcodeinline{tcdrain}, which	waits until all output written to the referenced serial console has been transmitted.
 One may speculate that said system call may be the cause for eccentric behavior in the profiling.
 

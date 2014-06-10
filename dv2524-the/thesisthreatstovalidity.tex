@@ -39,7 +39,7 @@ As such, this method is used for the software rasterized- and paravirtualized \d
 Likewise, in a \dvttermqemu\ simulation, consideration must be taken to virtual time.
 However, in the \dvttermqemu -derived \dvttermandroidemulator , the system clock appears synchronized to that of the simulation \dvttermhost ~\dvtcmdciteref{technicaldocs:google:2014:androidtimers}\dvtcmdciteref{web:diebin:2010}.
 The theory is supported by findings presented in \dvtcmdciteref{web:stackoverflow:2011} and has been confirmed with tests profiling elapsed time before performing any experiments.
-It is probable that the \dvttermandroidemulator\ has been implemented in this way to accomodate for audio- and video playback in simulated Android applications.
+It is probable that the \dvttermandroidemulator\ has been implemented in this way to accommodate for audio- and video playback in simulated Android applications.
 As such, in order to profile elapsed wall clock time when performing benchmarks test in the \dvttermandroidemulator , one may simply measure time elapsed inside of the simulation in accordance to the system clock.
 This is the methodology used to profile the \dvttermqemu\ platform.
 
@@ -51,7 +51,7 @@ From this visualization we may establish that the performance of the Phong bench
 
 It is uncertain as to what is causing this behavior.
 However, there may be cause to believe that texture mapping a model such as the one in the Phong benchmark, with a non-mipmapped texture of such a large texel count, may induce severe cache-misses due to the volatile texture mapping.
-Such a scenario may occur due to the large texture, in coagency with the frame-wize rotating model, causing the texture mapping outcome to be likely to differ on a per-frame basis.
+Such a scenario may occur due to the large texture, in coagency with the frame-wise rotating model, causing the texture mapping outcome to be likely to differ on a per-frame basis.
 In consideration to the sheer size of the textures used for the experiments, it is likely that such eccentric memory referencing may account for the volatile performance of the Phong benchmark in the software rasterized \dvttermsimics\ platform.
 Albeit not necessarily applicable to \dvttermcpu\ cache behavior; see \dvtcmdcitebib{journals:dogget:2012} for an elaboration on texture mapping and \dvttermgpu\ cache methodologies in addition to an analysis on the performance implications of \dvttermgpu\ cache behavior.
 

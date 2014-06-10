@@ -11,7 +11,7 @@ Below, recommendations for future study are presented.
 For the purposes of improved solution performance, the author would recommend investigation into the possibility of command serialization batching; that is, the functionality to queue framework invocations and send the command stream to the \dvttermhost\ system.
 By batching framework invocations rather than serializing individual invocations, one might drastically reduce the number of \dvttermmagicinstruction s performed during \dvttermparavirtualization .
 Considering \dvttermmagicinstruction s having been identified as a bottleneck for the solution devised for the purposes of this study, such an optimization may improve solution performance.
-However, to accomodate batch-jobs of \dvttermopenglestwopointo\ function invocations, one would have to ensure that data to which pointer arguments refer is not modified before being transmitted to the simulation \dvttermhost .
+However, to accommodate batch-jobs of \dvttermopenglestwopointo\ function invocations, one would have to ensure that data to which pointer arguments refer is not modified before being transmitted to the simulation \dvttermhost .
 Alternatively, the solution could copy all argument data when invoked; only to transfer said data at a later stage.
 
 In order to strengthen the validity of this thesis, the author would suggest complementary study into similar conditions where the target solution does not utilize \dvttermdirectvirtualization .
