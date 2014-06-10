@@ -1,0 +1,50 @@
+% rejoinder.tex
+
+\documentclass[a4paper,oneside]{bth}
+\DeclareGraphicsExtensions{.pdf}
+
+% Packages none of which the author of the original template has stated the purpose of:
+\usepackage{url}
+\usepackage{xtab}
+\usepackage{pifont}
+\usepackage{xspace}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathenv}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{changepage}
+
+% User includes:
+\usepackage{pdfpages} % Used to include .pdf documents in appendix.
+\usepackage{datetime} % Used to format dates.
+\usepackage[hidelinks]{hyperref} % Force hide hyperlink borders. Consider removing this, as such settings ought to be up to .pdf-reader.
+\usepackage{alltt} % Used for verbatim environments under oppositionconclusion.
+
+% Local packages includes:
+\usepackage[footinfo]{gitinfo}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% Front matter:
+\include{rejoinderfront}
+
+\cleardoublepage
+\pagestyle{headings}
+\pagenumbering{arabic}
+
+% Body matter:
+\ldots
+
+% Back matter:
+\include{rejoinderback}
+
+\end{document}

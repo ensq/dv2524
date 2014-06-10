@@ -74,6 +74,13 @@ def buildPresentation(p_from):
     subbuild(os.getcwd() + "/dv2524-pre")
     shutil.copyfile("dv2524-bin/presentation.pdf", "presentation.pdf")
 
+def buildRejoinder(p_from):
+    print(p_from + ": Building Thesis Rejoinder document...")
+    buildCommon()
+
+    subbuild(os.getcwd() + "/dv2524-rej")
+    shutil.copyfile("dv2524-bin/rejoinder.pdf", "rejoinder.pdf")
+
 # Entry point:
 print(g_iam + ": Enter...")
 
@@ -97,6 +104,7 @@ build_proposal = False
 build_thesis = False
 build_opposition = False
 build_presentation = False
+buuld_rejoinder = False
 try:
   target
 except NameError:
@@ -104,6 +112,7 @@ except NameError:
     build_thesis = True
     build_opposition = True
     build_presentation = True
+    build_rejoinder = True
 else:
     if target=="proposal":
         build_proposal = True
@@ -113,6 +122,8 @@ else:
         build_opposition = True
     elif target=="presentation":
         build_presentation = True
+    elif target=="rejoinder":
+        build_rejoinder = True
     else:
         print(g_iam + ": Invalid target!")
         usage(g_iam)
@@ -133,5 +144,8 @@ if build_opposition==True:
 if build_presentation==True:
     deleteFile(g_iam, "presentation.pdf")
     buildPresentation(g_iam)
+if build_rejoinder==True:
+    deleteFile(g_iam, "rejoinder.pdf")
+    buildRejoinder(g_iam)
 
 print(g_iam + ": Exit.")
