@@ -5,23 +5,22 @@
 \label{cha:backgroundandrelatedwork}
 System simulators are abundant and exist in corporate~\dvtcmdcitebib{magazines:bohrer:2004}, academic~\dvtcmdcitebib{journals:rosenblum:1995}, and open-source variations~\dvtcmdciteref{magazines:bartholomew:2006}.
 Such platforms, like \dvttermsimics , have been used for a variety of purposes including, but not limited to, thermal control strategies in multicores~\dvtcmdcitebib{inproceedings:bartolini:2010}, networking timing analysis~\dvtcmdcitebib{journals:ortiz:2009}, web server performance evaluation~\dvtcmdcitebib{journals:villa:2005}, and to simulate costly hardware financially unfeasible to researchers~\dvtcmdcitebib{journals:alameldeen:2003}.
-Furthermore, such simulators may be used to port \dvttermos s to new processors~\dvtcmdciteref{technicaldocs:netbsd:2014}.
+Furthermore, such simulators may also be used to port \dvttermos s to new processors~\dvtcmdciteref{technicaldocs:netbsd:2014}.
 
-For the purposes of graphics acceleration, strategies, methodologies and procedures are numerous; several of which are expanded upon in chapter \ref{cha:proposedsolutionandimplementation}.
-Based off these core strategies, such as device modeling, various passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems, such as the development of specialized passthrough drivers~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+For the purposes of graphics acceleration, strategies, methodologies and procedures are numerous.
+Based off a number of core strategies, such as device modeling, passthrough technologies, and paravirtualization, there have been numerous attempts at effective \dvttermgpu\ virtualization; many of which require modification of both \dvttermtarget - and \dvttermhost\ systems (such as the development of specialized passthrough drivers~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}).
 One such instance is presented by Hansen in his work on the Blink display system~\dvtcmdcitebib{inproceedings:hansen:2007}.
 
-Neither are the concepts of advanced simulatory features new to \dvttermgpu\ virtualization, as there have are multiple attempts to implement the \dvttermcheckpointrestart -model in a \dvttermgpu\ context, such as the work done by Guo et al. on the CUDA framework~\dvtcmdcitebib{inproceedings:guo:2013}.
-Another solution which also supports the \dvttermcheckpointrestart -scheme is VMGL, as presented by Lagar-Cavilla et al., which by the means of paravirtualization accelerated the \dvttermopengl\ $1.5$ framework~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
-The groundwork produced by Lagar-Cavilla et al. showcased the potential for paravirtualized graphics, as the VMGL framework, for a certain set of benchmarks, attained improvements of roughly two orders of magnitude - in relation to software rasterization performed for the sake of said experiment.
+Neither are the concepts of advanced simulatory features new to \dvttermgpu\ virtualization, as there have are multiple attempts to implement the \dvttermcheckpointrestart -model in a \dvttermgpu\ context, such as the work by Guo et al. concerning the CUDA framework~\dvtcmdcitebib{inproceedings:guo:2013}.
+Another solution which also supports the \dvttermcheckpointrestart -scheme is VMGL, as presented by Lagar-Cavilla et al., which by the means of paravirtualization accelerates the \dvttermopengl\ $1.5$ framework~\dvtcmdcitebib{inproceedings:lagarcavilla:2007}.
+The groundwork produced by Lagar-Cavilla et al. showcases the potential for paravirtualized graphics since the VMGL framework, for a certain set of benchmarks, attains improvements of roughly two orders of magnitude in relation to software rasterization.
 
 Current promising projects surrounding \dvttermgpu\ virtualization include the Virgil3D-project~\dvtcmdciteref{technicaldocs:qemudevel:2014}.
 As described at the project homepage\footnote{\href{http://virgil3d.github.io/}{www.virgil3d.github.io}}, the project strives to create a virtual \dvttermgpu\ which may subsequently utilize \dvttermhost\ hardware to accelerate 3D rendering.
-The project is currently being maintained, again according to the projects GitHub homepage, by Red Hat's Dave Airlie.
-
+The project is currently being maintained, again according to the project's GitHub homepage, by Red Hat's Dave Airlie.
 Other related works include modeling \dvttermgpu\ devices in the \dvttermqemu\ full-system simulator with software \dvttermopengles\ rasterization support, as presented by Shen et al.~\dvtcmdcitebib{inproceedings:shen:2010}.
 
-As of the time of writing, graphics virtualization is no longer limited to the academic community but is also existent in the industry as big virtualization players incorporate various graphics acceleration solutions in their products.
+At the time of writing, graphics virtualization is no longer limited to the academic community but is also existent in the industry, as big virtualization players incorporate various graphics acceleration solutions in their products.
 One such example is \dvttermvmware ~\dvtcmdciteref{technicaldocs:vmware:2014}.
 
 Pursuant to the aim and objectives specified in chapter \ref{cha:aimsandobjectives}, this thesis pertain to the technologies and concepts described in this chapter.
