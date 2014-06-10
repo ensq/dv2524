@@ -4,14 +4,6 @@ TODO
 ...in accordance to corporate advisor:
 ---
 
-Chapter Background:
-* Under background, each graphics virtualization methodology is described briefly. Paravirtualization ought to be described as well. Either insert description or refer to other section in document.
-* Sort problems under PCI Passthrogh in accordance to relevance.
-* * Biggest issue is that target must be modified to utilize host hardware.
-* * Determinism and checkpointing may be difficult (only speculation).
-* * In effect, the only reason PCI passthrough methodologies is Linux-only is that no-one has developed Windows support yet.
-* OpenGL ES 2.0 has been chosen due to it's programmable shaders yet reduced instruction set.
-
 Chapter Future Work:
 * Amend magic instruction overhead by batching invocations.
 * * Problem: one must ensure to copy data in case referenced memory changes.
