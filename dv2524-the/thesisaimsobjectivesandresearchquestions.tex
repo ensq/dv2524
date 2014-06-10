@@ -5,32 +5,31 @@
 \label{cha:aimsandobjectives}
 The study presented in this document consists of implementing paravirtualization of a graphics \dvttermapi\ (being \dvttermopenglestwopointo ) in the \dvttermsimics\ full-system simulator developed by \dvttermintel\ and sold through \dvttermintel 's subsidiary \dvttermwindriver\ 
 The solution devised to accelerate \dvttermopengl\ adheres to that of the \dvttermandroidemulator , which is elaborated upon in section \ref{sec:backgroundandrelatedwork_qemu}.
-
 As such, this study concerns investigating the performance, and the feasibility of extended benefits and advanced functionality, of paravirtualized graphics in a virtual platform.
 This entails investigation, analysis, and development of methods and techniques for efficient communication and execution in the \dvttermsimics\ run-time environment.
 Furthermore, the study comprises analysis of the liabilities of paravirtualized technologies in regards to \dvttermsimics\ philosophy (being high-performance determinism and repeatability~\dvtcmdcitebib{journals:aarno:2013}).
-As such, the dissertation does not exclusively concern \dvttermsimics\ integration, but an investigation of paravirtualized drivers in virtual platforms.
+Thus, the study does not exclusively concern \dvttermsimics\ integration, but an investigation of paravirtualized libraries in virtual platforms.
 
-For the purpose of this thesis, a paravirtualized solution for graphics acceleration in \dvttermsimics\ has been developed to accommodate for this analysis.
-Furthermore, as to accommodate the analysis of benefits and drawbacks of paravirtualized graphics, a number of benchmarks are developed for the purposes of stressing key points in the devised solution; with the goal of locating solution bottlenecks.
-These benchmarks are thus designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational intensity.
+For the purpose of this thesis, a paravirtualized solution for graphics acceleration in \dvttermsimics\ is developed.
+Furthermore, to accommodate the analysis of benefits and drawbacks of paravirtualized graphics, a number of benchmarks are devised to stress key points in the developed solution; with the goal of locating performance bottlenecks.
+The benchmarks are designed to stress latency and bandwidth in \dvttermtarget -to-\dvttermhost\ communication, in addition to computational intensity brought on by complex \dvttermgpu -bound workloads.
 
-Based on the developed solution, in coagency with the benchmarks devised to profile said solution, this document comprises an analysis of the performance of paravirtualized graphics compared to that of traditional software rasterization.
-The objectives of this dissertation is to evaluate the feasibility of paravirtualization as an approach to accelerate graphics in virtual platforms; along with identifying its strengths and weaknesses.
+Based on the devised solution, in coagency with the benchmarks, this study comprises an analysis of the performance of paravirtualized graphics compared to that of traditional software rasterization.
+The objectives of the dissertation is to evaluate the feasibility of paravirtualization as an approach to accelerate graphics in virtual platforms; along with identifying its strengths and weaknesses.
 
-In line with the previous work in the area specified in chapter \ref{cha:backgroundandrelatedwork}, there has been no indication - in academic writing - of any pre-existing solution of paravirtualized graphics \dvttermapi s signifying \glslink{dvtglossdeterministicexecution}{deterministic} behavior; paving the way for supporting \dvttermreverseexecution\ graphics.
+In line with previous work in the area specified in chapter \ref{cha:backgroundandrelatedwork}, there has been no indication - in academic writing - of any pre-existing solution of paravirtualized graphics \dvttermapi s signifying \glslink{dvtglossdeterministicexecution}{deterministic} behavior; paving the way for supporting \dvttermreverseexecution\ graphics.
 Such functionality could simplify debugging, testing, and profiling of applications comprising some \dvttermgpu -bound workload; not limited to graphics- or \dvttermgpu\ utilization in its entirety.
 Entailed by these research gaps, the research questions formulated in this chapter are considered to be lacking in the field.
 
-As such, the study performed for the purposes of this dissertation is relevant to the field of computer science by expanding upon the the knowledge of graphics acceleration in virtual platforms; in terms of facilitating debugging, testing, and profiling of software dependent on \dvttermgpu\ graphics acceleration.
+As such, the study performed for the purposes of this thesis is relevant to the field of computer science by expanding upon the the knowledge of graphics acceleration in virtual platforms; in terms of facilitating debugging, testing, and profiling of software dependent on \dvttermgpu\ graphics acceleration.
 By the means outlined in chapter \ref{cha:aimsandobjectives}, this dissertation contributes to the field of computer science by answering these questions from the perspective of graphics paravirtualization in the \dvttermsimics\ full-system simulator.
-Accordingly, the key investigatory attributes and explicit research question formulations, sought after to answer by this thesis, are presented below.
+Accordingly, the key investigatory attributes and explicit research question formulations, sought to be answered by this thesis, are presented below.
 
 \newcommand*\researchquestionitem[2]{\item[#1:] \textit{#2}}
 \begin{itemize}[noitemsep]
 	\researchquestionitem{1}{What constitutes a viable implementation of paravirtualized graphics?}
 	\researchquestionitem{2}{What are the benefits and disadvantages of paravirtualized graphics?}
-	\researchquestionitem{3}{How does paravirtualized graphics relate to software rasterization?}
+	\researchquestionitem{3}{How does paravirtualized graphics performance relate to software rasterization?}
 \end{itemize}
 
 Furthermore, the study pertains to a number of discussion topics in line with the solution's relation to the \dvttermsimics\ full-system simulator. These discussion questions presented below.
