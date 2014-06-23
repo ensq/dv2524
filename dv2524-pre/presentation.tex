@@ -58,20 +58,6 @@
 	\colorbox{black!5}{
 			\lstinline[basicstyle=\ttfamily\color{black}]{#1}}}
 
-\title{Paravirtualizing OpenGL ES in Simics}
-\subtitle{Master's Thesis in Computer Science}
-\author{Eric Nilsson}
-\institute{Intel Corporation}
-\date{\today} % Fix
-
-% Opposition presentation:
-% 20 minutes
-% Three key points:
-% * Paravirtualization is feasible for accelerating graphics in virtual platforms.
-% * Magic instructions is good methodology to transmit real-time invocations between target and host systems.
-% * Paravirtualization may be subject to advanced functionality.
-% The frames should lead to these conclusions.
-
 \newtheorem{thm}{Key point}
 
 \begin{document}
@@ -98,9 +84,6 @@
 	\section{Methodology}
 	\subsection{Overview}
 	\input{presentationoverview.tex}
-	% Man-in-the-middle windows
-	%\subsection{Man-in-the-middle windows}
-	%\input{presentationwindows.tex}
 	% Magic instructions
 	\subsection{Magic instructions}
 	\input{presentationmagicinstructions.tex} % W. memory table traversal
@@ -110,9 +93,6 @@
 	% Benchmarks
 	\subsection{Benchmarks}
 	\input{presentationbenchmarks.tex}
-	% Profiling
-	%\subsection{Profiling}
-	%\input{presentationprofiling.tex}
 
 	% RESULTS
 	\section{Results}
@@ -134,33 +114,21 @@
 
 	% CONCLUSION
 	\section{Conclusion}
-	% Performance improvements
-	%\subsection{Performance improvements}
-	%\input{presentationperformance.tex}
 	% Magic instruction overhead
 	\subsection{Magic instruction overhead}
 	\input{presentationmagicinstructionoverhead.tex}
-	% Advanced functionality
-	%\subsection{Advanced functionality}
-	%\input{presentationadvancedfunctionality.tex}
 	% Key point recap
 	\subsection{Key point recap}
 	\input{presentationkeypoints.tex}
 
-	% Observations:
-	% For the Chess benchmark, we may observe impaired performance.
-	% For the Julia benchmark, we may observe significant performance improvements.
-	% For the Phong benchmark, we may observe erratic performance issues on the software rasterized platform; possibly due to strange cache behavior caused by sampling the gargantuan texture. However, the tables also demonstrate considerably better maximum- and standard deviation.
-
 	% BACK MATTER
 	% ---
-	\input{presentationback.tex}
+	% Colophon
+	\input{presentationcolophon.tex}
 
-	% To be appendix
+	% Back page
+	\input{presentationback.tex}
 
 	% Tables
 	\input{presentationtables.tex}
-
-	% TODO:
-	% Add colophon acknowledging progress bar.
 \end{document}
