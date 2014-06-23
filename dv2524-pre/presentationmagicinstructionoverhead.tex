@@ -1,33 +1,5 @@
 % presentationmagicinstructionoverhead.tex
 
-\defverbatim[colored]\pseudofirst{%
-\lstset{linewidth=0.5\linewidth}
-\begin{lstlisting}
-for(unsigned i=0;i<1000;i++){
-	write(sercon,"start",5);
-	tcdrain(sercon);
-
-	magic_instruction();
-
-	write(sercon,"stop",4);
-	tcdrain(sercon);
-}
-\end{lstlisting}}
-
-\defverbatim[colored]\pseudosecond{%
-\lstset{linewidth=0.5\linewidth}
-\begin{lstlisting}
-for(unsigned i=0;i<1000;i++){
-	write(sercon,"start",5);
-	tcdrain(sercon);
-	for(unsigned j=0;j<1000;j++){
-		magic_instruction();
-	}
-	write(sercon,"stop",4);
-	tcdrain(sercon);
-}
-\end{lstlisting}}
-
 \begin{frame}[fragile]
 \frametitle{Magic instruction overhead}
 \begin{figure}
@@ -47,8 +19,8 @@ int sercon = open("/dev/ttyS0",O_RDWR|O_NOCTTY);
 \end{minipage}
 \end{figure}
 
-\begin{block}{Profiling results (1000 magic instructions)}
+\begin{center}
 \input{tabmagicinstructionsforall.tex}
-\end{block}
+\end{center}
 
 \end{frame}
