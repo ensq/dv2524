@@ -1,21 +1,21 @@
 % presentationresultshost.tex
 
 \begin{frame}
-\frametitle{Host histograms}
+\frametitle{Host and QEMU histograms}
 
 \begin{columns}
-	\column{\textwidth}
+	\column{0.5\textwidth}
 	\centering
 	% histogramshost
-	\resizebox{0.4\textwidth}{!}{%
+	\resizebox*{!}{0.8\textheight}{%
 		\input{gnuhistogramshost.tex}
 	}
-%    \column{0.5\textwidth}
-%    \centering
-%    % histogramsqemu
-%	\resizebox{0.8\textwidth}{!}{%
-%		\input{gnuhistogramsqemu.tex}
-%	}
+    \column{0.5\textwidth}
+    \centering
+    % histogramsqemu
+	\resizebox*{!}{0.8\textheight}{%
+		\input{gnuhistogramsqemu.tex}
+	}
 \end{columns}
 	
 \end{frame}
