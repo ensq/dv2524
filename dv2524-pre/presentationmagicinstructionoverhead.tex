@@ -1,14 +1,51 @@
 % presentationmagicinstructionoverhead.tex
 
-\begin{frame}
-\frametitle{Magic instruction overhead}
+\defverbatim[colored]\pseudofirst{%
+\lstset{linewidth=0.5\linewidth}
+\begin{lstlisting}
+for(unsigned i=0;i<1000;i++){
+	write(sercon,"start",5);
+	tcdrain(sercon);
 
-\begin{block}{Effective number of magic instructions performed}
-\center
-\resizebox{\linewidth}{!}{%
-	\input{tabkeyvalsmagicinstructions.tex}
+	magic_instruction();
+
+	write(sercon,"stop",4);
+	tcdrain(sercon);
 }
-\end{block}
+\end{lstlisting}}
+
+\defverbatim[colored]\pseudosecond{%
+\lstset{linewidth=0.5\linewidth}
+\begin{lstlisting}
+for(unsigned i=0;i<1000;i++){
+	write(sercon,"start",5);
+	tcdrain(sercon);
+	for(unsigned j=0;j<1000;j++){
+		magic_instruction();
+	}
+	write(sercon,"stop",4);
+	tcdrain(sercon);
+}
+\end{lstlisting}}
+
+\begin{frame}[fragile]
+\frametitle{Magic instruction overhead}
+\begin{figure}
+\centering
+\begin{lstlisting}
+int sercon = open("/dev/ttyS0",O_RDWR|O_NOCTTY);
+\end{lstlisting}
+\begin{minipage}{.5\textwidth}
+	\centering
+	
+\lstinputlisting{pseudoindividual.txt}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+	\centering
+
+\lstinputlisting{pseudobatch.txt}
+\end{minipage}
+\end{figure}
 
 \begin{block}{Profiling results (1000 magic instructions)}
 \input{tabmagicinstructionsforall.tex}

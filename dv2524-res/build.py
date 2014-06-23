@@ -37,8 +37,13 @@ if len(opts)<1:
 buildDirectory = "../dv2524-bin/"
 if target=="thesis":
     shutil.copy2("thesisindexstyle.ist", buildDirectory)
+    shutil.copy2("pseudobatch.txt", buildDirectory)
+    shutil.copy2("pseudoindividual.txt", buildDirectory)
 elif target=="proposal":
     shutil.copy2("androidopenglesdesignoverview.pdf", buildDirectory)
+elif target=="presentation":
+    shutil.copy2("pseudobatch.txt", buildDirectory)
+    shutil.copy2("pseudoindividual.txt", buildDirectory)
 else:
     usage(g_iam)
     sys.exit(2)

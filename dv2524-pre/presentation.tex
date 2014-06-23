@@ -27,6 +27,7 @@
 \usepackage{pdflscape} % Used to landscape frames.
 \usepackage{listings} % Used to format inline code throughout document.
 \usepackage{color} % Used to gray out text
+\usepackage{tikz}
 
 \usepackage[footinfo]{gitinfo} % dv2524-pac/
 
@@ -51,6 +52,33 @@
 	\read\file to \keyval
 	\keyval % Return keyval.
 	\closein\file
+}
+
+%\lstset{
+%    language=C,
+%    tabsize=4,
+%    keepspaces,
+%    extendedchars=true,
+%    rulecolor=\color{black},
+%    basicstyle=\footnotesize,
+%    aboveskip=5pt,
+%    upquote=true,
+%    columns=fixed,
+%    showstringspaces=false,
+%    extendedchars=true,
+%    breaklines=true,
+%    frame=single,
+%    showtabs=true,
+%    showspaces=false,
+%    showstringspaces=false,
+%    backgroundcolor=\color{black!5},
+%}
+
+\lstset{
+	language=C,
+	tabsize=4,
+	backgroundcolor=\color{black!5},
+	basicstyle=\tiny,
 }
 
 % Formatting inline code command:

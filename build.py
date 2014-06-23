@@ -71,6 +71,7 @@ def buildPresentation(p_from):
     subbuild(os.getcwd() + "/dv2524-fig")
     subbuild(os.getcwd() + "/dv2524-dat")
     subbuild(os.getcwd() + "/dv2524-gnu")
+    subbuild(os.getcwd() + "/dv2524-res", "--target presentation")
     subbuild(os.getcwd() + "/dv2524-pre")
     shutil.copyfile("dv2524-bin/presentation.pdf", "presentation.pdf")
 
