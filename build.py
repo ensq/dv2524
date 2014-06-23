@@ -104,7 +104,7 @@ build_proposal = False
 build_thesis = False
 build_opposition = False
 build_presentation = False
-buuld_rejoinder = False
+build_rejoinder = False
 try:
   target
 except NameError:
