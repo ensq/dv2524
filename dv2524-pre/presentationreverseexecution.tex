@@ -4,11 +4,19 @@
 
 \frametitle{Reverse Execution}
 
-\begin{itemize}
-	\item Currently, graphics is displayed in the host system
-	\item Probable that a potential productification of paravirtualized graphics would feature graphics output in the target system
-	\item If so, framebuffers would be present in target memory
-	\item It follows that reverse execution functionality in Simics tracks said memory in checkpoints; effectively accomodating for reverse execution graphics
-\end{itemize}
+\begin{block}{Currently}
+	Graphics displayed exclusively in the host system
+\end{block}
+
+\begin{block}{Assumption}
+	A potential productification of paravirtualized graphics would feature graphics output in the target system
+\end{block}
+
+\begin{block}{Prediction}
+	\begin{itemize}
+		\item If so, framebuffers would be present in target memory
+		\item It follows that reverse execution functionality in Simics tracks said memory in checkpoints; effectively accomodating for reverse execution graphics
+	\end{itemize}
+\end{block}
 
 \end{frame}
