@@ -4,10 +4,22 @@
 
 \frametitle{Checkpointing}
 
-% Requires efficient framework functionality to store and restore system states
-% Probable to be highly platform dependant in terms of efficiency
-% Implemented using OpenGL in QEMU
-% Memory transparency in modern APIs (such as CUDA) may advance the Checkpoint/Restart scheme in virtual platforms
-% Experimental checkpointing schemes have been developed for CUDA (see Guo et al.)
+\begin{block}{Conditions}
+	\begin{itemize}
+		\item Requires efficient framework functionality to store and restore system states (contestant:\dvtcmdcodeinline{glGet})
+		\item Volatility; probable to be platform dependant in terms of efficiency
+	\end{itemize}
+\end{block}
+
+\begin{block}{Related Work}
+	Has been successfully implemented in QEMU for OpenGL
+\end{block}
+
+\begin{block}{Future Work}
+	\begin{itemize}
+		\item Transaction transparency in modern frameworks may advance the Checkpoint/Restart scheme in virtual platforms
+		\item Experimental checkpoint schemes have been developed for CUDA (see Guo et al.)
+	\end{itemize}
+\end{block}
 
 \end{frame}
