@@ -4,10 +4,18 @@
 
 \frametitle{Deterministic Execution}
 
-% Acceleration by the means of paravirtualization incurs Host dependencies
-% * Hardware GPU floating point accuracy (less of an issue since double floating point precision became commonplace around 2007)
-% * Software API conformance (API specification not necessarily strict)
-% * Often not an issue since graphics is, albeit general purpose processing is becoming increasingly more commonplace, commonly used only to display some data
-% * Example
+Host dependency may affect simulation determinism\footnote{Variance affects only cross-platform simulation (checkpointing)}:
+\begin{itemize}
+	\item Hardware GPU floating point accuracy\footnote{Less of an issue since commonplace double floating point precision (2007)}
+	\item Software API conformance (API spec. not necessarily strict)
+\end{itemize}
+
+However:
+\begin{itemize}
+	\item Often not an issue since graphics are commonly used only to display data
+	\item Yet, GPU utilization for general purpose workloads increasingly more common
+\end{itemize}
+
+\textbf{Example}
 
 \end{frame}
