@@ -18,6 +18,13 @@
 } % Insert table of contents frame before each new section.
 \setbeamertemplate{caption}[numbered] % Number figures.
 
+\definecolor{intel}{RGB}{0, 113, 197}
+\setbeamercolor{section in toc shaded}{fg=intel}
+\setbeamercolor{subsection in toc shaded}{fg=black}
+\setbeamercolor{section in toc}{fg=intel}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{block title}{fg=intel}
+
 % Package inclusion:
 \usepackage{tikz} % Used by presentationprogressbar.tex
 \usepackage{hyperref} % Used to invoke Santa Claus.
@@ -33,7 +40,7 @@
 
 % Package configuration:
 \hypersetup{
-	colorlinks=true,
+	colorlinks=false,
 	linkcolor=blue,
 	urlcolor=black,
 	citecolor=blue,
