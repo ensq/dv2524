@@ -4,9 +4,11 @@
 
 \frametitle{Reverse Execution}
 
-% Currently the window is placed in the host system
-% In a productification, it is probable that a client might wish for the window to be present in the target system
-% If so, the framebuffer would be present in target memory
-% If so, reverse execution functionality ought to include said memory in checkpoints; accomodating for reverse execution graphics
+\begin{itemize}
+	\item Currently, graphics is displayed in the host system
+	\item Probable that a potential productification of paravirtualized graphics would feature graphics output in the target system
+	\item If so, framebuffers would be present in target memory
+	\item It follows that reverse execution functionality in Simics tracks said memory in checkpoints; effectively accomodating for reverse execution graphics
+\end{itemize}
 
 \end{frame}
