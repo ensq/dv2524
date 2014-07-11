@@ -121,21 +121,3 @@ sp.wait()
 os.chdir("../dv2524-gnu/")
 
 print(g_iam + ": Exit.")
-
-# Old invocation of lone histograms:
-#benchmarks = \
-#	[["julia225.dat","julia450.dat","julia900.dat"],\
-#	["phong1448x1448.dat", "phong2048x2048.dat", "phong2896x2896.dat"],\
-#	["chess60x60.dat", "chess84x84.dat", "chess118x118.dat"]]
-#platforms = ["simics", "para"]
-
-#cmd = "gnuplot -e \"arg_data1='%s';arg_data2='%s';arg_data3='%s';arg_output='%s'\" demo.gpt";
-#for platform in platforms:
-#	for benchmark in benchmarks:
-#		arg1 = "results/" + platform + benchmark[0]
-#		arg2 = "results/" + platform + benchmark[1]
-#		arg3 = "results/" + platform + benchmark[2]
-#		arg4 = platform + benchmark[0] + ".svg"
-
-#		sp = subprocess.Popen(cmd % (arg1, arg2, arg3, arg4), shell=True)
-#		sp.wait()
