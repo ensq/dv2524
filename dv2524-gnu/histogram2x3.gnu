@@ -100,8 +100,3 @@ unset multiplot
 set output # Terminate output file.
 
 print sprintf("%s: Exit.", iam)
-
-# ---
-#tics = floor((hist_binMax-hist_binMin)/5)
-#set xtics tics
- #set xtics hist_binMin, tics, hist_binMax
